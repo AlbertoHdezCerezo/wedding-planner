@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore /.idea (RubyMine configuration)
-.idea
+/.idea
 
 # Ignore all logfiles and tempfiles.
 /log/*
