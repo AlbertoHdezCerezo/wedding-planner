@@ -10,6 +10,7 @@
 # Ignore /.idea (RubyMine configuration)
 /.idea
 
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
