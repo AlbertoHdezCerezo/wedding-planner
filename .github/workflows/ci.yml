@@ -29,8 +29,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Rails project (pull code, install dependencies and setup database)
-        uses: ./.github/actions/setup-project-action.yml
+      - name: Setup Rails project (install dependencies and setup database)
+        uses: ./.github/actions/setup-project-action
 
       - name: Run tests
         run: bin/rails test -f
