@@ -21,7 +21,8 @@ module WeddingPlanner
     # config.time_zone = "Central Time (US & Canada)"
 
     # Load lib folder (factories and custom libraries)
-    config.autoload_paths << "#{root}/lib"
+    config.autoload_paths << "#{config.root}/lib"
+    config.eager_load_paths << "#{config.root}/lib"
 
     # Custom FactoryBot factories path
     config.factory_bot.definition_file_paths = ["app/lib/factories"]
