@@ -36,10 +36,10 @@ jobs:
           bundler-cache: true
 
       - name: Set up database schema
-        run: bundle exec db:schema:load
+        run: bundle exec rails db:schema:load
 
       - name: Run tests
-        run: bundle exec test -f
+        run: bundle exec rails test -f
 
   lint:
     environment: test
