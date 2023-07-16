@@ -1,11 +1,13 @@
-name: My Action
+name: Setup Rails Project ()
 description: cacahue
 runs:
   using: "composite"
   steps:
-    - name: Step 1
+    - name: Install Ruby and gems
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    - name: Set up database schema
       shell: bash
-      run: echo "This is step 1"
-    - name: Step 2
-      shell: bash
-      run: echo "This is step 2"
+      run: bundle exec rails db:schema:load

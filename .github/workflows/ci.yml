@@ -30,16 +30,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-
-      - name: Use My Action
+      - name: Setup Rails project (dependencies & database)
         uses: ./.github/actions/setup-rails-project
-
-      - name: Set up database schema
-        run: bundle exec rails db:schema:load
 
       - name: Run tests
         run: bundle exec rails test -f
