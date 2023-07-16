@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class ApplicationRecordTest < ActiveSupport::TestCase
@@ -6,7 +8,7 @@ class ApplicationRecordTest < ActiveSupport::TestCase
   test "All ApplicationRecord model classes use UUID format in their table ID columns" do
     assert model_classes.all? { id_sql_type(_1) == UUID_SQL_TYPE }, <<-MESSAGE
       Expected all ApplicationRecord model classes to define its ID column as UUID sql type.
-      Some models do not have ID column as UUID: #{ model_classes.reject { id_sql_type(_1) == UUID_SQL_TYPE }.map(&:name) }.
+      Some models do not have ID column as UUID: #{model_classes.reject { id_sql_type(_1) == UUID_SQL_TYPE }.map(&:name)}.
     MESSAGE
   end
 

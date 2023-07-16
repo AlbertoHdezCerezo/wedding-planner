@@ -58,6 +58,18 @@ group :development, :test do
   # Library for generating fake data such as names, addresses, and phone numbers.
   # Helps you generate realistic test data.
   gem "faker"
+
+  ## Linter Gems
+  # Ruby static code analyzer (a.k.a. linter) and code formatter.
+  gem "rubocop", "~> 1.48", require: false
+  # A RuboCop extension focused on enforcing Rails best practices and coding conventions.
+  gem "rubocop-rails", require: false
+  # Performance optimization analysis for your projects, as an extension to RuboCop.
+  gem "rubocop-performance", require: false
+  # A RuboCop extension focused on enforcing Minitest best practices and coding conventions.
+  gem "rubocop-minitest", require: false
+
+  gem "rubocop-factory_bot", require: false
 end
 
 group :development do

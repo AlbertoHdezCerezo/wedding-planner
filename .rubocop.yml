@@ -1,0 +1,57 @@
+# Official .rubocop.yml reference
+# https://github.com/rubocop/rubocop/blob/master/config/default.yml
+
+# Basic Rubocop parameters configuration
+AllCops:
+  # Specify Ruby version you are working with (can be found in .ruby-version)
+  TargetRubyVersion: 3.1.2
+  # Display linter rule name with code offenses.
+  # Cop names are displayed in offense messages by default. Change behavior
+  # by overriding DisplayCopNames, or by giving the `--no-display-cop-names`
+  # option.
+  DisplayCopNames: true
+  # Style guide URLs are not displayed in offense messages by default. Change
+  # behavior by overriding `DisplayStyleGuide`, or by giving the
+  # `-S/--display-style-guide` option.
+  DisplayStyleGuide: false
+  # New cops introduced between major versions are set to a special pending status
+  # and are not enabled by default with warning message.
+  # Change this behavior by overriding either `NewCops: enable` or `NewCops: disable`.
+  # When `NewCops` is `enable`, pending cops are enabled in bulk. Can be overridden by
+  # the `--enable-pending-cops` command-line option.
+  # When `NewCops` is `disable`, pending cops are disabled in bulk. Can be overridden by
+  # the `--disable-pending-cops` command-line option.
+  NewCops: enable
+  # Files to be ignored by linter
+  Exclude:
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'db/migrate/*.rb'
+    - 'config/environments/*.rb'
+    - 'Rakefile'
+    - 'Gemfile'
+
+# Rubocop plugin gems to be used with linter
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-minitest
+  - rubocop-factory_bot
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
