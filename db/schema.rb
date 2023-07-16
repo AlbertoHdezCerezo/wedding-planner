@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_140651) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "weddings", force: :cascade do |t|
+  create_table "weddings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.date "date"
     t.string "description"
     t.datetime "created_at", null: false
