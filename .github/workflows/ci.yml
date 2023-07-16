@@ -35,6 +35,9 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Use My Action
+        uses: ./.github/actions/setup-rails-project
+
       - name: Set up database schema
         run: bundle exec rails db:schema:load
 
