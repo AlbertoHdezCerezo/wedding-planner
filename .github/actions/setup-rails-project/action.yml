@@ -1,4 +1,4 @@
-name: Setup Rails Project ()
+name: Setup Rails Project (dependencies & database)
 description: cacahue
 runs:
   using: "composite"
