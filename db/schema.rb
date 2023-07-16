@@ -17,8 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_140651) do
   create_table "weddings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.date "date"
     t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
   end
 
 end
