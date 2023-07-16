@@ -19,7 +19,9 @@ module WeddingPlanner
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+
+    # Load lib folder (factories and custom libraries)
+    config.autoload_paths << "#{root}/lib"
 
     # Custom FactoryBot factories path
     config.factory_bot.definition_file_paths = ["app/lib/factories"]
