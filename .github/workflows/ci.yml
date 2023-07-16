@@ -26,16 +26,8 @@ jobs:
     env:
       RAILS_ENV: test
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-
-      - name: Set up database schema
-        run: bin/rails db:schema:load
+      - name: Setup Rails project (pull code, install dependencies and setup database)
+        uses: ./.github/actions/setup-project-action.yml
 
       - name: Run tests
         run: bin/rails test -f
