@@ -27,7 +27,7 @@ jobs:
       RAILS_ENV: test
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
@@ -39,3 +39,18 @@ jobs:
 
       - name: Run tests
         run: bin/rails test -f
+
+  lint:
+    environment: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Lint Ruby Files
+        run: bundle exec rubocop --parallel -c .rubocop.yml -d
