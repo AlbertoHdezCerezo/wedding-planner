@@ -58,3 +58,6 @@ Style/ClassAndModuleChildren:
 
 Minitest/RefutePredicate:
   Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false

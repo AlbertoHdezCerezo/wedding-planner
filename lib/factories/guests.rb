@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :guest do
     association :wedding
@@ -30,7 +32,7 @@ FactoryBot.define do
       state { :cancelled }
       invited_at { timestamp }
       confirmed_at { 1.hour.after(timestamp) }
-      cancelled_at { 2.hour.after(timestamp) }
+      cancelled_at { 2.hours.after(timestamp) }
     end
 
     trait :uninvited do
