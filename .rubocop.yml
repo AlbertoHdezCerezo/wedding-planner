@@ -55,3 +55,6 @@ Style/Documentation:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Minitest/RefutePredicate:
+  Enabled: false

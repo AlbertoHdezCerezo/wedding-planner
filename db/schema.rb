@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_15_140651) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_132341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invitations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "wedding_id", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["wedding_id"], name: "index_invitations_on_wedding_id"
+  end
 
   create_table "weddings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.date "date"
@@ -21,4 +28,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_140651) do
     t.timestamptz "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "invitations", "weddings"
 end
