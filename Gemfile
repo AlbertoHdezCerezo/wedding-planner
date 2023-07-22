@@ -52,6 +52,9 @@ gem "bootsnap", require: false
 gem "factory_bot_rails"
 
 group :development, :test do
+  # Pry is a runtime developer console and IRB alternative with powerful introspection capabilities
+  gem "pry"
+
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
@@ -68,7 +71,7 @@ group :development, :test do
   gem "rubocop-performance", require: false
   # A RuboCop extension focused on enforcing Minitest best practices and coding conventions.
   gem "rubocop-minitest", require: false
-
+  # factory_bot-specific analysis for your projects, as an extension to RuboCop.
   gem "rubocop-factory_bot", require: false
 end
 
