@@ -30,6 +30,9 @@
 
 /public/assets
 
+# Ignore TW configuration preview (path set by build:tailwind-preview package.json script)
+/public/tailwind-preview
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 

@@ -4,17 +4,18 @@
   "scripts": {
     "build:tailwind-dev": "npx tailwindcss --postcss ./config/postcss.config.js -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/application.tailwind.css -c ./config/tailwindcss.config.js",
     "build:tailwind": "npx tailwindcss --postcss ./config/postcss.config.js -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/application.tailwind.css -c ./config/tailwindcss.config.js --minify",
+    "build:tailwind-preview": "tailwind-config-viewer export ./public/tailwind-preview -c ./config/tailwindcss.config.js",
     "build:css-dev": "yarn build:tailwind-dev",
     "build:css": "yarn build:tailwind"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.27",
-    "postcss-scss": "^4.0.6",
     "postcss-cli": "^10.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-nesting": "^11.1.0",
     "postcss-preset-env": "^9.1.0",
+    "postcss-scss": "^4.0.6",
     "tailwind-config-viewer": "^1.7.2",
     "tailwindcss": "^3.3.3"
   }
