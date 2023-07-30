@@ -1,0 +1,27 @@
+version: 2
+updates:
+  # Bundler Configuration
+  - package-ecosystem: "bundler"
+    directory: "/"
+    # Labels to set on pull requests
+    labels:
+      - "gem"
+      - "dependencies"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      # Prefix all commit messages with "npm: "
+      prefix: "bundle"
+
+  # NPM Package Configuration
+  - package-ecosystem: "npm"
+    directory: "/"
+    # Labels to set on pull requests
+    labels:
+      - "npm"
+      - "dependencies"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      # Prefix all commit messages with "npm: "
+      prefix: "npm"
