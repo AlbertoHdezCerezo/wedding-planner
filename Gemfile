@@ -56,6 +56,9 @@ gem "view_component"
 gem "factory_bot_rails"
 
 group :development, :test do
+  # powerful component browser and preview system with an integrated documentation engine
+  gem "lookbook", ">= 2.0.5"
+
   # Pry is a runtime developer console and IRB alternative with powerful introspection capabilities
   gem "pry"
 
