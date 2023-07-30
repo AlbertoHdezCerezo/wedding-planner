@@ -2,8 +2,10 @@
   "name": "wedding-planner",
   "private": "true",
   "scripts": {
-    "build:tailwind-dev": "npx tailwindcss --postcss ./config/postcss.config.js -i ./app/assets/stylesheets/application.scss -o ./app/assets/builds/application.css -c ./config/tailwindcss.config.js",
-    "build:tailwind": "npx tailwindcss --postcss ./config/postcss.config.js -i ./app/assets/stylesheets/application.scss -o ./app/assets/builds/application.css -c ./config/tailwindcss.config.js --minify"
+    "build:tailwind-dev": "npx tailwindcss --postcss ./config/postcss.config.js -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/application.tailwind.css -c ./config/tailwindcss.config.js",
+    "build:tailwind": "npx tailwindcss --postcss ./config/postcss.config.js -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/application.tailwind.css -c ./config/tailwindcss.config.js --minify",
+    "build:css-dev": "yarn build:tailwind-dev",
+    "build:css": "yarn build:tailwind"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
