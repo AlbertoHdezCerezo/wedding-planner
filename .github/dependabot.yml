@@ -12,6 +12,15 @@ updates:
     commit-message:
       # Prefix all commit messages with "npm: "
       prefix: "bundle"
+    groups:
+      # Rails Project Dependencies
+      rails:
+        exclude-patterns:
+          - "rubocop*"
+      # Rails Linter Dependencies
+      ruby-linter:
+        patterns:
+          - "rubocop*"
 
   # NPM Package Configuration
   - package-ecosystem: "npm"
@@ -25,3 +34,14 @@ updates:
     commit-message:
       # Prefix all commit messages with "npm: "
       prefix: "npm"
+    groups:
+      # Javascript Dependencies
+      js:
+        exclude-patterns:
+          - "postcss*"
+          - "autoprefixer"
+      # CSS Bundler Dependencies
+      css-bundling:
+        patterns:
+          - "postcss*"
+          - "autoprefixer"
