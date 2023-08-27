@@ -9,7 +9,7 @@
     "build:css": "yarn build:tailwind"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.15",
     "postcss": "^8.4.28",
     "postcss-cli": "^10.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
