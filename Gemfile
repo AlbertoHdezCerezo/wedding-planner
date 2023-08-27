@@ -48,6 +48,9 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# CSS Bundling
+gem "cssbundling-rails", "~> 1.2"
+
 # A framework for building reusable, testable & encapsulated view components in Ruby on Rails.
 # https://github.com/viewcomponent/view_component
 gem "view_component"
@@ -99,5 +102,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "cssbundling-rails", "~> 1.2"
