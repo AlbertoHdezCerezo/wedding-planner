@@ -86,6 +86,10 @@ group :development, :test do
 end
 
 group :development do
+  # Gem required to debug with RubyMine debugger
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
