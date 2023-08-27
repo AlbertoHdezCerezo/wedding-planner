@@ -1,2 +1,2 @@
-web: bundle install && bundle exec rails db:migrate && bin/rails server -p 3000
+# web: bundle install && bundle exec rails db:migrate && bin/rails server -p 3000
 css: yarn build:css-dev --watch
