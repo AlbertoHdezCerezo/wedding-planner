@@ -2,7 +2,7 @@
   "name": "wedding-planner",
   "private": "true",
   "scripts": {
-    "build:esbuild": "node esbuild.config.mjs",
+    "build:esbuild": "node config/esbuild.config.mjs",
     "build:tailwind-dev": "npx tailwindcss --postcss ./config/postcss.config.js -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/application.css -c ./config/tailwindcss.config.js",
     "build:tailwind": "npx tailwindcss --postcss ./config/postcss.config.js -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/application.css -c ./config/tailwindcss.config.js --minify",
     "build:tailwind-preview": "tailwind-config-viewer export ./public/tailwind-preview -c ./config/tailwindcss.config.js",

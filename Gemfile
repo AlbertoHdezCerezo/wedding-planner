@@ -55,6 +55,9 @@ gem "cssbundling-rails", "~> 1.2"
 # https://github.com/viewcomponent/view_component
 gem "view_component"
 
+# Add Haml template engine to Rails
+gem "haml-rails", "~> 2.0"
+
 # Fixtures replacement with a straightforward definition syntax
 gem "factory_bot_rails"
 
