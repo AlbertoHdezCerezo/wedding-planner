@@ -2,13 +2,19 @@
   "name": "wedding-planner",
   "private": "true",
   "scripts": {
+    "build:esbuild": "node esbuild.config.mjs",
     "build:tailwind-dev": "npx tailwindcss --postcss ./config/postcss.config.js -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/application.css -c ./config/tailwindcss.config.js",
     "build:tailwind": "npx tailwindcss --postcss ./config/postcss.config.js -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/application.css -c ./config/tailwindcss.config.js --minify",
     "build:tailwind-preview": "tailwind-config-viewer export ./public/tailwind-preview -c ./config/tailwindcss.config.js",
     "build:css-dev": "yarn build:tailwind-preview && yarn build:tailwind-dev",
-    "build:css": "yarn build:tailwind"
+    "build:css": "yarn build:tailwind",
+    "build:js-dev": "yarn build:esbuild",
+    "build:js": "yarn build:esbuild --production"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/eslint-parser": "^7.22.11",
+    "@babel/preset-env": "^7.22.10",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
     "postcss-cli": "^10.0.0",
@@ -18,5 +24,12 @@
     "postcss-scss": "^4.0.7",
     "tailwind-config-viewer": "^1.7.2",
     "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^7.3.0",
+    "esbuild-rails": "^1.0.7",
+    "core-js": "^3.32.2",
+    "esbuild": "0.19.2"
   }
 }
