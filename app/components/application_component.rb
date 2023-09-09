@@ -4,6 +4,8 @@ class ApplicationComponent < ViewComponent::Base
   # Data attribute present in +HTML+ view component wrapper element
   VIEWCOMPONENT_ATTRIBUTE = "data-view-component"
 
+  # Stimulus Methods
+
   def initialize(classes: nil, **system_arguments)
     super
 
