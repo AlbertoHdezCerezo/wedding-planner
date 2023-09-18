@@ -30,6 +30,6 @@
     "@hotwired/turbo-rails": "^7.3.0",
     "esbuild-rails": "^1.0.7",
     "core-js": "^3.32.2",
-    "esbuild": "0.19.2"
+    "esbuild": "0.19.3"
   }
 }
