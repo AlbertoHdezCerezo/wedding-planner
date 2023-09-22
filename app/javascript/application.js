@@ -39,10 +39,12 @@ application.debug = true
 window.Stimulus = application
 
 controllers.forEach((controller) => {
+  // eslint-disable-next-line no-undef
   Stimulus.register(controllerName(controller.name), controller.module.default)
 })
 
 componentControllers.forEach((controller) => {
+  // eslint-disable-next-line no-undef
   Stimulus.register(
     componentControllerName(controller.name),
     controller.module.default

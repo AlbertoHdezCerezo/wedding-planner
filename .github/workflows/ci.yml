@@ -28,7 +28,7 @@ jobs:
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Rails project (dependencies & database)
         uses: ./.github/actions/setup-rails-project
@@ -41,12 +41,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install packages
+        run: yarn install --pure-lockfile
+
       - name: Lint Ruby Files
         run: bundle exec rubocop --parallel -c .rubocop.yml -d
+
+      - name: Lint Javascript Files
+        run: yarn lint
