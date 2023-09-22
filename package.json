@@ -16,9 +16,11 @@
     "@babel/eslint-parser": "^7.22.11",
     "@babel/preset-env": "^7.22.10",
     "autoprefixer": "^10.4.16",
+    "esbuild-plugin-babel": "^0.2.3",
     "postcss": "^8.4.30",
     "postcss-cli": "^10.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^15.1.0",
     "postcss-nesting": "^12.0.1",
     "postcss-preset-env": "^9.1.4",
     "postcss-scss": "^4.0.8",
@@ -28,8 +30,8 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
-    "esbuild-rails": "^1.0.7",
     "core-js": "^3.32.2",
-    "esbuild": "0.19.3"
+    "esbuild": "0.19.3",
+    "esbuild-rails": "^1.0.7"
   }
 }
