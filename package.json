@@ -10,8 +10,8 @@
     "build:css": "yarn build:tailwind",
     "build:js-dev": "yarn build:esbuild",
     "build:js": "yarn build:esbuild --production",
-    "lint": "yarn eslint app -c config/.eslintrc.js --ignore-path config/.eslintignore",
-    "lint:fix": "yarn eslint app -c config/.eslintrc.js --ignore-path config/.eslintignore --fix"
+    "lint": "yarn run eslint app -c config/.eslintrc.js --ignore-path config/.eslintignore",
+    "lint:fix": "yarn run eslint app -c config/.eslintrc.js --ignore-path config/.eslintignore --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.22.11",
