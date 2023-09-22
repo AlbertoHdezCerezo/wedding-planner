@@ -96,6 +96,9 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
+  # Required by +LookBook+ for live updates mode -> https://lookbook.build/guide/config#live_updates
+  gem "listen"
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
