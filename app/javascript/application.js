@@ -12,24 +12,24 @@ import componentControllers from './../components/**/*_controller.js'
 
 // Auxiliary Methods
 // -----------------
-function controllerName(defaultName) {
-	const namespaces = [
-		...new Set(
-			defaultName
-				.split('--')
-				.filter((ns) => !['..', 'controllers'].includes(ns))
-		)
-	]
-	return namespaces.join('--')
+function controllerName (defaultName) {
+  const namespaces = [
+    ...new Set(
+      defaultName
+        .split('--')
+        .filter((ns) => !['..', 'controllers'].includes(ns))
+    )
+  ]
+  return namespaces.join('--')
 }
 
-function componentControllerName(defaultName) {
-	const namespaces = [
-		...new Set(
-			defaultName.split('--').filter((ns) => !['..', 'components'].includes(ns))
-		)
-	]
-	return namespaces.join('--')
+function componentControllerName (defaultName) {
+  const namespaces = [
+    ...new Set(
+      defaultName.split('--').filter((ns) => !['..', 'components'].includes(ns))
+    )
+  ]
+  return namespaces.join('--')
 }
 
 const application = Application.start()
@@ -39,12 +39,12 @@ application.debug = true
 window.Stimulus = application
 
 controllers.forEach((controller) => {
-	Stimulus.register(controllerName(controller.name), controller.module.default)
+  Stimulus.register(controllerName(controller.name), controller.module.default)
 })
 
 componentControllers.forEach((controller) => {
-	Stimulus.register(
-		componentControllerName(controller.name),
-		controller.module.default
-	)
+  Stimulus.register(
+    componentControllerName(controller.name),
+    controller.module.default
+  )
 })
