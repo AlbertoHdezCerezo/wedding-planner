@@ -1,0 +1,11 @@
+-# Background
+.h-screen.w-screen.flex.items-center.justify-center
+  -# Envelop
+  %div{ class: "relative h-[400px] w-[800px]" }
+    -# Letter Back
+    .absolute.w-full.h-full.bg-cinnabar-500
+
+    -# Letter Left
+    .absolute.w-0.h-0{ class: "border-b-0 border-r-0 border-t-[400px] border-l-[800px] border-transparent border-l-cinnabar-600" }
+    -# Letter Right
+    .absolute.w-0.h-0{ class: "border-b-0 border-l-0 border-t-[400px] border-r-[800px] border-transparent border-r-cinnabar-600" }
