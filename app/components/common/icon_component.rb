@@ -15,13 +15,29 @@ module Common
 
     attr_reader :icon, :size
 
-    def initialize(icon, size: :base, classes: nil, **system_arguments)
+    def initialize(icon, size: :base, **system_arguments)
       @icon = icon
       @size = SIZES[size.to_sym]
-      super(classes:, **system_arguments)
+      super(**system_arguments)
     end
 
-    def call = inline_svg_tag(svg_file, default_system_arguments)
+    def call
+      inline_svg_tag(svg_file, default_system_arguments.merge(class: @classes))
+    end
+
+    protected
+
+    def default_classes
+      <<-HTML
+        data-[size=xs]:w-[12px] data-[size=xs]:h-[12px]
+        data-[size=sm]:w-[16px] data-[size=sm]:h-[16px]
+        data-[size=base]:w-[20px] data-[size=base]:h-[20px]
+        data-[size=lg]:w-[22px] data-[size=lg]:h-[22px]
+        data-[size=xl]:w-[28px] data-[size=xl]:h-[28px]
+      HTML
+    end
+
+    private
 
     def default_system_arguments
       {
@@ -30,14 +46,7 @@ module Common
         aria_hidden: true,
         title: icon,
         desc: "#{icon} icon",
-        data: { size: },
-        class: <<-HTML
-          data-[size=xs]:w-[12px] data-[size=xs]:h-[12px]
-          data-[size=sm]:w-[16px] data-[size=sm]:h-[16px]
-          data-[size=base]:w-[20px] data-[size=base]:h-[20px]
-          data-[size=lg]:w-[22px] data-[size=lg]:h-[22px]
-          data-[size=xl]:w-[28px] data-[size=xl]:h-[28px]
-        HTML
+        data: { size: }
       }
     end
 
