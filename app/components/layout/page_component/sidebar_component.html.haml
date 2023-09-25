@@ -1,0 +1,7 @@
+= render(BaseComponent.new(tag: :div, classes: "h-full w-60 flex flex-col border-r-2 border-gray-300", **content_tag_args)) do
+  %nav{ "aria-abel": "Site navigation" }
+    %ul{ role: "list" }
+      - items.each_pair do |route_name, route_path|
+        - selected_class = in_current_path?(route_path) ? 'bg-gray-200' : ''
+        %li.px-6.py-4.cursor-pointer{ class: "#{selected_class} hover:bg-gray-100", role: "listitem" }
+          %a{ href: route_path }= t(".#{route_name}")
