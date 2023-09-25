@@ -61,6 +61,9 @@ gem "haml-rails", "~> 2.0"
 # Fixtures replacement with a straightforward definition syntax
 gem "factory_bot_rails"
 
+# Gem for SVG import & styling via CSS
+gem "inline_svg", "~> 1.9.0"
+
 group :development, :test do
   # powerful component browser and preview system with an integrated documentation engine
   gem "lookbook", ">= 2.0.5"
