@@ -1,20 +1,21 @@
 # frozen_string_literal: true
 
 class ApplicationComponent < ViewComponent::Base
+  # Helper Concerns
+  include ClassNameHelper
+
   # Data attribute present in +HTML+ view component wrapper element
   VIEWCOMPONENT_ATTRIBUTE = "data-view-component"
-
-  # Stimulus Methods
 
   def initialize(classes: nil, **system_arguments)
     super
 
-    @classes = classes
+    @classes = class_names(default_classes, classes)
 
     system_arguments[VIEWCOMPONENT_ATTRIBUTE.to_sym] = true
 
     @content_tag_args = system_arguments
-    @content_tag_args = @content_tag_args.merge({ class: classes }) if classes.present?
+    @content_tag_args = @content_tag_args.merge({ class: @classes }) if classes.present?
   end
 
   protected
