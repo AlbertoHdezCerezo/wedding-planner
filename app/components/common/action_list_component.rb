@@ -11,11 +11,14 @@ module Common
     # Slots
     # -----
     renders_one :heading, lambda { |**system_arguments| Common::ActionListComponent::Heading.new(**system_arguments) }
+
     renders_many :items, types: {
       default: lambda do |**system_arguments|
         Common::ActionListComponent::Item.new(size:, index: item_slots_rendered.count, **system_arguments)
       end,
-      divider: lambda { |**system_arguments| Common::ActionListComponent::Divider.new(**system_arguments) },
+      divider: lambda do |**system_arguments|
+        Common::ActionListComponent::Divider.new(**system_arguments)
+      end
     }
 
     attr_reader :size
