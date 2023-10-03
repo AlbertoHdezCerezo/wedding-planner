@@ -9,22 +9,33 @@ module Common
       }.freeze
 
       renders_one :leading_visual, types: {
-        icon: lambda { |icon:, **system_arguments| Common::IconComponent.new(icon, size: :base, **system_arguments) }
+        icon: ->(icon:, **system_arguments) { Common::IconComponent.new(icon, size: :base, **system_arguments) }
       }
 
       renders_one :trailing_visual, types: {
-        icon: lambda { |icon:, **system_arguments| Common::IconComponent.new(icon, size: :base, **system_arguments) }
+        icon: ->(icon:, **system_arguments) { Common::IconComponent.new(icon, size: :base, **system_arguments) }
       }
 
       attr_reader :index, :label, :label_arguments, :active, :disabled, :size
 
-      def initialize(index:, label: nil, label_arguments: {}, size: "base", active: false, disabled: false, **system_arguments)
+      def initialize( # rubocop:disable Metrics/ParameterLists
+        index:,
+        label: nil,
+        label_arguments: {},
+        size: "base",
+        active: false,
+        disabled: false,
+        **system_arguments
+      )
+        @id = generate_id
+
         @size = size
         @active = active
         @disabled = disabled
 
         @label = label
         @label_arguments = {
+          id: label_id,
           classes: class_names(label_classes, label_arguments[:classes])
         }
 
@@ -55,7 +66,7 @@ module Common
           tag: :li,
           role: :listitem,
           tabindex: index,
-          labelledby: "TODO",
+          labelledby: label_id,
           data: {
             size: size.to_s,
             active: active.to_s,
@@ -65,6 +76,8 @@ module Common
       end
 
       def label_classes = "text-sm text-gray-700"
+
+      def label_id = "#{id}-label"
     end
   end
 end

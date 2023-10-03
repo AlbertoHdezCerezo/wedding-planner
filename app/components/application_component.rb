@@ -19,7 +19,7 @@ class ApplicationComponent < ViewComponent::Base
     super
 
     @classes = class_names(default_classes, classes)
-    @id = system_arguments[:id] || generate_id
+    @id = system_arguments[:id] || @id || generate_id
 
     system_arguments[VIEWCOMPONENT_ATTRIBUTE.to_sym] = true
 
@@ -28,7 +28,7 @@ class ApplicationComponent < ViewComponent::Base
     @content_tag_args = @content_tag_args.merge({ class: @classes }) if @classes.present?
   end
 
-  def rendered_slots = self.instance_variable_get(:@__vc_set_slots)
+  def rendered_slots = instance_variable_get(:@__vc_set_slots)
 
   def rendered_slots_by_name(slot_name)
     slots = rendered_slots[slot_name]
