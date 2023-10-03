@@ -4,10 +4,11 @@ module Common
   class ActionListComponent
     class Divider < ApplicationComponent
       SYSTEM_ARGUMENTS = {
-        tag: :hr,
+        tag: :li,
+        role: "presentation",
         aria: { hidden: true },
         data: { targets: "action-bar.items" },
-        classes: ""
+        classes: "h-[1px] w-full my-2 bg-gray-200"
       }.freeze
 
       def call = render(BaseComponent.new(**SYSTEM_ARGUMENTS))
