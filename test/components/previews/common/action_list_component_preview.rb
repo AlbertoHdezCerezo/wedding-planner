@@ -7,7 +7,7 @@ class Common::ActionListComponentPreview < ViewComponent::Preview
   # Renders an `.svg` component from the icon assets library available
   # at `/assets/images/icons`. You can pass additional `HTML` parameters
   # to customize your icons the way you want
-  def default
+  def default # rubocop:disable Metrics/AbcSize
     render Common::ActionListComponent.new do |list|
       list.with_heading(title: "Title")
       list.with_item_default(label: "item 1")

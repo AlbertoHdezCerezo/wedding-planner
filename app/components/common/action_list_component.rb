@@ -10,7 +10,7 @@ module Common
 
     # Slots
     # -----
-    renders_one :heading, lambda { |**system_arguments| Common::ActionListComponent::Heading.new(**system_arguments) }
+    renders_one :heading, ->(**system_arguments) { Common::ActionListComponent::Heading.new(**system_arguments) }
 
     renders_many :items, types: {
       default: lambda do |**system_arguments|
