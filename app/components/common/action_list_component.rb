@@ -14,7 +14,7 @@ module Common
 
     renders_many :items, types: {
       default: lambda do |**system_arguments|
-        Common::ActionListComponent::Item.new(size:, index: item_slots_rendered.count, **system_arguments)
+        Common::ActionListComponent::Item.new(size:, index: rendered_item_slots.count, **system_arguments)
       end,
       divider: lambda do |**system_arguments|
         Common::ActionListComponent::Divider.new(**system_arguments)
@@ -34,6 +34,10 @@ module Common
 
     def default_content_tag_arguments = { tag: :ul }
 
-    def item_slots_rendered = rendered_slots_by_name(:items) || []
+    def rendered_item_slots = rendered_slots_by_name(:items) || []
+
+    def rendered_heading_slot = rendered_slots_by_name(:heading).first
+
+    def rendered_heading = rendered_heading_slot&.instance_variable_get(:@__vc_component_instance)
   end
 end
