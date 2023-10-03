@@ -16,9 +16,9 @@ module Common
         icon: lambda { |icon:, **system_arguments| Common::IconComponent.new(icon, size: :base, **system_arguments) }
       }
 
-      attr_reader :label, :label_arguments, :active, :disabled, :size
+      attr_reader :index, :label, :label_arguments, :active, :disabled, :size
 
-      def initialize(label: nil, label_arguments: {}, size: "base", active: false, disabled: false, **system_arguments)
+      def initialize(index:, label: nil, label_arguments: {}, size: "base", active: false, disabled: false, **system_arguments)
         @size = size
         @active = active
         @disabled = disabled
@@ -27,6 +27,8 @@ module Common
         @label_arguments = {
           classes: class_names(label_classes, label_arguments[:classes])
         }
+
+        @index = index
 
         super(**system_arguments)
       end
@@ -52,7 +54,7 @@ module Common
         {
           tag: :li,
           role: :listitem,
-          tabindex: "TODO",
+          tabindex: index,
           labelledby: "TODO",
           data: {
             size: size.to_s,

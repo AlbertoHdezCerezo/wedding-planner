@@ -20,6 +20,18 @@ class ApplicationComponent < ViewComponent::Base
     @content_tag_args = @content_tag_args.merge({ class: @classes }) if @classes.present?
   end
 
+  def rendered_slots = self.instance_variable_get(:@__vc_set_slots)
+
+  def rendered_slots_by_name(slot_name)
+    slots = rendered_slots.dig(slot_name)
+
+    return [] if slots.nil?
+
+    return [slots] unless slots.is_a?(Array)
+
+    slots
+  end
+
   protected
 
   # Component predefined classes

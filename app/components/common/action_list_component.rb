@@ -12,7 +12,9 @@ module Common
     # -----
     renders_one :heading, lambda { |**system_arguments| Common::ActionListComponent::Heading.new(**system_arguments) }
     renders_many :items, types: {
-      default: lambda { |**system_arguments| Common::ActionListComponent::Item.new(size:, **system_arguments) },
+      default: lambda do |**system_arguments|
+        Common::ActionListComponent::Item.new(size:, index: item_slots_rendered.count, **system_arguments)
+      end,
       divider: lambda { |**system_arguments| Common::ActionListComponent::Divider.new(**system_arguments) },
     }
 
@@ -28,5 +30,7 @@ module Common
     def default_classes = "py-2"
 
     def default_content_tag_arguments = { tag: :ul }
+
+    def item_slots_rendered = rendered_slots_by_name(:items) || []
   end
 end
