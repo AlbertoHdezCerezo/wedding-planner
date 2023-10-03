@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class ApplicationComponent < ViewComponent::Base
+  # Data attribute present in +HTML+ view component wrapper element
+  VIEWCOMPONENT_ATTRIBUTE = "data-view-component"
+
   # Helper Concerns
   include ClassNameHelper
 
-  # Data attribute present in +HTML+ view component wrapper element
-  VIEWCOMPONENT_ATTRIBUTE = "data-view-component"
+  attr_reader :content_tag_args
 
   def initialize(classes: nil, **system_arguments)
     super

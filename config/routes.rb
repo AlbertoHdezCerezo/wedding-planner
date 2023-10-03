@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   mount Lookbook::Engine, at: "/rails/lookbook" if Rails.env.development?
+
+  resources :weddings, only: %i[index show]
 end
