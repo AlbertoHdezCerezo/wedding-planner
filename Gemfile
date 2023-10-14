@@ -71,9 +71,6 @@ group :development, :test do
   # Pry is a runtime developer console and IRB alternative with powerful introspection capabilities
   gem "pry"
 
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-
   # Library for generating fake data such as names, addresses, and phone numbers.
   # Helps you generate realistic test data.
   gem "faker"
