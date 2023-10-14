@@ -6,12 +6,15 @@ class Common::DataTableComponentPreview < ViewComponent::Preview
   # --------------------
   # @param density select { choices: [condensed, normal, spacious] }
   def playground(density: "normal")
+    hosts = %w[Alberto Andrea]
+    statuses = %w[invitation_sent invitation_accepted invitation_declined assistance_cancelled]
+
     items = (0..5).collect do |index|
-      OpenStruct.new(
+      OpenStruct.new( # rubocop:disable Style/OpenStructUse
         name: "Item #{index}",
         travels_from: "Cacahue",
-        invited_by: %w[Alberto Andrea].sample,
-        invitation_status: %w[invitation_sent invitation_accepted invitation_declined assistance_cancelled].sample
+        invited_by: hosts.sample,
+        invitation_status: statuses.sample
       )
     end
 

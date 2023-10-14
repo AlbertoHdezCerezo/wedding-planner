@@ -5,6 +5,8 @@ module Common
     attr_reader :title
 
     def initialize(title, **system_arguments, &block)
+      super(**system_arguments)
+
       @title = title
       @system_arguments = system_arguments
       @block = block
