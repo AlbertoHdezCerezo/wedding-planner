@@ -35,15 +35,15 @@ module Common
         data-[density=condensed]:px-2 data-[density=condensed]:py-1
         data-[density=normal]:px-3 data-[density=normal]:py-2
         data-[density=spacious]:px-4 data-[density=spacious]:py-3
-        data-[first=true]:data-[density=condensed]:pl-4
-        data-[first=true]:data-[density=normal]:pl-4
-        data-[last=true]:data-[density=condensed]:pr-4
-        data-[last=true]:data-[density=normal]:pr-4
+        first:data-[density=condensed]:pl-4
+        first:data-[density=normal]:pl-4
+        last:data-[density=condensed]:pr-4
+        last:data-[density=normal]:pr-4
       HTML
     end
 
     def default_content_tag_arguments
-      { data: { horizontal_alignment:, first: first?.to_s, last: last?.to_s } }
+      { data: { horizontal_alignment: } }
     end
   end
 end

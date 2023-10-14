@@ -15,11 +15,6 @@ class Common::DataTableComponentPreview < ViewComponent::Preview
       )
     end
 
-    render Common::DataTableComponent.new(items:, density:) do |table|
-      table.with_column("Name") { |item| tag.p(item.name) }
-      table.with_column("Travels from") { |item| tag.p(item.travels_from) }
-      table.with_column("Invited by") { |item| tag.p(item.invited_by) }
-      table.with_column("Invitation status") { |item| tag.p(item.invitation_status) }
-    end
+    render_with_template(locals: { items:, density: })
   end
 end
