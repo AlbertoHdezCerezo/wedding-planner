@@ -1,0 +1,13 @@
+= render BaseComponent.new(**content_tag_args) do
+  %table
+    %thead{ role: "rowgroup" }
+      %tr{ role: "row" }
+        - columns.each do |column|
+          = render Cell.new(tag: :th, column:, columns:, data: { density: }) do
+            %p= column.title
+    %tbody{ role: "rowgroup" }
+      - items.each do |item|
+        = render BaseComponent.new(tag: :tr, role: "row") do
+          - columns.each do |column|
+            = render Cell.new(tag: :td, column:, columns:, data: { density: }) do
+              = column.call(item)
