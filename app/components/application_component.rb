@@ -4,28 +4,21 @@ class ApplicationComponent < ViewComponent::Base
   # Data attribute present in +HTML+ view component wrapper element
   VIEWCOMPONENT_ATTRIBUTE = "data-view-component"
 
-  # Helper Concerns
-  include ClassNameHelper
-
   def self.stimulus_identifier = name.underscore.gsub("/", "--").tr("_", "-")
 
   def self.generate_id(suffix = nil) = "#{stimulus_identifier}-#{suffix || SecureRandom.uuid}"
 
   delegate :generate_id, to: :class
 
-  attr_reader :classes, :id, :content_tag_args
+  attr_reader :id, :content_tag_args
 
-  def initialize(classes: nil, **system_arguments)
+  def initialize(**system_arguments)
     super
-
-    @classes = class_names(default_classes, classes)
-    @id = system_arguments[:id] || @id || generate_id
-
-    system_arguments[VIEWCOMPONENT_ATTRIBUTE.to_sym] = true
-
-    @content_tag_args = default_content_tag_arguments.merge(system_arguments)
-    @content_tag_args = @content_tag_args.merge({ id: @id }) if @id.present?
-    @content_tag_args = @content_tag_args.merge({ class: @classes }) if @classes.present?
+    @content_tag_args = ::Html::TagAttributes.build(
+      { class: default_classes },
+      default_content_tag_arguments,
+      system_arguments
+    ).to_h
   end
 
   def rendered_slots = instance_variable_get(:@__vc_set_slots)

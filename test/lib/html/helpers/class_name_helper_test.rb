@@ -2,9 +2,9 @@
 
 require "test_helper"
 
-class ClassNameHelperTest < ActiveSupport::TestCase
+class Html::Helpers::ClassNameHelperTest < ActiveSupport::TestCase
   class SampleComponent < ApplicationComponent
-    include ClassNameHelper
+    include Html::Helpers::ClassNameHelper
   end
 
   attr_reader :component

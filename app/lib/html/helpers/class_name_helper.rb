@@ -5,7 +5,7 @@
 # Allow conditional class-name injection in components. This makes possible to
 # rewrite an original component class set by adding new classes and disabling
 # already existing classes in the component layout
-module ClassNameHelper
+module Html::Helpers::ClassNameHelper
   def class_names(*args) # rubocop:disable Metrics/AbcSize
     classes = []
 
