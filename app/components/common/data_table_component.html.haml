@@ -1,13 +1,16 @@
 = render BaseComponent.new(**content_tag_args) do
-  %table
+  %table{ table_wrapper_arguments }
     %thead{ role: "rowgroup" }
       %tr{ role: "row" }
         - columns.each do |column|
-          = render Cell.new(tag: :th, column:, columns:, data: { density: }) do
+          = render Cell.new(tag: :th, column:, columns:, **head_cell_arguments) do
             %p= column.title
     %tbody{ role: "rowgroup" }
-      - items.each do |item|
+      - items.each_with_index do |item, row_index|
         = render BaseComponent.new(tag: :tr, role: "row") do
-          - columns.each do |column|
-            = render Cell.new(tag: :td, column:, columns:, data: { density: }) do
+          - columns.each_with_index do |column, _index|
+            = render Cell.new(tag: :td,
+                              column:,
+                              columns:,
+                              **body_cell_arguments(data: { "last-row": row_index == items.count - 1 })) do
               = column.call(item)
