@@ -1465,6 +1465,20 @@
   resolved "https://registry.npmjs.org/@rails/actioncable/-/actioncable-7.0.8.tgz"
   integrity sha512-GjYQv89ZOOfbFw8VMNUOG33GXzyAA/TCVoD+742Ob4svm1XXUkd+w+ewqUXd+7VHQtV35y1/O78AGIPeJDTy/g==
 
+"@rails/actiontext@^7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-7.1.1.tgz#01ac458df5eff06c971b48001b03d73c67b50462"
+  integrity sha512-AdDK+gUa+akys1kFNgZXB6+rz3n60Of+c4TyJzUe6p5cBIjTimMaMWPSr76fyORXEBFKsCUH9bigXSAoUZKU0A==
+  dependencies:
+    "@rails/activestorage" ">= 7.1.0-alpha"
+
+"@rails/activestorage@>= 7.1.0-alpha":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.1.1.tgz#3f12e8ac784f460f6a9d205744354abd79a525f2"
+  integrity sha512-QGBj+y4fbZt/QMMpjqnpKlzCKpDGTYrvJ+qc0QLis34AfbBLVgRo7kPzmdmeOTtwvWqpcivB9CrjTcV/C/7ruA==
+  dependencies:
+    spark-md5 "^3.0.1"
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -3914,6 +3928,11 @@ source-map-js@^1.0.2:
   resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
+spark-md5@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
+  integrity sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw==
+
 "statuses@>= 1.4.0 < 2", "statuses@>= 1.5.0 < 2", statuses@^1.5.0:
   version "1.5.0"
   resolved "https://registry.npmjs.org/statuses/-/statuses-1.5.0.tgz"
@@ -4086,6 +4105,11 @@ toidentifier@1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.1.tgz"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
+
+trix@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/trix/-/trix-2.0.7.tgz#21cd94616864f908ec802fe029e69f628a694eca"
+  integrity sha512-qnqElm1BA4XYMgwowEHlF4xE4wfEjFBpmybvdzVUQP4OTzQxRXVEQNP4WSvWT6HzV4wYFP06/HSo14fWoGo6jQ==
 
 ts-interface-checker@^0.1.9:
   version "0.1.13"
