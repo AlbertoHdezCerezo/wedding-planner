@@ -1,0 +1,6 @@
+= render BaseComponent.new(**content_tag_args) do
+  - if leading_visual?
+    = leading_visual
+  %h2.text-xl.font-semibold= title
+  - if trailing_visual?
+    = trailing_visual

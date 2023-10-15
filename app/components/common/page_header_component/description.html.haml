@@ -1,0 +1,6 @@
+= render BaseComponent.new(**content_tag_args) do
+  - if list_with_icons?
+    - list_with_icons.each do |list_item|
+      = list_item
+  - else
+    = content

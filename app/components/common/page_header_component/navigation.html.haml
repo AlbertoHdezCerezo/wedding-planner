@@ -1,0 +1,5 @@
+= render BaseComponent.new(tag: :nav, **content_tag_args) do
+  - if items?
+    %ul{ class: "w-full flex flex-row px-12 mt-4 text-xs", role: "list" }
+      - items.each do |item|
+        = item
