@@ -4,6 +4,8 @@ class ApplicationComponent < ViewComponent::Base
   # Data attribute present in +HTML+ view component wrapper element
   VIEWCOMPONENT_ATTRIBUTE = "data-view-component"
 
+  include ComponentHelper
+
   def self.stimulus_identifier = name.underscore.gsub("/", "--").tr("_", "-")
 
   def self.generate_id(suffix = nil) = "#{stimulus_identifier}-#{suffix || SecureRandom.uuid}"
