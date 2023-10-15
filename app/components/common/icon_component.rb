@@ -22,7 +22,7 @@ module Common
     end
 
     def call
-      inline_svg_tag(svg_file, default_system_arguments.merge(class: @classes))
+      inline_svg_tag(svg_file, default_system_arguments.merge(class: @content_tag_args[:class]))
     end
 
     protected

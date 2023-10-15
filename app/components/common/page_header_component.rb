@@ -25,7 +25,7 @@ module Common
     protected
 
     def default_classes
-      "w-full flex flex-col bg-white"
+      "w-full flex flex-col bg-white gap-2"
     end
   end
 end
