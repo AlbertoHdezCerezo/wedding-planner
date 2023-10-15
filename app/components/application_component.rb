@@ -4,7 +4,7 @@ class ApplicationComponent < ViewComponent::Base
   # Data attribute present in +HTML+ view component wrapper element
   VIEWCOMPONENT_ATTRIBUTE = "data-view-component"
 
-  include ComponentHelper
+  include ComponentHelper, TagAttributeHelper
 
   def self.stimulus_identifier = name.underscore.gsub("/", "--").tr("_", "-")
 
