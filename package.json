@@ -14,15 +14,15 @@
     "lint:fix": "yarn run eslint app -c config/.eslintrc.js --ignore-path config/.eslintignore --fix"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.0",
+    "@babel/core": "^7.23.2",
     "@babel/eslint-parser": "^7.22.11",
-    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-env": "^7.23.2",
     "autoprefixer": "^10.4.16",
     "esbuild-plugin-babel": "^0.2.3",
     "eslint": "^8.51.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-promise": "^6.0.0",
     "postcss": "^8.4.31",
     "postcss-cli": "^10.0.0",
