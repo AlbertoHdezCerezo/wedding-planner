@@ -2,5 +2,5 @@
 
 class Wedding < ApplicationRecord
   # Associations
-  has_many :invitations, dependent: :destroy
+  has_many :guests, dependent: :destroy
 end

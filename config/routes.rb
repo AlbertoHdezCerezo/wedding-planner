@@ -10,5 +10,11 @@ Rails.application.routes.draw do
 
   # Weddings
   # --------
-  resources :weddings, only: %i[show]
+  resources :weddings, only: %i[show] do
+    resource :guests_list, controller: :guests_list, only: %i[show]
+  end
+
+  # Guests
+  # --------
+  resources :guests, only: %i[create]
 end
