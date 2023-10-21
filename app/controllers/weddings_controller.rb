@@ -2,6 +2,5 @@
 
 class WeddingsController < ApplicationController
   # GET /weddings/<wedding-id>
-  def show
-  end
+  def show; end
 end
