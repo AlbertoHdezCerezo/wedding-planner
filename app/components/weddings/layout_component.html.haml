@@ -4,9 +4,9 @@
     = render Common::PageHeaderComponent.new(back_url: "/", back_label: "Back to weddings") do |page_header|
       - page_header.with_title("Alberto & Andreas's Wedding") do |title|
         - title.with_trailing_visual_icon("box-pencil")
-      - page_header.with_description do |description|
-        - description.with_list_with_icon("calendar", "14/09/2023 (340 days left)")
-        - description.with_list_with_icon("globe", "Plasencia, Spain")
+      - page_header.with_description(separator: "·") do |description|
+        - description.with_icon_field(field_icon: "calendar", field_description: "14/09/2023 (340 days left)")
+        - description.with_icon_field(field_icon: "globe", field_description: "Plasencia, Spain")
       - page_header.with_navigation do |navigation|
         - navigation.with_item("/", "Tasks", nil, true)
         - navigation.with_item("/", "Guests")
