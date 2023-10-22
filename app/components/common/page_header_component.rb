@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-# Renders SVG icons and provides additional styling customization options
 module Common
   class PageHeaderComponent < ApplicationComponent
     # Slots
     # -----
+    renders_one :navigation, Navigation
     renders_one :title, ->(title) { Title.new(title:) }
-    renders_one :description, -> { Description.new }
-    renders_one :navigation, -> { Navigation.new }
+    renders_one :description, Common::HorizontalDescriptionListComponent
 
     attr_reader :back_url, :back_label
 
