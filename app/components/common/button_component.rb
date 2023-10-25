@@ -18,7 +18,7 @@ module Common
 
     attr_reader :label, :size, :scheme
 
-    def initialize(label:, size: :medium, scheme: :primary, **system_arguments)
+    def initialize(label: '', size: :medium, scheme: :primary, **system_arguments)
       @label = label
       @size = size.to_sym
       @scheme = scheme.to_sym
@@ -35,7 +35,7 @@ module Common
 
     def default_classes
       <<-HTML
-        font-medium rounded-md cursor-pointer
+        w-fit font-medium rounded-md cursor-pointer
 
         data-[size=small]:h-7 data-[size=small]:px-2.5 data-[size=small]:text-xs
         data-[size=medium]:h-8 data-[size=medium]:px-3 data-[size=medium]:text-sm
