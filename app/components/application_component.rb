@@ -17,6 +17,7 @@ class ApplicationComponent < ViewComponent::Base
 
   def initialize(**system_arguments)
     super
+
     @content_tag_args = ::Html::TagAttributes.build(
       { class: default_classes },
       default_content_tag_arguments,

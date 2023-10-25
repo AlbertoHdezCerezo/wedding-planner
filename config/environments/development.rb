@@ -59,6 +59,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # Set the default layout to app/views/layouts/component_preview.html.erb
+  config.lookbook.preview_layout = "component_preview"
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

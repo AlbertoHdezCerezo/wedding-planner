@@ -30,16 +30,16 @@ module Common
     end
 
     def table_wrapper_arguments(**system_arguments)
-      Html::TagAttributes.build(
+      tag_attributes(
         {
           class: "w-full border-separate rounded-md border-spacing-0"
         },
         system_arguments
-      ).to_h
+      )
     end
 
     def head_cell_arguments(**system_arguments)
-      Html::TagAttributes.build(
+      tag_attributes(
         {
           data: {
             density:
@@ -52,11 +52,11 @@ module Common
           HTML
         },
         system_arguments
-      ).to_h
+      )
     end
 
     def body_cell_arguments(**system_arguments)
-      Html::TagAttributes.build(
+      tag_attributes(
         {
           data: { density: },
           role: "rowgrop",
@@ -67,7 +67,7 @@ module Common
           HTML
         },
         system_arguments
-      ).to_h
+      )
     end
   end
 end

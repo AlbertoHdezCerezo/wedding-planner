@@ -10,6 +10,6 @@ module ComponentHelper
   end
 
   def horizontal_description_list_component(separator: "·", **system_arguments, &)
-    render(Common::HorizontalDescriptionListComponent.new(separator:, **system_arguments))
+    render(Common::HorizontalDescriptionListComponent.new(separator:, **system_arguments), &)
   end
 end

@@ -8,4 +8,10 @@ class GuestsList::ShowComponent < ApplicationComponent
     @wedding = wedding
     @guests = guests
   end
+
+  protected
+
+  def default_classes
+    "h-full w-full flex flex-col"
+  end
 end

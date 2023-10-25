@@ -55,7 +55,7 @@ module Common
       base_component(tag: :ul, **content_tag_args) do
         fields.each do |field|
           concat(field)
-          concat(content_tag(:p, separator)) if separator.present? && field != fields.last
+          concat(content_tag(:span, separator)) if separator.present? && field != fields.last
         end
       end
     end

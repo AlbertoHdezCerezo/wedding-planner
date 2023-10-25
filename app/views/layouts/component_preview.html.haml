@@ -1,0 +1,4 @@
+= render Layout::ApplicationComponent.new(title: "Wedding Planner") do |component|
+  - component.with_body do
+    .h-screen.w-screen.flex.flex-col.items-center.justify-center.gap-3.bg-gray-50
+      = yield

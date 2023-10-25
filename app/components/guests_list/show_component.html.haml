@@ -1,0 +1,8 @@
+= render BaseComponent.new(**content_tag_args) do
+  = render Common::PageHeaderComponent.new do |page_header|
+    - page_header.with_title("Andrea & Alberto's guests list")
+    - page_header.with_description do |description|
+      - description.with_list_with_icon("calendar", "20 guests")
+  %hr.mt-6
+  .flex-grow
+    %p Hola amochito
