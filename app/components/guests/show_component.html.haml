@@ -1,0 +1,9 @@
+= render BaseComponent.new(**content_tag_args) do
+  %p.text-lg 🧔🏻‍♂️
+  .flex-grow.flex.flex-col.gap-1
+    %p{ class: "pt-1 text-sm text-gray-800" }= "#{guest.name} #{guest.surname}"
+    = horizontal_description_list_component do |list|
+      - list.with_icon_field(field_icon: "map-pin", field_description: "travels from 🇩🇪")
+      - list.with_icon_field(field_icon: "user-plus", field_description: "added by 👰🏻")
+      - list.with_icon_field(field_icon: "envelop", field_description: "invited on 12-10-2023")
+  %div
