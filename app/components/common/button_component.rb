@@ -35,11 +35,11 @@ module Common
 
     def default_classes
       <<-HTML
-        w-fit font-medium rounded-md cursor-pointer
+        w-fit font-medium rounded-full cursor-pointer
 
-        data-[size=small]:h-7 data-[size=small]:px-2.5 data-[size=small]:text-xs
-        data-[size=medium]:h-8 data-[size=medium]:px-3 data-[size=medium]:text-sm
-        data-[size=large]:h-10 data-[size=large]:px-4 data-[size=medium]:text-sm
+        data-[size=small]:h-7 data-[size=small]:px-3.5 data-[size=small]:text-xs
+        data-[size=medium]:h-8 data-[size=medium]:px-4 data-[size=medium]:text-sm
+        data-[size=large]:h-10 data-[size=large]:px-5 data-[size=medium]:text-sm
 
         data-[scheme=primary]:bg-primary-500 data-[scheme=primary]:text-white
         data-[scheme=primary]:hover:bg-primary-400 data-[scheme=primary]:active:bg-primary-300 data-[scheme=primary]:focus:bg-primary-300

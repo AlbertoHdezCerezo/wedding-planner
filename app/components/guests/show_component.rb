@@ -11,7 +11,7 @@ class Guests::ShowComponent < ApplicationComponent
   protected
 
   def default_classes
-    "w-full inline-flex gap-4 px-6 py-4 bg-white"
+    "w-full inline-flex gap-4 px-6 py-4"
   end
 
   def default_content_tag_arguments

@@ -5,6 +5,10 @@ module ComponentHelper
     render(BaseComponent.new(tag:, **system_arguments), &)
   end
 
+  def button_component(label:, size: :medium, scheme: :primary, **system_arguments, &)
+    render(Common::ButtonComponent.new(label:, size:, scheme:, **system_arguments), &)
+  end
+
   def icon_component(icon:, size: :base, **system_arguments)
     render(Common::IconComponent.new(icon, size:, **system_arguments))
   end

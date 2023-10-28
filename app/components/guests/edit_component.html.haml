@@ -1,9 +1,32 @@
 = render BaseComponent.new(**content_tag_args) do
-  %p.text-lg 🧔🏻‍♂️
-  .flex-grow.flex.flex-col.gap-1
-    %p{ class: "pt-1 text-sm text-gray-800" }= "#{guest.name} #{guest.surname}"
-    = horizontal_description_list_component do |list|
-      - list.with_icon_field(field_icon: "map-pin", field_description: "travels from 🇩🇪")
-      - list.with_icon_field(field_icon: "user-plus", field_description: "added by 👰🏻")
-      - list.with_icon_field(field_icon: "envelop", field_description: "invited on 12-10-2023")
-  %div
+  -# Header
+  = title_component(title: "Edit guest", class: "px-6")
+
+  -# Guest Preview
+  = render Guests::ShowComponent.new(guest:, class: "px-6 bg-gray-50")
+
+  -# Guest Form
+  = form_with(model: guest, class: "flex flex-col gap-6 py-4") do |form|
+    -# Form Group
+    .inline-flex.gap-8.px-6
+      .flex.flex-col.gap-2
+        = form.label("First Name*", class: "text-xs text-gray-600")
+        = form.text_field(:name, class: "px-2.5 py-1.5 rounded-md border-[1.5px] border-gray-200 text-sm")
+        %p{ class: "text-gray-400 text-[10px]" } This will be publicly visible
+
+      .flex.flex-col.gap-1.5
+        = form.label("First Name*", class: "text-xs text-gray-600")
+        = form.text_field(:name, class: "px-2.5 py-1.5 rounded-md border-[1px] border-gray-200 text-sm")
+        %p{ class: "text-gray-400 text-[10px]" } This will be publicly visible
+
+    .inline-flex.gap-8.px-6
+      .flex.flex-col.gap-1.5
+        = form.label("First Name*", class: "text-xs text-gray-600")
+        = form.text_field(:name, class: "px-2.5 py-1.5 rounded-md border-[1px] border-gray-200 text-sm")
+        %p{ class: "text-gray-400 text-[10px]" } This will be publicly visible
+
+    %hr
+
+    .inline-flex.items-center.justify-end.px-6.gap-3
+      = button_component(label: "Cancel", scheme: :danger_invisible)
+      = button_component(label: "Save")
