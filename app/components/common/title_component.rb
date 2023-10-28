@@ -2,7 +2,7 @@
 
 # Renders SVG icons and provides additional styling customization options
 module Common
-  class PageHeaderComponent::Title < ApplicationComponent
+  class TitleComponent < ApplicationComponent
     renders_one :leading_visual, types: {
       icon: lambda { |icon, **system_arguments|
         Common::IconComponent.new(icon, **system_arguments)
