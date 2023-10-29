@@ -2,7 +2,7 @@
 
 module Common::Form
   class TextFieldComponent < FieldComponent
-    def call
+    def field_content
       name = content_tag_args.delete(:id)
       value = content_tag_args.delete(:name)
       text_field_tag(name, value, **content_tag_args)
