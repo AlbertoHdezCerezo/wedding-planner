@@ -4,10 +4,12 @@
 #
 # Uses the components under +Common::Form+
 class ComponentFormBuilder < ActionView::Helpers::FormBuilder
-  def text_field(
+  def text_field( # rubocop:todo Metrics/ParameterLists
     method_name,
     value = nil,
-    field_arguments: {},
+    required: false,
+    field_wrapper_arguments: {},
+    input_wrapper_arguments: {},
     label: nil,
     label_arguments: {},
     caption: nil,
@@ -15,50 +17,35 @@ class ComponentFormBuilder < ActionView::Helpers::FormBuilder
     **system_arguments,
     &
   )
-    render_component(
-      Common::Form::TextFieldComponent,
+    component = Common::Form::TextFieldComponent.new(
+      object_name,
       method_name,
-      value:,
-      field_arguments:,
+      value: value || method_value(method_name),
+      errors: method_errors(method_name),
+      required:,
+      field_wrapper_arguments:,
+      input_wrapper_arguments:,
       label:,
       label_arguments:,
       caption:,
       caption_arguments:,
-      **system_arguments,
-      &
+      **system_arguments
     )
+
+    render_component(component, &)
   end
 
   private
 
-  def render_component(
-    component_klass,
-    method_name,
-    value: nil,
-    field_arguments: {},
-    label: nil,
-    label_arguments: {},
-    caption: nil,
-    caption_arguments: {},
-    **system_arguments,
-    &
-  )
-    method_value = (object.public_send(method_name) if object.respond_to?(method_name))
-    method_errors = object.errors.messages_for(method_name)
+  def method_value(method_name)
+    object.public_send(method_name) if object.respond_to?(method_name)
+  end
 
-    component = component_klass.new(
-      object_name,
-      method_name,
-      value: value || method_value,
-      errors: method_errors,
-      input_arguments: system_arguments,
-      field_arguments:,
-      caption:,
-      caption_arguments:,
-      label:,
-      label_arguments:
-    )
+  def method_errors(method_name)
+    object.errors.messages_for(method_name)
+  end
 
-    component.render_in(@template, &)
+  def render_component(component_instance, &)
+    component_instance.render_in(@template, &)
   end
 end
