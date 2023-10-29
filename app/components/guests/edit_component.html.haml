@@ -6,7 +6,7 @@
   = render Guests::ShowComponent.new(guest:, class: "px-6 bg-gray-50")
 
   -# Guest Form
-  = form_with(model: guest, class: "flex flex-col gap-6 py-4") do |form|
+  = form_with(model: guest, builder: ComponentFormBuilder, class: "flex flex-col gap-6 py-4") do |form|
     -# Form Group
     .inline-flex.gap-8.px-6
       .flex.flex-col.gap-2
