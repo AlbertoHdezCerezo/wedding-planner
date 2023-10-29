@@ -9,21 +9,7 @@
   = form_with(model: guest, builder: ComponentFormBuilder, class: "flex flex-col gap-6 py-4") do |form|
     -# Form Group
     .inline-flex.gap-8.px-6
-      .flex.flex-col.gap-2
-        = form.label("First Name*", class: "text-xs text-gray-600")
-        = form.text_field(:name, class: "px-2.5 py-1.5 rounded-md border-[1.5px] border-gray-200 text-sm")
-        %p{ class: "text-gray-400 text-[10px]" } This will be publicly visible
-
-      .flex.flex-col.gap-1.5
-        = form.label("First Name*", class: "text-xs text-gray-600")
-        = form.text_field(:name, class: "px-2.5 py-1.5 rounded-md border-[1px] border-gray-200 text-sm")
-        %p{ class: "text-gray-400 text-[10px]" } This will be publicly visible
-
-    .inline-flex.gap-8.px-6
-      .flex.flex-col.gap-1.5
-        = form.label("First Name*", class: "text-xs text-gray-600")
-        = form.text_field(:name, class: "px-2.5 py-1.5 rounded-md border-[1px] border-gray-200 text-sm")
-        %p{ class: "text-gray-400 text-[10px]" } This will be publicly visible
+      = form.text_field(:name, label: "First Name", caption: "This will be publicly visible")
 
     %hr
 

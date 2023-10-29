@@ -18,7 +18,7 @@ module Common
 
     attr_reader :label, :size, :scheme
 
-    def initialize(label: '', size: :medium, scheme: :primary, **system_arguments)
+    def initialize(label: "", size: :medium, scheme: :primary, **system_arguments)
       @label = label
       @size = size.to_sym
       @scheme = scheme.to_sym
