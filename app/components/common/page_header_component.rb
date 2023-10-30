@@ -5,7 +5,7 @@ module Common
     # Slots
     # -----
     renders_one :navigation, Navigation
-    renders_one :title, ->(title) { TitleComponent.new(title:) }
+    renders_one :title, ->(title, **system_arguments) { TitleComponent.new(title:, **system_arguments) }
     renders_one :description, Common::HorizontalDescriptionListComponent
 
     attr_reader :back_url, :back_label

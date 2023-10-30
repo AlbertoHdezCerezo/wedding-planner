@@ -22,7 +22,7 @@ module Common
     end
 
     def call
-      inline_svg_tag(svg_file, default_system_arguments.merge(class: content_tag_args[:class]))
+      inline_svg_tag(svg_file, content_tag_args)
     end
 
     protected
@@ -37,7 +37,7 @@ module Common
       HTML
     end
 
-    def default_system_arguments
+    def default_content_tag_arguments
       {
         # https://github.com/jamesmartin/inline_svg#accessibility
         "aria-hidden": true,

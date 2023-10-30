@@ -1,0 +1,9 @@
+= render BaseComponent.new(**content_tag_args) do
+  - if guests.empty?
+    = icon_component(icon: "inbox",
+                     size: :xl,
+                     class: "text-gray-600 mb-6",
+                     style: "height: 48px !important; width: 48px !important")
+    = title_component(title: "Your guests list is empty")
+    %p.text-gray-600 Start preparing the guests for the wedding
+    = button_component(label: "add guest", size: :large, scheme: :primary, class: "mt-6")
