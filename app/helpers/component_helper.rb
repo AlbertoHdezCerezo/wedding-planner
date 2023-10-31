@@ -13,6 +13,10 @@ module ComponentHelper
     render(Common::IconComponent.new(icon, size:, **system_arguments))
   end
 
+  def icon_button_component(icon:, size: :medium, scheme: :primary, **system_arguments)
+    render(Common::IconButtonComponent.new(icon:, size:, scheme:, **system_arguments))
+  end
+
   def horizontal_description_list_component(separator: "·", **system_arguments, &)
     render(Common::HorizontalDescriptionListComponent.new(separator:, **system_arguments), &)
   end
