@@ -26,10 +26,10 @@ module Common
     def default_classes
       super +
         <<-HTML
-        flex items-center justify-center
-        data-[size=small]:w-7 data-[size=small]:px-1
-        data-[size=medium]:w-8 data-[size=medium]:px-1
-        data-[size=large]:w-10 data-[size=large]:px-1
+        flex items-center justify-center !p-0
+        data-[size=small]:w-7
+        data-[size=medium]:w-8
+        data-[size=large]:w-10
         HTML
     end
   end
