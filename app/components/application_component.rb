@@ -11,7 +11,7 @@ class ApplicationComponent < ViewComponent::Base
 
   def self.generate_id(suffix = nil) = "#{stimulus_identifier}-#{suffix || SecureRandom.uuid}"
 
-  delegate :generate_id, to: :class
+  delegate :generate_id, :stimulus_identifier, to: :class
 
   attr_reader :id, :content_tag_args
 
