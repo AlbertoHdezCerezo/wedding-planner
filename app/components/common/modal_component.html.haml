@@ -1,10 +1,10 @@
 = base_component(**content_tag_args) do
   -# Trigger
   - if trigger?
-    .content{ "data-action": "click->#{ModalComponent.stimulus_identifier}#open" }
+    %div{ **trigger_tag_arguments }
       = trigger
 
-  -# Background
-  = base_component(**modal_background_arguments) do
+  -# Modal Content
+  = base_component(**modal_content_tag_arguments) do
     -# Body
     = modal_content

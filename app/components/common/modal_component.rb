@@ -50,22 +50,33 @@ module Common
 
     protected
 
-    def default_classes
-      "contents"
-    end
-
     def default_content_tag_arguments
       {
+        class: "content",
         data: {
           controller: stimulus_identifier
         }
       }
     end
 
-    def modal_background_arguments
+    def trigger_tag_arguments
       tag_attributes(
         {
-          class: "hidden fixed h-screen w-screen bg-gray-100 opacity-60 flex items-center justify-center",
+          class: "content cursor-pointer",
+          data: {
+            action: "click->#{stimulus_identifier}#open",
+            "#{stimulus_identifier}-target" => "trigger"
+          }
+        }
+      )
+    end
+
+    def modal_content_tag_arguments
+      tag_attributes(
+        {
+          class: "hidden fixed top-0 left-0 h-screen w-screen
+                  flex items-center justify-center
+                  bg-gray-100 opacity-60",
           data: {
             "#{stimulus_identifier}-target" => "background"
           }
