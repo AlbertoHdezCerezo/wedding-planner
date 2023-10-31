@@ -65,7 +65,7 @@ module Common
     def modal_background_arguments
       tag_attributes(
         {
-          class: "fixed h-screen w-screen bg-gray-100 opacity-60 flex items-center justify-center",
+          class: "hidden fixed h-screen w-screen bg-gray-100 opacity-60 flex items-center justify-center",
           data: {
             "#{stimulus_identifier}-target" => "background"
           }
