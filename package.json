@@ -37,6 +37,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^7.3.0",
+    "animejs": "^3.2.1",
     "core-js": "^3.33.1",
     "esbuild": "0.19.5",
     "esbuild-rails": "^1.0.7"
