@@ -1,15 +1,8 @@
 import anime from 'animejs'
 import { Controller } from '@hotwired/stimulus'
 
-const animationPayload = {
-  duration: 1000,
-  easing: 'linear',
-  translateY: [2000, 0],
-  opacity: [0.5, 1]
-}
-
 export default class extends Controller {
-  static targets = ['trigger', 'background', 'content']
+  static targets = ['trigger', 'content', 'contentBackground', 'contentBody']
 
   async connect () {
     this.#hide()
@@ -17,30 +10,61 @@ export default class extends Controller {
     if (!this.hasTriggerTarget) await this.open()
   }
 
+  #hidden () {
+    return this.contentTarget.classList.contains('hidden')
+  }
+
   #hide () {
-    this.backgroundTarget.classList.add('hidden')
+    this.contentTarget.classList.add('hidden')
   }
 
   #reveal () {
-    this.backgroundTarget.classList.remove('hidden')
+    this.contentTarget.classList.remove('hidden')
+  }
+
+  #animationTimeline (direction = 'normal') {
+    const animation = anime.timeline({
+      direction,
+      duration: 750,
+      easing: 'easeOutExpo'
+    })
+
+    animation.add({
+      targets: this.contentBackgroundTarget,
+      opacity: [0, 0.6]
+    }, 0)
+
+    animation.add({
+      targets: this.contentBodyTarget,
+      translateY: ['50vh', '0vh'],
+      opacity: [0, 1]
+    }, 0)
+
+    return animation
   }
 
   async open () {
-    this.#reveal()
+    if (this.#hidden() && !this.animation) {
+      this.#reveal()
 
-    await anime({
-      ...animationPayload,
-      targets: this.backgroundTarget
-    }).finished
+      this.animation = this.#animationTimeline()
+      this.animation.play()
+
+      await this.animation.finished
+
+      this.animation = null
+    }
   }
 
   async close () {
-    await anime({
-      ...animationPayload,
-      direction: 'reverse',
-      targets: this.backgroundTarget
-    }).finished
+    if (!this.animation && !this.#hidden()) {
+      this.animation = this.#animationTimeline('reverse')
+      this.animation.play()
 
-    this.#hide()
+      await this.animation.finished
+
+      this.#hide()
+      this.animation = null
+    }
   }
 }

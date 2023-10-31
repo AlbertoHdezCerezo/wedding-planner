@@ -30,14 +30,11 @@ module Common
 
       protected
 
-      def default_classes
-        "flex flex-col rounded-2xl bg-white divide-y border-gray-100"
-      end
-
       def default_content_tag_arguments
         {
+          class: "flex flex-col rounded-2xl bg-white divide-y bg-white border-gray-100 z-10",
           data: {
-            "#{ModalComponent.stimulus_identifier}-target" => "content"
+            "#{ModalComponent.stimulus_identifier}-target" => "contentBody"
           }
         }
       end
@@ -75,10 +72,21 @@ module Common
       tag_attributes(
         {
           class: "hidden fixed top-0 left-0 h-screen w-screen
-                  flex items-center justify-center
-                  bg-gray-100 opacity-60",
+                  flex items-center justify-center",
           data: {
-            "#{stimulus_identifier}-target" => "background"
+            "#{stimulus_identifier}-target" => "content"
+          }
+        }
+      )
+    end
+
+    def modal_content_background_arguments
+      tag_attributes(
+        {
+          class: "absolute h-full w-full bg-gray-100",
+          data: {
+            "#{stimulus_identifier}-target" => "contentBackground",
+            action: "click->#{stimulus_identifier}#close"
           }
         }
       )
