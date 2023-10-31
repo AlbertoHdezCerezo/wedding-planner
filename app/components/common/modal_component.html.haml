@@ -6,5 +6,7 @@
 
   -# Modal Content
   = base_component(**modal_content_tag_arguments) do
+    -# Background
+    %div{ **modal_content_background_arguments }
     -# Body
     = modal_content
