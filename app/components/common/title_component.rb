@@ -29,7 +29,7 @@ module Common
     protected
 
     def default_classes
-      "flex flex-row items-center gap-2 text-gray-800"
+      "flex flex-row items-center gap-2 font-newsreader text-gray-800"
     end
   end
 end
