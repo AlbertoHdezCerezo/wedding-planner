@@ -7,6 +7,6 @@
  * bundle and ignore scss files in the manifest paths, otherwise
  * the pipeline will fail.
  */
-
+//= link_tree ../fonts
 //= link_tree ../images
 //= link_tree ../builds

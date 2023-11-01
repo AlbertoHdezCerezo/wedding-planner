@@ -21,6 +21,22 @@ module.exports = {
     './app/views/**/*'
   ],
   theme: {
+    configViewer: {
+      fonts: [
+        'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200&display=swap',
+        'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400&display=swap',
+        'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,700&display=swap',
+        'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,200&display=swap',
+        'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,400&display=swap',
+        'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400&display=swap',
+        'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300&display=swap'
+      ]
+    },
+    fontFamily: {
+      ibm: ['IBM Plex Sans'],
+      newsreader: ['Newsreader']
+    },
     colors: {
       transparent: 'transparent',
       black: colors.black,
