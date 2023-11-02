@@ -26,7 +26,7 @@ module Common
     end
 
     def call
-      base_component(**content_tag_args) do
+      base_component(**content_tag_arguments) do
         concat(content_tag(:span, label))
       end
     end

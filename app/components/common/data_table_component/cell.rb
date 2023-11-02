@@ -22,7 +22,7 @@ module Common
       super(**system_arguments)
     end
 
-    def call = render(BaseComponent.new(tag: :td, **content_tag_args)) { content }
+    def call = render(BaseComponent.new(tag: :td, **content_tag_arguments)) { content }
 
     protected
 

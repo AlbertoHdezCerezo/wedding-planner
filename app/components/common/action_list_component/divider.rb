@@ -3,15 +3,19 @@
 module Common
   class ActionListComponent
     class Divider < ApplicationComponent
-      SYSTEM_ARGUMENTS = {
-        tag: :li,
-        role: "presentation",
-        aria: { hidden: true },
-        data: { targets: "action-bar.items" },
-        classes: "h-[1px] w-full my-2 bg-gray-200"
-      }.freeze
+      def call = base_component(**content_tag_arguments)
 
-      def call = render(BaseComponent.new(**SYSTEM_ARGUMENTS))
+      private
+
+      def default_content_tag_arguments
+        {
+          tag: :li,
+          role: "presentation",
+          aria: { hidden: true },
+          data: { targets: "action-bar.items" },
+          classes: "h-[1px] w-full my-2 bg-gray-200"
+        }
+      end
     end
   end
 end

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationComponent < ViewComponent::Base
-  # Data attribute present in +HTML+ view component wrapper element
-  VIEWCOMPONENT_ATTRIBUTE = "data-view-component"
-
   include TagAttributeHelper
   include ComponentHelper
 
@@ -13,13 +10,12 @@ class ApplicationComponent < ViewComponent::Base
 
   delegate :generate_id, :stimulus_identifier, to: :class
 
-  attr_reader :id, :content_tag_args
+  attr_reader :id, :content_tag_arguments
 
   def initialize(**system_arguments)
     super
 
-    @content_tag_args = ::Html::TagAttributes.build(
-      { class: default_classes },
+    @content_tag_arguments = ::Html::TagAttributes.build(
       default_content_tag_arguments,
       system_arguments
     ).to_h
@@ -37,10 +33,7 @@ class ApplicationComponent < ViewComponent::Base
     slots
   end
 
-  protected
-
-  # Component predefined classes
-  def default_classes = nil
+  private
 
   # Component predefined +content_tag+ arguments (+data-+ attributes)
   def default_content_tag_arguments = {}

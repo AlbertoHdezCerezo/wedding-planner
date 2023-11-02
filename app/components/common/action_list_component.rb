@@ -30,9 +30,7 @@ module Common
 
     protected
 
-    def default_classes = "py-2"
-
-    def default_content_tag_arguments = { tag: :ul }
+    def default_content_tag_arguments = { tag: :ul, class: "py-2" }
 
     def rendered_item_slots = rendered_slots_by_name(:items) || []
 

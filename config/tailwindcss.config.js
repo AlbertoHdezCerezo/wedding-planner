@@ -1,6 +1,3 @@
-// Tailwind Default Theme
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 // Default Tailwind Colors
 const colors = require('tailwindcss/colors')
 

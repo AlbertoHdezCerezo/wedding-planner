@@ -40,7 +40,7 @@ module Common::Form
 
     def call
       render(wrapper) do
-        text_field_tag(name, value, **content_tag_args)
+        text_field_tag(name, value, **content_tag_arguments)
       end
     end
 

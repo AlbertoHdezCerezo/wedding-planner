@@ -7,7 +7,7 @@ module Common
       renders_one :footer
 
       def call
-        base_component(**content_tag_args) do
+        base_component(**content_tag_arguments) do
           if header
             concat(
               base_component(class: "relative px-8 pt-6 pb-4") do

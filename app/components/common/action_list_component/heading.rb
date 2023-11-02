@@ -12,20 +12,19 @@ module Common
       end
 
       def call
-        render BaseComponent.new(**content_tag_args) do
+        base_component(**content_tag_arguments) do
           content_tag(:span, title, class: "text-xs text-gray-500 font-semibold")
         end
       end
 
-      protected
-
-      def default_classes = "px-4 py-1.5"
+      private
 
       def default_content_tag_arguments
         {
           tag: :div,
           role: :presentation,
-          aria: { hidden: true }
+          aria: { hidden: true },
+          class: "px-4 py-1.5"
         }
       end
     end

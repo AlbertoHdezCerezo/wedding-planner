@@ -17,7 +17,7 @@ module Common
       end
 
       def call
-        base_component(tag: :li, **content_tag_args) do
+        base_component(tag: :li, **content_tag_arguments) do
           concat(content_tag(:p, @field_name))
           concat(content_tag(:p, @field_description))
         end
@@ -32,7 +32,7 @@ module Common
       end
 
       def call
-        base_component(tag: :li, **content_tag_args) do
+        base_component(tag: :li, **content_tag_arguments) do
           concat(icon_component(icon: @field_icon, size: :sm))
           concat(content_tag(:p, @field_description))
         end
@@ -52,7 +52,7 @@ module Common
     end
 
     def call
-      base_component(tag: :ul, **content_tag_args) do
+      base_component(tag: :ul, **content_tag_arguments) do
         fields.each do |field|
           concat(field)
           concat(content_tag(:span, separator)) if separator.present? && field != fields.last

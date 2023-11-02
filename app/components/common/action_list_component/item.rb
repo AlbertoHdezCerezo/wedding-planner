@@ -9,14 +9,14 @@ module Common
       }.freeze
 
       renders_one :leading_visual, types: {
-        icon: ->(icon:, **system_arguments) { Common::IconComponent.new(icon, size: :base, **system_arguments) }
+        icon: ->(icon:, **system_arguments) { Common::IconComponent.new(icon, size: :sm, **system_arguments) }
       }
 
       renders_one :trailing_visual, types: {
-        icon: ->(icon:, **system_arguments) { Common::IconComponent.new(icon, size: :base, **system_arguments) }
+        icon: ->(icon:, **system_arguments) { Common::IconComponent.new(icon, size: :sm, **system_arguments) }
       }
 
-      attr_reader :index, :label, :label_arguments, :active, :disabled, :size
+      attr_reader :index, :label, :label_tag_arguments, :active, :disabled, :size
 
       def initialize( # rubocop:disable Metrics/ParameterLists
         index:,
@@ -34,32 +34,16 @@ module Common
         @disabled = disabled
 
         @label = label
-        @label_arguments = {
-          id: label_id,
-          classes: class_names(label_classes, label_arguments[:classes])
-        }
+        @label_tag_arguments = tag_attributes({ id: label_id, class: "text-gray-700" }, label_arguments)
 
         @index = index
 
         super(**system_arguments)
       end
 
-      protected
+      private
 
-      def default_classes
-        <<-HTML
-          relative flex items-center flex-start rounded-sm cursor-pointer
-          hover:bg-gray-100
-          data-[size=base]:mx-2 data-[size=base]:px-2 data-[size=base]:py-1.5
-          data-[size=lg]:mx-3 data-[size=lg]:px-3 data-[size=lg]:py-2.5
-          data-[active=true]:bg-gray-50
-          data-[active=true]:hover:bg-gray-100
-          data-[disabled=true]:cursor-not-allowed
-          data-[disabled=true]:opacity-60
-          data-[disabled=true]:hover:bg-transparent
-          data-[active=true]:data-[disabled=true]:hover:bg-gray-50
-        HTML
-      end
+      def label_id = "#{id}-label"
 
       def default_content_tag_arguments
         {
@@ -71,13 +55,22 @@ module Common
             size: size.to_s,
             active: active.to_s,
             disabled: disabled.to_s
-          }
+          },
+          class: <<-HTML
+            relative flex items-center flex-start rounded-lg cursor-pointer text-gray-900
+            hover:bg-gray-200
+            data-[size=base]:mx-2 data-[size=base]:px-3 data-[size=base]:py-1.5
+            data-[size=lg]:mx-3 data-[size=lg]:px-4 data-[size=lg]:py-2.5
+            data-[active=true]:text-white
+            data-[active=true]:bg-gray-100
+            data-[active=true]:hover:bg-gray-200
+            data-[disabled=true]:cursor-not-allowed
+            data-[disabled=true]:opacity-60
+            data-[disabled=true]:hover:bg-transparent
+            data-[active=true]:data-[disabled=true]:hover:bg-gray-100
+          HTML
         }
       end
-
-      def label_classes = "text-sm text-gray-700"
-
-      def label_id = "#{id}-label"
     end
   end
 end
