@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class Layout::PageComponent < ApplicationComponent
-  protected
+  private
 
-  def default_classes
-    "w-screen h-screen flex flex-row"
+  def default_content_tag_arguments
+    {
+      class: "w-screen h-screen flex flex-row bg-white"
+    }
   end
 end

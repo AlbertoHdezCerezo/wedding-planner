@@ -3,6 +3,46 @@
 # Renders SVG icons and provides additional styling customization options
 module Common
   class ActionListComponent < ApplicationComponent
+    class Heading < ApplicationComponent
+      def initialize(title:, **system_arguments)
+        @title = title
+        super(**system_arguments)
+      end
+
+      def call
+        base_component(**content_tag_arguments) do
+          content_tag(:span, title, class: "font-newsreader text-xs text-gray-500 font-semibold")
+        end
+      end
+
+      private
+
+      def default_content_tag_arguments
+        {
+          tag: :div,
+          role: :presentation,
+          aria: { hidden: true },
+          class: "px-4 py-1.5"
+        }
+      end
+    end
+
+    class Divider < ApplicationComponent
+      def call = base_component(**content_tag_arguments)
+
+      private
+
+      def default_content_tag_arguments
+        {
+          tag: :li,
+          role: "presentation",
+          aria: { hidden: true },
+          data: { targets: "action-bar.items" },
+          class: "h-[1px] w-full my-4 bg-gray-200"
+        }
+      end
+    end
+
     SIZES = {
       base: "base",
       lg: "lg"
@@ -10,15 +50,13 @@ module Common
 
     # Slots
     # -----
-    renders_one :heading, ->(**system_arguments) { Common::ActionListComponent::Heading.new(**system_arguments) }
+    renders_one :heading, Heading
 
     renders_many :items, types: {
       default: lambda do |**system_arguments|
         Common::ActionListComponent::Item.new(size:, index: rendered_item_slots.count, **system_arguments)
       end,
-      divider: lambda do |**system_arguments|
-        Common::ActionListComponent::Divider.new(**system_arguments)
-      end
+      divider: Divider
     }
 
     attr_reader :size
