@@ -1,0 +1,27 @@
+%div{ content_tag_arguments }
+  -# Logo
+  .p-6.inline-flex
+    .h-10.w-10.bg-gray-700.rounded-full
+    .h-10.w-10.-ml-3.bg-white.rounded-full.border.border-gray-700
+
+  -# User Avatar
+  .px-6.py-4.inline-flex.items-center.gap-3.cursor-pointer
+    .h-7.w-7.border.border-gray-700.rounded-full
+      %p.font-newsreader.text-sm.text-center{ class: "mt-[4px]" } A
+    .flex.flex-col
+      %p.font-newsreader.text-sm Alberto Hernandez
+      %span.text-xs.text-gray-500 Planner
+
+  -# Sidebar Menu
+  .flex-grow
+    = action_list_component(size: :lg) do |list|
+      - list.with_heading(title: "Planner")
+      - list.with_item_default(label: "Weddings", active: true) do |item|
+        - item.with_leading_visual_icon(icon: "sparkles")
+      - list.with_item_default(label: "Services") do |item|
+        - item.with_leading_visual_icon(icon: "tag")
+      - list.with_item_default(label: "Settings") do |item|
+        - item.with_leading_visual_icon(icon: "cog")
+
+  -# Footer
+  %p.py-4.text-xs.text-gray-500.italic.text-center v 0.0.0 - Plasencia

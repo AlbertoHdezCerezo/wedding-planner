@@ -4,9 +4,11 @@
 module Common
   class HorizontalDescriptionListComponent < ApplicationComponent
     class Item < ApplicationComponent
-      protected
+      private
 
-      def default_classes = "flex flex-row items-center gap-1"
+      def default_content_tag_arguments
+        { class: "flex flex-row items-center gap-2" }
+      end
     end
 
     class TextTermItem < Item
@@ -39,16 +41,22 @@ module Common
       end
     end
 
+    SIZES = {
+      small: "small",
+      medium: "medium"
+    }.freeze
+
     renders_many :fields, types: {
       text: { renders: TextTermItem, as: :text_field },
       icon: { renders: IconTermItem, as: :icon_field }
     }
 
-    attr_reader :separator
+    attr_reader :separator, :size
 
-    def initialize(separator: nil, **system_arguments)
-      super(**system_arguments)
+    def initialize(separator: nil, size: :medium, **system_arguments)
+      @size = size
       @separator = separator
+      super(**system_arguments)
     end
 
     def call
@@ -60,10 +68,21 @@ module Common
       end
     end
 
-    protected
+    private
 
-    def default_classes
-      "flex flex-row items-center gap-2 text-xs text-gray-500"
+    def default_content_tag_arguments
+      {
+        data: {
+          size: SIZES[size]
+        },
+        class: <<-HTML
+          flex flex-row items-center text-gray-500
+          data-[size=small]:text-sm
+          data-[size=small]:gap-1
+          data-[size=medium]:text-base
+          data-[size=medium]:gap-2
+        HTML
+      }
     end
   end
 end

@@ -58,16 +58,15 @@ module Common
           },
           class: <<-HTML
             relative flex items-center flex-start rounded-lg cursor-pointer text-gray-900
-            hover:bg-gray-200
+            hover:bg-gray-100
             data-[size=base]:mx-2 data-[size=base]:px-3 data-[size=base]:py-1.5
             data-[size=lg]:mx-3 data-[size=lg]:px-4 data-[size=lg]:py-2.5
-            data-[active=true]:text-white
-            data-[active=true]:bg-gray-100
-            data-[active=true]:hover:bg-gray-200
+            data-[active=true]:bg-gray-50
+            data-[active=true]:hover:bg-gray-100
             data-[disabled=true]:cursor-not-allowed
             data-[disabled=true]:opacity-60
             data-[disabled=true]:hover:bg-transparent
-            data-[active=true]:data-[disabled=true]:hover:bg-gray-100
+            data-[active=true]:data-[disabled=true]:hover:bg-gray-50
           HTML
         }
       end

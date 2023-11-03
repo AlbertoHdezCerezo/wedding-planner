@@ -23,14 +23,18 @@ module Common
 
     protected
 
-    def default_classes
-      super +
-        <<-HTML
-        flex items-center justify-center !p-0
-        data-[size=small]:w-7
-        data-[size=medium]:w-8
-        data-[size=large]:w-10
-        HTML
+    def default_content_tag_arguments
+      tag_attributes(
+        super,
+        {
+          class: <<-HTML
+            flex items-center justify-center !p-0
+            data-[size=small]:w-9
+            data-[size=medium]:w-11
+            data-[size=large]:w-14
+          HTML
+        }
+      )
     end
   end
 end

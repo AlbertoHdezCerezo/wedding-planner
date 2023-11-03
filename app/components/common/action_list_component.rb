@@ -4,6 +4,8 @@
 module Common
   class ActionListComponent < ApplicationComponent
     class Heading < ApplicationComponent
+      attr_reader :title
+
       def initialize(title:, **system_arguments)
         @title = title
         super(**system_arguments)

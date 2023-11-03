@@ -2,8 +2,19 @@
 
 # @label Title Component
 class Common::TitleComponentPreview < ViewComponent::Preview
-  # @param title
-  def default(title: "Title")
-    render Common::TitleComponent.new(title:)
+  def default
+    render_with_template
+  end
+
+  def with_icons
+    render_with_template
+  end
+
+  def with_subheader
+    render_with_template
+  end
+
+  def with_icons_and_subheader
+    render_with_template
   end
 end

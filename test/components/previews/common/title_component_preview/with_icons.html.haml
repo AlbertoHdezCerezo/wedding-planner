@@ -1,0 +1,17 @@
+= render(BaseComponent.new(tag: :div, class: "flex flex-col items-center justify-center gap-4")) do
+  = title_component(title: "Example of a title", size: :small) do |title|
+    - title.with_leading_visual_icon("globe")
+  = title_component(title: "Example of a title", size: :medium) do |title|
+    - title.with_leading_visual_icon("globe")
+
+  = title_component(title: "Example of a title", size: :small) do |title|
+    - title.with_trailing_visual_icon("globe")
+  = title_component(title: "Example of a title", size: :medium) do |title|
+    - title.with_trailing_visual_icon("globe")
+
+  = title_component(title: "Example of a title", size: :small) do |title|
+    - title.with_trailing_visual_icon("globe")
+    - title.with_leading_visual_icon("arrow-left")
+  = title_component(title: "Example of a title", size: :medium) do |title|
+    - title.with_trailing_visual_icon("globe")
+    - title.with_leading_visual_icon("arrow-left")
