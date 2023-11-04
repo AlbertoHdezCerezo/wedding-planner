@@ -1,4 +1,4 @@
-= turbo_frame_tag("modal") do
+= turbo_frame_tag("modal", target: "_top") do
   = modal_component do |modal|
     - modal.with_modal_content(class: "w-[800px]") do |content|
       -# Header
