@@ -1,0 +1,14 @@
+= turbo_frame_tag("modal") do
+  = modal_component do |modal|
+    - modal.with_modal_content(class: "w-[600px]") do |content|
+      -# Header
+      - content.with_header(title: "Create wedding")
+
+      -# Guest Form
+      -# = form_with(model: wedding, url: "", builder: ComponentFormBuilder, class: "flex flex-col gap-6 py-6")
+
+      -# Footer
+      - content.with_footer do
+        .w-full.inline-flex.justify-end.gap-3
+          = button_component(label: "Cancel", scheme: :secondary)
+          = button_component(label: wedding.new_record? ? "Create" : "Save")

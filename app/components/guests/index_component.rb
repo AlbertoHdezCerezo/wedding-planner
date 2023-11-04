@@ -15,7 +15,7 @@ class Guests::IndexComponent < ApplicationComponent
     {
       class: <<-HTML
         h-full w-full flex flex-col items-center justify-center gap-3
-        bg-white rounded-lg
+        bg-white
       HTML
     }
   end

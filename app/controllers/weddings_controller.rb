@@ -6,6 +6,15 @@ class WeddingsController < ApplicationController
     @weddings = Wedding.all
   end
 
+  # GET /weddings/new
+  def new
+    @wedding = Wedding.new
+  end
+
+  # POST /weddings
+  def create
+  end
+
   # GET /weddings/<wedding-id>
   def show
     @wedding = if Wedding.count == 0

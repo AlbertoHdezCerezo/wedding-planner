@@ -1,0 +1,13 @@
+= base_component(**content_tag_arguments) do
+  = icon_component(icon:,
+                   size: :xl,
+                   class: "text-gray-600 mb-6",
+                   style: "height: 48px !important; width: 48px !important")
+  = title_component(title:) do |title|
+    - title.with_subheader_text(subtitle, class: "text-center")
+
+  = button_component(tag: :a,
+                     label: button_label,
+                     href: button_path,
+                     scheme: :primary,
+                     **button_tag_arguments)
