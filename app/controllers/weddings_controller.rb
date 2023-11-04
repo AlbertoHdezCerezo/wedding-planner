@@ -13,14 +13,17 @@ class WeddingsController < ApplicationController
 
   # POST /weddings
   def create
+    @wedding = Wedding.new(**WeddingParameters.new(params[:wedding]))
+
+    if @wedding.save
+      redirect_to :weddings
+    else
+      render status: :unprocessable_entity
+    end
   end
 
-  # GET /weddings/<wedding-id>
+  # GET /weddings/<id>
   def show
-    @wedding = if Wedding.count == 0
-                 Wedding.create(date: Date.new(2023, 9, 14))
-               else
-                 Wedding.first
-               end
+    @wedding = Wedding.find(params[:id])
   end
 end

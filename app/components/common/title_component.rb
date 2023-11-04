@@ -27,13 +27,14 @@ module Common
 
     renders_one :subheader, types: {
       text: lambda do |text, **system_arguments|
-        options = tag_attributes(system_arguments, {
-          class: "font-ibm text-gray-500 #{ size == :medium ? 'text-lg' : 'text-base' }"
-        })
+        options = tag_attributes(
+          { class: "font-ibm text-gray-500 #{ size == :medium ? 'text-lg' : 'text-base' }" },
+          system_arguments
+        )
         content_tag(:p, text, **options)
       end,
       horizontal_description_list: lambda do |separator = "·", **system_arguments, &block|
-        options = tag_attributes(system_arguments, { class: "font-ibm" })
+        options = tag_attributes({ class: "font-ibm" }, system_arguments)
         horizontal_description_list_component(separator:, size:, **options, &block)
       end
     }

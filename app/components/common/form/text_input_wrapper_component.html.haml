@@ -5,8 +5,8 @@
   %div{ input_wrapper_tag_arguments }= content
   -# Errors
   - unless valid?
-    .inline-flex.items-start.gap-1{ class: "text-[10px] text-cerise-400" }
-      = icon_component(icon: "globe", size: :xs, class: "mt-[1px]")
+    .inline-flex.items-start.gap-1{ class: "text-sm text-cerise-400" }
+      = icon_component(icon: "exclamation-triangle", size: :sm, class: "mt-[2px]")
       %div
         - errors.each do |error|
           %p= error

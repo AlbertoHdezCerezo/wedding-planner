@@ -4,6 +4,37 @@
 #
 # Uses the components under +Common::Form+
 class ComponentFormBuilder < ActionView::Helpers::FormBuilder
+  def date_field( # rubocop:todo Metrics/ParameterLists
+    method_name,
+    value = nil,
+    required: false,
+    field_wrapper_arguments: {},
+    input_wrapper_arguments: {},
+    label: nil,
+    label_arguments: {},
+    caption: nil,
+    caption_arguments: {},
+    **system_arguments,
+    &
+  )
+    component = Common::Form::DateFieldComponent.new(
+      object_name,
+      method_name,
+      value: value || method_value(method_name),
+      errors: method_errors(method_name),
+      required:,
+      field_wrapper_arguments:,
+      input_wrapper_arguments:,
+      label:,
+      label_arguments:,
+      caption:,
+      caption_arguments:,
+      **system_arguments
+    )
+
+    render_component(component, &)
+  end
+
   def text_field( # rubocop:todo Metrics/ParameterLists
     method_name,
     value = nil,
@@ -42,7 +73,7 @@ class ComponentFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def method_errors(method_name)
-    object.errors.messages_for(method_name)
+    object.errors.messages_for(method_name).uniq
   end
 
   def render_component(component_instance, &)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Common::Form
-  class TextFieldComponent < ApplicationComponent
+  class DateFieldComponent < ApplicationComponent
     attr_reader :object_name, :method_name, :value, :wrapper
 
     def initialize( # rubocop:todo Metrics/ParameterLists
@@ -40,7 +40,7 @@ module Common::Form
 
     def call
       render(wrapper) do
-        text_field_tag(name, value, **content_tag_arguments)
+        date_field_tag(name, value, **content_tag_arguments)
       end
     end
 

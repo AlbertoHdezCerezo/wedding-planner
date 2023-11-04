@@ -46,12 +46,9 @@ module Common::Form
 
     def valid? = errors.nil? || errors&.compact&.blank?
 
-    def default_classes
-      "flex flex-col gap-1.5 group"
-    end
-
     def default_content_tag_arguments
       {
+        class: "flex flex-col gap-1 group",
         data: {
           invalid: (!valid?).to_s
         }
@@ -62,7 +59,7 @@ module Common::Form
       tag_attributes(
         {
           for: input_id,
-          class: "text-xs text-gray-600 group-data-[invalid=true]:text-cerise-400"
+          class: "font-newsreader text-sm text-gray-500 group-data-[invalid=true]:text-cerise-400"
         },
         label_arguments
       )
@@ -71,7 +68,7 @@ module Common::Form
     def caption_tag_arguments
       tag_attributes(
         {
-          class: "text-gray-400 text-[10px]"
+          class: "text-gray-400 text-sm"
         },
         caption_arguments
       )
@@ -81,7 +78,7 @@ module Common::Form
       tag_attributes(
         {
           class: <<-HTML
-            px-2.5 py-1.5 rounded-md bg-white border-[1px] border-gray-200 text-sm
+            px-3 py-2 rounded-lg bg-white border-[1px] border-gray-200 text-gray-900
             focus-within:border-gray-400
             group-data-[invalid=true]:border-cerise-600
             group-data-[invalid=true]:focus-within:border-cerise-400
