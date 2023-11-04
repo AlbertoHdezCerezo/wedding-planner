@@ -9,12 +9,14 @@ class Guests::IndexComponent < ApplicationComponent
     @guests = guests
   end
 
-  protected
+  private
 
-  def default_classes
-    <<-HTML
-      h-full w-full flex flex-col items-center justify-center gap-3
-      bg-white border-[1px] border-gray-200 rounded-md
-    HTML
+  def default_content_tag_arguments
+    {
+      class: <<-HTML
+        h-full w-full flex flex-col items-center justify-center gap-3
+        bg-white rounded-lg
+      HTML
+    }
   end
 end

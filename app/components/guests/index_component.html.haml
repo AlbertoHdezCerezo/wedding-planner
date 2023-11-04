@@ -4,6 +4,6 @@
                      size: :xl,
                      class: "text-gray-600 mb-6",
                      style: "height: 48px !important; width: 48px !important")
-    = title_component(title: "Your guests list is empty")
-    %p.text-gray-600 Start preparing the guests for the wedding
-    = button_component(label: "add guest", size: :large, scheme: :primary, class: "mt-6")
+    = title_component(title: "Your guests list is empty") do |title|
+      - title.with_subheader_text("Start preparing the guests for the wedding")
+    = button_component(label: "add guest", scheme: :primary, class: "mt-6")
