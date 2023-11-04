@@ -1,0 +1,6 @@
+= render Layout::PageComponent.new do
+  .h-full.w-full.flex.flex-col.gap-4
+    -# Page Header
+    -# Title
+    = title_component(title: "Your weddings") do |title|
+      - title.with_subheader_text("List of weddings your are planning")

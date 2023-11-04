@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class WeddingsController < ApplicationController
+  # GET /weddings
+  def index
+    @weddings = Wedding.all
+  end
+
   # GET /weddings/<wedding-id>
   def show
     @wedding = if Wedding.count == 0
