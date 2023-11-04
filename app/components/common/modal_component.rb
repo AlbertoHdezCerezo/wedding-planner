@@ -16,7 +16,7 @@ module Common
 
                 # Close button
                 concat(icon_button_component(icon: "x-mark",
-                                             size: :large,
+                                             size: :medium,
                                              scheme: :invisible,
                                              class: "absolute right-[32px] top-[15px]",
                                              "data-action": "click->#{ModalComponent.stimulus_identifier}#close"))
@@ -32,7 +32,7 @@ module Common
 
       def default_content_tag_arguments
         {
-          class: "flex flex-col rounded-2xl bg-white divide-y bg-white border-gray-100 z-10",
+          class: "flex flex-col rounded-2xl bg-white divide-y bg-white border border-gray-200 z-10",
           data: {
             "#{ModalComponent.stimulus_identifier}-target" => "contentBody"
           }
@@ -83,7 +83,7 @@ module Common
     def modal_content_background_arguments
       tag_attributes(
         {
-          class: "absolute h-full w-full bg-gray-100",
+          class: "absolute h-full w-full bg-white",
           data: {
             "#{stimulus_identifier}-target" => "contentBackground",
             action: "click->#{stimulus_identifier}#close"

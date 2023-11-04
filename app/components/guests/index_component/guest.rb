@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Guests::ShowComponent < ApplicationComponent
+class Guests::IndexComponent::Guest < ApplicationComponent
+  with_collection_parameter :guest
+
   attr_reader :guest
 
   def initialize(guest:, **system_arguments)
@@ -8,15 +10,12 @@ class Guests::ShowComponent < ApplicationComponent
     @guest = guest
   end
 
-  protected
-
-  def default_classes
-    "w-full inline-flex gap-4 px-6 py-4"
-  end
+  private
 
   def default_content_tag_arguments
     {
-      tag: :li
+      tag: :li,
+      class: "w-full inline-flex gap-4 px-6 py-4"
     }
   end
 end

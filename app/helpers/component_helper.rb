@@ -29,6 +29,10 @@ module ComponentHelper
     render(Common::HorizontalDescriptionListComponent.new(separator:, **system_arguments), &)
   end
 
+  def modal_component(**system_arguments, &)
+    render(Common::ModalComponent.new(**system_arguments), &)
+  end
+
   def title_component(title:, **system_arguments, &)
     render(Common::TitleComponent.new(title:, **system_arguments), &)
   end

@@ -1,18 +1,21 @@
-= render BaseComponent.new(**content_tag_arguments) do
-  -# Header
-  = title_component(title: "Edit guest", class: "px-6")
+= turbo_frame_tag("modal") do
+  = modal_component do |modal|
+    - modal.with_modal_content(class: "w-[600px]") do |content|
+      -# Header
+      - content.with_header(title: "Add guest")
 
-  -# Guest Preview
-  = render Guests::ShowComponent.new(guest:, class: "px-6 bg-gray-50")
+      -# Content
+      - unless guest.new_record?
+        = render Guests::IndexComponent::Guest.new(guest:, class: "px-6 bg-gray-50")
 
-  -# Guest Form
-  = form_with(model: guest, builder: ComponentFormBuilder, class: "flex flex-col gap-6 py-4") do |form|
-    -# Form Group
-    .inline-flex.gap-8.px-6
-      = form.text_field(:name, label: "First Name", caption: "This will be publicly visible")
+      -# Guest Form
+      = form_with(model: guest, url: "", builder: ComponentFormBuilder, class: "flex flex-col gap-6 py-6") do |form|
+        -# Form Group
+        .inline-flex.gap-8.px-6
+          = form.text_field(:name, label: "First Name", caption: "This will be publicly visible")
 
-    %hr
-
-    .inline-flex.items-center.justify-end.px-6.gap-3
-      = button_component(label: "Cancel", scheme: :danger_invisible)
-      = button_component(label: "Save")
+      -# Footer
+      - content.with_footer do
+        .w-full.inline-flex.justify-end.gap-3
+          = button_component(label: "Cancel", scheme: :secondary)
+          = button_component(label: guest.new_record? ? "Save" : "Update")

@@ -41,7 +41,7 @@ module Common
           scheme: SCHEMES[scheme]
         },
         class: <<-HTML
-          w-fit font-medium rounded-full cursor-pointer
+          w-fit font-medium rounded-full cursor-pointer flex items-center justify-center
 
           data-[size=small]:h-9 data-[size=small]:px-4 data-[size=small]:text-xs
           data-[size=medium]:h-11 data-[size=medium]:px-5
