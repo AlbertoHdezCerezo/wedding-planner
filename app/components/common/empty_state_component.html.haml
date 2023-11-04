@@ -3,7 +3,7 @@
                    size: :xl,
                    class: "text-gray-600 mb-6",
                    style: "height: 48px !important; width: 48px !important")
-  = title_component(title:) do |title|
+  = title_component(title:, size: :small) do |title|
     - title.with_subheader_text(subtitle, class: "text-center")
 
   = button_component(tag: :a,

@@ -33,7 +33,7 @@ module ComponentHelper
     render(Common::ModalComponent.new(**system_arguments), &)
   end
 
-  def title_component(title:, **system_arguments, &)
-    render(Common::TitleComponent.new(title:, **system_arguments), &)
+  def title_component(title:, size: :medium, **system_arguments, &)
+    render(Common::TitleComponent.new(title:, size:, **system_arguments), &)
   end
 end

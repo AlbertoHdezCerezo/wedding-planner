@@ -28,7 +28,7 @@ module Common
     renders_one :subheader, types: {
       text: lambda do |text, **system_arguments|
         options = tag_attributes(system_arguments, {
-          class: "font-ibm text-gray-500 #{ size == :medium ? 'text-base' : 'text-sm' }"
+          class: "font-ibm text-gray-500 #{ size == :medium ? 'text-lg' : 'text-base' }"
         })
         content_tag(:p, text, **options)
       end,
@@ -55,8 +55,8 @@ module Common
         },
         class: <<-HTML
           font-newsreader text-gray-800
-          data-[size=small]:text-xl
-          data-[size=medium]:text-3xl
+          data-[size=small]:text-2xl
+          data-[size=medium]:text-4xl
         HTML
       }
     end
