@@ -33,6 +33,10 @@ module ComponentHelper
     render(Common::ModalComponent.new(**system_arguments), &)
   end
 
+  def navigation_list_component(url:, size: :base, **system_arguments, &)
+    render(Common::NavigationListComponent.new(url:, size:, **system_arguments), &)
+  end
+
   def title_component(title:, size: :medium, **system_arguments, &)
     render(Common::TitleComponent.new(title:, size:, **system_arguments), &)
   end
