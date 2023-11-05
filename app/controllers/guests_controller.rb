@@ -13,11 +13,6 @@ class GuestsController < ApplicationController
     @guest = Guest.new
   end
 
-  # GET /weddings/<wedding-id>/guests/<id>/edit
-  def edit
-    @guest = Guest.new
-  end
-
   # POST /weddings/<wedding-id>/guests
   def create
     set_wedding
@@ -28,6 +23,11 @@ class GuestsController < ApplicationController
     else
       render status: :unprocessable_entity
     end
+  end
+
+  # GET /weddings/<wedding-id>/guests/<id>/edit
+  def edit
+    @guest = Guest.new
   end
 
   private
