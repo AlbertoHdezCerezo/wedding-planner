@@ -37,6 +37,10 @@ module ComponentHelper
     render(Common::NavigationListComponent.new(url:, size:, **system_arguments), &)
   end
 
+  def tab_navigation_component(url: url_for, **system_arguments, &)
+    render(Common::TabNavigationComponent.new(url:, **system_arguments), &)
+  end
+
   def title_component(title:, size: :medium, **system_arguments, &)
     render(Common::TitleComponent.new(title:, size:, **system_arguments), &)
   end
