@@ -1,0 +1,11 @@
+%div{ content_tag_arguments }
+  - if guests.empty?
+    = render Common::EmptyStateComponent.new(icon: "inbox",
+                    title: "Your guests list is empty",
+                    subtitle: "Start preparing the guests for the wedding",
+                    button_label: "add guest",
+                    button_path: new_wedding_guests_path(wedding),
+                    button_arguments: { "data-turbo-frame": "modal" })
+
+  - else
+    = render Guests::IndexComponent::Guest.with_collection(guests)

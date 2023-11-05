@@ -22,7 +22,7 @@ module Common
       super(**system_arguments)
     end
 
-    def call = render(BaseComponent.new(tag: :td, **content_tag_args)) { content }
+    def call = render(BaseComponent.new(tag: :td, **content_tag_arguments)) { content }
 
     protected
 
@@ -30,20 +30,21 @@ module Common
 
     def last? = columns.last == column
 
-    def default_classes
-      <<-HTML
-        data-[density=condensed]:px-2 data-[density=condensed]:py-1
-        data-[density=normal]:px-3 data-[density=normal]:py-2
-        data-[density=spacious]:px-4 data-[density=spacious]:py-3
-        first:data-[density=condensed]:pl-4
-        first:data-[density=normal]:pl-4
-        last:data-[density=condensed]:pr-4
-        last:data-[density=normal]:pr-4
-      HTML
-    end
-
     def default_content_tag_arguments
-      { data: { horizontal_alignment: } }
+      {
+        data: {
+          horizontal_alignment:
+        },
+        class: <<-HTML
+          data-[density=condensed]:px-2 data-[density=condensed]:py-1
+          data-[density=normal]:px-3 data-[density=normal]:py-2
+          data-[density=spacious]:px-4 data-[density=spacious]:py-3
+          first:data-[density=condensed]:pl-4
+          first:data-[density=normal]:pl-4
+          last:data-[density=condensed]:pr-4
+          last:data-[density=normal]:pr-4
+        HTML
+      }
     end
   end
 end

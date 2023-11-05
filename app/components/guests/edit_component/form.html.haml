@@ -1,0 +1,8 @@
+= form_with(model: guest, url: wedding_guests_path(wedding), builder: ComponentFormBuilder, **content_tag_arguments) do |form|
+  -# Form Group
+  .inline-flex.gap-8.px-6
+    = form.text_field(:name, label: "First Name", required: true, field_wrapper_arguments: { class: "basis-1/2" })
+    = form.text_field(:surname, label: "Last Name", required: true, field_wrapper_arguments: { class: "basis-1/2" })
+
+  .inline-flex.gap-8.px-6
+    = form.text_field(:country, label: "Country of Residence", required: true, field_wrapper_arguments: { class: "basis-1/2" })

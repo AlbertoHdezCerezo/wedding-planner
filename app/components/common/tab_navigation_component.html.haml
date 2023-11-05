@@ -1,0 +1,9 @@
+= base_component(tag: :nav, **content_tag_arguments) do
+  - if items?
+    %ul{ tabs_wrapper_tag_arguments }
+      - items.each do |item|
+        = item
+
+  .flex-grow
+    - if content?
+      = content

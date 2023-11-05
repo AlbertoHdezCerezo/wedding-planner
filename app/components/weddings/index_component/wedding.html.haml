@@ -1,0 +1,11 @@
+= base_component(tag: :a, **content_tag_arguments) do
+  -# Icon
+  .inline-flex.mb-8
+    .h-8.w-8.bg-gray-700.rounded-full
+    .h-8.w-8.-ml-2.bg-white.rounded-full.border.border-gray-700
+
+  -# Title
+  = title_component(title: wedding.name, class: "!text-xl") do |title|
+    - title.with_subheader_horizontal_description_list(class: "text-xs") do |list|
+      - list.with_icon_field(field_icon: "globe", field_description: "Spain", class: "text-sm")
+      - list.with_icon_field(field_icon: "calendar", field_description: wedding.date.to_s, class: "text-sm")

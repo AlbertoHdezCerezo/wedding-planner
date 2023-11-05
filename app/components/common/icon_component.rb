@@ -22,31 +22,28 @@ module Common
     end
 
     def call
-      inline_svg_tag(svg_file, default_system_arguments.merge(class: content_tag_args[:class]))
+      inline_svg_tag(svg_file, **content_tag_arguments)
     end
 
     protected
 
-    def default_classes
-      <<-HTML
-        data-[size=xs]:w-[12px] data-[size=xs]:h-[12px]
-        data-[size=sm]:w-[16px] data-[size=sm]:h-[16px]
-        data-[size=base]:w-[20px] data-[size=base]:h-[20px]
-        data-[size=lg]:w-[22px] data-[size=lg]:h-[22px]
-        data-[size=xl]:w-[28px] data-[size=xl]:h-[28px]
-      HTML
-    end
+    def svg_file = @svg_file ||= "#{ICONS_ASSET_PATH}#{icon}.svg"
 
-    def default_system_arguments
+    def default_content_tag_arguments
       {
         # https://github.com/jamesmartin/inline_svg#accessibility
         "aria-hidden": true,
         title: icon,
         desc: "#{icon} icon",
-        data: { size: }
+        data: { size: },
+        class: <<-HTML
+          data-[size=xs]:w-[12px] data-[size=xs]:h-[12px]
+          data-[size=sm]:w-[16px] data-[size=sm]:h-[16px]
+          data-[size=base]:w-[20px] data-[size=base]:h-[20px]
+          data-[size=lg]:w-[22px] data-[size=lg]:h-[22px]
+          data-[size=xl]:w-[28px] data-[size=xl]:h-[28px]
+        HTML
       }
     end
-
-    def svg_file = @svg_file ||= "#{ICONS_ASSET_PATH}#{icon}.svg"
   end
 end

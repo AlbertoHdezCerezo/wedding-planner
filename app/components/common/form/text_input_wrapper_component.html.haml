@@ -1,0 +1,15 @@
+%div{ content_tag_arguments }
+  -# Label
+  %label{ label_tag_arguments }= formatted_label
+  -# Input
+  %div{ input_wrapper_tag_arguments }= content
+  -# Errors
+  - unless valid?
+    .inline-flex.items-start.gap-1{ class: "text-sm text-cerise-400" }
+      = icon_component(icon: "exclamation-triangle", size: :sm, class: "mt-[2px]")
+      %div
+        - errors.each do |error|
+          %p= error
+  -# Caption
+  - if caption.present?
+    %p{ caption_tag_arguments }= caption

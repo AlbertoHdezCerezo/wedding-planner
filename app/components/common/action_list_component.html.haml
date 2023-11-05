@@ -1,9 +1,9 @@
-= render BaseComponent.new(**content_tag_args) do
+= base_component(**content_tag_arguments) do
   %li
     - if heading?
       = heading
     - if items?
       - items_wrapper_arguments = { tag: :ul, "aria-labelledby": rendered_heading.id }.compact
-      = render BaseComponent.new(**items_wrapper_arguments) do
+      = base_component(**items_wrapper_arguments) do
         - items.each do |item|
           = item

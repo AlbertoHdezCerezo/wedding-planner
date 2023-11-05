@@ -1,0 +1,11 @@
+= base_component(**content_tag_arguments) do
+  .flex.flex-row.items-start.gap-3
+    - if leading_visual?
+      = leading_visual
+    %div
+      .inline-flex.gap-3.items-center
+        %h2= title
+        - if trailing_visual?
+          = trailing_visual
+      -if subheader?
+        = subheader
