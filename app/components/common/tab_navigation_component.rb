@@ -3,7 +3,11 @@
 # Renders SVG icons and provides additional styling customization options
 module Common
   class TabNavigationComponent < ApplicationComponent
+    TURBO_FRAME = "tab_navigator"
+
     renders_many :items, lambda { |url, label, icon: nil, active: nil|
+      active ||= @url.include?(url)
+
       attributes = tag_attributes(
         {
           tag: :a,
@@ -11,8 +15,8 @@ module Common
           class: <<-HTML
             relative px-8 py-3 cursor-pointer text-gray-500 rounded-t-lg
             hover:bg-gray-100
-            aria-[selected]:border aria-[selected]:border-gray-200 aria-[selected]:border-b-0
-            aria-[selected]:bg-white aria-[selected]:mb-[-2px]
+            aria-[selected=true]:border aria-[selected=true]:border-gray-200 aria-[selected=true]:border-b-0
+            aria-[selected=true]:bg-white aria-[selected=true]:mb-[-2px]
           HTML
         }
       )
@@ -26,6 +30,15 @@ module Common
         )
       end
     }
+
+    attr_reader :url
+
+    def initialize(url: nil, **system_arguments)
+      @url = url
+      super(**system_arguments)
+    end
+
+    def before_render = @url ||= url_for
 
     private
 
