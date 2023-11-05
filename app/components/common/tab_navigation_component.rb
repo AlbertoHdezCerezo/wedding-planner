@@ -38,7 +38,9 @@ module Common
       super(**system_arguments)
     end
 
-    def before_render = @url ||= url_for
+    def before_render
+      @url ||= url_for # rubocop:disable Naming/MemoizedInstanceVariableName
+    end
 
     private
 
