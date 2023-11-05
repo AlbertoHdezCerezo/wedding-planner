@@ -3,7 +3,7 @@
 class Layout::ApplicationComponent < ApplicationComponent
   class BodyComponent < ApplicationComponent
     def call
-      render(BaseComponent.new(tag: :body, **@content_tag_args)) { content }
+      render(BaseComponent.new(tag: :body, **content_tag_arguments)) { content }
     end
   end
 

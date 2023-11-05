@@ -22,5 +22,8 @@ module WeddingPlanner
 
     # Load lib folder (factories and custom libraries)
     config.autoload_paths << "#{root}/lib"
+
+    # Custom FactoryBot factories path
+    config.factory_bot.definition_file_paths = ["app/lib/factories"]
   end
 end

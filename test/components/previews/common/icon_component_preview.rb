@@ -10,7 +10,7 @@ class Common::IconComponentPreview < ViewComponent::Preview
   #
   # @param icon
   # @param size select { choices: [xs, sm, base, lg, xl] }
-  def default(icon: :edit, size: :xl)
+  def default(icon: :globe, size: :xl)
     render Common::IconComponent.new(icon.to_sym, size:)
   end
 
@@ -20,7 +20,7 @@ class Common::IconComponentPreview < ViewComponent::Preview
   # copy in your clipboard the helper method to render the selected icon.
   #
   # @param size select { choices: [xs, sm, base, lg, xl] }
-  def icons(size: :base)
+  def playground(size: :base)
     render_with_template(locals: { size: })
   end
 end

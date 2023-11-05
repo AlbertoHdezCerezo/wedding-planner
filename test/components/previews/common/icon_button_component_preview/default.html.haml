@@ -1,0 +1,27 @@
+- icon = "globe"
+
+= render(BaseComponent.new(tag: :div, class: "flex flex-col items-center justify-center gap-4")) do
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Common::IconButtonComponent.new(icon:, size: :small, scheme: :primary))
+    = render(Common::IconButtonComponent.new(icon:, size: :medium, scheme: :primary))
+    = render(Common::IconButtonComponent.new(icon:, size: :large, scheme: :primary))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Common::IconButtonComponent.new(icon:, size: :small, scheme: :secondary))
+    = render(Common::IconButtonComponent.new(icon:, size: :medium, scheme: :secondary))
+    = render(Common::IconButtonComponent.new(icon:, size: :large, scheme: :secondary))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Common::IconButtonComponent.new(icon:, size: :small, scheme: :invisible))
+    = render(Common::IconButtonComponent.new(icon:, size: :medium, scheme: :invisible))
+    = render(Common::IconButtonComponent.new(icon:, size: :large, scheme: :invisible))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Common::IconButtonComponent.new(icon:, size: :small, scheme: :danger))
+    = render(Common::IconButtonComponent.new(icon:, size: :medium, scheme: :danger))
+    = render(Common::IconButtonComponent.new(icon:, size: :large, scheme: :danger))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Common::IconButtonComponent.new(icon:, size: :small, scheme: :danger_invisible))
+    = render(Common::IconButtonComponent.new(icon:, size: :medium, scheme: :danger_invisible))
+    = render(Common::IconButtonComponent.new(icon:, size: :large, scheme: :danger_invisible))

@@ -64,6 +64,9 @@ gem "factory_bot_rails"
 # Gem for SVG import & styling via CSS
 gem "inline_svg", "~> 1.9.0"
 
+# DRY Parameters for your controllers
+gem "dry-schema", "~> 1.13.3"
+
 group :development, :test do
   # powerful component browser and preview system with an integrated documentation engine
   gem "lookbook", ">= 2.0.5"

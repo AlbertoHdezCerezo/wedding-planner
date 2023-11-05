@@ -1,0 +1,18 @@
+= render(BaseComponent.new(tag: :div, class: "flex flex-col items-center justify-center gap-4")) do
+  = render Common::HorizontalDescriptionListComponent.new(separator: "·", size: :small) do |list|
+    - list.with_text_field(field_name: "Term 1", field_description: "Description 1")
+    - list.with_text_field(field_name: "Term 2", field_description: "Description 2")
+    - list.with_text_field(field_name: "Term 3", field_description: "Description 3")
+
+  = render Common::HorizontalDescriptionListComponent.new(separator: "·") do |list|
+    - list.with_text_field(field_name: "Term 1", field_description: "Description 1")
+    - list.with_text_field(field_name: "Term 2", field_description: "Description 2")
+    - list.with_text_field(field_name: "Term 3", field_description: "Description 3")
+
+  = render Common::HorizontalDescriptionListComponent.new(separator: "·", size: :small) do |list|
+    - list.with_icon_field(field_icon: "globe", field_description: "Plasencia, Spain")
+    - list.with_icon_field(field_icon: "calendar", field_description: "18-11-2023 (10 days left)")
+
+  = render Common::HorizontalDescriptionListComponent.new(separator: "·") do |list|
+    - list.with_icon_field(field_icon: "globe", field_description: "Plasencia, Spain")
+    - list.with_icon_field(field_icon: "calendar", field_description: "18-11-2023 (10 days left)")

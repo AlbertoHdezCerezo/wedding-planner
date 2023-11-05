@@ -1,18 +1,24 @@
-= render Layout::PageComponent.new do |page|
-  .h-full.w-full.flex.flex-col
+= render Layout::PageComponent.new do
+  .h-full.w-full.flex.flex-col.gap-4
     -# Page Header
-    = render Common::PageHeaderComponent.new(back_url: "/", back_label: "Back to weddings") do |page_header|
-      - page_header.with_title("Alberto & Andreas's Wedding") do |title|
-        - title.with_trailing_visual_icon("box-pencil")
-      - page_header.with_description(separator: "·") do |description|
-        - description.with_icon_field(field_icon: "calendar", field_description: "14/09/2023 (340 days left)")
-        - description.with_icon_field(field_icon: "globe", field_description: "Plasencia, Spain")
-      - page_header.with_navigation do |navigation|
-        - navigation.with_item("/", "Tasks", nil, true)
-        - navigation.with_item("/", "Guests")
-        - navigation.with_item("/", "Plan")
-        - navigation.with_item("/", "Budget")
+    .flex.flex-col.items-start.justify-between.gap-3
+      -# Back Label
+      = link_to(weddings_path, class: "flex flex-row items-center gap-2 mb-1 text-gray-500 hover:text-gray-900 hover:underline") do
+        = icon_component(icon: "arrow-left", size: :xs)
+        %p.text-xs Back to weddings
+
+      -# Title
+      = title_component(title: @wedding.name) do |title|
+        - title.with_subheader_horizontal_description_list(separator: "·") do |description|
+          - description.with_icon_field(field_icon: "calendar", field_description: "#{wedding.date.to_s} (#{(wedding.date - Date.current).to_i} days left)")
+          - description.with_icon_field(field_icon: "globe", field_description: "Plasencia, Spain")
 
     -# Content
-    .flex-grow.bg-gray-50
-      = content
+    = render Common::TabNavigationComponent.new do |navigation|
+      - navigation.with_item("/", "Tasks", active: true)
+      - navigation.with_item("/", "Guests")
+      - navigation.with_item("/", "Plan")
+      - navigation.with_item("/", "Budget")
+
+      - if content?
+        = content

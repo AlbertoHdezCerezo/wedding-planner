@@ -1,10 +1,13 @@
-= render BaseComponent.new(**content_tag_args) do
+= base_component(**content_tag_arguments) do
   - if leading_visual?
-    %span.mr-2= leading_visual
+    %span.mr-3= leading_visual
+
   .flex-1.inline-flex.items-center.justify-between
-    = render BaseComponent.new(tag: :span, **label_arguments) do
+    = base_component(tag: :span, **label_tag_arguments) do
       = @label || content
+
     - if trailing_visual?
-      %span.ml-2= trailing_visual
+      %span.ml-3= trailing_visual
+
   - if active
-    .absolute.h-6.bg-tiffany_blue-600.rounded-tr-sm.rounded-br-sm{ class: "left-[-8px] w-[2.5px]" }
+    .absolute.h-6.bg-gray-900.rounded-tr-sm.rounded-br-sm{ class: "left-[-12px] w-[2.5px]" }

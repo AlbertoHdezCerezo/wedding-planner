@@ -4,9 +4,11 @@
 module Common
   class HorizontalDescriptionListComponent < ApplicationComponent
     class Item < ApplicationComponent
-      protected
+      private
 
-      def default_classes = "flex flex-row items-center gap-1"
+      def default_content_tag_arguments
+        { class: "flex flex-row items-center gap-2" }
+      end
     end
 
     class TextTermItem < Item
@@ -17,7 +19,7 @@ module Common
       end
 
       def call
-        base_component(tag: :li, **content_tag_args) do
+        base_component(tag: :li, **content_tag_arguments) do
           concat(content_tag(:p, @field_name))
           concat(content_tag(:p, @field_description))
         end
@@ -32,38 +34,55 @@ module Common
       end
 
       def call
-        base_component(tag: :li, **content_tag_args) do
+        base_component(tag: :li, **content_tag_arguments) do
           concat(icon_component(icon: @field_icon, size: :sm))
           concat(content_tag(:p, @field_description))
         end
       end
     end
 
+    SIZES = {
+      small: "small",
+      medium: "medium"
+    }.freeze
+
     renders_many :fields, types: {
       text: { renders: TextTermItem, as: :text_field },
       icon: { renders: IconTermItem, as: :icon_field }
     }
 
-    attr_reader :separator
+    attr_reader :separator, :size
 
-    def initialize(separator: nil, **system_arguments)
-      super(**system_arguments)
+    def initialize(separator: nil, size: :medium, **system_arguments)
+      @size = size
       @separator = separator
+      super(**system_arguments)
     end
 
     def call
-      base_component(tag: :ul, **content_tag_args) do
+      base_component(tag: :ul, **content_tag_arguments) do
         fields.each do |field|
           concat(field)
-          concat(content_tag(:p, separator)) if separator.present? && field != fields.last
+          concat(content_tag(:span, separator)) if separator.present? && field != fields.last
         end
       end
     end
 
-    protected
+    private
 
-    def default_classes
-      "flex flex-row items-center gap-2 text-xs text-gray-500"
+    def default_content_tag_arguments
+      {
+        data: {
+          size: SIZES[size]
+        },
+        class: <<-HTML
+          flex flex-row items-center text-gray-500
+          data-[size=small]:text-sm
+          data-[size=small]:gap-1
+          data-[size=medium]:text-base
+          data-[size=medium]:gap-2
+        HTML
+      }
     end
   end
 end

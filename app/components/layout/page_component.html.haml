@@ -1,7 +1,8 @@
-= render BaseComponent.new(**content_tag_args) do
+= render BaseComponent.new(**content_tag_arguments) do
   -# Sidebar
-  .w-60{ class: "border-r-[1px] border-gray-100" }
+  .w-64{ class: "border-r-[1.5px] border-gray-200" }
+    = render Sidebar.new
 
   -# Content
-  .flex-grow.h-full
+  .flex-grow.h-full.px-20.py-12
     = content
