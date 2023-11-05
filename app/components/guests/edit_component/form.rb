@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-class Weddings::EditComponent::Form < ApplicationComponent
-  ID = "wedding-form"
+class Guests::EditComponent::Form < ApplicationComponent
+  ID = "guest-form"
 
-  attr_reader :wedding
+  attr_reader :wedding, :guest
 
-  def initialize(wedding:, **system_arguments)
+  def initialize(wedding:, guest:, **system_arguments)
     super(**system_arguments)
     @wedding = wedding
+    @guest = guest
   end
 
   private

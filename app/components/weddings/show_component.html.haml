@@ -1,2 +1,2 @@
 = render ::Weddings::LayoutComponent.new(wedding:) do
-  = render Guests::IndexComponent.new(wedding:, guests: [])
+  = render Guests::IndexComponent.new(wedding:, guests: wedding.guests)

@@ -9,13 +9,10 @@
         = render Guests::IndexComponent::Guest.new(guest:, class: "px-6 bg-gray-50")
 
       -# Guest Form
-      = form_with(model: guest, url: "", builder: ComponentFormBuilder, class: "flex flex-col gap-6 py-6") do |form|
-        -# Form Group
-        .inline-flex.gap-8.px-6
-          = form.text_field(:name, label: "First Name", caption: "This will be publicly visible")
+      = render Guests::EditComponent::Form.new(wedding:, guest:)
 
       -# Footer
       - content.with_footer do
         .w-full.inline-flex.justify-end.gap-3
-          = button_component(label: "Cancel", scheme: :secondary)
-          = button_component(label: guest.new_record? ? "Save" : "Update")
+          = button_component(label: "Cancel", scheme: :secondary, data: { action: "click->common--modal-component#close" })
+          = button_component(label: wedding.new_record? ? "Create" : "Save", type: "submit", form: "guest-form")

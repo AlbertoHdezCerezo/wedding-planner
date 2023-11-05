@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Guests::EditComponent < ApplicationComponent
-  attr_reader :guest
+  attr_reader :wedding, :guest
 
-  def initialize(guest:, **system_arguments)
+  def initialize(wedding:, guest:, **system_arguments)
     super(**system_arguments)
+    @wedding = wedding
     @guest = guest
   end
 

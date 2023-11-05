@@ -9,7 +9,20 @@ class GuestsController < ApplicationController
 
   # GET /weddings/<wedding-id>/guests/new
   def new
+    set_wedding
     @guest = Guest.new
+  end
+
+  # POST /weddings/<wedding-id>/guests
+  def create
+    set_wedding
+    @guest = @wedding.guests.new(**GuestParameters.new(params[:guest]))
+
+    if @guest.save
+      redirect_to guests_path(@wedding, @guest)
+    else
+      render status: :unprocessable_entity
+    end
   end
 
   # GET /weddings/<wedding-id>/guests/<id>/edit
@@ -20,10 +33,6 @@ class GuestsController < ApplicationController
   private
 
   def set_wedding
-    @wedding = if Wedding.count == 0
-                 Wedding.create(date: Date.new(2023, 9, 14))
-               else
-                 Wedding.first
-               end
+    @wedding = Wedding.find(params[:wedding_id])
   end
 end

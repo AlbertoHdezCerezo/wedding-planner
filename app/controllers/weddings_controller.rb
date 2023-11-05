@@ -16,7 +16,7 @@ class WeddingsController < ApplicationController
     @wedding = Wedding.new(**WeddingParameters.new(params[:wedding]))
 
     if @wedding.save
-      redirect_to :weddings
+      redirect_to wedding_path(@wedding)
     else
       render status: :unprocessable_entity
     end
