@@ -11,7 +11,7 @@ class Common::NavigationListComponentPreview < ViewComponent::Preview
   # either by passing a custom URL to the component
   # via the `url` parameter, or on each individual
   # links via the `active` slot parameter
-  def default # rubocop:disable Metrics/AbcSize
+  def default
     render Common::NavigationListComponent.new(url: "/link1") do |list|
       list.with_heading(title: "Title")
       list.with_link_default(url: "/link1", label: "link 1")
@@ -35,7 +35,7 @@ class Common::NavigationListComponentPreview < ViewComponent::Preview
 
   # @param url text
   # @param size select { choices: [base, lg] }
-  def playground(url: "/link1", size: :base) # rubocop:disable Metrics/AbcSize
+  def playground(url: "/link1", size: :base)
     render Common::NavigationListComponent.new(size:, url:) do |list|
       list.with_heading(title: "Title")
       list.with_link_default(url: "/link1", label: "link 1")
