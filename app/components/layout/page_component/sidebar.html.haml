@@ -14,13 +14,13 @@
 
   -# Sidebar Menu
   .flex-grow
-    = action_list_component(size: :lg) do |list|
+    = navigation_list_component(size: :lg) do |list|
       - list.with_heading(title: "Planner")
-      - list.with_item_default(label: "Weddings", active: true) do |item|
+      - list.with_link_default(url: weddings_path, label: "Weddings") do |item|
         - item.with_leading_visual_icon(icon: "sparkles")
-      - list.with_item_default(label: "Services") do |item|
+      - list.with_link_default(url: "TODO", label: "Services") do |item|
         - item.with_leading_visual_icon(icon: "tag")
-      - list.with_item_default(label: "Settings") do |item|
+      - list.with_link_default(url: "TODO", label: "Settings") do |item|
         - item.with_leading_visual_icon(icon: "cog")
 
   -# Footer

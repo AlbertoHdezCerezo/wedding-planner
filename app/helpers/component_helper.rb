@@ -33,7 +33,7 @@ module ComponentHelper
     render(Common::ModalComponent.new(**system_arguments), &)
   end
 
-  def navigation_list_component(url:, size: :base, **system_arguments, &)
+  def navigation_list_component(url: url_for, size: :base, **system_arguments, &)
     render(Common::NavigationListComponent.new(url:, size:, **system_arguments), &)
   end
 
