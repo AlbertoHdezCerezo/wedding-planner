@@ -68,9 +68,9 @@ module Common
       super(**system_arguments)
     end
 
-    protected
+    private
 
-    def default_content_tag_arguments = { tag: :ul, class: "py-2" }
+    def default_content_tag_arguments = { tag: :nav, class: "py-2" }
 
     def rendered_item_slots = rendered_slots_by_name(:items) || []
 
