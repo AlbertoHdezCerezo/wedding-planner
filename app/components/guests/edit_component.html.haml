@@ -15,4 +15,7 @@
       - content.with_footer do
         .w-full.inline-flex.justify-end.gap-3
           = button_component(label: "Cancel", scheme: :secondary, data: { action: "click->common--modal-component#close" })
-          = button_component(label: wedding.new_record? ? "Create" : "Save", type: "submit", form: "guest-form")
+          = button_component(label: wedding.new_record? ? "Create" : "Save",
+                             data: { action: "click->common--modal-component#close" },
+                             form: "guest-form",
+                             type: "submit")
