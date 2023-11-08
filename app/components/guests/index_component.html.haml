@@ -5,12 +5,15 @@
   - navigation.with_item("/TODO", "Budget")
 
   %div{ content_tag_arguments }
-    - if guests.empty?
-      = render Common::EmptyStateComponent.new(icon: "inbox",
-                      title: "Your guests list is empty",
-                      subtitle: "Start preparing the guests for the wedding",
-                      button_label: "add guest",
-                      button_path: new_wedding_guest_path(wedding),
-                      button_arguments: { "data-turbo-frame": "modal" })
-    - else
-      = render Guests::IndexComponent::Guest.with_collection(guests)
+    = render Common::DataTableComponent.new(items: guests, density: :spacious, class: "w-full") do |table|
+      - table.with_empty_state(icon: "inbox",
+                               title: "Your guests list is empty",
+                               subtitle: "Start preparing the guests for the wedding",
+                               button_label: "add guest",
+                               button_path: new_wedding_guest_path(wedding),
+                               button_arguments: { "data-turbo-frame": "modal" })
+      - table.with_column("Name") { |item| tag.p("#{item.name} #{item.surname}") }
+      - table.with_column("Travels from") { |item| tag.p(item.country) }
+      - table.with_column("Relation") { |item| tag.p("Broom's father") }
+      - table.with_column(horizontal_alignment: :right) do |item|
+        = icon_button_component(icon: "globe", size: :small, scheme: :secondary)

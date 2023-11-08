@@ -2,13 +2,21 @@
 
 module Common
   class DataTableComponent::Column < ApplicationComponent
-    attr_reader :title
+    WIDTHS = {
+      grow: "minmax(max-content, 1fr)",
+      grow_collapse: "minmax(0, 1fr)",
+      auto: "auto"
+    }.freeze
 
-    def initialize(title, **system_arguments, &block)
+    attr_reader :title, :horizontal_alignment, :width
+
+    def initialize(title:, horizontal_alignment:, width: :auto, **system_arguments, &block)
       super(**system_arguments)
 
-      @title = title
+      @width = WIDTHS[width]
+      @horizontal_alignment = horizontal_alignment
       @system_arguments = system_arguments
+      @title = title
       @block = block
     end
 

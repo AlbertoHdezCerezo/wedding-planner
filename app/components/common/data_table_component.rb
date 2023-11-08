@@ -12,8 +12,9 @@ module Common
     # -----
     renders_one :header
     renders_one :footer
-    renders_many :columns, lambda { |title, **system_arguments, &block|
-      DataTableComponent::Column.new(title, **system_arguments, &block)
+    renders_one :empty_state, Common::EmptyStateComponent
+    renders_many :columns, lambda { |title = nil, horizontal_alignment: :left, width: :auto, **system_arguments, &block|
+      DataTableComponent::Column.new(title:, horizontal_alignment:, width:, **system_arguments, &block)
     }
 
     attr_reader :items, :density
@@ -30,9 +31,12 @@ module Common
     end
 
     def table_wrapper_arguments(**system_arguments)
+      column_widths = columns.map { _1.instance_variable_get(:@__vc_component_instance).width }
+
       tag_attributes(
         {
-          class: "w-full border-separate rounded-md border-spacing-0"
+          class: "grid w-full border-separate rounded-md border-spacing-0",
+          style: "grid-template-columns: #{column_widths.join(" ")};"
         },
         system_arguments
       )
@@ -46,9 +50,9 @@ module Common
           },
           role: "rowgrop",
           class: <<-HTML
-            border-y-[1px] bg-gray-100 text-gray-900 font-semibold text-left
-            first:border-l-[1px] first:rounded-tl-md
-            last:border-r-[1px] last:rounded-tr-md
+            border-y-[1px] bg-gray-50 text-gray-900 font-semibold text-left
+            first:border-l-[1px] first:rounded-tl-lg
+            last:border-r-[1px] last:rounded-tr-lg
           HTML
         },
         system_arguments
@@ -61,9 +65,9 @@ module Common
           data: { density: },
           role: "rowgrop",
           class: <<-HTML
-            bg-white border-b-[1px] radius-bl-md text-gray-900
-            first:border-l-[1px] data-[last-row=true]:first:rounded-bl-md
-            last:border-r-[1px] data-[last-row=true]:last:rounded-br-md
+            bg-white border-gray-200 border-b-[1px] radius-bl-md text-gray-900
+            first:border-l-[1px] data-[last-row=true]:first:rounded-bl-lg
+            last:border-r-[1px] data-[last-row=true]:last:rounded-br-lg
           HTML
         },
         system_arguments
