@@ -1,0 +1,12 @@
+.w-full.h-screen.flex.items-center.justify-center.bg-gray-50
+  = render Common::DataTableComponent.new(items: [], class: "w-[900px]") do |table|
+    - table.with_empty_state(icon: "inbox",
+                             title: "Your guests list is empty",
+                             subtitle: "Start preparing the guests for the wedding",
+                             button_label: "add guest",
+                             button_path: "/",
+                             button_arguments: { "data-turbo-frame": "modal" })
+    - table.with_column("Name") { |item| tag.p(item.name) }
+    - table.with_column("Travels from") { |item| tag.p(item.travels_from) }
+    - table.with_column("Invited by") { |item| tag.p(item.invited_by) }
+    - table.with_column("Invitation status") { |item| tag.p(item.invitation_status) }

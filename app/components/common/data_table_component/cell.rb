@@ -33,12 +33,19 @@ module Common
     def default_content_tag_arguments
       {
         data: {
-          horizontal_alignment:
+          "horizontal-alignment": horizontal_alignment
         },
         class: <<-HTML
-          data-[density=condensed]:px-2 data-[density=condensed]:py-1
-          data-[density=normal]:px-3 data-[density=normal]:py-2
-          data-[density=spacious]:px-4 data-[density=spacious]:py-3
+          flex items-center
+          data-[horizontal-alignment=left]:justify-start
+          data-[horizontal-alignment=center]:justify-center
+          data-[horizontal-alignment=right]:justify-end
+          data-[horizontal-alignment=left]:text-left
+          data-[horizontal-alignment=center]:text-center
+          data-[horizontal-alignment=right]:text-right
+          data-[density=condensed]:px-1 data-[density=condensed]:py-2
+          data-[density=normal]:px-4 data-[density=normal]:py-3
+          data-[density=spacious]:px-5 data-[density=spacious]:py-4
           first:data-[density=condensed]:pl-4
           first:data-[density=normal]:pl-4
           last:data-[density=condensed]:pr-4

@@ -20,4 +20,11 @@ class Common::DataTableComponentPreview < ViewComponent::Preview
 
     render_with_template(locals: { items:, density: })
   end
+
+  # `DataTableComponent` counts with a `empty_state` slot. If
+  # defined, the table will be replaced by a empty state when
+  # there are no items to be displayed.
+  def with_empty_state
+    render_with_template
+  end
 end

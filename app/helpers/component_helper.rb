@@ -13,6 +13,10 @@ module ComponentHelper
     render(Common::ButtonComponent.new(label:, size:, scheme:, **system_arguments), &)
   end
 
+  def empty_state_component(icon:, title:, subtitle: nil, button_label: nil, button_path: nil, button_arguments: {})
+    render Common::EmptyStateComponent.new(icon:, title:, subtitle:, button_label:, button_path:, button_arguments:)
+  end
+
   def horizontal_description_list_component(separator: "·", size: :medium, **system_arguments, &)
     render(Common::HorizontalDescriptionListComponent.new(separator:, size:, **system_arguments), &)
   end
