@@ -44,7 +44,7 @@ module Common
           w-fit font-medium rounded-full cursor-pointer flex items-center justify-center
 
           data-[size=small]:h-9 data-[size=small]:px-4 data-[size=small]:text-xs
-          data-[size=medium]:h-11 data-[size=medium]:px-5
+          data-[size=medium]:h-11 data-[size=medium]:px-5 data-[size=medium]:text-base
           data-[size=large]:h-14 data-[size=large]:px-6 data-[size=large]:text-lg
 
           data-[scheme=primary]:bg-gray-700 data-[scheme=primary]:text-white

@@ -6,6 +6,16 @@
 
   %div{ content_tag_arguments }
     = render Common::DataTableComponent.new(items: guests, density: :spacious, class: "w-full") do |table|
+      - if guests.any?
+        - table.with_title(title: "Guests List", size: :small, class: "w-full") do |title|
+        - title.with_subheader_text("#{guests.count} persons in your wedding list")
+          - title.with_action(label: "Add guest",
+                              tag: :a,
+                              size: :medium,
+                              scheme: :secondary,
+                              href: new_wedding_guest_path(wedding),
+                              "data-turbo-frame": "modal")
+          - title.with_action(label: "Send invitations", size: :medium, scheme: :primary)
       - table.with_empty_state(icon: "inbox",
                                title: "Your guests list is empty",
                                subtitle: "Start preparing the guests for the wedding",
@@ -14,6 +24,13 @@
                                button_arguments: { "data-turbo-frame": "modal" })
       - table.with_column("Name") { |item| tag.p("#{item.name} #{item.surname}") }
       - table.with_column("Travels from") { |item| tag.p(item.country) }
-      - table.with_column("Relation") { |item| tag.p("Broom's father") }
-      - table.with_column(horizontal_alignment: :right) do |item|
-        = icon_button_component(icon: "globe", size: :small, scheme: :secondary)
+      - table.with_column("Relation") { tag.p("Broom's father") }
+      - table.with_column(horizontal_alignment: :right) do |guest|
+        .inline-flex.gap-3
+          = icon_button_component(icon: "trash", size: :small, scheme: :secondary)
+          = icon_button_component(icon: "box-pencil",
+                                  tag: :a,
+                                  size: :small,
+                                  scheme: :secondary,
+                                  href: edit_wedding_guest_path(wedding, guest),
+                                  "data-turbo-frame": "modal")

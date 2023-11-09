@@ -1,4 +1,6 @@
-= form_with(model: guest, url: wedding_guests_path(wedding), builder: ComponentFormBuilder, **content_tag_arguments) do |form|
+- url = guest.new_record? ? wedding_guests_path(wedding) : wedding_guest_path(wedding, guest)
+- method = guest.new_record? ? :post : :patch
+= form_with(model: guest, url:, method:, builder: ComponentFormBuilder, **content_tag_arguments) do |form|
   -# Form Group
   .inline-flex.gap-8.px-6
     = form.text_field(:name, label: "First Name", required: true, field_wrapper_arguments: { class: "basis-1/2" })
