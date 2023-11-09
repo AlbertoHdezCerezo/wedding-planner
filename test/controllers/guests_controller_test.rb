@@ -41,7 +41,7 @@ class GuestsControllerTest < ControllerTestHelper
 
     guest = assigns(:guest)
 
-    assert guest.new_record?
+    assert_predicate guest, :new_record?
   end
 
   test "GET edit renders guest form" do

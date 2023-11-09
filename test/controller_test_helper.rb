@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class ControllerTestHelper < ActionDispatch::IntegrationTest
@@ -21,6 +23,10 @@ class ControllerTestHelper < ActionDispatch::IntegrationTest
       send(method, path, params:)
     end
 
-    JSON.parse(response.body) rescue nil
+    begin
+      JSON.parse(response.body)
+    rescue StandardError
+      nil
+    end
   end
 end
