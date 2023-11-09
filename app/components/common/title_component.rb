@@ -39,6 +39,8 @@ module Common
       end
     }
 
+    renders_many :actions, Common::ButtonComponent
+
     attr_reader :title, :size
 
     def initialize(title:, size: :medium, **system_arguments)
