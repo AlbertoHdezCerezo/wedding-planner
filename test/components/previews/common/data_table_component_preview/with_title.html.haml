@@ -1,0 +1,9 @@
+.w-full.h-screen.flex.items-center.justify-center.bg-gray-50
+  = render Common::DataTableComponent.new(items:, class: "w-[900px]") do |table|
+    - table.with_title(title: "Guest List", size: :small) do |title|
+      - title.with_subheader_horizontal_description_list do |list|
+        - list.with_text_field(field_name: "guests", field_description: "#{items.count} persons in your wedding list")
+    - table.with_column("Name") { |item| tag.p(item.name) }
+    - table.with_column("Travels from") { |item| tag.p(item.travels_from) }
+    - table.with_column("Invited by") { |item| tag.p(item.invited_by) }
+    - table.with_column("Invitation status") { |item| tag.p(item.invitation_status) }

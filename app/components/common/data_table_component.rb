@@ -10,8 +10,7 @@ module Common
 
     # Slots
     # -----
-    renders_one :header
-    renders_one :footer
+    renders_one :title, Common::TitleComponent
     renders_one :empty_state, Common::EmptyStateComponent
     renders_many :columns, lambda { |title = nil, horizontal_alignment: :left, width: :auto, **system_arguments, &block|
       DataTableComponent::Column.new(title:, horizontal_alignment:, width:, **system_arguments, &block)
@@ -28,6 +27,14 @@ module Common
 
       @items = items
       @density = density
+    end
+
+    private
+
+    def default_content_tag_arguments
+      {
+        class: "flex flex-col gap-6"
+      }
     end
 
     def table_wrapper_arguments(**system_arguments)
