@@ -4,6 +4,9 @@
                       style: "grid-template-columns: subgrid; grid-column: -1 / 1;" }
 
 = render BaseComponent.new(**content_tag_arguments) do
+  - if title?
+    = title
+
   - if items.empty?
     - if empty_state?
       = empty_state
