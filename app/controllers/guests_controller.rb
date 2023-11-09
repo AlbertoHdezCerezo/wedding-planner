@@ -24,7 +24,7 @@ class GuestsController < ApplicationController
     @guest = @wedding.guests.new(**guest_parameters)
 
     if @guest.save
-      redirect_to wedding_guests_path(@wedding, @guest)
+      redirect_to wedding_guests_path(@wedding)
     else
       render status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class GuestsController < ApplicationController
     @guest.assign_attributes(guest_parameters)
 
     if @guest.save
-      redirect_to wedding_guests_path(@guest.wedding, @guest)
+      redirect_to wedding_guests_path(@guest.wedding)
     else
       render status: :unprocessable_entity
     end
