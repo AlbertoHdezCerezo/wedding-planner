@@ -6,6 +6,6 @@ class Event < ApplicationRecord
 
   # Validations
   validates :name, presence: true
-  validates :planned, presence: true
+  validates :planned, inclusion: { in: [true, false] }
   validates :schedule, presence: true
 end

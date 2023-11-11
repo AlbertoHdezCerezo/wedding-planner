@@ -12,6 +12,8 @@ FactoryBot.define do
       "Event Description #{n}: Sample of description for an event"
     end
 
+    planned { false }
+
     schedule { Time.current..rand(10).hours.since(Time.current) }
 
     trait :unplanned do

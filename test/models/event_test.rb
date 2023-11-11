@@ -12,12 +12,12 @@ class EventTest < ActiveSupport::TestCase
     assert event.errors.of_kind?(:name, :blank)
   end
 
-  test "validates planned presence" do
+  test "validates planned is true or false" do
     event = FactoryBot.build(:event)
     event.planned = nil
 
     assert_not event.valid?
-    assert event.errors.of_kind?(:planned, :blank)
+    assert event.errors.of_kind?(:planned, :inclusion)
   end
 
   test "validates schedule presence" do
