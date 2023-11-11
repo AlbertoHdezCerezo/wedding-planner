@@ -20,7 +20,7 @@ class GuestParametersTest < ActiveSupport::TestCase
       {
         name: "Gala Dinner",
         description: "Dinner for all guests in the Gala event",
-        end_time: Time.current.to_s,
+        end_time: Time.current.to_s
       }
     )
 
@@ -35,7 +35,7 @@ class GuestParametersTest < ActiveSupport::TestCase
       {
         name: "Gala Dinner",
         description: "Dinner for all guests in the Gala event",
-        start_time: Time.current.to_s,
+        start_time: Time.current.to_s
       }
     )
 
