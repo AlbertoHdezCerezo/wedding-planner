@@ -38,8 +38,10 @@ class GuestsController < ApplicationController
     @guest.assign_attributes(guest_parameters)
 
     if @guest.save
-      redirect_to wedding_guests_path(@guest.wedding)
+      flash.now[:notice] = "Guest updated"
+      render status: :ok
     else
+      flash.now[:alert] = "Invalid guest information"
       render status: :unprocessable_entity
     end
   end
