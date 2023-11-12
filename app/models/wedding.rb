@@ -2,7 +2,7 @@
 
 class Wedding < ApplicationRecord
   # Associations
-  has_many :guests, dependent: :destroy
+  has_many :guests, dependent: :delete_all
 
   # Validations
   validates :name, presence: true
