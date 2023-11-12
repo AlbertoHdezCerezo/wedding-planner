@@ -49,6 +49,7 @@ module Common
 
     def default_content_tag_arguments
       {
+        id: stimulus_identifier,
         class: "content",
         data: {
           controller: stimulus_identifier

@@ -2,12 +2,21 @@ import anime from 'animejs'
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['trigger', 'content', 'contentBackground', 'contentBody']
+  static targets = ['trigger', 'content', 'contentBackground', 'contentBody', 'autoClose']
 
   async connect () {
     this.#hide()
 
     if (!this.hasTriggerTarget) await this.open()
+  }
+
+  /**
+   * By inserting an `autoClose` target in a `modal` component we can programatically
+   * close it. This can be useful in scenarios when we want to close a modal when
+   * streaming changes via turbo-stream
+   */
+  autoCloseTargetConnected () {
+    this.close()
   }
 
   #hidden () {
