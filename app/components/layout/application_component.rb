@@ -7,7 +7,7 @@ class Layout::ApplicationComponent < ApplicationComponent
     end
   end
 
-  renders_one :body, "BodyComponent"
+  renders_one :body, BodyComponent
 
   attr_reader :title
 
