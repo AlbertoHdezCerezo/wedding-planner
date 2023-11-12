@@ -65,17 +65,16 @@ class GuestsControllerTest < ControllerTestHelper
   test "POST create if guest parameters are valid, redirects to guests path" do
     guest_payload = { guest: FactoryBot.attributes_for(:guest) }
 
-    post wedding_guests_path(@wedding, guest_payload)
+    post wedding_guests_path(@wedding, **guest_payload, format: :turbo_stream)
 
-    assert_response :redirect
-    assert_redirected_to wedding_guests_path(@wedding)
+    assert_response :created
   end
 
   test "POST create if guest parameters are valid, creates new wedding guest" do
     guest_payload = { guest: FactoryBot.attributes_for(:guest) }
 
     assert_difference -> { @wedding.guests.reload.count }, 1 do
-      post wedding_guests_path(@wedding, guest_payload)
+      post wedding_guests_path(@wedding, **guest_payload, format: :turbo_stream)
     end
   end
 
@@ -100,10 +99,9 @@ class GuestsControllerTest < ControllerTestHelper
 
     guest_payload = { guest: { name: "test" } }
 
-    patch wedding_guest_path(@wedding, guest, guest_payload)
+    patch wedding_guest_path(@wedding, guest, **guest_payload, format: :turbo_stream)
 
-    assert_response :redirect
-    assert_redirected_to wedding_guests_path(@wedding)
+    assert_response :ok
   end
 
   test "PATCH update if guest parameters are valid, update guest" do
@@ -112,7 +110,7 @@ class GuestsControllerTest < ControllerTestHelper
     guest_payload = { guest: { name: "test" } }
 
     assert_changes -> { guest.reload.name }, to: "test" do
-      patch wedding_guest_path(@wedding, guest, guest_payload)
+      patch wedding_guest_path(@wedding, guest, **guest_payload, format: :turbo_stream)
     end
   end
 
