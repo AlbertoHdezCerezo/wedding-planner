@@ -1,1 +1,3 @@
-= base_component(tag: :div, **content_tag_arguments)
+= base_component(tag: :div, **content_tag_arguments) do
+  - flash.each do |flash_type, flash_message|
+    = render Common::FlashNotificationComponent.new(flash_type:, flash_message:)
