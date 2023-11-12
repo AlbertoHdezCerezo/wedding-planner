@@ -1,8 +1,8 @@
 = render BaseComponent.new(**content_tag_arguments) do
   -# Sidebar
-  .w-64{ class: "border-r-[1.5px] border-gray-200" }
+  .h-full.w-64{ class: "border-r-[1.5px] border-gray-200" }
     = render Sidebar.new
 
   -# Content
-  .flex-grow.h-full.px-20.py-12
+  .flex-grow.h-full.flex.flex-col.gap-6.px-20.py-12.overflow-hidden
     = content
