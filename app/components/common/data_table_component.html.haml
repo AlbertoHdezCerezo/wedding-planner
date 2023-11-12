@@ -12,9 +12,7 @@
       = empty_state
   - else
     %table{ table_wrapper_arguments }
-      - head_options = { class: "grid sticky top-0",
-                         style: "grid-template-columns: subgrid; grid-column: -1 / 1;" }
-      %thead{ role: "rowgroup", **head_options }
+      %thead{ role: "rowgroup", **subgrid_options }
         %tr{ role: "row", **subgrid_options }
           - columns.each do |column|
             = render Cell.new(tag: :th, column:, columns:, **head_cell_arguments) do

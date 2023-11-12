@@ -14,7 +14,7 @@ class Guests::IndexComponent < ApplicationComponent
   def default_content_tag_arguments
     {
       class: <<-HTML
-        h-full w-full overflow-hidden flex flex-col gap-4 py-8
+        h-full w-full flex flex-col items-center justify-center gap-3
         bg-white
       HTML
     }

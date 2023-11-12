@@ -25,8 +25,8 @@ module Common
           controller: stimulus_identifier
         },
         class: <<-HTML
-          relative w-[300px] overflow-hidden
-          bg-white border border-2 border-gray-900 rounded-xl cursor-pointer
+          relative w-[300px]
+          p-6 border border-2 border-gray-900 rounded-xl cursor-pointer
         HTML
       }
     end

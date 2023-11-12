@@ -1,26 +1,27 @@
 = render Layout::PageComponent.new do
-  -# Page Header
-  .flex.items-center.justify-between
-    = title_component(title: "Your weddings") do |title|
-      - title.with_subheader_text("List of weddings your are planning")
+  .h-full.w-full.flex.flex-col.gap-8
+    -# Page Header
+    .flex.items-center.justify-between
+      = title_component(title: "Your weddings") do |title|
+        - title.with_subheader_text("List of weddings your are planning")
 
-    - if weddings.any?
-      = button_component(tag: :a,
-                         label: "create wedding plan",
-                         href: new_wedding_path,
-                         scheme: :primary,
-                         "data-turbo-frame": "modal")
-  %hr
+      - if weddings.any?
+        = button_component(tag: :a,
+                           label: "create wedding plan",
+                           href: new_wedding_path,
+                           scheme: :primary,
+                           "data-turbo-frame": "modal")
+    %hr
 
-  -# Weddings List
-  - if weddings.empty?
-    = render Common::EmptyStateComponent.new(icon: "inbox",
-                    title: "You have no open weddings",
-                    subtitle: "Start planning a new wedding",
-                    button_label: "create wedding plan",
-                    button_path: new_wedding_path,
-                    button_arguments: { "data-turbo-frame": "modal" })
-  - else
-    .grid.grid-cols-4.gap-6
-      -# Weddings
-      = render Weddings::IndexComponent::Wedding.with_collection(weddings)
+    -# Weddings List
+    - if weddings.empty?
+      = render Common::EmptyStateComponent.new(icon: "inbox",
+                      title: "You have no open weddings",
+                      subtitle: "Start planning a new wedding",
+                      button_label: "create wedding plan",
+                      button_path: new_wedding_path,
+                      button_arguments: { "data-turbo-frame": "modal" })
+    - else
+      .grid.grid-cols-4.gap-6
+        -# Weddings
+        = render Weddings::IndexComponent::Wedding.with_collection(weddings)

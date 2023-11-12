@@ -33,7 +33,7 @@ module Common
 
     def default_content_tag_arguments
       {
-        class: "flex flex-col gap-6 overflow-hidden"
+        class: "flex flex-col gap-6"
       }
     end
 
@@ -42,7 +42,7 @@ module Common
 
       tag_attributes(
         {
-          class: "grid w-full flex-grow overflow-y-auto border-separate rounded-md border-spacing-0",
+          class: "grid w-full border-separate rounded-md border-spacing-0",
           style: "grid-template-columns: #{column_widths.join(" ")};"
         },
         system_arguments
