@@ -3,7 +3,10 @@
 class Layout::ApplicationComponent < ApplicationComponent
   class BodyComponent < ApplicationComponent
     def call
-      render(BaseComponent.new(tag: :body, **content_tag_arguments)) { content }
+      render(BaseComponent.new(tag: :body, **content_tag_arguments)) do
+        concat(flash_component)
+        concat(content)
+      end
     end
   end
 
