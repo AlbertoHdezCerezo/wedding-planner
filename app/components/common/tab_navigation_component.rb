@@ -48,7 +48,7 @@ module Common
       {
         role: "tablist",
         class: <<-HTML
-          w-full flex flex-row px-12 mt-4 border-b border-gray-200 text-sm text-gray-800
+          w-full flex flex-row px-12 border-b border-gray-200 text-sm text-gray-800
         HTML
       }
     end
