@@ -1,12 +1,2 @@
-- if response.ok?
-  -# Hide Modal Component
-  = turbo_stream.append(Common::ModalComponent.stimulus_identifier) do
-    %div{ "data-common--modal-component-target": "autoClose" }
-
-  -# Reload guests list via lazy-load turbo frame replacing current tab navigator
-  = turbo_stream.replace(Common::TabNavigationComponent::TURBO_FRAME) do
-    = turbo_frame_tag(Common::TabNavigationComponent::TURBO_FRAME, src: wedding_guests_path(@guest.wedding), loading: "lazy")
-- else
-  -# Reload form component with errors
-  = turbo_stream.replace(Guests::EditComponent::Form::ID) do
-    = render Guests::EditComponent::Form.new(wedding: @guest.wedding, guest: @guest)
+= turbo_stream.replace(Guests::EditComponent::Form::ID) do
+  = render Guests::EditComponent::Form.new(wedding: @guest.wedding, guest: @guest)
