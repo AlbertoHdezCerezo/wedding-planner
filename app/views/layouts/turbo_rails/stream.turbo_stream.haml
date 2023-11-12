@@ -1,0 +1,7 @@
+-# Special layout for +turbo-stream+ responses. Renders +flash+ messages without
+-# requiring to explicity define a new turbo stream frame on each view
+= turbo_stream.append(Common::FlashComponent::ID) do
+  - flash.each do |flash_type, flash_message|
+    = render Common::FlashNotificationComponent.new(flash_type:, flash_message:)
+
+= yield

@@ -17,6 +17,10 @@ module ComponentHelper
     render Common::EmptyStateComponent.new(icon:, title:, subtitle:, button_label:, button_path:, button_arguments:)
   end
 
+  def flash_component
+    render(Common::FlashComponent.new)
+  end
+
   def horizontal_description_list_component(separator: "·", size: :medium, **system_arguments, &)
     render(Common::HorizontalDescriptionListComponent.new(separator:, size:, **system_arguments), &)
   end
@@ -27,10 +31,6 @@ module ComponentHelper
 
   def icon_button_component(icon:, size: :medium, scheme: :primary, **system_arguments)
     render(Common::IconButtonComponent.new(icon:, size:, scheme:, **system_arguments))
-  end
-
-  def horizontal_description_list_component(separator: "·", **system_arguments, &) # rubocop:todo Lint/DuplicateMethods
-    render(Common::HorizontalDescriptionListComponent.new(separator:, **system_arguments), &)
   end
 
   def modal_component(**system_arguments, &)
