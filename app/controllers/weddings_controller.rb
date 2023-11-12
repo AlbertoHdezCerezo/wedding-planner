@@ -21,8 +21,9 @@ class WeddingsController < ApplicationController
     @wedding = Wedding.new(**WeddingParameters.new(params[:wedding]))
 
     if @wedding.save
-      redirect_to wedding_path(@wedding)
+      redirect_to wedding_path(@wedding), notice: "Wedding Plan created"
     else
+      flash.now[:alert] = "Invalid Wedding information"
       render status: :unprocessable_entity
     end
   end
