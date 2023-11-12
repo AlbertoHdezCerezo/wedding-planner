@@ -1,7 +1,2 @@
-- if response.created?
-  = turbo_stream.remove("modal")
-  = turbo_stream.replace(Common::TabNavigationComponent::TURBO_FRAME) do
-    = turbo_frame_tag(Common::TabNavigationComponent::TURBO_FRAME, src: wedding_guests_path(@wedding), loading: "lazy")
-- else
-  = turbo_stream.replace(Guests::EditComponent::Form::ID) do
-    = render Guests::EditComponent::Form.new(wedding: @wedding, guest: @guest)
+= turbo_stream.replace(Guests::EditComponent::Form::ID) do
+  = render Guests::EditComponent::Form.new(wedding: @wedding, guest: @guest)
