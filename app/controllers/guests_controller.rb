@@ -41,7 +41,7 @@ class GuestsController < ApplicationController
       flash.now[:notice] = "Guest updated"
       render status: :ok
     else
-      flash.now[:alert] = "Invalid Guest information"
+      flash.now[:alert] = "Invalid guest information"
       render status: :unprocessable_entity
     end
   end
