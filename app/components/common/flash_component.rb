@@ -9,7 +9,7 @@ module Common
 
     def default_content_tag_arguments
       {
-        class: "fixed top-4 right-4",
+        class: "fixed top-4 right-4 z-[10] space-y-4",
         id: ID
       }
     end
