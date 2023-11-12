@@ -1,16 +1,7 @@
 = base_component(**content_tag_arguments) do
-  -# Error Icon & Message
   .w-full.inline-flex.items-center.justify-start.gap-3
-    = icon_component(icon:, size: :lg)
-    %p.text-gray-900.flex-grow= flash_message
+    = icon_component(icon: :exclamation_circle, size: :lg)
+    %p.flex-grow= flash_message
 
-  -# Notification Progress Bar
   .absolute.left-0.bottom-0.w-full.px-4.py-2
-    .w-0.h-1.bg-gray-950.rounded-full{ "data-common--flash-notification-component-target": "progressBar" }
-
-  -# Close Button
-  = icon_button_component(icon: "x-mark",
-                          size: :small,
-                          scheme: :invisible,
-                          class: "absolute top-0 right-0 !bg-transparent",
-                          data: { action: "click->#{stimulus_identifier}#hideNotification" })
+    .w-full.h-1.bg-gray-700.rounded-full
