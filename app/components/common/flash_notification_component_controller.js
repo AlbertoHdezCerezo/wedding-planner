@@ -51,6 +51,12 @@ export default class extends Controller {
       opacity: [1, 0]
     }, 5000)
 
+    animation.add({
+      duration: 500,
+      targets: this.element,
+      height: '0px'
+    }, 5500)
+
     return animation
   }
 
@@ -67,12 +73,19 @@ export default class extends Controller {
       width: '100%'
     }, 0)
 
-    // 3. Hide notification
+    // 2. Hide notification
     animation.add({
       targets: this.element,
       translateX: ['0%', '100%'],
       opacity: [1, 0]
     }, 0)
+
+    // 3. Reduce height to 0
+    animation.add({
+      duration: 500,
+      targets: this.element,
+      height: '0px'
+    }, 750)
 
     return animation
   }
