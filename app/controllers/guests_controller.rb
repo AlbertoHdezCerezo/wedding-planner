@@ -24,10 +24,10 @@ class GuestsController < ApplicationController
     @guest = @wedding.guests.new(**guest_parameters)
 
     if @guest.save
-      flash.now[:notice] = "Guest added to wedding"
+      flash.now[:notice] = t("controllers.guests_controller.create.notice")
       render status: :created
     else
-      flash.now[:alert] = "Invalid guest information"
+      flash.now[:alert] = t("controllers.guests_controller.create.alert")
       render status: :unprocessable_entity
     end
   end
@@ -38,10 +38,10 @@ class GuestsController < ApplicationController
     @guest.assign_attributes(guest_parameters)
 
     if @guest.save
-      flash.now[:notice] = "Guest updated"
+      flash.now[:notice] = t("controllers.guests_controller.update.notice")
       render status: :ok
     else
-      flash.now[:alert] = "Invalid Guest information"
+      flash.now[:alert] = t("controllers.guests_controller.update.alert")
       render status: :unprocessable_entity
     end
   end
