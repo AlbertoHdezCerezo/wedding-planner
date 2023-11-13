@@ -1,0 +1,6 @@
+en:
+  controllers:
+    weddings_controller:
+      create:
+        notice: "Wedding Plan created"
+        alert: "Invalid Wedding information"

@@ -1,0 +1,9 @@
+en:
+  controllers:
+    guests_controller:
+      create:
+        notice: "Guest added to Wedding"
+        alert: "Invalid Guest information"
+      update:
+        notice: "Guest updated"
+        alert: "Invalid Guest information"
