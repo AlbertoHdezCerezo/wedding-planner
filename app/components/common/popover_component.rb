@@ -13,6 +13,13 @@ module Common
       base_component(**options, &block)
     }
 
+    attr_reader :tippy_options
+
+    def initialize(tippy_options: {}, **system_arguments)
+      @tippy_options = tippy_options
+      super(**system_arguments)
+    end
+
     def call
       content_options = { class: "hidden", "data-common--popover-component-target": "content" }
 
@@ -27,7 +34,8 @@ module Common
     def default_content_tag_arguments
       {
         data: {
-          controller: stimulus_identifier
+          controller: stimulus_identifier,
+          "common--popover-component-tippy-options-value": tippy_options.to_json
         }
       }
     end
