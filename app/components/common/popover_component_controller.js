@@ -2,7 +2,12 @@ import tippy from 'tippy.js'
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['trigger', 'content']
+  static targets = [
+    // Wraps the elements which trigger the popover display on hover/click/...
+    'trigger',
+    // Wraps the popover content.
+    'content'
+  ]
 
   static values = {
     tippyOptions: Object
@@ -13,12 +18,6 @@ export default class extends Controller {
   }
 
   #initializePopover () {
-    console.log(
-      {
-        ...this.#defaultTippyOptions(),
-        ...(this.hasTippyOptionsValue ? this.tippyOptionsValue : {})
-      }
-    )
     this.tooltip = tippy(
       this.triggerTarget,
       {
@@ -31,10 +30,11 @@ export default class extends Controller {
   #defaultTippyOptions () {
     return {
       allowHTML: true,
+      appendTo: 'parent',
+      arrow: false,
       animation: 'shift-away-subtle',
       content: this.contentTarget.innerHTML,
-      theme: 'transparent',
-      arrow: false
+      theme: 'transparent'
     }
   }
 }
