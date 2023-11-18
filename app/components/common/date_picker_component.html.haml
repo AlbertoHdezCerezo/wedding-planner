@@ -1,0 +1,15 @@
+%div{ content_tag_arguments }
+  -# Calendar Header - Month Navigation
+  .relative.w-full.inline-flex.items-center.justify-between.gap-3.text-xs
+    .inline-flex.items-center.justify-center.text-xs.gap-1
+      = icon_component(icon: "chevron-left", size: :xs, class: "cursor-pointer")
+    %p.absolute.m-auto.left-0.right-0.w-fit.text-base.font-semibold.text-gray-900= l(calendar_month, format: "%B")
+    .inline-flex.items-center.justify-center.text-xs.gap-1
+      = icon_component(icon: "chevron-right", size: :xs, class: "cursor-pointer")
+
+  -# Calendar Content - Month Days
+  .grid.gap-1.mt-4{ style: "grid-template-columns: repeat(7, 1fr);" }
+    - Date::DAYNAMES.rotate(1).each do |day_name|
+      = render DayName.new(day_name: day_name[0])
+    - calendar_page_date_range.to_a.each do |date|
+      = render Day.new(base_url: url, date:, selected: selected_date == date, **day_tag_arguments)
