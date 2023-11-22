@@ -35,6 +35,37 @@ class ComponentFormBuilder < ActionView::Helpers::FormBuilder
     render_component(component, &)
   end
 
+  def datetime_field(
+    method_name,
+    value = nil,
+    required: false,
+    field_wrapper_arguments: {},
+    input_wrapper_arguments: {},
+    label: nil,
+    label_arguments: {},
+    caption: nil,
+    caption_arguments: {},
+    **system_arguments,
+    &
+  )
+    component = Common::Form::DatetimeFieldComponent.new(
+      object_name,
+      method_name,
+      value: value || method_value(method_name),
+      errors: method_errors(method_name),
+      required:,
+      field_wrapper_arguments:,
+      input_wrapper_arguments:,
+      label:,
+      label_arguments:,
+      caption:,
+      caption_arguments:,
+      **system_arguments
+    )
+
+    render_component(component, &)
+  end
+
   def text_field(
     method_name,
     value = nil,
@@ -49,6 +80,37 @@ class ComponentFormBuilder < ActionView::Helpers::FormBuilder
     &
   )
     component = Common::Form::TextFieldComponent.new(
+      object_name,
+      method_name,
+      value: value || method_value(method_name),
+      errors: method_errors(method_name),
+      required:,
+      field_wrapper_arguments:,
+      input_wrapper_arguments:,
+      label:,
+      label_arguments:,
+      caption:,
+      caption_arguments:,
+      **system_arguments
+    )
+
+    render_component(component, &)
+  end
+
+  def text_area(
+    method_name,
+    value = nil,
+    required: false,
+    field_wrapper_arguments: {},
+    input_wrapper_arguments: {},
+    label: nil,
+    label_arguments: {},
+    caption: nil,
+    caption_arguments: {},
+    **system_arguments,
+    &
+  )
+    component = Common::Form::TextAreaComponent.new(
       object_name,
       method_name,
       value: value || method_value(method_name),
