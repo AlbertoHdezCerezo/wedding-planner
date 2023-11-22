@@ -1,0 +1,9 @@
+en:
+  controllers:
+    events_controller:
+      create:
+        notice: "Event added to Wedding Plan"
+        alert: "Invalid Event information"
+      update:
+        notice: "Event updated"
+        alert: "Invalid Event information"
