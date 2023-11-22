@@ -79,8 +79,6 @@ module Common
       end
     end
 
-    # Slots
-    # -----
     attr_reader :month,
                 :selected_date,
                 :url,
