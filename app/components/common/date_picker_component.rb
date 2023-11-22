@@ -32,9 +32,9 @@ module Common
       attr_reader :base_url, :date, :date_url_parameter_name, :selected
 
       def initialize(
-        base_url: nil,
         date:,
-        date_url_parameter_name: "date", 
+        base_url: nil,
+        date_url_parameter_name: "date",
         selected: false,
         **system_arguments
       )
@@ -79,8 +79,6 @@ module Common
       end
     end
 
-    # Slots
-    # -----
     attr_reader :month,
                 :selected_date,
                 :url,
