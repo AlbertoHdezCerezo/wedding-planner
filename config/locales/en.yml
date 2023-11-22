@@ -30,4 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      short_month_day: "%b %d"
+  time:
+    formats:
+      short_time: "%H:%M"
+      short_date_time: "%H:%M, %d/%m"
