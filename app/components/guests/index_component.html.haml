@@ -12,7 +12,7 @@
                                               ) do |table|
         - if guests.any?
           - table.with_title(title: "Guests List", size: :small, class: "w-full") do |title|
-          - title.with_subheader_text("#{guests.count} persons in your wedding list")
+            - title.with_subheader_text("#{guests.count} persons in your wedding list")
             - title.with_action(label: "Add guest",
                                 tag: :a,
                                 size: :medium,

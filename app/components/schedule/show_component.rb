@@ -14,7 +14,7 @@ class Schedule::ShowComponent < ApplicationComponent
   def default_content_tag_arguments
     {
       class: <<-HTML
-        h-full w-full overflow-hidden inline-flex gap-8 py-8 px-8 bg-white
+        h-full w-full overflow-hidden inline-flex gap-24 py-8 px-8 bg-white
       HTML
     }
   end

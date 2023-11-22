@@ -12,7 +12,7 @@ class Events::EventComponent < ApplicationComponent
 
   def default_content_tag_arguments
     {
-      class: "inline-flex items-start gap-8 text-gray-900"
+      class: "w-full inline-flex items-start gap-8 text-gray-900"
     }
   end
 end

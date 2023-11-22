@@ -7,7 +7,7 @@
 
     %div{ content_tag_arguments }
       -# Events List
-      .flex-grow.h-full.overflow-y-auto
+      .flex-grow.h-full.overflow-y-auto.pr-4
         - if events.empty?
           = empty_state_component(icon: "calendar",
                                   title: "There are not events planned for your wedding",
@@ -15,6 +15,18 @@
                                   button_label: "Create Wedding Event",
                                   button_path: new_wedding_event_path(wedding),
                                   button_arguments: { "data-turbo-frame": "modal" })
+        - else
+          = title_component(title: "Wedding Schedule", size: :small, class: "w-full sticky top-0 bg-white") do |title|
+            - title.with_action(label: "Add Event",
+                                tag: :a,
+                                size: :medium,
+                                scheme: :secondary,
+                                href: new_wedding_event_path(wedding),
+                                "data-turbo-frame": "modal")
+
+          .mt-6
+            - events.each do |event|
+              = render Events::EventComponent.new(event:, class: "border-b py-12")
 
       -# Events Calendar
       .w-72
