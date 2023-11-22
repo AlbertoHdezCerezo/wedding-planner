@@ -37,7 +37,7 @@ class GuestsControllerTest < ControllerTestHelper # rubocop:todo Metrics/ClassLe
     assert_response :success
   end
 
-  test "GET new assigns new wedding" do
+  test "GET new assigns new guest" do
     get new_wedding_guest_path(@wedding)
 
     guest = assigns(:guest)
@@ -63,7 +63,7 @@ class GuestsControllerTest < ControllerTestHelper # rubocop:todo Metrics/ClassLe
     assert_equal response_guest, guest
   end
 
-  test "POST create if guest parameters are valid, redirects to guests path" do
+  test "POST create if guest parameters are valid, renders event template" do
     guest_payload = { guest: FactoryBot.attributes_for(:guest) }
 
     post wedding_guests_path(@wedding, **guest_payload, format: :turbo_stream)
