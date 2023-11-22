@@ -8,7 +8,7 @@ module Common
 
       def call # rubocop:todo Metrics/AbcSize
         base_component(**content_tag_arguments) do
-          if header
+          if header?
             concat(
               base_component(class: "relative px-8 pt-6 pb-4") do
                 # Header title
@@ -23,7 +23,17 @@ module Common
               end
             )
           end
+
+          unless header?
+            concat(icon_button_component(icon: "x-mark",
+                                         size: :medium,
+                                         scheme: :invisible,
+                                         class: "absolute right-[32px] top-[15px]",
+                                         "data-action": "click->#{ModalComponent.stimulus_identifier}#close"))
+          end
+
           concat(content)
+
           concat(base_component(class: "px-8 pt-4 pb-6") { concat(footer) }) if footer
         end
       end
