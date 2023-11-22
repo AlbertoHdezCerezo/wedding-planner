@@ -1,0 +1,14 @@
+= turbo_frame_tag("modal", target: "_top") do
+  = modal_component do |modal|
+    - modal.with_modal_content(class: "w-[800px]") do |content|
+      -# Header
+      - content.with_header(title: event.new_record? ? "Add Event" : "Edit Event")
+
+      -# Event Form
+      = render Events::EditComponent::Form.new(event:)
+
+      -# Footer
+      - content.with_footer do
+        .w-full.inline-flex.justify-end.gap-3
+          = button_component(label: "Cancel", scheme: :secondary, data: { action: "click->common--modal-component#close" })
+          = button_component(label: event.new_record? ? "Create" : "Save", type: "submit", form: "event-form")

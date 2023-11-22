@@ -2,7 +2,7 @@
   = modal_component do |modal|
     - modal.with_modal_content(class: "w-[600px]") do |content|
       -# Header
-      - content.with_header(title: guest.new_record? ? "Add guest" : "Edit guest")
+      - content.with_header(title: guest.new_record? ? "Add Guest" : "Edit Guest")
 
       -# Guest Form
       = render Guests::EditComponent::Form.new(wedding:, guest:)

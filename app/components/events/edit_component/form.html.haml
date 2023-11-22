@@ -1,0 +1,13 @@
+- url = event.new_record? ? wedding_events_path(event.wedding) : wedding_event_path(event.wedding, event)
+- method = event.new_record? ? :post : :patch
+= form_with(model: event, url:, method:, builder: ComponentFormBuilder, **content_tag_arguments) do |form|
+  -# Form Group
+  .inline-flex.gap-8.px-6
+    = form.text_field(:name, label: "Event Name", required: true, field_wrapper_arguments: { class: "basis-1/3" })
+
+  .inline-flex.gap-8.px-6
+    = form.datetime_field(:start_time, label: "From", required: true, include_seconds: false)
+    = form.datetime_field(:end_time, label: "To", required: true, include_seconds: false)
+
+  .inline-flex.gap-8.px-6
+    = form.text_area(:description, label: "Event Description", field_wrapper_arguments: { class: "w-full" })

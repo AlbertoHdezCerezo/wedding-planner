@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Schedule::ShowComponent < ApplicationComponent
-  attr_reader :wedding, :schedule
+  attr_reader :wedding, :events
 
-  def initialize(wedding:, schedule:, **system_arguments)
+  def initialize(wedding:, events:, **system_arguments)
     super(**system_arguments)
     @wedding = wedding
-    @schedule = schedule
+    @events = events
   end
 
   private
@@ -14,8 +14,7 @@ class Schedule::ShowComponent < ApplicationComponent
   def default_content_tag_arguments
     {
       class: <<-HTML
-        h-full w-full overflow-hidden flex flex-col gap-4 py-8
-        bg-white
+        h-full w-full overflow-hidden inline-flex gap-8 py-8 px-8 bg-white
       HTML
     }
   end
