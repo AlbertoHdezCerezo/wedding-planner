@@ -6,4 +6,18 @@
     - navigation.with_item("/TODO", "Budget")
 
     %div{ content_tag_arguments }
+      -# Events List
+      .flex-grow.h-full.overflow-y-auto
+        - if events.empty?
+          = empty_state_component(icon: "inbox",
+                                  title: "There are not events planned for your wedding",
+                                  subtitle: "Start adding your first event",
+                                  button_label: "Create Wedding Event",
+                                  button_path: new_wedding_event_path(wedding),
+                                  button_arguments: { "data-turbo-frame": "modal" })
 
+      -# Events Calendar
+      .w-72
+        = render Common::DatePickerComponent.new(url: "/",
+                                                 selected_date: wedding.date,
+                                                 class: "mt-8")
