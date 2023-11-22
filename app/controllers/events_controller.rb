@@ -26,5 +26,7 @@ class EventsController < ApplicationController
     @wedding = Wedding.find(params[:wedding_id])
   end
 
-  def event_parameters = EventParameters.new(params[:event])
+  def event_parameters
+    EventParameters.new(params[:event])
+  end
 end

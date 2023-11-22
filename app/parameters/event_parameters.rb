@@ -13,4 +13,6 @@ class EventParameters < ApplicationParameters
       end
     end
   end
+
+  def excluded_parameters = %i[start_time end_time]
 end

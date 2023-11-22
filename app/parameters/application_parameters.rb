@@ -13,6 +13,10 @@ class ApplicationParameters < SimpleDelegator
 
   def initialize(params)
     params.permit!
-    super(schema.call(params.to_h).output)
+    super(schema.call(params.to_h).output.except(*excluded_parameters))
   end
+
+  # Collection of keys representing +Schema+ +parameters+
+  # which will be excluded from output.
+  def excluded_parameters = []
 end
