@@ -31,7 +31,7 @@ module Common
       @cancel_button_arguments = cancel_button_arguments
     end
 
-    def call
+    def call # rubocop:todo Metrics/AbcSize
       render Common::ModalComponent.new(**content_tag_arguments) do |modal|
         if trigger?
           modal.with_trigger do
@@ -43,9 +43,7 @@ module Common
           concat(
             content_tag(:div, class: "px-8 pt-10 pb-6") do
               title_component(title: confirmation_header, size: :small, class: "text-center") do |title|
-                if confirmation_subheader.present?
-                  title.with_subheader_text(confirmation_subheader)
-                end
+                title.with_subheader_text(confirmation_subheader) if confirmation_subheader.present?
               end
             end
           )
