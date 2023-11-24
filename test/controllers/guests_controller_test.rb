@@ -3,7 +3,7 @@
 require "minitest/autorun"
 require "controller_test_helper"
 
-class GuestsControllerTest < ControllerTestHelper
+class GuestsControllerTest < ControllerTestHelper # rubocop:todo Metrics/ClassLength
   setup do
     @wedding = FactoryBot.create(:wedding)
     @guests = FactoryBot.create_list(:guest, 3, wedding: @wedding)
