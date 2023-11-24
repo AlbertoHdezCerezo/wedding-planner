@@ -42,7 +42,7 @@ module Common
         modal.with_modal_content(class: "w-[600px]") do |content|
           concat(
             content_tag(:div, class: "px-8 pt-10 pb-6") do
-              title_component(title: confirmation_header, size: :small, class: "text-center") do |title|
+              title_component(title: confirmation_header, size: :small, class: "w-fit m-auto text-center") do |title|
                 title.with_subheader_text(confirmation_subheader) if confirmation_subheader.present?
               end
             end

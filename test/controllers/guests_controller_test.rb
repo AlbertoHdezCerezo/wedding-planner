@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
 require "controller_test_helper"
 
 class GuestsControllerTest < ControllerTestHelper
@@ -132,5 +133,45 @@ class GuestsControllerTest < ControllerTestHelper
     assert_no_changes -> { guest.reload.name } do
       patch wedding_guest_path(@wedding, guest, **guest_payload, format: :turbo_stream)
     end
+  end
+
+  test "DELETE destroy if guest parameter is valid, returns ok status code" do
+    guest = @guests.sample
+
+    delete wedding_guest_path(@wedding, guest, format: :turbo_stream)
+
+    assert_response :ok
+  end
+
+  test "DELETE destroy if guest parameter is valid, removes guest" do
+    guest = @guests.sample
+
+    assert_difference -> { @wedding.reload.guests.count }, -1 do
+      delete wedding_guest_path(@wedding, guest, format: :turbo_stream)
+    end
+
+    assert_not Guest.exists?(guest.id)
+  end
+
+  test "DELETE destroy if guest cannot be removed, returns unprocessable entity response" do
+    guest = @guests.sample
+
+    Guest.any_instance.stubs(:destroy).returns(false)
+
+    delete wedding_guest_path(@wedding, guest, format: :turbo_stream)
+
+    assert_response :unprocessable_entity
+  end
+
+  test "DELETE destroy if guest cannot be removed, does not remove guest" do
+    guest = @guests.sample
+
+    Guest.any_instance.stubs(:destroy).returns(false)
+
+    assert_no_difference -> { @wedding.reload.guests.count } do
+      delete wedding_guest_path(@wedding, guest, format: :turbo_stream)
+    end
+
+    assert Guest.exists?(guest.id)
   end
 end

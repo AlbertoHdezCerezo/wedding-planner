@@ -7,3 +7,6 @@ en:
       update:
         notice: "Guest updated"
         alert: "Invalid Guest information"
+      destroy:
+        notice: "Guest removed"
+        alert: "Guest could not be removed"

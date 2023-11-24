@@ -29,3 +29,5 @@ class ActionDispatch::IntegrationTest
     key.nil? ? assigns : assigns[key]
   end
 end
+
+require "mocha/minitest"
