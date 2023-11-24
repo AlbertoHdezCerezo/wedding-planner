@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class Guests::IndexComponent < ApplicationComponent
-  def self.table_row_id(guest)
-
-  end
+  def self.table_row_id(guest); end
 
   attr_reader :wedding, :guests
 
