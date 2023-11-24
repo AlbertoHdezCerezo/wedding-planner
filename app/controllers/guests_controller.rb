@@ -46,6 +46,20 @@ class GuestsController < ApplicationController
     end
   end
 
+  # DELETE /weddings/<wedding-id>/guests/<id>
+  def destroy
+    set_wedding
+    set_guest
+
+    if @guest.destroy
+      flash.now[:notice] = t("controllers.guests_controller.destroy.notice")
+      render status: :ok
+    else
+      flash.now[:alert] = t("controllers.guests_controller.destroy.alert")
+      render status: :unprocessable_entity
+    end
+  end
+
   private
 
   def guest_parameters = GuestParameters.new(params[:guest])

@@ -1,6 +1,6 @@
 - if response.created?
   -# Hide Modal Component
-  = turbo_stream.append(Common::ModalComponent.stimulus_identifier) do
+  = turbo_stream.append(Guests::EditComponent::Form::ID) do
     %div{ "data-common--modal-component-target": "autoClose" }
 
   -# Reload guests list via lazy-load turbo frame replacing current tab navigator

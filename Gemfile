@@ -114,6 +114,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "mocha"
 
   # Use test helper for most comment test scenarios
   # https://github.com/thoughtbot/shoulda-matchers#minitest

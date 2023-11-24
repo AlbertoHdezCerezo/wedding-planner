@@ -21,7 +21,8 @@
               %p= column.title
       %tbody{ role: "rowgroup", **subgrid_options }
         - items.each_with_index do |item, row_index|
-          = render BaseComponent.new(tag: :tr, role: "row", **subgrid_options) do
+          - row_options = tag_attributes(subgrid_options, { id: dom_id(item) })
+          = render BaseComponent.new(tag: :tr, role: "row", **row_options) do
             - columns.each_with_index do |column, _index|
               = render Cell.new(tag: :td,
                                 column:,
