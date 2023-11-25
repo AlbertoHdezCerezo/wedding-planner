@@ -39,7 +39,7 @@ module Common::Form
     end
 
     def call
-      formatted_value = value.nil? ? nil : value.strftime("%Y-%m-%dT%H:%M")
+      formatted_value = value&.strftime("%Y-%m-%dT%H:%M")
 
       render(wrapper) do
         datetime_field_tag(name, formatted_value, **content_tag_arguments)

@@ -3,7 +3,7 @@
 # Custom +ViewComponent+ based +FormBuilder+.
 #
 # Uses the components under +Common::Form+
-class ComponentFormBuilder < ActionView::Helpers::FormBuilder
+class ComponentFormBuilder < ActionView::Helpers::FormBuilder # rubocop:todo Metrics/ClassLength
   def date_field(
     method_name,
     value = nil,

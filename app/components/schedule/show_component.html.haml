@@ -16,20 +16,20 @@
                                   button_path: new_wedding_event_path(wedding),
                                   button_arguments: { "data-turbo-frame": "modal" })
         - else
-          = title_component(title: "Wedding Schedule", size: :small, class: "w-full sticky top-0 bg-white") do |title|
-            - title.with_action(label: "Add Event",
-                                tag: :a,
-                                size: :medium,
-                                scheme: :secondary,
-                                href: new_wedding_event_path(wedding),
-                                "data-turbo-frame": "modal")
-
-          .mt-6
+          %div
             - events.each do |event|
               = render Events::EventComponent.new(event:, class: "border-b py-12")
 
       -# Events Calendar
-      .w-72
+      .w-72.flex.flex-col.gap-4
+        = button_component(label: "Add Event",
+                           tag: :a,
+                           size: :medium,
+                           scheme: :secondary,
+                           href: new_wedding_event_path(wedding),
+                           "data-turbo-frame": "modal",
+                           class: "w-full")
+
         = render Common::DatePickerComponent.new(url: "/",
                                                  selected_date: wedding.date,
                                                  class: "mt-8")

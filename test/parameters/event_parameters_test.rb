@@ -26,7 +26,7 @@ class EventParametersTest < ActiveSupport::TestCase
   private
 
   def permitted_parameters
-    timestamp = Time.new(2023, 11, 11, 11, 11)
+    timestamp = Time.zone.local(2023, 11, 11, 11, 11)
 
     {
       name: "My Event",

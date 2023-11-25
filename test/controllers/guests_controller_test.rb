@@ -45,24 +45,6 @@ class GuestsControllerTest < ControllerTestHelper # rubocop:todo Metrics/ClassLe
     assert_predicate guest, :new_record?
   end
 
-  test "GET edit renders guest form" do
-    guest = @guests.sample
-
-    get edit_wedding_guest_path(@wedding, guest)
-
-    assert_response :success
-  end
-
-  test "GET edit assigns specified guest" do
-    guest = @guests.sample
-
-    get edit_wedding_guest_path(@wedding, guest)
-
-    response_guest = assigns(:guest)
-
-    assert_equal response_guest, guest
-  end
-
   test "POST create if guest parameters are valid, renders event template" do
     guest_payload = { guest: FactoryBot.attributes_for(:guest) }
 
@@ -93,6 +75,24 @@ class GuestsControllerTest < ControllerTestHelper # rubocop:todo Metrics/ClassLe
     assert_no_difference -> { @wedding.guests.reload.count } do
       post wedding_guests_path(@wedding, **guest_payload, format: :turbo_stream)
     end
+  end
+
+  test "GET edit renders guest form" do
+    guest = @guests.sample
+
+    get edit_wedding_guest_path(@wedding, guest)
+
+    assert_response :success
+  end
+
+  test "GET edit assigns specified guest" do
+    guest = @guests.sample
+
+    get edit_wedding_guest_path(@wedding, guest)
+
+    response_guest = assigns(:guest)
+
+    assert_equal response_guest, guest
   end
 
   test "PATCH update if guest parameters are valid, redirects to guests path" do

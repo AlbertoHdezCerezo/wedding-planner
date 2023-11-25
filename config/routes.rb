@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # Weddings
   # --------
   resources :weddings, only: %i[index new create show] do
-    resources :events, only: %i[new create]
+    resources :events, only: %i[new create edit update destroy]
     resources :guests, only: %i[index new edit create update destroy]
     resource :schedule, only: %i[show]
   end

@@ -48,7 +48,6 @@ class GuestsController < ApplicationController
 
   # DELETE /weddings/<wedding-id>/guests/<id>
   def destroy
-    set_wedding
     set_guest
 
     if @guest.destroy
