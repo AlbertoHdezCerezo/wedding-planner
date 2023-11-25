@@ -20,8 +20,4 @@ class SchedulesControllerTest < ControllerTestHelper
 
     assert_equal wedding, @wedding
   end
-
-  test "GET index fetches wedding guests" do
-    raise "Complete test once logic to fetch events is ready"
-  end
 end

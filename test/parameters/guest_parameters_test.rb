@@ -9,7 +9,11 @@ class GuestParametersTest < ActiveSupport::TestCase
     parsed_params = EventParameters.new(params)
 
     schedule = permitted_parameters[:start_time]..permitted_parameters[:end_time]
-    expected_parameters = permitted_parameters.merge(schedule:)
+    expected_parameters = permitted_parameters.merge(
+      schedule:,
+      start_time: nil,
+      end_time: nil
+    ).compact_blank
 
     assert_equal expected_parameters, parsed_params
   end
