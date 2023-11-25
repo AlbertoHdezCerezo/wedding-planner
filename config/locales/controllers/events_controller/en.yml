@@ -7,3 +7,6 @@ en:
       update:
         notice: "Event updated"
         alert: "Invalid Event information"
+      destroy:
+        notice: "Event removed from Wedding Plan"
+        alert: "Event could not be removed"

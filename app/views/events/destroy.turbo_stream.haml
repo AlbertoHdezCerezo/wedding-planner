@@ -1,0 +1,11 @@
+- if response.ok?
+  -# Hide Modal Component
+  = turbo_stream.append(Events::EditComponent::Form::ID) do
+    %div{ "data-common--modal-component-target": "autoClose" }
+
+  -# If wedding had one guest before deletion
+  - if @event.wedding.events.empty?
+    = turbo_stream.replace(Common::TabNavigationComponent::TURBO_FRAME) do
+      = turbo_frame_tag(Common::TabNavigationComponent::TURBO_FRAME, src: wedding_schedule_path(@event.wedding), loading: "lazy")
+  - else
+    = turbo_stream.remove(dom_id(@event))

@@ -2,7 +2,7 @@
 
 class Event < ApplicationRecord
   # Associations
-  belongs_to :wedding, dependent: :destroy
+  belongs_to :wedding
 
   # Validations
   validates :name, presence: true

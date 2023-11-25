@@ -4,8 +4,8 @@
     %div{ "data-common--modal-component-target": "autoClose" }
 
   -# If wedding had one guest before deletion
-  - if @wedding.guests.empty?
+  - if @guest.wedding.guests.empty?
     = turbo_stream.replace(Common::TabNavigationComponent::TURBO_FRAME) do
-      = turbo_frame_tag(Common::TabNavigationComponent::TURBO_FRAME, src: wedding_guests_path(@wedding), loading: "lazy")
+      = turbo_frame_tag(Common::TabNavigationComponent::TURBO_FRAME, src: wedding_guests_path(@guest.wedding), loading: "lazy")
   - else
     = turbo_stream.remove(dom_id(@guest))
