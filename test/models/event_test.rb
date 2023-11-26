@@ -36,4 +36,15 @@ class EventTest < ActiveSupport::TestCase
     assert_not event.valid?
     assert event.errors.of_kind?(:end_time, :greater_than)
   end
+
+  test "if associated to service/s, validates services belong to event wedding" do
+    service = FactoryBot.create(:service)
+    event = FactoryBot.build(:event)
+
+    event.services = [service]
+
+    assert_not event.valid?
+    assert event.errors.of_kind?(:event_services, :invalid)
+    assert event.event_services.first.errors.of_kind?(:service, :event_wedding_missmatch)
+  end
 end
