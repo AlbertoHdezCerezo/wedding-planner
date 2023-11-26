@@ -199,6 +199,15 @@ GEM
     minitest (5.20.0)
     mocha (2.1.0)
       ruby2_keywords (>= 0.0.5)
+    monetize (1.12.0)
+      money (~> 6.12)
+    money (6.16.0)
+      i18n (>= 0.6.4, <= 2)
+    money-rails (1.15.0)
+      activesupport (>= 3.0)
+      monetize (~> 1.9)
+      money (~> 6.13)
+      railties (>= 3.0)
     msgpack (1.7.2)
     mutex_m (0.2.0)
     net-imap (0.4.4)
@@ -376,6 +385,7 @@ DEPENDENCIES
   jbuilder
   lookbook (>= 2.0.5)
   mocha
+  money-rails (~> 1.15)
   pg (~> 1.5)
   pry
   puma (~> 6.4)

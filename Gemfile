@@ -67,6 +67,10 @@ gem "inline_svg", "~> 1.9.0"
 # DRY Parameters for your controllers
 gem "dry-schema", "~> 1.13.3"
 
+# Money Currency made easy
+# https://github.com/RubyMoney/money-rails
+gem "money-rails", "~> 1.15"
+
 group :development, :test do
   # powerful component browser and preview system with an integrated documentation engine
   gem "lookbook", ">= 2.0.5"
