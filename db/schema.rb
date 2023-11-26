@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_11_075020) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_26_084017) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_075020) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "event_services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "event_id", null: false
+    t.uuid "service_id", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_services_on_event_id"
+    t.index ["service_id"], name: "index_event_services_on_service_id"
+  end
+
   create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "wedding_id", null: false
     t.string "name", null: false
@@ -83,6 +92,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_075020) do
     t.index ["wedding_id"], name: "index_invitations_on_wedding_id"
   end
 
+  create_table "services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.uuid "wedding_id", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["wedding_id"], name: "index_services_on_wedding_id"
+  end
+
   create_table "weddings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.date "date"
     t.string "description"
@@ -93,7 +111,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_075020) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "event_services", "events", name: "event_fk_in_event_services"
+  add_foreign_key "event_services", "services", name: "service_fk_in_event_services"
   add_foreign_key "events", "weddings", name: "wedding_fk_in_events"
   add_foreign_key "guests", "weddings"
   add_foreign_key "invitations", "weddings"
+  add_foreign_key "services", "weddings", name: "wedding_fk_in_services"
 end

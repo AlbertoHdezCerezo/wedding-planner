@@ -3,6 +3,8 @@
 class Event < ApplicationRecord
   # Associations
   belongs_to :wedding
+  has_many :event_services, dependent: :destroy
+  has_many :services, through: :event_services
 
   # Validations
   validates :name, presence: true
@@ -10,6 +12,8 @@ class Event < ApplicationRecord
   validates :schedule, presence: true
 
   validates_comparison_of :end_time, greater_than: :start_time
+
+  validates_associated :event_services
 
   # Scopes
   scope :chronological, -> { order(schedule: :asc) }
