@@ -2,7 +2,11 @@
 
 FactoryBot.define do
   factory :event_service do
-    association :event, factory: :event
-    association :service, factory: :service
+    transient do
+      wedding { create(:wedding) }
+    end
+
+    event { association :event, wedding: }
+    service { association :service, wedding: }
   end
 end
