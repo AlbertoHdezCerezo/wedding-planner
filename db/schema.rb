@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_10_063902) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_10_135014) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dishes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.string "dietary_restrictions", default: [], null: false, array: true
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "EUR", null: false
+    t.uuid "organization_id", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_dishes_on_organization_id"
+  end
 
   create_table "event_services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "event_id", null: false
@@ -54,6 +66,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_063902) do
     t.index ["wedding_id"], name: "index_invitations_on_wedding_id"
   end
 
+  create_table "menu_dishes", force: :cascade do |t|
+    t.uuid "menu_id", null: false
+    t.uuid "dish_id", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["dish_id"], name: "index_menu_dishes_on_dish_id"
+    t.index ["menu_id"], name: "index_menu_dishes_on_menu_id"
+  end
+
+  create_table "menus", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.uuid "organization_id", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_menus_on_organization_id"
+  end
+
   create_table "offers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "organization_id", null: false
     t.uuid "service_id", null: false
@@ -89,11 +119,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_063902) do
     t.string "name", null: false
   end
 
+  add_foreign_key "dishes", "organizations", name: "dish_fk_in_organization"
   add_foreign_key "event_services", "events", name: "event_fk_in_event_services"
   add_foreign_key "event_services", "services", name: "service_fk_in_event_services"
   add_foreign_key "events", "weddings", name: "wedding_fk_in_events"
   add_foreign_key "guests", "weddings"
   add_foreign_key "invitations", "weddings"
+  add_foreign_key "menu_dishes", "dishes", name: "menu_dish_fk_in_dish"
+  add_foreign_key "menu_dishes", "menus", name: "menu_dish_fk_in_menu"
+  add_foreign_key "menus", "organizations", name: "menu_fk_in_organization"
   add_foreign_key "offers", "organizations", name: "offer_fk_in_organization"
   add_foreign_key "offers", "services", name: "offer_fk_in_service"
   add_foreign_key "services", "weddings", name: "wedding_fk_in_services"
