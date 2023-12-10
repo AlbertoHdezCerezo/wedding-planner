@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_10_135014) do
     t.index ["wedding_id"], name: "index_invitations_on_wedding_id"
   end
 
-  create_table "menu_dishes", force: :cascade do |t|
+  create_table "menu_dishes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "menu_id", null: false
     t.uuid "dish_id", null: false
     t.timestamptz "created_at", precision: 6, null: false
