@@ -5,6 +5,7 @@ class Service < ApplicationRecord
   belongs_to :wedding
   has_many :event_services, dependent: :destroy
   has_many :events, through: :event_services
+  has_many :offers, dependent: :destroy
 
   # Validations
   validates :name, presence: true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_26_084017) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_10_063902) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,24 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_26_084017) do
     t.index ["wedding_id"], name: "index_invitations_on_wedding_id"
   end
 
+  create_table "offers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "organization_id", null: false
+    t.uuid "service_id", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "EUR", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_offers_on_organization_id"
+    t.index ["service_id"], name: "index_offers_on_service_id"
+  end
+
+  create_table "organizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+  end
+
   create_table "services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
@@ -76,5 +94,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_26_084017) do
   add_foreign_key "events", "weddings", name: "wedding_fk_in_events"
   add_foreign_key "guests", "weddings"
   add_foreign_key "invitations", "weddings"
+  add_foreign_key "offers", "organizations", name: "offer_fk_in_organization"
+  add_foreign_key "offers", "services", name: "offer_fk_in_service"
   add_foreign_key "services", "weddings", name: "wedding_fk_in_services"
 end
