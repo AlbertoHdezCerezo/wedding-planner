@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :weddings, only: %i[index new create show] do
     resources :events, only: %i[new create edit update destroy]
     resources :guests, only: %i[index new edit create update destroy]
+    resources :offers, only: %i[index]
     resource :schedule, only: %i[show]
   end
 end
