@@ -1,0 +1,8 @@
+en:
+  create:
+    title: Add Guest
+    confirm: Create
+  update:
+    title: Edit Guest
+    confirm: Save
+  cancel: Cancel

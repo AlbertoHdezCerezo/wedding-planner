@@ -9,7 +9,9 @@ class Guests::EditComponent < ApplicationComponent
     @guest = guest
   end
 
-  protected
+  def editing? = !guest.new_record?
+
+  private
 
   def default_classes
     "py-4 rounded-md bg-white flex flex-col gap-3"

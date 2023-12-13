@@ -2,7 +2,7 @@
   = modal_component do |modal|
     - modal.with_modal_content(class: "w-[600px]") do |content|
       -# Header
-      - content.with_header(title: guest.new_record? ? "Add Guest" : "Edit Guest")
+      - content.with_header(title: editing? ? t(".update.title") : t(".create.title"))
 
       -# Guest Form
       = render Guests::EditComponent::Form.new(wedding:, guest:)
@@ -10,7 +10,9 @@
       -# Footer
       - content.with_footer do
         .w-full.inline-flex.justify-end.gap-3
-          = button_component(label: "Cancel", scheme: :secondary, data: { action: "click->common--modal-component#close" })
-          = button_component(label: wedding.new_record? ? "Create" : "Save",
+          = button_component(label: t(".cancel"),
+                              scheme: :secondary,
+                              data: { action: "click->common--modal-component#close" })
+          = button_component(label: editing? ? t(".update.confirm") : t(".create.confirm"),
                              form: "guest-form",
                              type: "submit")

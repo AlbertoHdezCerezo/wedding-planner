@@ -2,5 +2,5 @@
             builder: ComponentFormBuilder,
             **content_tag_arguments) do |form|
   .w-full.flex.flex-row.gap-6
-    = form.text_field(:name, required: true, field_wrapper_arguments: { class: "basis-1/2" })
-    = form.date_field(:date, required: true, field_wrapper_arguments: { class: "basis-1/2" })
+    = form.text_field(:name, label: t(".fields.name"), required: true, field_wrapper_arguments: { class: "basis-1/2" })
+    = form.date_field(:date, label: t(".fields.date"), required: true, field_wrapper_arguments: { class: "basis-1/2" })

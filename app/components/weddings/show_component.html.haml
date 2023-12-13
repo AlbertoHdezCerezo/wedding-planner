@@ -1,4 +1,4 @@
-= render Layout::PageComponent.new do
+- content = capture do
   -# Page Header
   .flex.flex-col.items-start.justify-between.gap-3
     -# Back Label
@@ -14,3 +14,12 @@
 
   -# Content
   = render Guests::IndexComponent.new(wedding:, guests: wedding.guests)
+
+- if streamed
+  -# TODO: refactor this into a specific helper within action view components
+  %turbo-frame.flex-1.h-full.flex.flex-col.gap-6.px-20.py-12.overflow-hidden{ id: ::Layout::PageComponent::BODY_FRAME_ID }
+    = content
+- else
+  = render ::Layout::PageComponent.new do
+    = content
+

@@ -14,13 +14,15 @@
 
   -# Sidebar Menu
   .flex-grow
+    - turbo_frame_target = { "data-turbo-frame": Layout::PageComponent::BODY_FRAME_ID }
+
     = navigation_list_component(size: :lg) do |list|
       - list.with_heading(title: "Planner")
-      - list.with_link_default(url: weddings_path, label: "Weddings") do |item|
-        - item.with_leading_visual_icon(icon: "sparkles")
-      - list.with_link_default(url: "TODO", label: "Services") do |item|
+      - list.with_link_default(url: weddings_path, label: "Weddings", **turbo_frame_target) do |item|
+        - item.with_leading_visual_icon(icon: "sparkles", )
+      - list.with_link_default(url: "TODO", label: "Services", **turbo_frame_target) do |item|
         - item.with_leading_visual_icon(icon: "tag")
-      - list.with_link_default(url: "TODO", label: "Settings") do |item|
+      - list.with_link_default(url: "TODO", label: "Settings", **turbo_frame_target) do |item|
         - item.with_leading_visual_icon(icon: "cog")
 
   -# Footer

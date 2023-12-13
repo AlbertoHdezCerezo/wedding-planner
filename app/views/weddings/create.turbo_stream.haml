@@ -1,2 +1,12 @@
-= turbo_stream.replace(Weddings::EditComponent::Form::ID) do
-  = render Weddings::EditComponent::Form.new(wedding: @wedding)
+- if response.created?
+  -# Hide Modal Component
+  = turbo_stream.append(Weddings::EditComponent::Form::ID) do
+    %div{ "data-common--modal-component-target": "autoClose" }
+
+  -# Reload guests list via lazy-load turbo frame replacing current tab navigator
+  = turbo_stream.replace(Layout::PageComponent::BODY_FRAME_ID) do
+    = render Weddings::ShowComponent.new(wedding: @wedding, streamed: true)
+- else
+  -# Reload form component with errors
+  = turbo_stream.replace(Weddings::EditComponent::Form::ID) do
+    = render Weddings::EditComponent::Form.new(wedding: @wedding)
