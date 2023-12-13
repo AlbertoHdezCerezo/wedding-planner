@@ -1,50 +1,43 @@
-.flex-grow.overflow-hidden
-  = tab_navigation_component do |navigation|
-    - navigation.with_item("/TODO", "Tasks")
-    - navigation.with_item(wedding_guests_path(wedding), "Guests", active: true)
-    - navigation.with_item(wedding_schedule_path(wedding), "Schedule")
-    - navigation.with_item("/TODO", "Budget")
-
-    %div{ content_tag_arguments }
-      = render Common::DataTableComponent.new(items: guests,
-                                              density: :spacious,
-                                              class: "w-full h-full",
-                                              ) do |table|
-        - if guests.any?
-          - table.with_title(title: "Guests List", size: :small, class: "w-full") do |title|
-            - title.with_subheader_text("#{guests.count} persons in your wedding list")
-            - title.with_action(label: "Add guest",
-                                tag: :a,
-                                size: :medium,
-                                scheme: :secondary,
-                                href: new_wedding_guest_path(wedding),
-                                "data-turbo-frame": "modal")
-            - title.with_action(label: "Send invitations", size: :medium, scheme: :primary)
-        - table.with_empty_state(icon: "inbox",
-                                 title: "Your guests list is empty",
-                                 subtitle: "Start preparing the guests for the wedding",
-                                 button_label: "add guest",
-                                 button_path: new_wedding_guest_path(wedding),
-                                 button_arguments: { "data-turbo-frame": "modal" })
-        - table.with_column("Name") { |item| tag.p("#{item.name} #{item.surname}") }
-        - table.with_column("Travels from") { |item| tag.p(item.country) }
-        - table.with_column("Relation") { tag.p("Broom's father") }
-        - table.with_column(horizontal_alignment: :right) do |guest|
-          .inline-flex.gap-3
-            - confirm_button_arguments = { tag: :a,
-                                           "data-turbo-method": "delete",
-                                           href: wedding_guest_path(wedding, guest) }
-            - confirmation_subheader = "Do you want to remove #{guest.name} from the Wedding Guest's Lists?"
-            = render Common::ModalConfirmationComponent.new(confirm_label: "Remove Guest",
-                                                            cancel_label: "Cancel",
-                                                            confirmation_header: "Remove Guest from Guests List",
-                                                            confirmation_subheader:,
-                                                            confirm_button_arguments:) do |modal|
-              - modal.with_trigger do
-                = icon_button_component(icon: "trash", size: :small, scheme: :secondary)
-            = icon_button_component(icon: "box-pencil",
-                                    tag: :a,
-                                    size: :small,
-                                    scheme: :secondary,
-                                    href: edit_wedding_guest_path(wedding, guest),
-                                    "data-turbo-frame": "modal")
+= render Weddings::ShowComponent::Layout.new(wedding:) do
+  %div{ content_tag_arguments }
+    = render Common::DataTableComponent.new(items: guests,
+                                            density: :spacious,
+                                            class: "w-full h-full") do |table|
+      - if guests.any?
+        - table.with_title(title: t(".title"), size: :small, class: "w-full") do |title|
+          - title.with_subheader_text(t(".subtitle", count: guests.count))
+          - title.with_action(label: t(".add_guest"),
+                              tag: :a,
+                              size: :medium,
+                              scheme: :secondary,
+                              href: new_wedding_guest_path(wedding),
+                              "data-turbo-frame": "modal")
+          - title.with_action(label: t(".send_invitations"), size: :medium, scheme: :primary)
+      - table.with_empty_state(icon: "inbox",
+                               title: t(".empty.title"),
+                               subtitle: t(".empty.subtitle"),
+                               button_label: t(".add_guest"),
+                               button_path: new_wedding_guest_path(wedding),
+                               button_arguments: { "data-turbo-frame": "modal" })
+      - table.with_column(t(".table.name")) { |item| tag.p("#{item.name} #{item.surname}") }
+      - table.with_column(t(".table.origin")) { |item| tag.p(item.country) }
+      - table.with_column(t(".table.relation")) { tag.p("Broom's father") }
+      - table.with_column(horizontal_alignment: :right) do |guest|
+        .inline-flex.gap-3
+          - confirm_button_arguments = { tag: :a,
+                                         "data-turbo-method": "delete",
+                                         href: wedding_guest_path(wedding, guest) }
+          - confirmation_subheader = t(".remove.subtitle", guest: guest.name)
+          = render Common::ModalConfirmationComponent.new(confirm_label: t(".remove.confirm"),
+                                                          cancel_label: t(".remove.cancel"),
+                                                          confirmation_header: t(".remove.title"),
+                                                          confirmation_subheader:,
+                                                          confirm_button_arguments:) do |modal|
+            - modal.with_trigger do
+              = icon_button_component(icon: "trash", size: :small, scheme: :secondary)
+          = icon_button_component(icon: "box-pencil",
+                                  tag: :a,
+                                  size: :small,
+                                  scheme: :secondary,
+                                  href: edit_wedding_guest_path(wedding, guest),
+                                  "data-turbo-frame": "modal")

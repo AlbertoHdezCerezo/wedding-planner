@@ -7,4 +7,6 @@ class Weddings::EditComponent < ApplicationComponent
     super(**system_arguments)
     @wedding = wedding
   end
+
+  def editing? = !wedding.new_record?
 end
