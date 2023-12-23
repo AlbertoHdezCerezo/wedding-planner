@@ -1,0 +1,24 @@
+-# <!DOCTYPE html> (https://haml.info/docs/yardoc/file.REFERENCE.html)
+!!! 5
+%html
+  %head
+    -# Application title displayed in web-browser tab
+    %title= title
+
+    -# Page meta configuration
+    %meta{ name: "viewport", content: "width=device-width,initial-scale=1" }
+
+    -# Cross-Site Request Prevention meta tag:
+    -# https://stackoverflow.com/questions/9996665/rails-how-does-csrf-meta-tag-work
+    -# https://www.gnucitizen.org/blog/csrf-demystified/
+    = csrf_meta_tags
+
+    -# Content Security Policy meta tag:
+    -# https://stackoverflow.com/questions/30280370/how-does-content-security-policy-csp-work
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload"
+
+  = body
+
