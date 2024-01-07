@@ -1,0 +1,16 @@
+= render(Invitation::Layout::PageComponent.new) do
+  .relative.flex.flex-col.items-center.justify-center.h-full.w-full.border-gray-500{ class: "border-[1.5px]" }
+    %hr.absolute.w-full.m-auto.border-gray-500
+
+    %h1.absolute.px-16.m-auto.bg-white.font-newsreader.text-7xl{ class: "leading-[0.6]" }
+      %p{ class: "first-letter:mb-3" } 14
+      %br
+      %p{ class: "first-letter:mb-3" } 09
+
+    %h2.absolute.uppercase.text-xs.space-x-1{ class: "bottom-[100px]" }
+      %span Save the date
+      %span •
+      %span Alberto & Andrea
+
+    %h2.absolute.font-newsreader.text-xs.text-gray-500{ class: "bottom-[50px]" }
+      %span wedding invitation

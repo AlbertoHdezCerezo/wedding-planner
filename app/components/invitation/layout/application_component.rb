@@ -7,6 +7,17 @@ class Invitation::Layout::ApplicationComponent < ApplicationComponent
         content
       end
     end
+
+    def default_content_tag_arguments
+      {
+        data: {
+          controller: Invitation::Layout::ApplicationComponent.stimulus_identifier
+        },
+        class: <<-HTML
+          h-screen w-screen flex items-center justify-center
+        HTML
+      }
+    end
   end
 
   renders_one :body, BodyComponent
