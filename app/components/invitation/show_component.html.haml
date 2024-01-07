@@ -1,3 +1,2 @@
 %div{ content_tag_arguments }
-  = render(Invitation::Layout::PageComponent.new) do
-    %h1 Hi!
+  = render(Invitation::Postcard.new(wedding:, guest:))
