@@ -1,31 +1,29 @@
 = render(Invitation::Layout::PageComponent.new) do
-  .relative.h-full.flex.flex-col.justify-between
-    %h1.mt-16.mb-32.space-y-4.font-newsreader.text-6xl.text-gray-700{ class: "leading-[0.6]" }
-      %p{ class: "first-letter:mb-3" } Alberto
-      %p.ml-10 •
-      %p{ class: "first-letter:mb-3" } Andrea
+  .relative.h-full.flex.flex-col.justify-between.px-4.py-10
+    %h1.w-full.mt-16.font-newsreader.text-5xl.text-gray-700.text-center{ class: "leading-[1.1]" }
+      %span Alberto
+      %br
+      %span{ class: "text-[32px]" } &
+      %br
+      %span Andrea
 
     .space-y-6
-      %h2.uppercase.text-gray-700{ class: "w-[85%] text-[10px] tracking-[.25em]" }
+      %h2.uppercase.text-gray-700{ class: "w-[85%] text-[10px] tracking-[.15em]" }
         %span invite you to join them
         %br
         %span in their wedding celebration
 
       .flex.flex-row.items-center.justify-start
-        %p.font-newsreader.uppercase.text-center.leading-3.mr-6.pr-6.border-r.border-gray-700
+        %p.font-newsreader.uppercase.text-center.leading-3.mr-6.pr-6.border-r.border-gray-700.text-gray-700
           %span.text-xs Sept
           %br
           %span.font-newsreader.text-2xl{ class: "tracking-[.05em]" } 14
           %br
           %span.text-sm 2023
-        %p.uppercase.leading-4.text-gray-500{ class: "text-[10px] tracking-[.1em]" }
+        %p.uppercase.leading-4.text-gray-500{ class: "text-[10px] tracking-[.15em]" }
           %span.text-gray-700 Ceremony on the 14th at 17:00
           %br
           %span Parador de Plasencia
           %br
           %span 10600 Plasencia, Cáceres, Spain
           %p.uppercase.leading-4.text-gray-500{ class: "text-[10px] tracking-[.1em]" }
-
-      = button_component(label: "accept invitation",
-                         scheme: :secondary,
-                         size: :small)
