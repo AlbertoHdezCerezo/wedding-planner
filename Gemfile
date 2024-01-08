@@ -122,5 +122,5 @@ group :test do
 
   # Use test helper for most comment test scenarios
   # https://github.com/thoughtbot/shoulda-matchers#minitest
-  gem "shoulda-matchers", "~> 5.0"
+  gem "shoulda-matchers", "~> 6.0"
 end
