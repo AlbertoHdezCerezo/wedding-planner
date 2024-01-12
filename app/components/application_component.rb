@@ -5,6 +5,7 @@ class ApplicationComponent < ViewComponent::Base
   include Turbo::FramesHelper
   include TagAttributeHelper
   include ComponentHelper
+  include StimulusHelper
 
   def self.stimulus_identifier = name.underscore.gsub("/", "--").tr("_", "-")
 
