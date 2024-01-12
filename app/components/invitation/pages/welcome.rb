@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Invitation::Pages::Welcome < ApplicationComponent
+class Invitation::Pages::Welcome < Invitation::Pages::Page
+  def self.page_name = "welcome"
+
   attr_reader :wedding, :guest
 
   def initialize(wedding:, guest:, **system_arguments)

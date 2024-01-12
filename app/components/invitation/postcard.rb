@@ -16,6 +16,7 @@ class Invitation::Postcard < ApplicationComponent
     )
   end
 
+
   private
 
   def default_content_tag_arguments
@@ -23,5 +24,13 @@ class Invitation::Postcard < ApplicationComponent
       class: "p-8 shadow-lg",
       data: { controller: stimulus_identifier },
     }
+  end
+
+  def pages
+    # Ignores component previews, set in the same namespace of the +Page+ components
+    Invitation::Pages.constants
+                     .map(&:to_s)
+                     .grep_v(/(Preview|Page)\z/)
+                     .map { "Invitation::Pages::#{_1}".constantize }
   end
 end

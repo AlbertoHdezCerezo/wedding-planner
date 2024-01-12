@@ -2,8 +2,7 @@
 export class Page {
   // Verifies template complies with format constraints to be treated as page
   static valid (template) {
-    return template.tagName.toLowerCase() === 'template' &&
-      template.dataset.name !== undefined
+    return template.tagName.toLowerCase() === 'template' && !!template.dataset.pageName
   }
 
   // element template representing an invitation page
@@ -26,7 +25,7 @@ export class Page {
   }
 
   get name () {
-    return this.template.dataset.name
+    return this.template.dataset.pageName
   }
 
   get layout () {
