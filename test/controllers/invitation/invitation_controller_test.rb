@@ -3,7 +3,7 @@
 require "minitest/autorun"
 require "controller_test_helper"
 
-class Invitation::InvitationControllerTest < ControllerTestHelper # rubocop:todo Metrics/ClassLength
+class Invitation::InvitationControllerTest < ControllerTestHelper
   setup do
     @wedding = FactoryBot.create(:wedding)
     @guest = FactoryBot.create(:guest, wedding: @wedding)
