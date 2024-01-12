@@ -1,4 +1,10 @@
 %div{ content_tag_arguments }
   .flex.flex-row.space-x-16.border-gray-500{ class: "border-[1.5px]" }
     = render Invitation::Pages::Cover.new(wedding:, guest:)
-    = render Invitation::Pages::Welcome.new(wedding:, guest:)
+    .contents{ stimulus_target_option("pageAttachment", self.stimulus_identifier) }
+      -# Renders all pages, each one wrapped in a template with the metadata required
+      -# by the +javascript+ +Page+ class to navigate between invitation pages.
+      - pages.each do |page|
+        %template{ stimulus_target_option("pageTemplate",
+                                          self.stimulus_identifier).merge(data: { page_name: page.page_name }) }
+          = render page.new(wedding:, guest:)

@@ -1,4 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
+import { Navigator } from '../../javascript/src/invitation/navigator'
 
 /**
  * Implement the invitation logic to navigate between the different
@@ -23,6 +24,7 @@ export default class extends Controller {
 
   connect () {
     this.pageNavigator = new Navigator(this.pageTemplateTargets, this.pageAttachmentTarget)
+    this.navigateTo('welcome')
   }
 
   navigateTo (pageName) {
