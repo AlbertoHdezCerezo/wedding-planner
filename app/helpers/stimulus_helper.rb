@@ -17,11 +17,6 @@ module StimulusHelper
     { stimulus_value_key(controller_identifier, value_name) => value }
   end
 
-  private
-
-  # Special dasherize logic for Stimulus related keys (like value names)
-  def dasherize(string) = string.to_s.underscore.dasherize.gsub("/", "--")
-
   def stimulus_css_class_key(controller_identifier, class_name)
     "data-#{controller_identifier}-#{class_name}-class"
   end
@@ -35,4 +30,9 @@ module StimulusHelper
   def stimulus_action_value(event, controller_identifier, action)
     "#{event}->#{controller_identifier}##{action}"
   end
+
+  private
+
+  # Special dasherize logic for Stimulus related keys (like value names)
+  def dasherize(string) = string.to_s.underscore.dasherize.gsub("/", "--")
 end
