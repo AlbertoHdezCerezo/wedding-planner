@@ -1,0 +1,9 @@
+= render(Invitation::Layout::PageComponent.new) do
+  .h-full.w-full.overflow-y-scroll.px-4.py-10
+    = title_component(title: 'Schedule')
+
+    -# Events list
+    .mt-10.space-y-4
+      - wedding.events.each do |event|
+        = title_component(size: :small, title: event.name) do |event_title|
+          = event_title.with_subheader_text(event.description)
