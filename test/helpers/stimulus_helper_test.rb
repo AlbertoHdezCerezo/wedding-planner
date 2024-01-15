@@ -15,7 +15,7 @@ class StimulusHelperTest < ActiveSupport::TestCase
   test "#stimulus_css_class_option returns hash with right Stimulus css class key" do
     assert_equal(
       { "data-my-controller-sample-class" => "css-class" },
-      stimulus_css_class_option("my-controller", "sample", "css-class")
+      stimulus_css_class_option("sample", "my-controller", "css-class")
     )
   end
 
@@ -29,7 +29,7 @@ class StimulusHelperTest < ActiveSupport::TestCase
   test "#stimulus_value_option returns hash with right Stimulus value key and value" do
     assert_equal(
       { "data-my-controller-sample-value" => "myValue" },
-      stimulus_value_option("my-controller", "sample", "myValue")
+      stimulus_value_option("sample", "my-controller", "myValue")
     )
   end
 end
