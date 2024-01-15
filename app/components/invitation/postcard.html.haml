@@ -5,6 +5,7 @@
       -# Renders all pages, each one wrapped in a template with the metadata required
       -# by the +javascript+ +Page+ class to navigate between invitation pages.
       - pages.each do |page|
-        %template{ stimulus_target_option("pageTemplate",
-                                          self.stimulus_identifier).merge(data: { page_name: page.page_name }) }
+        - options = stimulus_target_option("pageTemplate", self.stimulus_identifier)
+        - options.merge!(data: { page_name: page.page_name })
+        %template{ options }
           = render page.new(wedding:, guest:)

@@ -16,13 +16,12 @@ class Invitation::Postcard < ApplicationComponent
     )
   end
 
-
   private
 
   def default_content_tag_arguments
     {
       class: "p-8 shadow-lg",
-      data: { controller: stimulus_identifier },
+      data: { controller: stimulus_identifier }
     }
   end
 
