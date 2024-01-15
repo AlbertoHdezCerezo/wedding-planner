@@ -7,7 +7,6 @@ class BaseComponent < ApplicationComponent
   def initialize(tag: :div, **content_tag_arguments)
     @tag = tag
     super(**content_tag_arguments)
-    @content_tag_arguments = content_tag_arguments
   end
 
   def call
