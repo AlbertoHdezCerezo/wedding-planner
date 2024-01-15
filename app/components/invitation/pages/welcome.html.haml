@@ -27,3 +27,9 @@
           %br
           %span 10600 Plasencia, Cáceres, Spain
           %p.uppercase.leading-4.text-gray-500{ class: "text-[10px] tracking-[.1em]" }
+
+      -# TODO: Fix attribute helper to handle all this in a single line
+      - options = { label: "read schedule", size: :small, scheme: :secondary, class: 'w-full uppercase !text-[10px] tracking-[.05em]' }
+      - options.merge!(stimulus_action_option("click", Invitation::Postcard.stimulus_identifier, "navigateTo"))
+      - options.merge!(stimulus_parameter_option("page_name", Invitation::Postcard.stimulus_identifier, "schedule"))
+      = button_component(**options)

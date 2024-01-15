@@ -37,7 +37,9 @@ export class Page {
   }
 
   attach (attachmentTarget) {
-    return attachmentTarget.appendChild(this.layout)
+    attachmentTarget.appendChild(this.layout)
+    this.instance = attachmentTarget.lastElementChild
+    return this.instance
   }
 
   detach () {

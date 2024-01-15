@@ -24,10 +24,10 @@ export default class extends Controller {
 
   connect () {
     this.pageNavigator = new Navigator(this.pageTemplateTargets, this.pageAttachmentTarget)
-    this.navigateTo('welcome')
+    this.navigateTo({ params: { pageName: 'welcome' } })
   }
 
-  navigateTo (pageName) {
+  navigateTo ({ params: { pageName } }) {
     this.pageNavigator.navigateTo(pageName)
   }
 }
