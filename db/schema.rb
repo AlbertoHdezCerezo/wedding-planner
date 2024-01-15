@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_15_125353) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_15_133014) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_15_125353) do
     t.timestamptz "updated_at", precision: 6, null: false
   end
 
+  create_table "places", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.uuid "address_id", null: false
+    t.string "maps_url"
+    t.string "phone"
+    t.string "email"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_places_on_address_id"
+    t.index ["name"], name: "index_places_on_name", unique: true
+  end
+
   create_table "services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
@@ -142,5 +154,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_15_125353) do
   add_foreign_key "menus", "organizations", name: "menu_fk_in_organization"
   add_foreign_key "offers", "organizations", name: "offer_fk_in_organization"
   add_foreign_key "offers", "services", name: "offer_fk_in_service"
+  add_foreign_key "places", "addresses"
   add_foreign_key "services", "weddings", name: "wedding_fk_in_services"
 end
