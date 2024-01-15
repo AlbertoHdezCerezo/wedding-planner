@@ -87,7 +87,7 @@ group :development, :test do
 
   ## Linter Gems
   # Ruby static code analyzer (a.k.a. linter) and code formatter.
-  gem "rubocop", "~> 1.59", require: false
+  gem "rubocop", "~> 1.60", require: false
   # A RuboCop extension focused on enforcing Rails best practices and coding conventions.
   gem "rubocop-rails", require: false
   # Performance optimization analysis for your projects, as an extension to RuboCop.
