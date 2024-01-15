@@ -2,6 +2,8 @@
 
 module Html
   TagAttributes = Data.define(:attributes) do
+    include StimulusHelper
+
     def self.build(*hashes)
       flattened_hashes = hashes.map { flattened_hash(_1) }
       attribute_names = flattened_hashes.flat_map(&:keys).uniq
@@ -33,5 +35,39 @@ module Html
     end
 
     def to_h = attributes.flat_map { _1.to_h.to_a }.to_h
+
+    # Returns new +TagAttributes+ resulting from adding a +Stimulus+
+    # +data-action+ attribute to the attributes payload
+    def with_stimulus_action(event, controller_identifier, action)
+      self.class.build(to_h, stimulus_action_option(event, controller_identifier, action))
+    end
+
+    def with_stimulus_controller(controller_identifier)
+      self.class.build(to_h, stimulus_controller_option(controller_identifier))
+    end
+
+    # Returns new +TagAttributes+ resulting from adding a +Stimulus+
+    # +data-*-class+ attribute to the attributes payload
+    def with_stimulus_css_class(class_name, controller_identifier, css_class)
+      self.class.build(to_h, stimulus_css_class_option(class_name, controller_identifier, css_class))
+    end
+
+    # Returns new +TagAttributes+ resulting from adding a +Stimulus+
+    # +data-*-param+ attribute to the attributes payload
+    def with_stimulus_parameter(name, controller_identifier, value)
+      self.class.build(to_h, stimulus_parameter_option(name, controller_identifier, value))
+    end
+
+    # Returns new +TagAttributes+ resulting from adding a +Stimulus+
+    # +data-*-target+ attribute to the attributes payload
+    def with_stimulus_target(name, controller_identifier)
+      self.class.build(to_h, stimulus_target_option(name, controller_identifier))
+    end
+
+    # Returns new +TagAttributes+ resulting from adding a +Stimulus+
+    # +data-*-target+ attribute to the attributes payload
+    def with_stimulus_value(value_name, controller_identifier, value)
+      self.class.build(to_h, stimulus_value_option(value_name, controller_identifier, value))
+    end
   end
 end

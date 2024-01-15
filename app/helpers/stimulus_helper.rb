@@ -9,12 +9,16 @@ module StimulusHelper
     "#{event}->#{controller_identifier}##{action}"
   end
 
-  def stimulus_css_class_key(controller_identifier, class_name)
-    "data-#{controller_identifier}-#{class_name}-class"
+  def stimulus_controller_option(controller_identifier)
+    { "data-controller" => controller_identifier }
   end
 
-  def stimulus_css_class_option(controller_identifier, class_name, css_class)
+  def stimulus_css_class_option(class_name, controller_identifier, css_class)
     { stimulus_css_class_key(controller_identifier, class_name) => css_class }
+  end
+
+  def stimulus_css_class_key(controller_identifier, class_name)
+    "data-#{controller_identifier}-#{class_name}-class"
   end
 
   def stimulus_parameter_option(name, controller_identifier, value)
@@ -31,7 +35,7 @@ module StimulusHelper
 
   def stimulus_target_key(controller_identifier) = "data-#{controller_identifier}-target"
 
-  def stimulus_value_option(controller_identifier, value_name, value)
+  def stimulus_value_option(value_name, controller_identifier, value)
     { stimulus_value_key(controller_identifier, value_name) => value }
   end
 
