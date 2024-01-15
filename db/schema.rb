@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_10_135014) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_15_125353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "addressee"
+    t.string "street"
+    t.string "number"
+    t.string "zip_code"
+    t.string "town"
+    t.string "country"
+    t.string "state"
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+  end
 
   create_table "dishes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
