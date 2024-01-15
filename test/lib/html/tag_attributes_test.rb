@@ -11,6 +11,6 @@ class Html::AttributeTest < ActiveSupport::TestCase
 
     attributes = Html::TagAttributes.build(*hashes).to_h
 
-    assert_equal({ class: "px-1 py-2", data: { foo: true, bar: true }, id: "test2", disabled: true }, attributes)
+    assert_equal({ class: "px-1 py-2", "data-foo": true, id: "test2", "data-bar": true, disabled: true }, attributes)
   end
 end
