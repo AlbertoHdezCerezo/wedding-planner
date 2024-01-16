@@ -24,7 +24,20 @@ export default class extends Controller {
 
   connect () {
     this.pageNavigator = new Navigator(this.pageTemplateTargets, this.pageAttachmentTarget)
-    this.navigateTo({ params: { pageName: 'welcome' } })
+
+    this.navigateTo({
+      params: { pageName: this.#renderedInPhone() ? 'cover' : 'welcome' }
+    })
+  }
+
+  /**
+   * Returns true if card is rendered in a mobile device. Phone devices
+   * have a width of less than 680px, the breakpoint width used by
+   * tailwindCSS to differentiate between phones and tables
+   * @returns {boolean}
+   */
+  #renderedInPhone () {
+    return window.innerHeight <= 680
   }
 
   navigateTo ({ params: { pageName } }) {
