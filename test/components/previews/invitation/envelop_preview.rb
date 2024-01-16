@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Invitation::LetterPreview < ViewComponent::Preview
+class Invitation::EnvelopPreview < ViewComponent::Preview
   def default
     wedding = FactoryBot.build(:wedding)
     guest = FactoryBot.build(:guest)
-    render(Invitation::Letter.new(wedding:, guest:))
+    render(Invitation::Envelop.new(wedding:, guest:))
   end
 end
