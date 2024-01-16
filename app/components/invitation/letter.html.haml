@@ -3,10 +3,12 @@
   - options = options.with_stimulus_target("innerLetter", stimulus_identifier)
   %div{ options.to_h }
     -# Front Card Face
-    - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full bg-black",
-                                              style: "backface-visibility: hidden" })
+    - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full",
+                                              style: "backface-visibility: hidden; background-image: url('#{asset_path("postcard-background.svg")}')" })
     - options = options.with_stimulus_action("click", stimulus_identifier, "flip")
     %div{ options.to_h }
+      = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-10 right-8 h-[15%] w-auto rotate-6")
+      %p{ class: "absolute left-16 bottom-16 text-2xl opacity-60 uppercase tracking-[.3em]" } Maik & Mirah
 
     -# Back Card Face
     %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }
