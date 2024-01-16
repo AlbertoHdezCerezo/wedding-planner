@@ -11,7 +11,7 @@ class Invitation::Layout::ApplicationComponent < ApplicationComponent
     def default_content_tag_arguments
       {
         class: <<-HTML
-          h-screen w-screen flex items-center justify-center
+          h-screen w-screen flex items-center justify-center overflow-hidden
         HTML
       }
     end

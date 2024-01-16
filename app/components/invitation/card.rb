@@ -20,7 +20,7 @@ class Invitation::Card < ApplicationComponent
 
   def default_content_tag_arguments
     {
-      class: "w-fit p-8 shadow-lg",
+      class: "w-fit p-2 md:p-8 shadow-lg",
       data: { controller: stimulus_identifier }
     }
   end
