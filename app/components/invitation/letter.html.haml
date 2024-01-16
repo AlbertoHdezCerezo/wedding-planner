@@ -1,0 +1,13 @@
+= base_component(**content_tag_arguments) do
+  - options = ::Html::TagAttributes.build({ class: "relative", style: "transform-style: preserve-3d" })
+  - options = options.with_stimulus_target("innerLetter", stimulus_identifier)
+  %div{ options.to_h }
+    -# Front Card Face
+    - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full bg-black",
+                                              style: "backface-visibility: hidden" })
+    - options = options.with_stimulus_action("click", stimulus_identifier, "flip")
+    %div{ options.to_h }
+
+    -# Back Card Face
+    %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }
+      = render(Invitation::Postcard.new(wedding:, guest:))
