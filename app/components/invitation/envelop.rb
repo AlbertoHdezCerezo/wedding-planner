@@ -12,7 +12,7 @@ class Invitation::Envelop < ApplicationComponent
   private
 
   def default_content_tag_arguments
-    options = ::Html::TagAttributes.build(super, { style: "perspective: 1600px" })
+    options = ::Html::TagAttributes.build(super, { class: "w-fit", style: "perspective: 1600px" })
     options = options.with_stimulus_controller(self.class.stimulus_identifier)
     options.to_h
   end
