@@ -21,7 +21,6 @@ export default class extends Controller {
 
     await this.timeline.finished
 
-    console.log('me llama')
     this.timeline = null
     this.flipped = !this.flipped
   }
