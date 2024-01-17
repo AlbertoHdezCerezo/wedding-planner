@@ -3,25 +3,45 @@ import anime from 'animejs'
 
 export default class extends Controller {
   // Pivot element for rotation
-  static targets = ['innerLetter']
+  static targets = [
+    // Container wrapping both invitation sides
+    'innerLetter',
+    // Container wrapping navigation menu
+    'menu'
+  ]
 
-  // Tracks flip state. If true it means the back of the letter faces the screen
-  flipped = false
-  // AnimeJS timeline instance
-  timeline = null
+  async open () {
+    await this.#flip()
+    await this.#revealMenu()
+  }
 
-  async flip () {
-    if (this.timeline) return
+  async #flip () {
+    const timeline = anime({
+      autoplay: false,
+      duration: 1400,
+      easing: 'easeInQuad',
+      targets: this.innerLetterTarget,
+      rotateY: this.flipped ? '0deg' : '180deg'
+    })
 
-    this.timeline = anime
-      .timeline({ easing: 'easeInQuad', duration: 1400, autoplay: false })
-      .add({ targets: this.innerLetterTarget, rotateY: this.flipped ? '0deg' : '180deg' })
+    timeline.play()
 
-    this.timeline.play()
+    await timeline.finished
+  }
 
-    await this.timeline.finished
+  async #revealMenu () {
+    const timeline = anime({
+      autoplay: false,
+      delay: (el, i) => i * 200,
+      duration: 1200,
+      easing: 'easeInExpo',
+      opacity: [0, 1],
+      targets: Array.from(this.menuTarget.children),
+      translateY: ['120%', 0]
+    })
 
-    this.timeline = null
-    this.flipped = !this.flipped
+    timeline.play()
+
+    await timeline.finished
   }
 }
