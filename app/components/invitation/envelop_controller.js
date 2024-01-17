@@ -21,7 +21,7 @@ export default class extends Controller {
       duration: 1400,
       easing: 'easeInQuad',
       targets: this.innerLetterTarget,
-      rotateY: this.flipped ? '0deg' : '180deg'
+      rotateY: '180deg'
     })
 
     timeline.play()
