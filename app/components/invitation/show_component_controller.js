@@ -1,6 +1,9 @@
 import { Controller } from '@hotwired/stimulus'
+import anime from 'animejs'
 
 export default class extends Controller {
+  static targets = ['startButton']
+
   envelopController = null
   letterController = null
 
@@ -17,10 +20,42 @@ export default class extends Controller {
   }
 
   async openLetter () {
+    if (!this.#invitationReady()) return
+
+    await this.#hideOpenInvitationButton()
+    await this.#zoomOutEnvelop()
     await this.letterController.open()
   }
 
-  openCard () {
+  async openCard () {
+  }
 
+  async #zoomOutEnvelop () {
+    const timeline = anime({
+      autoplay: false,
+      duration: 1000,
+      easing: 'easeOutQuint',
+      targets: this.envelopController.element,
+      scale: 0.6
+    })
+
+    timeline.play()
+
+    await timeline.finished
+  }
+
+  async #hideOpenInvitationButton () {
+    const timeline = anime({
+      autoplay: false,
+      duration: 800,
+      easing: 'easeInQuint',
+      opacity: 0,
+      targets: this.startButtonTarget,
+      translateY: '120%'
+    })
+
+    timeline.play()
+
+    await timeline.finished
   }
 }
