@@ -27,7 +27,10 @@ export default class extends Controller {
     await this.letterController.open()
   }
 
-  async openCard () {
+  async openEnvelop () {
+    await this.letterController.close()
+    await this.#zoomInEnvelop()
+    await this.envelopController.open()
   }
 
   async #zoomOutEnvelop () {
@@ -37,6 +40,20 @@ export default class extends Controller {
       easing: 'easeOutQuint',
       targets: this.envelopController.element,
       scale: 0.6
+    })
+
+    timeline.play()
+
+    await timeline.finished
+  }
+
+  async #zoomInEnvelop () {
+    const timeline = anime({
+      autoplay: false,
+      duration: 600,
+      easing: 'easeOutQuint',
+      targets: this.envelopController.element,
+      scale: 1
     })
 
     timeline.play()
