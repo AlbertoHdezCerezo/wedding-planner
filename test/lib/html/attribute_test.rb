@@ -36,6 +36,16 @@ class Html::AttributeTest < ActiveSupport::TestCase
     assert_equal({ foo: true, bar: true }, attribute.value)
   end
 
+  test ".build if attribute name is data-action, return 'data-action' values from each hash joint" do
+    attribute = Html::Attribute.build(
+      { "data-action": "click->clipboard#copy" },
+      { "data-action": "click->navigator#openPage" },
+      name: "data-action"
+    )
+
+    assert_equal "click->clipboard#copy click->navigator#openPage", attribute.value
+  end
+
   test ".build if attribute name is aria, return data prefixed attribute" do
     attribute = Html::Attribute.build({ aria: { foo: true } }, { "aria-bar": true }, {}, name: :aria)
 
