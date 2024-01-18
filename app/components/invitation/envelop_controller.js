@@ -10,6 +10,10 @@ export default class extends Controller {
     'menu'
   ]
 
+  connect () {
+    this.dispatch('connected', { detail: { controller: this } })
+  }
+
   async open () {
     await this.#flip()
     await this.#revealMenu()

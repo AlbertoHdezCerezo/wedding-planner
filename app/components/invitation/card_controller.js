@@ -28,6 +28,8 @@ export default class extends Controller {
     this.navigateTo({
       params: { pageName: this.#renderedInPhone() ? 'cover' : 'welcome' }
     })
+
+    this.dispatch('connected', { detail: { controller: this } })
   }
 
   /**
