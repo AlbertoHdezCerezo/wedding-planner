@@ -22,8 +22,8 @@ export default class extends Controller {
   async #flip () {
     const timeline = anime({
       autoplay: false,
-      duration: 1400,
-      easing: 'easeInQuad',
+      duration: 1200,
+      easing: 'easeOutCubic',
       targets: this.innerLetterTarget,
       rotateY: '180deg'
     })
