@@ -8,6 +8,12 @@ class Layout::ApplicationComponent < ApplicationComponent
         concat(content)
       end
     end
+
+    private
+
+    def default_content_tag_arguments
+      { class: "overflow-hidden" }
+    end
   end
 
   renders_one :body, BodyComponent
