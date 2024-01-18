@@ -9,7 +9,7 @@ export default class extends Controller {
   async open () {
     const timeline = anime({
       autoplay: false,
-      duration: 1000,
+      duration: 1600,
       easing: 'easeOutQuint',
       targets: this.element,
       top: 0
