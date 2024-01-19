@@ -1,5 +1,24 @@
 import { Controller } from '@hotwired/stimulus'
-import anime from 'animejs'
+import { Animator } from '../../javascript/src/invitation/animator'
+
+const HIDE_START_BUTTON_ANIMATION = {
+  duration: 800,
+  easing: 'easeInQuint',
+  opacity: 0,
+  translateY: '120%'
+}
+
+const ZOOM_IN_ANIMATION = {
+  duration: 600,
+  easing: 'easeOutQuint',
+  scale: 1
+}
+
+const ZOOM_OUT_ANIMATION = {
+  duration: 1000,
+  easing: 'easeOutQuint',
+  scale: 0.6
+}
 
 export default class extends Controller {
   static targets = ['startButton']
@@ -33,46 +52,30 @@ export default class extends Controller {
     await this.envelopController.open()
   }
 
-  async #zoomOutEnvelop () {
-    const timeline = anime({
-      autoplay: false,
-      duration: 1000,
-      easing: 'easeOutQuint',
-      targets: this.envelopController.element,
-      scale: 0.6
-    })
-
-    timeline.play()
-
-    await timeline.finished
+  async #hideOpenInvitationButton () {
+    await Animator.play(
+      Animator.animation({
+        targets: this.startButtonTarget,
+        ...HIDE_START_BUTTON_ANIMATION
+      })
+    )
   }
 
   async #zoomInEnvelop () {
-    const timeline = anime({
-      autoplay: false,
-      duration: 600,
-      easing: 'easeOutQuint',
-      targets: this.envelopController.element,
-      scale: 1
-    })
-
-    timeline.play()
-
-    await timeline.finished
+    await Animator.play(
+      Animator.animation({
+        targets: this.envelopController.element,
+        ...ZOOM_IN_ANIMATION
+      })
+    )
   }
 
-  async #hideOpenInvitationButton () {
-    const timeline = anime({
-      autoplay: false,
-      duration: 800,
-      easing: 'easeInQuint',
-      opacity: 0,
-      targets: this.startButtonTarget,
-      translateY: '120%'
-    })
-
-    timeline.play()
-
-    await timeline.finished
+  async #zoomOutEnvelop () {
+    await Animator.play(
+      Animator.animation({
+        targets: this.envelopController.element,
+        ...ZOOM_OUT_ANIMATION
+      })
+    )
   }
 }

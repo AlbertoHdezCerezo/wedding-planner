@@ -1,5 +1,17 @@
 import { Controller } from '@hotwired/stimulus'
-import anime from 'animejs'
+import { Animator } from '../../javascript/src/invitation/animator'
+
+const OPEN_ANIMATION = {
+  duration: 1600,
+  easing: 'easeOutQuint',
+  top: 0
+}
+
+const CLOSE_ANIMATION = {
+  duration: 800,
+  easing: 'easeOutQuint',
+  top: '100%'
+}
 
 export default class extends Controller {
   connect () {
@@ -7,30 +19,20 @@ export default class extends Controller {
   }
 
   async open () {
-    const timeline = anime({
-      autoplay: false,
-      duration: 1600,
-      easing: 'easeOutQuint',
-      targets: this.element,
-      top: 0
-    })
-
-    timeline.play()
-
-    await timeline.finished
+    await Animator.play(
+      Animator.animation({
+        targets: this.element,
+        ...OPEN_ANIMATION
+      })
+    )
   }
 
   async close () {
-    const timeline = anime({
-      autoplay: false,
-      duration: 800,
-      easing: 'easeOutQuint',
-      targets: this.element,
-      top: '100%'
-    })
-
-    timeline.play()
-
-    await timeline.finished
+    await Animator.play(
+      Animator.animation({
+        targets: this.element,
+        ...CLOSE_ANIMATION
+      })
+    )
   }
 }
