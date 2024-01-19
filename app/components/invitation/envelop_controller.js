@@ -1,5 +1,21 @@
 import { Controller } from '@hotwired/stimulus'
-import anime from 'animejs'
+import { Animator } from '../../javascript/src/invitation/animator'
+
+const FLIP_ANIMATION = {
+  autoplay: false,
+  duration: 1200,
+  easing: 'easeOutCubic',
+  rotateY: '180deg'
+}
+
+const MENU_REVEAL_ANIMATION = {
+  autoplay: false,
+  delay: (el, i) => i * 200,
+  duration: 1200,
+  easing: 'easeInExpo',
+  opacity: [0, 1],
+  translateY: ['120%', 0]
+}
 
 export default class extends Controller {
   // Pivot element for rotation
@@ -20,32 +36,20 @@ export default class extends Controller {
   }
 
   async #flip () {
-    const timeline = anime({
-      autoplay: false,
-      duration: 1200,
-      easing: 'easeOutCubic',
-      targets: this.innerLetterTarget,
-      rotateY: '180deg'
-    })
-
-    timeline.play()
-
-    await timeline.finished
+    await Animator.play(
+      Animator.animation({
+        targets: this.innerLetterTarget,
+        ...FLIP_ANIMATION
+      })
+    )
   }
 
   async #revealMenu () {
-    const timeline = anime({
-      autoplay: false,
-      delay: (el, i) => i * 200,
-      duration: 1200,
-      easing: 'easeInExpo',
-      opacity: [0, 1],
-      targets: Array.from(this.menuTarget.children),
-      translateY: ['120%', 0]
-    })
-
-    timeline.play()
-
-    await timeline.finished
+    await Animator.play(
+      Animator.animation({
+        targets: Array.from(this.menuTarget.children),
+        ...MENU_REVEAL_ANIMATION
+      })
+    )
   }
 }
