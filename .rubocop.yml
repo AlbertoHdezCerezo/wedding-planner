@@ -70,3 +70,6 @@ Metrics/CyclomaticComplexity:
 
 Metrics/ParameterLists:
   Enabled: false
+
+Style/ArgumentsForwarding:
+  Enabled: false
