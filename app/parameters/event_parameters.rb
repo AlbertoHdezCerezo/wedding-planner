@@ -6,6 +6,7 @@ class EventParameters < ApplicationParameters
     required(:description).filled(:string)
     required(:start_time).filled(:date_time)
     required(:end_time).filled(:date_time)
+    optional(:places).array(PlaceParameters::Schema)
 
     after(:value_coercer) do |result|
       if result[:start_time].present? && result[:end_time]

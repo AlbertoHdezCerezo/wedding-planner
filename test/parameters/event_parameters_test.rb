@@ -32,7 +32,21 @@ class EventParametersTest < ActiveSupport::TestCase
       name: "My Event",
       description: "This is a description for my event",
       start_time: timestamp,
-      end_time: timestamp.since(1)
+      end_time: timestamp.since(1),
+      places: [
+        {
+          name: "Casa de la Cultura",
+          description: "Casa de la Cultura de Plasencia",
+          address: {
+            street: "Calle de la Princesa",
+            number: "7",
+            zip_code: "10600",
+            town: "Plasencia",
+            state: "Cáceres",
+            country: "Spain"
+          }
+        }
+      ]
     }
   end
 
