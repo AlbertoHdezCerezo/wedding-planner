@@ -23,5 +23,9 @@ FactoryBot.define do
     trait :planned do
       planned { true }
     end
+
+    trait :with_place do
+      places { build_list :place, 1 }
+    end
   end
 end
