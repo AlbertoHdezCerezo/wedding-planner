@@ -15,7 +15,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_133833) do
   enable_extension "plpgsql"
 
   create_table "addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "addressee"
     t.string "street"
     t.string "number"
     t.string "zip_code"
