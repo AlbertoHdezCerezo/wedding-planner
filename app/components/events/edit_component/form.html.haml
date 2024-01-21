@@ -2,12 +2,22 @@
 - method = event.new_record? ? :post : :patch
 = form_with(model: event, url:, method:, builder: ComponentFormBuilder, **content_tag_arguments) do |form|
   -# Form Group
-  .inline-flex.gap-8.px-6
-    = form.text_field(:name, label: "Event Name", required: true, field_wrapper_arguments: { class: "basis-1/3" })
+  .space-y-6
+    = form.text_field(:name, label: "Event Name", required: true, field_wrapper_arguments: { class: "w-[40%]" })
 
-  .inline-flex.gap-8.px-6
-    = form.datetime_field(:start_time, label: "From", required: true, include_seconds: false)
-    = form.datetime_field(:end_time, label: "To", required: true, include_seconds: false)
+    .inline-flex.gap-8
+      = form.datetime_field(:start_time, label: "From", required: true, include_seconds: false)
+      = form.datetime_field(:end_time, label: "To", required: true, include_seconds: false)
 
-  .inline-flex.gap-8.px-6
     = form.text_area(:description, label: "Event Description", field_wrapper_arguments: { class: "w-full" })
+
+    = form.fields_for :places, event.places.first || event.places.build do |place_form|
+      = place_form.text_field(:name, label: "Event Place", required: true, field_wrapper_arguments: { class: "w-[40%]" })
+      = place_form.text_area(:description, label: "Place Description", field_wrapper_arguments: { class: "w-full" })
+
+      = place_form.fields_for :address, place_form.object.address || place_form.object.build_address do |address_form|
+        = address_form.text_field(:street, label: "Street", required: true, field_wrapper_arguments: { class: "w-[40%]" })
+        = address_form.text_field(:city, label: "City", required: true, field_wrapper_arguments: { class: "w-[40%]" })
+        = address_form.text_field(:state, label: "State", required: true, field_wrapper_arguments: { class: "w-[40%]" })
+        = address_form.text_field(:country, label: "Country", required: true, field_wrapper_arguments: { class: "w-[40%]" })
+        = address_form.text_field(:zip_code, label: "Zip Code", required: true, field_wrapper_arguments: { class: "w-[40%]" })
