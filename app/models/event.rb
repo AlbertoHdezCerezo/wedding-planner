@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   belongs_to :wedding
   has_many :event_services, dependent: :destroy
   has_many :services, through: :event_services
-  has_many :event_places, dependent: :nullify
+  has_many :event_places, dependent: :destroy
   has_many :places, through: :event_places
 
   # Validations
