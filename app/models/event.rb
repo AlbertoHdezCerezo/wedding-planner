@@ -8,6 +8,8 @@ class Event < ApplicationRecord
   has_many :event_places, dependent: :destroy
   has_many :places, through: :event_places
 
+  accepts_nested_attributes_for :places, allow_destroy: true
+
   # Validations
   validates :name, presence: true
   validates :planned, inclusion: { in: [true, false] }
@@ -15,7 +17,8 @@ class Event < ApplicationRecord
 
   validates_comparison_of :end_time, greater_than: :start_time
 
-  validates_associated :event_services
+  validates_associated :services
+  validates_associated :places
 
   # Scopes
   scope :chronological, -> { order(schedule: :asc) }

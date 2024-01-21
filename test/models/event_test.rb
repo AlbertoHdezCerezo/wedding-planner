@@ -40,11 +40,24 @@ class EventTest < ActiveSupport::TestCase
   test "if associated to service/s, validates services belong to event wedding" do
     service = FactoryBot.create(:service)
     event = FactoryBot.build(:event)
+    service.name = nil
 
     event.services = [service]
 
     assert_not event.valid?
-    assert event.errors.of_kind?(:event_services, :invalid)
-    assert event.event_services.first.errors.of_kind?(:service, :event_wedding_missmatch)
+    assert event.errors.of_kind?(:services, :invalid)
+    assert event.services.first.errors.of_kind?(:name, :blank)
+  end
+
+  test "if associated to place/s, validates places belong to event wedding" do
+    place = FactoryBot.create(:place)
+    event = FactoryBot.build(:event)
+    place.address.street = nil
+
+    event.places = [place]
+
+    assert_not event.valid?
+    assert event.errors.of_kind?(:places, :invalid)
+    assert event.places.first.errors.of_kind?(:address, :invalid)
   end
 end
