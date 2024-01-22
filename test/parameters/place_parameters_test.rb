@@ -25,7 +25,7 @@ class PlaceParametersTest < ActiveSupport::TestCase
     {
       name: "Casa de la Cultura",
       description: "Casa de la Cultura de Plasencia",
-      address: {
+      address_attributes: {
         street: "Calle de la Princesa",
         number: "7",
         zip_code: "10600",

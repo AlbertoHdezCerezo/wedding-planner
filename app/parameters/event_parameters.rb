@@ -2,11 +2,14 @@
 
 class EventParameters < ApplicationParameters
   Schema = Dry::Schema.Params do
+    extend WithNestedAssociation
+
+    has_many :places, schema: PlaceParameters::Schema
+
     required(:name).filled(:string)
     required(:description).filled(:string)
     required(:start_time).filled(:date_time)
     required(:end_time).filled(:date_time)
-    optional(:places).array(PlaceParameters::Schema)
 
     after(:value_coercer) do |result|
       if result[:start_time].present? && result[:end_time]
