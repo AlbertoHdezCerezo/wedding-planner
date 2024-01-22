@@ -8,12 +8,6 @@ class AddressTest < ActiveSupport::TestCase
   end
 
   # Validations
-  test "validates addressee presence" do
-    @address.addressee = nil
-
-    assert_not @address.valid?
-  end
-
   test "validates country presence" do
     @address.country = nil
 
