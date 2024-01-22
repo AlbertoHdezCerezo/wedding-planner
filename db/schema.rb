@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_21_133833) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_22_173410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,19 +37,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_133833) do
     t.index ["organization_id"], name: "index_dishes_on_organization_id"
   end
 
-  create_table "event_places", force: :cascade do |t|
-    t.uuid "event_id", null: false
-    t.uuid "place_id", null: false
-    t.text "description"
-    t.timestamptz "created_at", precision: 6, null: false
-    t.timestamptz "updated_at", precision: 6, null: false
-    t.index ["event_id", "place_id"], name: "unique_event_and_place_index_in_event_places", unique: true
-    t.index ["event_id"], name: "event_in_event_places"
-    t.index ["event_id"], name: "index_event_places_on_event_id"
-    t.index ["place_id"], name: "index_event_places_on_place_id"
-    t.index ["place_id"], name: "place_in_event_places"
-  end
-
   create_table "event_services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "event_id", null: false
     t.uuid "service_id", null: false
@@ -67,6 +54,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_133833) do
     t.boolean "planned", default: false, null: false
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
+    t.uuid "place_id"
+    t.index ["place_id"], name: "index_events_on_place_id"
     t.index ["wedding_id"], name: "index_events_on_wedding_id"
   end
 
@@ -157,10 +146,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_133833) do
   end
 
   add_foreign_key "dishes", "organizations", name: "dish_fk_in_organization"
-  add_foreign_key "event_places", "events"
-  add_foreign_key "event_places", "places"
   add_foreign_key "event_services", "events", name: "event_fk_in_event_services"
   add_foreign_key "event_services", "services", name: "service_fk_in_event_services"
+  add_foreign_key "events", "places"
   add_foreign_key "events", "weddings", name: "wedding_fk_in_events"
   add_foreign_key "guests", "weddings"
   add_foreign_key "invitations", "weddings"

@@ -11,9 +11,8 @@
 
     = form.text_area(:description, label: "Event Description", field_wrapper_arguments: { class: "w-full" })
 
-    = form.fields_for :places, event.places.first || event.places.build do |place_form|
+    = form.fields_for :place, event.place || event.build_place do |place_form|
       = place_form.text_field(:name, label: "Event Place", required: true, field_wrapper_arguments: { class: "w-[40%]" })
-      = place_form.text_area(:description, label: "Place Description", field_wrapper_arguments: { class: "w-full" })
 
       = place_form.fields_for :address, place_form.object.address || place_form.object.build_address do |address_form|
         = address_form.text_field(:street, label: "Street", required: true, field_wrapper_arguments: { class: "w-[40%]" })

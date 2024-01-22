@@ -25,7 +25,7 @@ FactoryBot.define do
     end
 
     trait :with_place do
-      places { build_list :place, 1 }
+      association :place
     end
   end
 end
