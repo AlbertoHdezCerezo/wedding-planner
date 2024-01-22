@@ -12,7 +12,7 @@ class EventParametersTest < ActiveSupport::TestCase
                       .merge(schedule: permitted_parameters[:start_time]..permitted_parameters[:end_time])
                       .except(:start_time, :end_time)
 
-    assert_equal parsed_params, expected_params
+    assert_equal expected_params, parsed_params
   end
 
   test "filters guest unpermitted parameters" do
@@ -33,20 +33,18 @@ class EventParametersTest < ActiveSupport::TestCase
       description: "This is a description for my event",
       start_time: timestamp,
       end_time: timestamp.since(1),
-      places_attributes: [
-        {
-          name: "Casa de la Cultura",
-          description: "Casa de la Cultura de Plasencia",
-          address: {
-            street: "Calle de la Princesa",
-            number: "7",
-            zip_code: "10600",
-            town: "Plasencia",
-            state: "Cáceres",
-            country: "Spain"
-          }
+      place_attributes: {
+        name: "Casa de la Cultura",
+        description: "Casa de la Cultura de Plasencia",
+        address_attributes: {
+          street: "Calle de la Princesa",
+          number: "7",
+          zip_code: "10600",
+          town: "Plasencia",
+          state: "Cáceres",
+          country: "Spain"
         }
-      ]
+      }
     }
   end
 

@@ -49,15 +49,15 @@ class EventTest < ActiveSupport::TestCase
     assert event.services.first.errors.of_kind?(:name, :blank)
   end
 
-  test "if associated to place/s, validates places belong to event wedding" do
+  test "if associated to place, validates places belong to event wedding" do
     place = FactoryBot.create(:place)
     event = FactoryBot.build(:event)
     place.address.street = nil
 
-    event.places = [place]
+    event.place = place
 
     assert_not event.valid?
-    assert event.errors.of_kind?(:places, :invalid)
-    assert event.places.first.errors.of_kind?(:address, :invalid)
+    assert event.errors.of_kind?(:place, :invalid)
+    assert event.place.errors.of_kind?(:address, :invalid)
   end
 end
