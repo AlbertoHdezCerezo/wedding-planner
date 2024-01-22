@@ -33,7 +33,7 @@ class EventParametersTest < ActiveSupport::TestCase
       description: "This is a description for my event",
       start_time: timestamp,
       end_time: timestamp.since(1),
-      places: [
+      places_attributes: [
         {
           name: "Casa de la Cultura",
           description: "Casa de la Cultura de Plasencia",
