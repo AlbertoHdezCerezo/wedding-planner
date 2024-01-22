@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "active_support/concern"
 
 module WithNestedAssociation
   extend ActiveSupport::Concern
 
-  def has_one(association_name, schema:, required: true)
+  def has_one(association_name, schema:, required: true) # rubocop:todo Naming/PredicateName
     name = parameterize(association_name.to_s)
 
     if required
@@ -13,7 +15,7 @@ module WithNestedAssociation
     end
   end
 
-  def has_many(association_name, schema:, required: true)
+  def has_many(association_name, schema:, required: true) # rubocop:todo Naming/PredicateName
     name = parameterize(association_name.to_s, has_many_association: true)
 
     if required
