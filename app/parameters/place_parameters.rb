@@ -7,6 +7,8 @@ class PlaceParameters < ApplicationParameters
     has_one :address, schema: AddressParameters::Schema
 
     required(:name).filled(:string)
-    required(:description).filled(:string)
+    required(:phone).filled(:string)
+    required(:maps_url).filled(:string)
+    required(:email).filled(:string)
   end
 end
