@@ -9,4 +9,6 @@ class Wedding < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :date, presence: true, comparison: { greater_than: Date.current }
+
+  def in_guests_list?(guest) = guests.include?(guest)
 end
