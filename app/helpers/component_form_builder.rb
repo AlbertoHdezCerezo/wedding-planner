@@ -66,6 +66,68 @@ class ComponentFormBuilder < ActionView::Helpers::FormBuilder # rubocop:todo Met
     render_component(component, &)
   end
 
+  def email_field(
+    method_name,
+    value = nil,
+    required: false,
+    field_wrapper_arguments: {},
+    input_wrapper_arguments: {},
+    label: nil,
+    label_arguments: {},
+    caption: nil,
+    caption_arguments: {},
+    **system_arguments,
+    &
+  )
+    component = Common::Form::EmailFieldComponent.new(
+      object_name,
+      method_name,
+      value: value || method_value(method_name),
+      errors: method_errors(method_name),
+      required:,
+      field_wrapper_arguments:,
+      input_wrapper_arguments:,
+      label:,
+      label_arguments:,
+      caption:,
+      caption_arguments:,
+      **system_arguments
+    )
+
+    render_component(component, &)
+  end
+
+  def telephone_field(
+    method_name,
+    value = nil,
+    required: false,
+    field_wrapper_arguments: {},
+    input_wrapper_arguments: {},
+    label: nil,
+    label_arguments: {},
+    caption: nil,
+    caption_arguments: {},
+    **system_arguments,
+    &
+  )
+    component = Common::Form::TelephoneFieldComponent.new(
+      object_name,
+      method_name,
+      value: value || method_value(method_name),
+      errors: method_errors(method_name),
+      required:,
+      field_wrapper_arguments:,
+      input_wrapper_arguments:,
+      label:,
+      label_arguments:,
+      caption:,
+      caption_arguments:,
+      **system_arguments
+    )
+
+    render_component(component, &)
+  end
+
   def text_field(
     method_name,
     value = nil,
@@ -111,6 +173,37 @@ class ComponentFormBuilder < ActionView::Helpers::FormBuilder # rubocop:todo Met
     &
   )
     component = Common::Form::TextAreaComponent.new(
+      object_name,
+      method_name,
+      value: value || method_value(method_name),
+      errors: method_errors(method_name),
+      required:,
+      field_wrapper_arguments:,
+      input_wrapper_arguments:,
+      label:,
+      label_arguments:,
+      caption:,
+      caption_arguments:,
+      **system_arguments
+    )
+
+    render_component(component, &)
+  end
+
+  def url_field(
+    method_name,
+    value = nil,
+    required: false,
+    field_wrapper_arguments: {},
+    input_wrapper_arguments: {},
+    label: nil,
+    label_arguments: {},
+    caption: nil,
+    caption_arguments: {},
+    **system_arguments,
+    &
+  )
+    component = Common::Form::UrlFieldComponent.new(
       object_name,
       method_name,
       value: value || method_value(method_name),
