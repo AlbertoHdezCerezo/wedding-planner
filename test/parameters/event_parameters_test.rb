@@ -35,7 +35,6 @@ class EventParametersTest < ActiveSupport::TestCase
       end_time: timestamp.since(1),
       place_attributes: {
         name: "Casa de la Cultura",
-        description: "Casa de la Cultura de Plasencia",
         address_attributes: {
           street: "Calle de la Princesa",
           number: "7",

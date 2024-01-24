@@ -10,7 +10,7 @@ class Schedule
       @wedding = wedding
       @events = wedding.events
                        .select { |event| event.place == place }
-                       .sort { |event_1, event_2| event_1.schedule.begin <=> event_2.schedule.begin }
+                       .sort { |event1, event2| event1.schedule.begin <=> event2.schedule.begin }
     end
 
     def schedule = events.first.schedule.begin..events.last.schedule.end
@@ -30,7 +30,7 @@ class Schedule
   def event_groups
     @event_groups ||= wedding_places
                       .map { |place| EventsGroup.new(wedding:, place:) }
-                      .sort { |group_1, group_2| group_1.schedule.begin <=> group_2.schedule.begin }
+                      .sort { |group1, group2| group1.schedule.begin <=> group2.schedule.begin }
   end
 
   private
