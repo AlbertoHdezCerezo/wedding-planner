@@ -24,7 +24,6 @@ class PlaceParametersTest < ActiveSupport::TestCase
   def permitted_parameters
     {
       name: "Casa de la Cultura",
-      description: "Casa de la Cultura de Plasencia",
       address_attributes: {
         street: "Calle de la Princesa",
         number: "7",
