@@ -37,11 +37,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_23_150809) do
     t.index ["organization_id"], name: "index_dishes_on_organization_id"
   end
 
-  create_table "event_guests", primary_key: ["event_id", "guest_id"], force: :cascade do |t|
+  create_table "event_guests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "event_id", null: false
     t.uuid "guest_id", null: false
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["event_id", "guest_id"], name: "event_guest_index_in_event_guests", unique: true
     t.index ["event_id"], name: "index_event_guests_on_event_id"
     t.index ["guest_id"], name: "index_event_guests_on_guest_id"
   end
