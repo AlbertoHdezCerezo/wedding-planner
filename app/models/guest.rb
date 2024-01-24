@@ -3,6 +3,7 @@
 class Guest < ApplicationRecord
   # Associations
   belongs_to :wedding, optional: false
+  belongs_to :invitation, optional: true
   has_many :event_guests, dependent: :destroy
   has_many :events, through: :event_guests
 
