@@ -4,7 +4,8 @@ class Invitation::ShowComponentPreview < ViewComponent::Preview
   def self.wedding
     date = Date.new(2024, 9, 14)
 
-    wedding = FactoryBot.build(:wedding, date:)
+    wedding = FactoryBot.build(:wedding, date:, guests: FactoryBot.build_list(:guest, 1))
+    place = FactoryBot.build(:place, name: "Parador de Plasencia")
 
     wedding.events << FactoryBot.build(:event, name: "Welcome Cocktail", schedule: (date + 15.hours)..(date + 17.hours), place:)
     wedding.events << FactoryBot.build(:event, name: "Engagement Ceremony", schedule: (date + 17.hours)..(date + 18.hours), place:)
@@ -32,7 +33,7 @@ class Invitation::ShowComponentPreview < ViewComponent::Preview
 
   def default
     wedding = self.class.wedding
-    guest = FactoryBot.build(:guest)
+    guest = wedding.guests.first
     render(Invitation::ShowComponent.new(wedding:, guest:))
   end
 end

@@ -4,25 +4,26 @@
 
     -# Events list
     .mt-12
-      - place = wedding.events.first.place
-      - first_event = wedding.events.first
-      %div{ class: "flex flex-row justify-between items-center pb-8 border-b-[1px] border-gray-200" }
-        %p{ class: "w-[50px] font-newsreader uppercase text-center text-gray-700" }
-          %span.text-xs= l(first_event.schedule.begin.to_date, format: :abbreviated_month)
-          %br
-          %span.font-newsreader.text-2xl{ class: "tracking-[.05em]" }= first_event.schedule.begin.day
+      - schedule_decorator.event_group_decorators.each do |event_group_decorator|
+        - address_decorator = event_group_decorator.place_decorator.address_decorator
 
-        %div{ class: "max-w-[65%] space-y-1" }
-          %p{ class: "text-gray-700 text-xs uppercase tracking-[.15em]" } Parador de Plasencia
-          %p{ class: "text-gray-400 text-xs" } Pl. de San Vicente Ferrer, Plasencia, Spain
+        %div{ class: "flex flex-row justify-between items-center pb-6 border-b-[1px] border-gray-200" }
+          %p{ class: "w-[50px] font-newsreader uppercase text-center text-gray-700" }
+            %span.text-xs= l(event_group_decorator.time_range.begin.to_date, format: :abbreviated_month)
+            %br
+            %span.font-newsreader.text-2xl{ class: "tracking-[.05em]" }= event_group_decorator.time_range.begin.day
 
-        = icon_component(icon: "map-pin", size: :small, scheme: :invisible, class: "text-gray-400")
+          %div{ class: "max-w-[65%] space-y-1" }
+            %p{ class: "text-gray-700 text-xs uppercase tracking-[.15em]" }= event_group_decorator.place_decorator.name
+            %p{ class: "text-gray-400 text-xs" }= address_decorator.full_address
 
-      - wedding.events.each do |event|
-        .flex.flex-row.space-x-6.items-center.divide-x.divide-gray-200
-          %div{ class: "min-w-[50px]" }
-            = icon_component(icon: "calendar", size: :small, class: "m-auto text-gray-500")
-          .relative.space-y-1.pl-8.py-6
-            .absolute.h-2.w-2.rounded-full.bg-gray-500{ class: "left-[-4.5px] top-[48%]" }
-            %p.text-gray-500.text-xs{ class: "uppercase tracking-[.10em]" }= l(event.schedule.begin, format: :short_time)
-            %p.text-gray-700.text-xs{ class: "uppercase tracking-[.2em]" }= event.name
+          = icon_component(icon: "map-pin", size: :small, scheme: :invisible, class: "text-gray-400")
+
+        - event_group_decorator.event_decorators.each do |event_decorator|
+          .flex.flex-row.space-x-6.items-center.divide-x.divide-gray-200
+            %div{ class: "min-w-[50px]" }
+              = icon_component(icon: "calendar", size: :small, class: "m-auto text-gray-500")
+            .relative.space-y-1.pl-8.py-6
+              .absolute.h-2.w-2.rounded-full.bg-gray-500{ class: "left-[-4.5px] top-[48%]" }
+              %p.text-gray-500.text-xs{ class: "uppercase tracking-[.10em]" }= l(event_decorator.schedule.begin, format: :short_time)
+              %p.text-gray-700.text-xs{ class: "uppercase tracking-[.2em]" }= event_decorator.name
