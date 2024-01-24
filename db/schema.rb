@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_22_173410) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_23_150809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_173410) do
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
     t.index ["organization_id"], name: "index_dishes_on_organization_id"
+  end
+
+  create_table "event_guests", primary_key: ["event_id", "guest_id"], force: :cascade do |t|
+    t.uuid "event_id", null: false
+    t.uuid "guest_id", null: false
+    t.timestamptz "created_at", precision: 6, null: false
+    t.timestamptz "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_guests_on_event_id"
+    t.index ["guest_id"], name: "index_event_guests_on_guest_id"
   end
 
   create_table "event_services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -146,6 +155,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_173410) do
   end
 
   add_foreign_key "dishes", "organizations", name: "dish_fk_in_organization"
+  add_foreign_key "event_guests", "events"
+  add_foreign_key "event_guests", "guests"
   add_foreign_key "event_services", "events", name: "event_fk_in_event_services"
   add_foreign_key "event_services", "services", name: "service_fk_in_event_services"
   add_foreign_key "events", "places"

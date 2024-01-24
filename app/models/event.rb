@@ -6,6 +6,8 @@ class Event < ApplicationRecord
   belongs_to :place, optional: true
   has_many :event_services, dependent: :destroy
   has_many :services, through: :event_services
+  has_many :event_guests, dependent: :destroy
+  has_many :guests, through: :event_guests
 
   accepts_nested_attributes_for :place, allow_destroy: true
 
