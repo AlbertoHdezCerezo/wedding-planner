@@ -1,0 +1,12 @@
+en:
+  controllers:
+    invitations_controller:
+      create:
+        notice: "Invitation added to Wedding"
+        alert: "Invalid invitation information"
+      update:
+        notice: "Invitation updated"
+        alert: "Invalid invitation information"
+      destroy:
+        notice: "Invitation removed"
+        alert: "invitation could not be removed"

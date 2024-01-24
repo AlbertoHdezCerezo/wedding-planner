@@ -1,0 +1,16 @@
+= turbo_frame_tag("modal") do
+  = modal_component do |modal|
+    - modal.with_modal_content(class: "w-[600px]") do |content|
+      -# Header
+      - content.with_header(title: invitation.new_record? ? "Add Invitation" : "Edit Invitation")
+
+      -# Guest Form
+      = render Invitations::EditComponent::Form.new(wedding:, invitation:)
+
+      -# Footer
+      - content.with_footer do
+        .w-full.inline-flex.justify-end.gap-3
+          = button_component(label: "Cancel", scheme: :secondary, data: { action: "click->common--modal-component#close" })
+          = button_component(label: invitation.new_record? ? "Create" : "Save",
+                             form: "guest-form",
+                             type: "submit")

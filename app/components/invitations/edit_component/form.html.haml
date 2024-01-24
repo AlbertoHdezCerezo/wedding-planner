@@ -1,0 +1,4 @@
+- url = invitation.new_record? ? wedding_invitations_path(wedding) : wedding_invitation_path(wedding, invitation)
+- method = invitation.new_record? ? :post : :patch
+= form_with(model: invitation, url:, method:, builder: ComponentFormBuilder, **content_tag_arguments) do |form|
+  -# Form Group
