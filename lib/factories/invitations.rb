@@ -3,5 +3,6 @@
 FactoryBot.define do
   factory :invitation do
     association :wedding
+    guests { build_list(:guest, 1, wedding:) }
   end
 end
