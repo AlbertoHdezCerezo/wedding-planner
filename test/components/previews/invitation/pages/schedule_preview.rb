@@ -3,7 +3,7 @@
 class Invitation::Pages::SchedulePreview < ViewComponent::Preview
   def default
     wedding = Invitation::ShowComponentPreview.wedding
-    guest = FactoryBot.build(:guest)
+    guest = wedding.guests.first
     render(Invitation::Pages::Schedule.new(wedding:, guest:))
   end
 end

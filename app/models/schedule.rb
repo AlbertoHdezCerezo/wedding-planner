@@ -13,7 +13,7 @@ class Schedule
                        .sort { |event1, event2| event1.schedule.begin <=> event2.schedule.begin }
     end
 
-    def schedule = events.first.schedule.begin..events.last.schedule.end
+    def time_range = events.first.schedule.begin..events.last.schedule.end
   end
 
   attr_reader :wedding, :guest
@@ -30,7 +30,7 @@ class Schedule
   def event_groups
     @event_groups ||= wedding_places
                       .map { |place| EventsGroup.new(wedding:, place:) }
-                      .sort { |group1, group2| group1.schedule.begin <=> group2.schedule.begin }
+                      .sort { |group1, group2| group1.time_range.begin <=> group2.time_range.begin }
   end
 
   private
