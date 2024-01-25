@@ -22,7 +22,11 @@ module Common
     end
 
     def call
-      inline_svg_tag(svg_file, **content_tag_arguments)
+      # +inline_svg_tag+ requires data attribute to be passed as a hash
+      # We perform a minor convertion of all +data-+ attributes to a hash
+      data_argument = Html::Attribute.build(content_tag_arguments, name: "data")
+
+      inline_svg_tag(svg_file, **content_tag_arguments.merge(data_argument.to_h))
     end
 
     protected
