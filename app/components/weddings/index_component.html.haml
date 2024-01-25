@@ -1,4 +1,4 @@
-= render Layout::PageComponent.new do
+= render Layout::PageComponent.new(body_tag_arguments: { class: "space-y-8" }) do
   -# Page Header
   = title_component(title: "Your weddings", class: "w-full") do |title|
     - title.with_subheader_text("List of weddings your are planning")
@@ -10,8 +10,6 @@
                                 href: new_wedding_path,
                                 "data-turbo-frame": "modal")
 
-  %hr
-
   -# Weddings List
   - if weddings.empty?
     = empty_state_component(icon: "inbox",
@@ -21,6 +19,6 @@
                     button_path: new_wedding_path,
                     button_arguments: { "data-turbo-frame": "modal" })
   - else
-    %div{ class: "grid gap-6 max-h-full overflow-y-scroll", style: "grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));" }
+    %div{ class: "grid gap-8 max-h-full overflow-y-scroll", style: "grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));" }
       -# Weddings
       = render Weddings::IndexComponent::Wedding.with_collection(weddings)
