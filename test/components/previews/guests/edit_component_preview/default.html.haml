@@ -1,2 +1,2 @@
 .w-full.h-screen.flex.items-center.justify-center.bg-gray-50
-  = render(Guests::EditComponent.new(guest: local_assigns[:guest]))
+  = render(Guests::EditComponent.new(wedding: local_assigns[:wedding], guest: local_assigns[:guest]))

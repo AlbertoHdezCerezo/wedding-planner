@@ -24,6 +24,6 @@
                                  button_label: "Create Invitation",
                                  button_path: new_wedding_invitation_path(wedding),
                                  button_arguments: { "data-turbo-frame": "modal" })
-        - table.with_column("Guests") { |item| tag.p("#{item.name} #{item.surname}") }
-        - table.with_column("URL") { |item| tag.p(item.country) }
+        - table.with_column("Guests") { |item| tag.p("#{item.guests.pluck(:name).join(", ")}") }
+        - table.with_column("URL") { "www.holamundo.com" }
         - table.with_column("Status") { tag.p("Not Sent") }

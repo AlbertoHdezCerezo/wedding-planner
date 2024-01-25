@@ -2,7 +2,8 @@
 
 class Guests::EditComponentPreview < ViewComponent::Preview
   def default
-    guest = FactoryBot.build(:guest)
-    render_with_template(locals: { guest: })
+    wedding = Wedding.first || FactoryBot.create(:wedding)
+    guest = Guest.first || FactoryBot.create(:guest)
+    render_with_template(locals: { wedding:, guest: })
   end
 end
