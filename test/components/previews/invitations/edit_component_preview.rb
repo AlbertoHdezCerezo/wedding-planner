@@ -2,7 +2,9 @@
 
 class Invitations::EditComponentPreview < ViewComponent::Preview
   def default
-    invitation = FactoryBot.build(:invitation)
-    render_with_template(locals: { invitation: })
+    guest = Guest.first || FactoryBot.create(:guest)
+    wedding = guest.wedding
+    invitation = Invitation.first || FactoryBot.create(:invitation, wedding:, guests: [guest])
+    render_with_template(locals: { wedding:, invitation: })
   end
 end
