@@ -19,7 +19,8 @@
                                  subtitle: "Start preparing the guests for the wedding",
                                  button_label: "add guest",
                                  button_path: new_wedding_guest_path(wedding),
-                                 button_arguments: { "data-turbo-frame": "modal" })
+                                 button_arguments: { "data-turbo-frame": "modal" },
+                                 class: "text-center")
       - table.with_column("Name") { |item| tag.p("#{item.name} #{item.surname}") }
       - table.with_column("Travels from") { |item| tag.p(item.country) }
       - table.with_column("Relation") { tag.p("Broom's father") }
