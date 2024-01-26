@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # --------
   resources :weddings, only: %i[index new create show] do
     resources :events, only: %i[new create edit update destroy]
-    resources :invitations, only: %i[new create edit update destroy]
+    resources :invitations, only: %i[index new create edit update destroy]
     resources :guests, only: %i[index new edit create update destroy] do
       # Invitation
       # ----------
