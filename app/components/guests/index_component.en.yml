@@ -1,0 +1,19 @@
+en:
+  header:
+    title: Guests List
+    subtitle: "%{count} Persons in your Wedding List"
+    add_guest: Add Guest
+    send_invitation: Send Invitation
+  empty:
+    title: Your Guests List is empty
+    subtitle: Start preparing your Wedding's List
+    add_guest: Add Guest
+  table:
+    name: Name
+    origin: Travels From
+    relation: Relation
+  delete:
+    title: Remove Guest from Wedding List
+    subtitle_html: "Do you want to remove <b>%{name}</b> from the Wedding Guest's Lists?"
+    confirm: Remove Guest
+    cancel: Cancel

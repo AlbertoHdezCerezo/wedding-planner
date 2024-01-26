@@ -1,9 +1,9 @@
 = render Layout::PageComponent.new(body_tag_arguments: { class: "space-y-8" }) do
   -# Page Header
-  = title_component(title: "Your weddings", class: "w-full") do |title|
-    - title.with_subheader_text("List of weddings your are planning")
+  = title_component(title: t(".header.title"), class: "w-full") do |title|
+    - title.with_subheader_text(t(".header.subtitle"))
     - if weddings.any?
-      - title.with_action(label: "Create Wedding Plan",
+      - title.with_action(label: t(".create_wedding"),
                                 tag: :a,
                                 size: :medium,
                                 scheme: :primary,
@@ -13,9 +13,9 @@
   -# Weddings List
   - if weddings.empty?
     = empty_state_component(icon: "inbox",
-                    title: "You have no open weddings",
-                    subtitle: "Start planning a new wedding",
-                    button_label: "create wedding plan",
+                    title: t(".empty_state.title"),
+                    subtitle: t(".empty_state.subtitle"),
+                    button_label: t(".create_wedding"),
                     button_path: new_wedding_path,
                     button_arguments: { "data-turbo-frame": "modal" })
   - else

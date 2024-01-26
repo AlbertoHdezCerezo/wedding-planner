@@ -12,4 +12,6 @@ class Wedding < ApplicationRecord
   validates :date, presence: true, comparison: { greater_than: Date.current }
 
   def in_guests_list?(guest) = guests.include?(guest)
+
+  def days_left = (date - Date.current).to_i
 end

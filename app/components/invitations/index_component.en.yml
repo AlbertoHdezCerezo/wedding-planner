@@ -1,0 +1,24 @@
+en:
+  header:
+    title: Invitations List
+    subtitle: "%{count} Invitations for your Wedding"
+    add_invitation: Add Invitation
+  empty:
+    guests:
+      title: Your Guests List is empty. Without Guests you cannot add Invitations
+      subtitle: Start preparing your Wedding's List
+      add: Add Guest
+    invitations:
+      title: You have no Invitations for your Guests
+      subtitle: Create Invitation for a Guest
+      add: Add Guest
+  table:
+    guests: Guests
+    url: URL
+    status: Status
+    relation: Relation
+  delete:
+    title: Remove Invitation from Wedding
+    subtitle_html: "Do you want to remove <b>%{name}</b> from the Wedding Guest's Lists?"
+    confirm: Remove Invitation
+    cancel: Cancel
