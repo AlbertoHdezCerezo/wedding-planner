@@ -1,0 +1,8 @@
+en:
+  header:
+    title: "Your Weddings"
+    subtitle: "List of weddings you are planning"
+  empty_state:
+    title: "You are not managing any weddings yet"
+    subtitle: "Start planning a wedding"
+  create_wedding: "Create Wedding Plan"

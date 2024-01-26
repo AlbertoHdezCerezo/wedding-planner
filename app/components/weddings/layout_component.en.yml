@@ -1,0 +1,22 @@
+en:
+  back: "Back to Weddings"
+  header:
+    days_left: {
+      zero: "%{date} > Its your wedding day! 💒",
+      one: "%{date} (One day left!)",
+      other: "%{date} (%{count} days left)"
+    }
+    guests: {
+      zero: "No Guests in List",
+      one: "One Guest in List",
+      other: "%{count} Guests in List"
+    }
+    invitations: {
+      zero: "No Invitations sent",
+      one: "One Invitation sent",
+      other: "%{count} Invitations sent"
+    }
+  tab:
+    guests: "Guests"
+    invitations: "Invitations"
+    schedule: "Schedule"

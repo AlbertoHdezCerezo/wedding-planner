@@ -5,35 +5,34 @@
                                               class: "w-full h-full",
                                               ) do |table|
       - if guests.any?
-        - table.with_title(title: "Guests List", size: :small, class: "w-full") do |title|
-          - title.with_subheader_text("#{guests.count} persons in your wedding list")
-          - title.with_action(label: "Add guest",
+        - table.with_title(title: t(".header.title"), size: :small, class: "w-full") do |title|
+          - title.with_subheader_text(t(".header.subtitle", count: wedding.guests.count))
+          - title.with_action(label: t(".header.add_guest"),
                                 tag: :a,
                                 size: :medium,
                                 scheme: :secondary,
                                 href: new_wedding_guest_path(wedding),
                                 "data-turbo-frame": "modal")
-          - title.with_action(label: "Send invitations", size: :medium, scheme: :primary)
+          - title.with_action(label: t(".header.send_invitation"), size: :medium, scheme: :primary)
       - table.with_empty_state(icon: "inbox",
-                                 title: "Your guests list is empty",
-                                 subtitle: "Start preparing the guests for the wedding",
-                                 button_label: "add guest",
+                                 title: t(".empty.title"),
+                                 subtitle: t(".empty.subtitle"),
+                                 button_label: t(".empty.add_guest"),
                                  button_path: new_wedding_guest_path(wedding),
                                  button_arguments: { "data-turbo-frame": "modal" },
                                  class: "text-center")
-      - table.with_column("Name") { |item| tag.p("#{item.name} #{item.surname}") }
-      - table.with_column("Travels from") { |item| tag.p(item.country) }
-      - table.with_column("Relation") { tag.p("Broom's father") }
+      - table.with_column(t(".table.name")) { |item| tag.p("#{item.name} #{item.surname}") }
+      - table.with_column(t(".table.origin")) { |item| tag.p(item.country) }
+      - table.with_column(t(".table.relation")) { tag.p("Broom's father") }
       - table.with_column(horizontal_alignment: :right) do |guest|
         .inline-flex.gap-3
           - confirm_button_arguments = { tag: :a,
                                            "data-turbo-method": "delete",
                                            href: wedding_guest_path(wedding, guest) }
-          - confirmation_subheader = "Do you want to remove #{guest.name} from the Wedding Guest's Lists?"
-          = render Common::ModalConfirmationComponent.new(confirm_label: "Remove Guest",
-                                                            cancel_label: "Cancel",
-                                                            confirmation_header: "Remove Guest from Guests List",
-                                                            confirmation_subheader:,
+          = render Common::ModalConfirmationComponent.new(confirm_label: t(".delete.confirm"),
+                                                            cancel_label: t(".delete.cancel"),
+                                                            confirmation_header: t(".delete.title"),
+                                                            confirmation_subheader: t(".delete.subtitle_html", name: guest.name),
                                                             confirm_button_arguments:) do |modal|
             - modal.with_trigger do
               = icon_button_component(icon: "trash", size: :small, scheme: :secondary)

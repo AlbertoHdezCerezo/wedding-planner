@@ -4,20 +4,29 @@
                                             density: :spacious,
                                             class: "w-full h-full") do |table|
       - if invitations.any?
-        - table.with_title(title: "Guests List", size: :small, class: "w-full") do |title|
-          - title.with_subheader_text("#{invitations.count} invitations created")
-          - title.with_action(label: "Add invitation",
+        - table.with_title(title: t(".header.title"), size: :small, class: "w-full") do |title|
+          - title.with_subheader_text(t(".header.subtitle", count: wedding.invitations.count))
+          - title.with_action(label: t(".header.add_invitation"),
                               tag: :a,
                               size: :medium,
                               scheme: :secondary,
                               href: new_wedding_invitation_path(wedding),
                               "data-turbo-frame": "modal")
-      - table.with_empty_state(icon: "inbox",
-                               title: "You have no wedding invitations created yet",
-                               subtitle: "Start preparing the invitations for your guests",
-                               button_label: "Create Invitation",
-                               button_path: new_wedding_invitation_path(wedding),
-                               button_arguments: { "data-turbo-frame": "modal" })
-      - table.with_column("Guests") { |item| tag.p("#{item.guests.pluck(:name).join(", ")}") }
-      - table.with_column("URL") { "www.holamundo.com" }
-      - table.with_column("Status") { tag.p("Not Sent") }
+
+      - if wedding.guests.count.zero?
+        - table.with_empty_state(icon: "inbox",
+                                 title: t(".empty.guests.title"),
+                                 subtitle: t(".empty.guests.subtitle"),
+                                 button_label: t(".empty.guest.add"),
+                                 button_path: new_wedding_invitation_path(wedding),
+                                 button_arguments: { "data-turbo-frame": "modal" })
+      - elsif wedding.invitations.count.zero?
+        - table.with_empty_state(icon: "inbox",
+                                 title: t(".empty.invitation.title"),
+                                 subtitle: t(".empty.invitation.subtitle"),
+                                 button_label: t(".empty.invitation.add"),
+                                 button_path: new_wedding_invitation_path(wedding),
+                                 button_arguments: { "data-turbo-frame": "modal" })
+      - table.with_column(t(".table.guests")) { |item| tag.p("#{item.guests.pluck(:name).join(", ")}") }
+      - table.with_column(t(".table.url")) { "www.holamundo.com" }
+      - table.with_column(t(".table.status")) { tag.p("Not Sent") }

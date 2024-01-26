@@ -5,26 +5,22 @@
     -# TODO: replace by button component
     = link_to(weddings_path, class: "flex flex-row items-center gap-2 mb-1 text-gray-500 hover:text-gray-900 hover:underline") do
       = icon_component(icon: "arrow-left", size: :xs)
-      %p.text-xs Back to weddings
+      %p.text-xs= t(".back")
 
     -# Title
     = title_component(title: @wedding.name) do |title|
       - title.with_subheader_horizontal_description_list(separator: "·") do |description|
-        - description.with_icon_field(field_icon: "calendar", field_description: "#{wedding.date.to_s} (#{(wedding.date - Date.current).to_i} days left)")
+        - description.with_icon_field(field_icon: "calendar", field_description: t(".header.days_left", date: wedding.date, count: wedding.days_left))
         - description.with_icon_field(field_icon: "globe", field_description: "Plasencia, Spain")
-
-        - guests_count = wedding.guests.any? ? "#{wedding.guests.count} guests" : "No guests list"
-        - description.with_icon_field(field_icon: "user", field_description: guests_count)
-
-        - invitations_count = wedding.invitations.any? ? "#{wedding.invitations.count} invitations" : "No invitations sent"
-        - description.with_icon_field(field_icon: "letter", field_description: invitations_count)
+        - description.with_icon_field(field_icon: "user", field_description: t(".header.guests", count: wedding.guests.count))
+        - description.with_icon_field(field_icon: "letter", field_description: t(".header.invitations", count: wedding.invitations.count))
 
   -# Content
   .flex-grow.overflow-hidden
     = tab_navigation_component do |navigation|
-      - navigation.with_item(wedding_guests_path(wedding), "Guests")
-      - navigation.with_item(wedding_invitations_path(wedding), "Invitations")
-      - navigation.with_item(wedding_schedule_path(wedding), "Schedule")
+      - navigation.with_item(wedding_guests_path(wedding), t(".tab.guests"))
+      - navigation.with_item(wedding_invitations_path(wedding), t(".tab.invitations"))
+      - navigation.with_item(wedding_schedule_path(wedding), t(".tab.schedule"))
 
       - if content?
         = content
