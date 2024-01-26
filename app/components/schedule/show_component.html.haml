@@ -1,35 +1,29 @@
-.flex-grow.overflow-hidden
-  = tab_navigation_component do |navigation|
-    - navigation.with_item("/TODO", "Tasks")
-    - navigation.with_item(wedding_guests_path(wedding), "Guests")
-    - navigation.with_item(wedding_schedule_path(wedding), "Schedule", active: true)
-    - navigation.with_item("/TODO", "Budget")
+= render Weddings::LayoutComponent.new(wedding:) do
+  %div{ content_tag_arguments }
+    -# Events List
+    .flex-grow.h-full.overflow-y-auto.pr-4
+      - if events.empty?
+        = empty_state_component(icon: "calendar",
+                                title: "There are not events planned for your wedding",
+                                subtitle: "Start adding your first event",
+                                button_label: "Create Wedding Event",
+                                button_path: new_wedding_event_path(wedding),
+                                button_arguments: { "data-turbo-frame": "modal" })
+      - else
+        %div
+          - events.each do |event|
+            = render Events::EventComponent.new(event:, class: "border-b py-12")
 
-    %div{ content_tag_arguments }
-      -# Events List
-      .flex-grow.h-full.overflow-y-auto.pr-4
-        - if events.empty?
-          = empty_state_component(icon: "calendar",
-                                  title: "There are not events planned for your wedding",
-                                  subtitle: "Start adding your first event",
-                                  button_label: "Create Wedding Event",
-                                  button_path: new_wedding_event_path(wedding),
-                                  button_arguments: { "data-turbo-frame": "modal" })
-        - else
-          %div
-            - events.each do |event|
-              = render Events::EventComponent.new(event:, class: "border-b py-12")
+    -# Events Calendar
+    .w-72.flex.flex-col.gap-4
+      = button_component(label: "Add Event",
+                         tag: :a,
+                         size: :medium,
+                         scheme: :secondary,
+                         href: new_wedding_event_path(wedding),
+                         "data-turbo-frame": "modal",
+                         class: "w-full")
 
-      -# Events Calendar
-      .w-72.flex.flex-col.gap-4
-        = button_component(label: "Add Event",
-                           tag: :a,
-                           size: :medium,
-                           scheme: :secondary,
-                           href: new_wedding_event_path(wedding),
-                           "data-turbo-frame": "modal",
-                           class: "w-full")
-
-        = render Common::DatePickerComponent.new(url: "/",
-                                                 selected_date: wedding.date,
-                                                 class: "mt-8")
+      = render Common::DatePickerComponent.new(url: "/",
+                                               selected_date: wedding.date,
+                                               class: "mt-8")

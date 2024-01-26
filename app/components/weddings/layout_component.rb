@@ -7,4 +7,10 @@ class Weddings::LayoutComponent < ApplicationComponent
     super(**system_arguments)
     @wedding = wedding
   end
+
+  private
+
+  def default_content_tag_arguments
+    { class: "h-full w-full overflow-hidden flex flex-col gap-4" }
+  end
 end

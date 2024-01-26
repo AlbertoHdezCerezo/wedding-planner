@@ -1,29 +1,23 @@
-.flex-grow.overflow-hidden
-  = tab_navigation_component do |navigation|
-    - navigation.with_item("/TODO", "Tasks")
-    - navigation.with_item(wedding_guests_path(wedding), "Guests", active: true)
-    - navigation.with_item(wedding_schedule_path(wedding), "Schedule")
-    - navigation.with_item("/TODO", "Budget")
-
-    %div{ content_tag_arguments }
-      = render Common::DataTableComponent.new(items: invitations,
-                                              density: :spacious,
-                                              class: "w-full h-full") do |table|
-        - if invitations.any?
-          - table.with_title(title: "Guests List", size: :small, class: "w-full") do |title|
-            - title.with_subheader_text("#{invitations.count} invitations created")
-            - title.with_action(label: "Add invitation",
-                                tag: :a,
-                                size: :medium,
-                                scheme: :secondary,
-                                href: new_wedding_invitation_path(wedding),
-                                "data-turbo-frame": "modal")
-        - table.with_empty_state(icon: "inbox",
-                                 title: "You have no wedding invitations created yet",
-                                 subtitle: "Start preparing the invitations for your guests",
-                                 button_label: "Create Invitation",
-                                 button_path: new_wedding_invitation_path(wedding),
-                                 button_arguments: { "data-turbo-frame": "modal" })
-        - table.with_column("Guests") { |item| tag.p("#{item.guests.pluck(:name).join(", ")}") }
-        - table.with_column("URL") { "www.holamundo.com" }
-        - table.with_column("Status") { tag.p("Not Sent") }
+= render Weddings::LayoutComponent.new(wedding:) do
+  %div{ content_tag_arguments }
+    = render Common::DataTableComponent.new(items: invitations,
+                                            density: :spacious,
+                                            class: "w-full h-full") do |table|
+      - if invitations.any?
+        - table.with_title(title: "Guests List", size: :small, class: "w-full") do |title|
+          - title.with_subheader_text("#{invitations.count} invitations created")
+          - title.with_action(label: "Add invitation",
+                              tag: :a,
+                              size: :medium,
+                              scheme: :secondary,
+                              href: new_wedding_invitation_path(wedding),
+                              "data-turbo-frame": "modal")
+      - table.with_empty_state(icon: "inbox",
+                               title: "You have no wedding invitations created yet",
+                               subtitle: "Start preparing the invitations for your guests",
+                               button_label: "Create Invitation",
+                               button_path: new_wedding_invitation_path(wedding),
+                               button_arguments: { "data-turbo-frame": "modal" })
+      - table.with_column("Guests") { |item| tag.p("#{item.guests.pluck(:name).join(", ")}") }
+      - table.with_column("URL") { "www.holamundo.com" }
+      - table.with_column("Status") { tag.p("Not Sent") }
