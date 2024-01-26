@@ -11,7 +11,7 @@ en:
     invitations:
       title: You have no Invitations for your Guests
       subtitle: Create Invitation for a Guest
-      add: Add Guest
+      add: Add Invitation
   table:
     guests: Guests
     url: URL
