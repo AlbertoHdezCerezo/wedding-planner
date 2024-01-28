@@ -19,6 +19,22 @@ class InvitationParametersTest < ActiveSupport::TestCase
     assert_empty parsed_params
   end
 
+  test "nil 'guest_ids' generate validation error" do
+    params = ActionController::Parameters.new({ guest_ids: nil })
+
+    parsed_params = InvitationParameters.new(params)
+
+    assert_not parsed_params.valid?
+  end
+
+  test "empty 'guest_ids' generate validation error" do
+    params = ActionController::Parameters.new({ guest_ids: [] })
+
+    parsed_params = InvitationParameters.new(params)
+
+    assert_not parsed_params.valid?
+  end
+
   private
 
   def permitted_parameters
