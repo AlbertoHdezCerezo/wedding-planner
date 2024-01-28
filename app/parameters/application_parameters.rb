@@ -9,12 +9,16 @@ class ApplicationParameters < SimpleDelegator
 
   delegate :schema, to: :class
 
-  attr_reader :params
+  attr_reader :params, :parsed_params
 
   def initialize(params)
     params.permit!
+    @params = params
+    @parsed_params = schema.call(params.to_h)
     super(schema.call(params.to_h).output.except(*excluded_parameters))
   end
+
+  def valid? = parsed_params.errors.empty?
 
   # Collection of keys representing +Schema+ +parameters+
   # which will be excluded from output.

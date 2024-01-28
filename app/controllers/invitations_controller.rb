@@ -36,8 +36,7 @@ class InvitationsController < ApplicationController
   def update
     set_invitation
 
-    # TODO: implement a more sophisticated way to handle parameter validations
-    can_update = invitation_parameters[:guest_ids].present?
+    can_update = invitation_parameters.valid?
 
     @invitation.assign_attributes(invitation_parameters) if can_update
 
