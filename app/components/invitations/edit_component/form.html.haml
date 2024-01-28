@@ -1,4 +1,7 @@
 - url = invitation.new_record? ? wedding_invitations_path(wedding) : wedding_invitation_path(wedding, invitation)
 - method = invitation.new_record? ? :post : :patch
 = form_with(model: invitation, url:, method:, builder: ComponentFormBuilder, **content_tag_arguments) do |form|
-  -# Form Group
+  - wedding.guests.each do |guest|
+    .flex.gap-4
+      %p= guest.name
+      %p= guest.country
