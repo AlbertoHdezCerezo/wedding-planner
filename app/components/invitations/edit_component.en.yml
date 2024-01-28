@@ -1,0 +1,9 @@
+en:
+  create:
+    title: Add Invitation
+    confirm: Create
+    cancel: Cancel
+  edit:
+    title: Edit Invitation
+    confirm: Save
+    cancel: Cancel

@@ -35,9 +35,13 @@ class InvitationsController < ApplicationController
   # PATCH /weddings/<wedding-id>/invitations/<id>
   def update
     set_invitation
-    @invitation.assign_attributes(invitation_parameters)
 
-    if @invitation.save
+    # TODO: use parameters validations to set this up
+    can_update = invitation_parameters[:guest_ids].present?
+
+    @invitation.assign_attributes(invitation_parameters) if can_update
+
+    if can_update && @invitation.save
       flash.now[:notice] = t("controllers.invitations_controller.update.notice")
       render status: :ok
     else

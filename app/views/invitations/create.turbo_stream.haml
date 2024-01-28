@@ -9,4 +9,4 @@
 - else
   -# Reload form component with errors
   = turbo_stream.replace(Invitations::EditComponent::Form::ID) do
-    = render Invitations::EditComponent::Form.new(wedding: @wedding, guest: @guest)
+    = render Invitations::EditComponent::Form.new(wedding: @wedding, invitation: @invitation)
