@@ -4,8 +4,9 @@ class Invitation::LetterPreview < ViewComponent::Preview
   layout "application"
 
   def default
-    wedding = FactoryBot.build(:wedding)
-    guest = FactoryBot.build(:guest)
-    render(Invitation::Letter.new(wedding:, guest:))
+    wedding = Invitation::ShowComponentPreview.wedding
+    guest = wedding.guests.first
+    invitation = FactoryBot.build(:invitation, wedding:, guests: [guest])
+    render(Invitation::Letter.new(invitation:))
   end
 end

@@ -38,6 +38,7 @@ class Invitation::ShowComponentPreview < ViewComponent::Preview
   def default
     wedding = self.class.wedding
     guest = wedding.guests.first
-    render(Invitation::ShowComponent.new(wedding:, guest:))
+    invitation = FactoryBot.build(:invitation, wedding:, guests: [guest])
+    render(Invitation::ShowComponent.new(invitation:))
   end
 end
