@@ -20,4 +20,8 @@ Rails.application.routes.draw do
     end
     resource :schedule, only: %i[show]
   end
+
+  # Invitations
+  # -----------
+  get "invitation/:id", to: "invitation#show", as: "invitation"
 end

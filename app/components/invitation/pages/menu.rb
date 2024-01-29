@@ -3,11 +3,10 @@
 class Invitation::Pages::Menu < Invitation::Pages::Page
   def self.page_name = "menu"
 
-  attr_reader :wedding, :guest
+  attr_reader :invitation
 
-  def initialize(wedding:, guest:, **system_arguments)
-    @wedding = wedding
-    @guest = guest
+  def initialize(invitation:, **system_arguments)
+    @invitation = invitation
     super(**system_arguments)
   end
 end

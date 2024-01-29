@@ -1,6 +1,6 @@
 %div{ content_tag_arguments }
-  = render(Invitation::Envelop.new(wedding:, guest:))
-  = render(Invitation::Letter.new(wedding:, guest:))
+  = render(Invitation::Envelop.new(invitation:))
+  = render(Invitation::Letter.new(invitation:))
 
   - options = ::Html::TagAttributes.build({ class: "absolute bottom-[8%] m-auto tracking-[.1em]" })
   - options = options.with_stimulus_action("click", stimulus_identifier, "openLetter")
