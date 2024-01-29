@@ -13,7 +13,7 @@ class Invitations::EditComponent::Form < ApplicationComponent
       super(**system_arguments)
     end
 
-    def call
+    def call # rubocop:todo Metrics/AbcSize
       base_component(**content_tag_arguments) do
         concat(content_tag(:p, "#{guest.name} #{guest.surname}"))
         concat(
