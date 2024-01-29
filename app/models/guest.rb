@@ -11,4 +11,7 @@ class Guest < ApplicationRecord
   validates :name, presence: true
   validates :surname, presence: true
   validates :country, presence: true
+
+  # Scopes
+  scope :without_invitation, -> { where(invitation_id: nil) }
 end

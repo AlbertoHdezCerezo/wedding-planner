@@ -62,7 +62,7 @@ class Invitations::EditComponent::Form < ApplicationComponent
 
   private
 
-  def unselected_guests = wedding.guests.select { invitation.guests.exclude?(_1) }
+  def unselected_guests = wedding.guests.select { _1.invitation_id.nil? }
 
   def default_content_tag_arguments
     Html::TagAttributes.build({

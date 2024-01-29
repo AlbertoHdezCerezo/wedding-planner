@@ -27,4 +27,14 @@ class GuestTest < ActiveSupport::TestCase
     assert_not guest.valid?
     assert guest.errors.of_kind?(:country, :blank)
   end
+
+  # Scopes
+  test "#without_invitation returns guests without invitation assigned" do
+    guests = FactoryBot.create_list(:guest, 2)
+    _invitation = FactoryBot.create(:invitation, guests: [guests.first], wedding: guests.first.wedding)
+
+    result = Guest.without_invitation
+
+    assert_equal [guests.last], result.to_a
+  end
 end
