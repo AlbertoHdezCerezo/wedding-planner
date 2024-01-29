@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Place < ApplicationRecord
+  include Decoratable
+
   # Associations
   belongs_to :address, dependent: :destroy
 

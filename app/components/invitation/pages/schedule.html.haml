@@ -4,7 +4,7 @@
 
     -# Events list
     .mt-12
-      - schedule_decorator.event_group_decorators.each do |event_group_decorator|
+      - schedule.decorator.event_group_decorators.each do |event_group_decorator|
         %div{ class: "flex flex-row justify-between items-center pb-6 border-b-[1px] border-gray-200" }
           %p{ class: "w-[50px] font-newsreader uppercase text-center text-gray-700" }
             %span.text-xs= event_group_decorator.abbreviated_start_month

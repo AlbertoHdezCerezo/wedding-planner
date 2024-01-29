@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Invitation < ApplicationRecord
+  include Decoratable
+
   # Associations
   belongs_to :wedding, optional: false
   has_many :guests, dependent: :nullify
