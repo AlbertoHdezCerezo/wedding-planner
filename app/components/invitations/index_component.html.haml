@@ -30,3 +30,21 @@
       - table.with_column(t(".table.guests")) { |item| tag.p("#{item.guests.pluck(:name).join(", ")}") }
       - table.with_column(t(".table.url")) { "www.holamundo.com" }
       - table.with_column(t(".table.status")) { tag.p("Not Sent") }
+      - table.with_column(horizontal_alignment: :right) do |invitation|
+        .inline-flex.gap-3
+          - confirm_button_arguments = { tag: :a, "data-turbo-method": "delete", href: wedding_invitation_path(wedding, invitation) }
+          = render Common::ModalConfirmationComponent.new(confirm_label: t(".delete.confirm"),
+                                                          cancel_label: t(".delete.cancel"),
+                                                          confirmation_header: t(".delete.title"),
+                                                          confirmation_subheader: t(".delete.subtitle_html"),
+                                                          confirm_button_arguments:) do |modal|
+            - modal.with_trigger do
+              = icon_button_component(icon: "trash", size: :small, scheme: :secondary)
+
+          = icon_button_component(icon: "box-pencil",
+                                    tag: :a,
+                                    size: :small,
+                                    scheme: :secondary,
+                                    href: edit_wedding_invitation_path(wedding, invitation),
+                                    "data-turbo-frame": "modal")
+

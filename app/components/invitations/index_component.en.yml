@@ -19,6 +19,6 @@ en:
     relation: Relation
   delete:
     title: Remove Invitation from Wedding
-    subtitle_html: "Do you want to remove <b>%{name}</b> from the Wedding Guest's Lists?"
+    subtitle_html: "Do you want to remove invitation?"
     confirm: Remove Invitation
     cancel: Cancel
