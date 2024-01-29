@@ -4,7 +4,7 @@ class Invitation::Letter < ApplicationComponent
   attr_reader :invitation
 
   def initialize(invitation:, **system_arguments)
-    @invitation
+    @invitation = invitation
     super(**system_arguments)
   end
 
