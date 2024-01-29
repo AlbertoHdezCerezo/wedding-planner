@@ -2,8 +2,9 @@
 
 class Invitation::Pages::CoverPreview < ViewComponent::Preview
   def default
-    wedding = FactoryBot.build(:wedding)
-    guest = FactoryBot.build(:guest)
-    render(Invitation::Pages::Cover.new(wedding:, guest:))
+    wedding = Invitation::ShowComponentPreview.wedding
+    guest = wedding.guests.first
+    invitation = FactoryBot.build(:invitation, wedding:, guests: [guest])
+    render(Invitation::Pages::Cover.new(invitation:))
   end
 end

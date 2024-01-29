@@ -2,8 +2,9 @@
 
 class Invitation::EnvelopPreview < ViewComponent::Preview
   def default
-    wedding = FactoryBot.build(:wedding)
-    guest = FactoryBot.build(:guest)
-    render(Invitation::Envelop.new(wedding:, guest:))
+    wedding = Invitation::ShowComponentPreview.wedding
+    guest = wedding.guests.first
+    invitation = FactoryBot.build(:invitation, wedding:, guests: [guest])
+    render(Invitation::Envelop.new(invitation:))
   end
 end
