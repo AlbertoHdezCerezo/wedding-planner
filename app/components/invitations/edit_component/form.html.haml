@@ -1,7 +1,22 @@
 - url = invitation.new_record? ? wedding_invitations_path(wedding) : wedding_invitation_path(wedding, invitation)
 - method = invitation.new_record? ? :post : :patch
-= form_with(model: invitation, url:, method:, builder: ComponentFormBuilder, **content_tag_arguments) do |form|
-  - wedding.guests.each do |guest|
-    .flex.gap-4
-      %p= guest.name
-      %p= guest.country
+= form_with(model: invitation, url:, method:, builder: ComponentFormBuilder, html: content_tag_arguments) do |form|
+  %div
+    -# Search Field
+    -# %p.text-sm.text-gray-700 Select for whom you want to create an invitation
+    -# = render Common::Form::TextFieldComponent.new({}, "")
+
+    -# Guests List
+    .grid.grid-cols-2.gap-x-8.gap-y-4
+      %p.flex-1.text-sm.text-gray-700 Selected Guests
+      %p.flex-1.text-sm.text-gray-700 Wedding Guests
+
+      - options = Html::TagAttributes.build({ class: "divide-y divide-gray-100" })
+      - options = options.with_stimulus_target("selectedGuestsList", stimulus_identifier)
+      %div{ options.to_h }
+        = render SelectableGuest.with_collection(invitation.guests, selected: true, form:)
+
+      - options = Html::TagAttributes.build({ class: "divide-y divide-gray-100" })
+      - options = options.with_stimulus_target("unselectedGuestsList", stimulus_identifier)
+      %div{ options.to_h }
+        = render SelectableGuest.with_collection(unselected_guests, selected: false, form:)
