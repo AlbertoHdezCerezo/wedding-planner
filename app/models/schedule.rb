@@ -3,6 +3,8 @@
 class Schedule
   # Set of +Wedding+ +Events+ taking place at the same place, sorted by time
   class EventsGroup
+    include Decoratable
+
     attr_reader :wedding, :events, :place
 
     def initialize(wedding:, place:)
@@ -15,6 +17,8 @@ class Schedule
 
     def time_range = events.first.schedule.begin..events.last.schedule.end
   end
+
+  include Decoratable
 
   attr_reader :wedding, :guest
 

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
+  include Decoratable
+
   # Associations
   belongs_to :wedding
   belongs_to :place, optional: true
