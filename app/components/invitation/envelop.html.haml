@@ -8,7 +8,7 @@
     - options = options.with_stimulus_action("click", stimulus_identifier, "open")
     %div{ options.to_h }
       = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-10 right-8 h-[10%] md:h-[15%] w-auto rotate-6")
-      %p{ class: "absolute left-10 md:left-16 bottom-8 md:bottom-16 text-xl md:text-2xl opacity-60 uppercase tracking-[.3em]" } Maik & Mirah
+      %p{ class: "absolute left-10 md:left-16 bottom-8 md:bottom-16 text-xl md:text-2xl opacity-60 uppercase tracking-[.3em]" }= invitation.decorator.guest_names
 
     -# Back Card Face
     %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }

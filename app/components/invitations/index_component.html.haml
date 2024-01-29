@@ -27,7 +27,7 @@
                                  button_label: t(".empty.invitations.add"),
                                  button_path: new_wedding_invitation_path(wedding),
                                  button_arguments: { "data-turbo-frame": "modal" })
-      - table.with_column(t(".table.guests")) { tag.p("#{_1.guests.pluck(:name).join(", ")}") }
+      - table.with_column(t(".table.guests")) { tag.p(_1.decorator.guest_names) }
       - table.with_column(t(".table.url")) { link_to("link to invitation", invitation_path(_1), target: "_blank") }
       - table.with_column(t(".table.status")) { tag.p("Not Sent") }
       - table.with_column(horizontal_alignment: :right) do |invitation|
@@ -47,4 +47,3 @@
                                     scheme: :secondary,
                                     href: edit_wedding_invitation_path(wedding, invitation),
                                     "data-turbo-frame": "modal")
-
