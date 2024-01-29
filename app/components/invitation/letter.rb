@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class Invitation::Letter < ApplicationComponent
-  attr_reader :wedding, :guest
+  attr_reader :invitation
 
-  def initialize(wedding:, guest:, **system_arguments)
-    @wedding = wedding
-    @guest = guest
+  def initialize(invitation:, **system_arguments)
+    @invitation
     super(**system_arguments)
   end
 
