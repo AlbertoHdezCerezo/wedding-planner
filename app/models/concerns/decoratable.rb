@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Decoratable
   class DecoratorNoDefinedError < StandardError; end

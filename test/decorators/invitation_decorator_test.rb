@@ -36,4 +36,3 @@ class InvitationDecoratorTest < ActiveSupport::TestCase
     assert_equal "John Doe, Jane Doe & Jack Doe", invitation_decorator.guest_names
   end
 end
-
