@@ -2,9 +2,9 @@
 
 class Invitations::EditComponentPreview < ViewComponent::Preview
   def default
-    guest = Guest.first || FactoryBot.create(:guest)
-    wedding = guest.wedding
-    invitation = Invitation.first || FactoryBot.create(:invitation, wedding:, guests: [guest])
+    wedding = Wedding.first || FactoryBot.create(:wedding)
+    guests = wedding.guests.count > 3 ? wedding.guests : FactoryBot.create_list(:guest, 5, wedding:)
+    invitation = wedding.invitations.first || FactoryBot.create(:invitation, wedding:, guests: [guests.first])
     render_with_template(locals: { wedding:, invitation: })
   end
 end
