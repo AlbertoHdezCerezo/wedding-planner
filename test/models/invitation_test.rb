@@ -35,7 +35,7 @@ class InvitationTest < ActiveSupport::TestCase
   test "by default an invitation state is pending" do
     invitation = FactoryBot.create(:invitation)
 
-    assert invitation.pending?, <<-MESSAGE
+    assert_predicate invitation, :pending?, <<-MESSAGE
       Expected new invitation to have pending state by default. Invitation has #{invitation.state} state
     MESSAGE
   end
