@@ -73,7 +73,8 @@ gem "money-rails", "~> 1.15"
 
 # State-Machine logic for Ruby, compatible with ActiveRecord
 # https://github.com/state-machines/state_machines
-gem "aasm", "~> 5.3.0"
+gem "aasm", "5.1.0"
+gem "after_commit_everywhere", "~> 1.3.0"
 
 group :development, :test do
   # powerful component browser and preview system with an integrated documentation engine
