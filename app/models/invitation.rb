@@ -4,6 +4,12 @@ class Invitation < ApplicationRecord
   include Decoratable
   include AASM
 
+  # TODO: if used more often, move it to a concern
+  def self.state_machine_events = self.aasm.events.map(&:name)
+
+  def compatible_events = aasm.events(permitted: true).map(&:name)
+  # -----
+
   # Associations
   belongs_to :wedding, optional: false
   has_many :guests, dependent: :nullify
@@ -13,7 +19,7 @@ class Invitation < ApplicationRecord
   validate :guests_in_wedding_guests_list, if: -> { wedding.present? }
 
   # State Machine
-  aasm column: :state, timestamps: false do
+  aasm column: :state, timestamps: false, whiny_persistence: false do
     state :pending, initial: true
     state :sent, :opened, :accepted, :declined, :cancelled
 
