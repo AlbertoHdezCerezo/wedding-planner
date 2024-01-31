@@ -74,6 +74,9 @@ gem "money-rails", "~> 1.15"
 # State-Machine logic for Ruby, compatible with ActiveRecord
 # https://github.com/state-machines/state_machines
 gem "aasm", "5.1.0"
+
+# Allows defining ActiveRecord callbacks anywhere outside of Model classes
+# https://github.com/Envek/after_commit_everywhere
 gem "after_commit_everywhere", "~> 1.3.0"
 
 group :development, :test do
