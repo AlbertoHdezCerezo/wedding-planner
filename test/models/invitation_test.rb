@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "aasm/minitest"
 
 class InvitationTest < ActiveSupport::TestCase
   # Validations
@@ -28,5 +29,52 @@ class InvitationTest < ActiveSupport::TestCase
       Expected invitation with guest not in wedding guests list to be invalid. Invitation is valid"
     SQL
     assert invitation.errors.of_kind?(:guests, :guest_not_invited_to_wedding)
+  end
+
+  # State Machine Transitions
+  test "by default an invitation state is pending" do
+    invitation = FactoryBot.create(:invitation)
+
+    assert invitation.pending?, <<-MESSAGE
+      Expected new invitation to have pending state by default. Invitation has #{invitation.state} state
+    MESSAGE
+  end
+
+  test "a pending invitation transitions to sent state with send event" do
+    invitation = FactoryBot.create(:invitation)
+
+    assert_transitions_from invitation, :pending, to: :sent, on_event: :deliver
+  end
+
+  test "a sent invitation transitions to opened state with open event" do
+    invitation = FactoryBot.create(:invitation)
+    invitation.deliver!
+
+    assert_transitions_from invitation, :sent, to: :opened, on_event: :open
+  end
+
+  test "an opened invitation transitions to accepted state with accept event" do
+    invitation = FactoryBot.create(:invitation)
+    invitation.deliver!
+    invitation.open!
+
+    assert_transitions_from invitation, :opened, to: :accepted, on_event: :accept
+  end
+
+  test "an opened invitation transitions to declined state with decline event" do
+    invitation = FactoryBot.create(:invitation)
+    invitation.deliver!
+    invitation.open!
+
+    assert_transitions_from invitation, :opened, to: :declined, on_event: :decline
+  end
+
+  test "an accepted invitation transitions to cancelled state with cancel event" do
+    invitation = FactoryBot.create(:invitation)
+    invitation.deliver!
+    invitation.open!
+    invitation.accept!
+
+    assert_transitions_from invitation, :accepted, to: :cancelled, on_event: :cancel
   end
 end
