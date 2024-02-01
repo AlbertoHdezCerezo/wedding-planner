@@ -6,7 +6,7 @@ FactoryBot.define do
     # of +Wedding+ +Guests+ list we need to previously create both records
     transient do
       sample_guest { create(:guest) }
-      sample_wedding { create(:wedding, guests: [sample_guest]) }
+      sample_wedding { sample_guest.wedding }
     end
 
     wedding { sample_wedding }
