@@ -6,7 +6,7 @@ class InvitationController < ApplicationController
   # GET /invitation/<invitation-id>
   def show
     @invitation = Invitation.find(params[:id])
-    open_invitation
+    open_invitation if params.fetch(:preview_mode, false)
   end
 
   private
