@@ -28,7 +28,10 @@
                                  button_path: new_wedding_invitation_path(wedding),
                                  button_arguments: { "data-turbo-frame": "modal" })
       - table.with_column(t(".table.guests")) { tag.p(_1.decorator.guest_names) }
-      - table.with_column(t(".table.url")) { link_to("link to invitation", invitation_path(_1), target: "_blank") }
+      - table.with_column(t(".table.url")) do
+        .inline-flex.gap-6.items-center.justify-between
+          = link_to("/invitation/#{_1.id}", invitation_path(_1, preview_mode: true), target: "_blank", class: "text-gray-500 hover:text-gray-900 hover:underline")
+          = icon_button_component(icon: "copy-clipboard", size: :small, scheme: :secondary)
       - table.with_column(t(".table.status")) { tag.p(_1.state) }
       - table.with_column(horizontal_alignment: :right) do |invitation|
         .inline-flex.gap-3
