@@ -6,5 +6,13 @@ class InvitationController < ApplicationController
   # GET /invitation/<invitation-id>
   def show
     @invitation = Invitation.find(params[:id])
+    open_invitation
+  end
+
+  private
+
+  def open_invitation
+    InvitationStateTransition.new(invitation: @invitation, event: :deliver).save if @invitation.pending?
+    InvitationStateTransition.new(invitation: @invitation, event: :open).save if @invitation.sent?
   end
 end
