@@ -21,14 +21,15 @@ class Invitation < ApplicationRecord
   # State Machine
   aasm column: :state, timestamps: false, whiny_persistence: false do
     state :pending, initial: true
-    state :sent, :opened, :accepted, :declined, :cancelled
+    state :delivered, :opened, :accepted, :declined, :cancelled
 
     event :deliver do
-      transitions from: :pending, to: :sent
+      transitions from: :pending, to: :delivered
     end
 
     event :open do
-      transitions from: :sent, to: :opened
+      transitions from: :pending, to: :sent
+      transitions from: :delivered, to: :opened
     end
 
     event :accept do
