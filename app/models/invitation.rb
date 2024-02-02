@@ -28,7 +28,7 @@ class Invitation < ApplicationRecord
     end
 
     event :open do
-      transitions from: :pending, to: :sent
+      transitions from: :pending, to: :opened
       transitions from: :delivered, to: :opened
     end
 
