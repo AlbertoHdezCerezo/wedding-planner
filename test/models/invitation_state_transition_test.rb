@@ -43,7 +43,7 @@ class InvitationStateTransitionTest < ActiveSupport::TestCase
     invitation = FactoryBot.create(:invitation, wedding: guest.wedding, guests: [guest], state: :pending)
     invitation_state_transition = InvitationStateTransition.new(invitation:, event: :deliver)
 
-    assert_changes -> { invitation.reload.state }, to: "sent" do
+    assert_changes -> { invitation.reload.state }, to: "delivered" do
       assert invitation_state_transition.save
     end
   end

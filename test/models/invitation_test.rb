@@ -40,17 +40,17 @@ class InvitationTest < ActiveSupport::TestCase
     MESSAGE
   end
 
-  test "a pending invitation transitions to sent state with send event" do
+  test "a pending invitation transitions to delivered state with deliver event" do
     invitation = FactoryBot.create(:invitation)
 
-    assert_transitions_from invitation, :pending, to: :sent, on_event: :deliver
+    assert_transitions_from invitation, :pending, to: :delivered, on_event: :deliver
   end
 
-  test "a sent invitation transitions to opened state with open event" do
+  test "a delivered invitation transitions to opened state with open event" do
     invitation = FactoryBot.create(:invitation)
     invitation.deliver!
 
-    assert_transitions_from invitation, :sent, to: :opened, on_event: :open
+    assert_transitions_from invitation, :delivered, to: :opened, on_event: :open
   end
 
   test "an opened invitation transitions to accepted state with accept event" do
