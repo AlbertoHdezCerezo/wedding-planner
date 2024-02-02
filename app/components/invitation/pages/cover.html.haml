@@ -30,3 +30,7 @@
       - options = ::Html::TagAttributes.build({ label: "accept invitation", size: :small, scheme: :primary,
                                                 class: '!w-[60%] absolute bottom-8 left-1/2 transform -translate-x-1/2 uppercase !text-[10px] tracking-[.05em]' })
       = button_component(**options.to_h)
+
+    - options = ::Html::TagAttributes.build({ label: "add event to calendar", size: :small, scheme: :secondary,
+                                              class: 'block !w-[60%] absolute bottom-[-30px] margin-auto uppercase !text-[10px] tracking-[.05em]' })
+    = button_component(tag: :a, href: calendar_url, **options.to_h)
