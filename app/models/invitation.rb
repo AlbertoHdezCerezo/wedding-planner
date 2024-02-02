@@ -5,7 +5,7 @@ class Invitation < ApplicationRecord
   include AASM
 
   # TODO: if used more often, move it to a concern
-  def self.state_machine_events = self.aasm.events.map(&:name)
+  def self.state_machine_events = aasm.events.map(&:name)
 
   def compatible_events = aasm.events(permitted: true).map(&:name)
   # -----

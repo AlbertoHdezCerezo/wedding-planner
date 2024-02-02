@@ -25,7 +25,7 @@ class Invitation::InvitationControllerTest < ControllerTestHelper
   end
 
   test "GET show if invitation is pending and preview mode is disabled, opens invitation" do
-    assert @invitation.pending?
+    assert_predicate @invitation, :pending?
 
     assert_changes -> { @invitation.reload.opened? }, to: true do
       get invitation_path(@invitation)
@@ -35,7 +35,7 @@ class Invitation::InvitationControllerTest < ControllerTestHelper
   test "GET show if invitation is delivered and preview mode is disabled, opens invitation" do
     @invitation.deliver!
 
-    assert @invitation.delivered?
+    assert_predicate @invitation, :delivered?
 
     assert_changes -> { @invitation.reload.opened? }, to: true do
       get invitation_path(@invitation)
@@ -43,7 +43,7 @@ class Invitation::InvitationControllerTest < ControllerTestHelper
   end
 
   test "GET show if invitation is not opened and preview mode is enabled, does not open invitation" do
-    assert @invitation.pending?
+    assert_predicate @invitation, :pending?
 
     assert_no_changes -> { @invitation.reload.opened? } do
       get invitation_path(@invitation, preview_mode: true)
