@@ -23,5 +23,10 @@ Rails.application.routes.draw do
 
   # Invitations
   # -----------
-  get "invitation/:id", to: "invitation#show", as: "invitation"
+  get "invitation/:id",
+      to: "invitation/invitation#show",
+      as: "invitation"
+  post "invitation_state_transition",
+       to: "invitation/invitation_state_transitions#create",
+       as: "invitation_state_transition"
 end
