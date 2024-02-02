@@ -8,10 +8,10 @@ class Invitation::InvitationStateTransitionsController < Invitation::Application
       invitation: Invitation.find(invitation_state_transition_params[:invitation_id])
     )
 
-    if @invitation_state_transition.save
-      render json: { success: true }
+    if @invitation_state_transition.invitation.accepted? || @invitation_state_transition.save
+      head :ok, content_type: "text/html"
     else
-      render json: { errors: @invitation_state_transition.errors }, status: :unprocessable_entity
+      head :unprocessable_entity, content_type: "text/html"
     end
   end
 
