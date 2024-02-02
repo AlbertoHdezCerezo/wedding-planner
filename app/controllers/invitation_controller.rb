@@ -6,13 +6,14 @@ class InvitationController < ApplicationController
   # GET /invitation/<invitation-id>
   def show
     @invitation = Invitation.find(params[:id])
-    open_invitation if params.fetch(:preview_mode, false)
+    open_invitation if !preview_mode? && (@invitation.pending? || @invitation.delivered?)
   end
 
   private
 
+  def preview_mode? = params.fetch(:preview_mode, false)
+
   def open_invitation
-    InvitationStateTransition.new(invitation: @invitation, event: :deliver).save if @invitation.pending?
-    InvitationStateTransition.new(invitation: @invitation, event: :open).save if @invitation.sent?
+    InvitationStateTransition.new(invitation: @invitation, event: :open).save
   end
 end
