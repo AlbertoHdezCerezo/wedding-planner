@@ -79,6 +79,10 @@ gem "aasm", "5.1.0"
 # https://github.com/Envek/after_commit_everywhere
 gem "after_commit_everywhere", "~> 1.3.0"
 
+# Gem to generate URLs to attach calendar events to emails
+# https://github.com/jaredlt/add_to_calendar
+gem "add_to_calendar", "~> 0.4.0"
+
 group :development, :test do
   # powerful component browser and preview system with an integrated documentation engine
   gem "lookbook", ">= 2.0.5"
