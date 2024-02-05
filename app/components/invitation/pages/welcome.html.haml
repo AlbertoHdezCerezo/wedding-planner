@@ -28,7 +28,7 @@
           %span 10600 Plasencia, Cáceres, Spain
           %p.uppercase.leading-4.text-gray-500{ class: "text-[10px] tracking-[.1em]" }
 
-      - options = ::Html::TagAttributes.build({ label: "read schedule", size: :small, scheme: :secondary, class: 'w-full uppercase !text-[10px] tracking-[.05em]' })
+      - options = ::Html::TagAttributes.build({ label: "read schedule", size: :small, scheme: :secondary, class: "w-full" })
       - options = options.with_stimulus_action("click", Invitation::Card.stimulus_identifier, "navigateTo")
       - options = options.with_stimulus_parameter("page_name", Invitation::Card.stimulus_identifier, "schedule")
-      = button_component(**options.to_h)
+      = invitation_button_component(**options.to_h)

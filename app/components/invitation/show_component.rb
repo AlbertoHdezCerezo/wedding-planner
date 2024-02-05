@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Invitation::ShowComponent < ApplicationComponent
+class Invitation::ShowComponent < Invitation::ApplicationComponent
   attr_reader :invitation
 
   def initialize(invitation:, **system_arguments)

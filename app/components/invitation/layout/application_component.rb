@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Invitation::Layout::ApplicationComponent < ApplicationComponent
-  class BodyComponent < ApplicationComponent
+class Invitation::Layout::Invitation::ApplicationComponent < Invitation::ApplicationComponent
+  class BodyComponent < Invitation::ApplicationComponent
     def call
       render(BaseComponent.new(tag: :body, **content_tag_arguments)) do
         content

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Invitation::Layout::PageComponent < ApplicationComponent
+class Invitation::Layout::PageComponent < Invitation::ApplicationComponent
   def default_content_tag_arguments
     {
       class: <<-HTML
