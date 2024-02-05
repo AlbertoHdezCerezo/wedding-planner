@@ -5,7 +5,7 @@
     -# Front Card Face
     - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full text-gray-700",
                                               style: "backface-visibility: hidden; background-image: url('#{asset_path("postcard-background.svg")}')" })
-    - options = options.with_stimulus_action("click", stimulus_identifier, "open")
+    - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openLetter")
     %div{ options.to_h }
       -# Stamps
       = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-12 right-12 h-[12%] md:h-[18%] w-auto transform rotate-[10deg] opacity-70")

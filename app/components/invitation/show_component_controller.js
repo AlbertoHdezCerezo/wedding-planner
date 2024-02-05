@@ -20,13 +20,6 @@ const REVEAL_ENVELOP_ANIMATIONS = [
   }
 ]
 
-const HIDE_START_BUTTON_ANIMATION = {
-  duration: 800,
-  easing: 'easeInQuint',
-  opacity: 0,
-  translateY: '120%'
-}
-
 const ZOOM_IN_ANIMATION = {
   duration: 600,
   easing: 'easeOutQuint',
@@ -40,8 +33,6 @@ const ZOOM_OUT_ANIMATION = {
 }
 
 export default class extends Controller {
-  static targets = ['startButton']
-
   envelopController = null
   letterController = null
 
@@ -69,7 +60,6 @@ export default class extends Controller {
   async openLetter () {
     if (!this.#invitationReady()) return
 
-    await this.#hideOpenInvitationButton()
     await this.#zoomOutEnvelop()
     await this.letterController.open()
   }
@@ -78,15 +68,6 @@ export default class extends Controller {
     await this.letterController.close()
     await this.#zoomInEnvelop()
     await this.envelopController.open()
-  }
-
-  async #hideOpenInvitationButton () {
-    await Animator.play(
-      Animator.animation({
-        targets: this.startButtonTarget,
-        ...HIDE_START_BUTTON_ANIMATION
-      })
-    )
   }
 
   async #zoomInEnvelop () {
