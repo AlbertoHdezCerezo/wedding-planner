@@ -1,6 +1,25 @@
 import { Controller } from '@hotwired/stimulus'
 import { Animator } from '../../javascript/src/invitation/animator'
 
+const REVEAL_ENVELOP_ANIMATIONS = [
+  {
+    delay: 1600,
+    duration: 0,
+    translateY: '100vh',
+    rotate: 15
+  },
+  {
+    duration: 1400,
+    easing: 'easeOutQuart',
+    translateY: 0
+  },
+  {
+    duration: 800,
+    easing: 'easeOutQuart',
+    rotate: 0
+  }
+]
+
 const HIDE_START_BUTTON_ANIMATION = {
   duration: 800,
   easing: 'easeInQuint',
@@ -28,6 +47,7 @@ export default class extends Controller {
 
   registerEnvelopController ({ detail: { controller: envelopController } }) {
     this.envelopController = envelopController
+    this.#revealEnvelop()
   }
 
   registerLetterController ({ detail: { controller: letterController } }) {
@@ -36,6 +56,14 @@ export default class extends Controller {
 
   #invitationReady () {
     return !!this.envelopController && !!this.letterController
+  }
+
+  async #revealEnvelop () {
+    const animations = REVEAL_ENVELOP_ANIMATIONS.map(animationPayload => {
+      return Object.assign(animationPayload, { targets: this.envelopController.element })
+    })
+
+    await Animator.playTimeline(Animator.timeline(animations))
   }
 
   async openLetter () {
