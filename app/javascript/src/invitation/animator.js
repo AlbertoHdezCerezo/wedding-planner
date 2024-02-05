@@ -15,4 +15,20 @@ export class Animator {
 
     return animation
   }
+
+  static timeline (animations) {
+    const timeline = anime.timeline({ autoplay: false })
+
+    animations.forEach((animation, index) => { timeline.add(animation, '+=0') })
+
+    return timeline
+  }
+
+  static async playTimeline (timeline) {
+    timeline.play()
+
+    await timeline.finished
+
+    return timeline
+  }
 }
