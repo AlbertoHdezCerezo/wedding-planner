@@ -31,6 +31,8 @@ module.exports = {
       ]
     },
     fontFamily: {
+      ambrosia: ['ambrosia'],
+      angeldreams: ['angeldreams'],
       ibm: ['IBM Plex Sans'],
       newsreader: ['Newsreader']
     },

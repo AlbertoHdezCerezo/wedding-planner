@@ -16,6 +16,22 @@
 @import "tailwindcss/base";
 
 @layer base {
+  @font-face {
+    font-family: 'ambrosia';
+    src: url('ambrosia.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'angeldreams';
+    src: url('angel-dreams.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
   /**
    * Font Faces
    */
