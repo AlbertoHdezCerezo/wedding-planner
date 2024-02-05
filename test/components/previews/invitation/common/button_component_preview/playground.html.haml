@@ -1,0 +1,6 @@
+= render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+  = render(Invitation::Common::ButtonComponent.new(label:, size:, scheme:))
+  = render(Invitation::Common::ButtonComponent.new(label: "#{label} hovered", size:, scheme:))
+  = render(Invitation::Common::ButtonComponent.new(label: "#{label} disabled", size:, scheme:, disabled: true))
+  = render(Invitation::Common::ButtonComponent.new(label: "#{label} pressed", size:, scheme:))
+  = render(Invitation::Common::ButtonComponent.new(label: "#{label} focus", size:, scheme:, autofocus: true))
