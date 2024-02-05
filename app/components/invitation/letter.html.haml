@@ -1,6 +1,7 @@
 %div{ content_tag_arguments }
-  .w-fit.py-20.mx-auto.font-angeldreams.text-gray-700{ class: "text-3xl md:text-5xl [&>*]:w-full [&>*]:inline-flex [&>*]:items-center [&>*]:justify-between [&>*]:py-10 [&>*]:px-24",
-                                                                style: "background-image: url('#{asset_path("postcard-background.svg")}')" }
+  .py-20.mx-auto.font-angeldreams.text-gray-700{ class: "w-full max-w-[1100px] m-auto text-3xl md:text-5xl shadow-2xl ,
+                                                         [&>*]:w-full [&>*]:inline-flex [&>*]:items-center [&>*]:justify-between [&>*]:py-10 [&>*]:px-24",
+                                                 style: "background-image: url('#{asset_path("postcard-background.svg")}')" }
     %div
       = image_tag("invitation/title.png", alt: "stamp", class: "w-[60%] m-auto")
 
