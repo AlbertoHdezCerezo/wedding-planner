@@ -1,14 +1,23 @@
 = base_component(**content_tag_arguments) do
-  - options = ::Html::TagAttributes.build({ class: "relative", style: "transform-style: preserve-3d" })
+  - options = ::Html::TagAttributes.build({ class: "relative shadow-lg", style: "transform-style: preserve-3d" })
   - options = options.with_stimulus_target("innerLetter", stimulus_identifier)
   %div{ options.to_h }
     -# Front Card Face
-    - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full",
+    - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full text-gray-700",
                                               style: "backface-visibility: hidden; background-image: url('#{asset_path("postcard-background.svg")}')" })
     - options = options.with_stimulus_action("click", stimulus_identifier, "open")
     %div{ options.to_h }
-      = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-10 right-8 h-[10%] md:h-[15%] w-auto rotate-6")
-      %p{ class: "absolute left-10 md:left-16 bottom-8 md:bottom-16 text-xl md:text-2xl opacity-60 uppercase tracking-[.3em]" }= invitation.decorator.guest_names
+      -# Stamps
+      = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-12 right-12 h-[12%] md:h-[18%] w-auto transform rotate-[10deg] opacity-70")
+      = image_tag("invitation/stamp_02.png", alt: "stamp", class: "absolute top-8 right-10 h-[15%] md:h-[20%] w-auto transform -rotate-[4deg] shadow-sm")
+
+      -# Open Instructions
+      .absolute.top-0.left-10.flex.flex-col.gap-6.opacity-40.cursor-pointer
+        = icon_component(icon: "arrow-down", size: :lg, class: "!w-[35px] !h-[35px]")
+        %p{ class: "ml-2 font-ibm text-xs uppercase tracking-[.3em]" } Abrir por aquí
+
+      -# Guests Names
+      %p{ class: "absolute left-10 md:left-16 bottom-8 md:bottom-16 text-2xl md:text-5xl opacity-60 font-angeldreams" }= invitation.decorator.guest_names
 
     -# Back Card Face
     %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }
