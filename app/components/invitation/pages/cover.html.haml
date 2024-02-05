@@ -19,18 +19,25 @@
     - options = options.with_stimulus_parameter("page_name", Invitation::Card.stimulus_identifier, "welcome")
     = button_component(**options.to_h)
 
-    = form_with(model: invitation_state_transition,
-                url: invitation_state_transition_url,
-                method: :post,
-                builder: ComponentFormBuilder,
-                data: { "turbo-frame" => "", action: "turbo:before-fetch-response->#{stimulus_identifier}#greetConfirmedGuest" }) do |form|
-      = form.hidden_field :event, value: "accept"
-      = form.hidden_field :invitation_id, value: @invitation.id
+    -# if invitation.pending? || invitation.delivered? || invitation.opened?
+    - options = ::Html::TagAttributes.build({ class: "#{ "hidden" if invitation.accepted? && !preview_mode }" }).with_stimulus_target("beforeAccept", stimulus_identifier)
+    %div{ options.to_h }
+      -# Options before invitation is accepted
+      = form_with(model: invitation_state_transition,
+                  url: invitation_state_transition_url,
+                  method: :post,
+                  builder: ComponentFormBuilder,
+                  data: { "turbo-frame" => "", action: "turbo:before-fetch-response->#{stimulus_identifier}#greetConfirmedGuest" }) do |form|
+        = form.hidden_field :event, value: "accept"
+        = form.hidden_field :invitation_id, value: @invitation.id
 
-      - options = ::Html::TagAttributes.build({ label: "accept invitation", size: :small, scheme: :primary,
-                                                class: '!w-[60%] absolute bottom-8 left-1/2 transform -translate-x-1/2 uppercase !text-[10px] tracking-[.05em]' })
-      = button_component(**options.to_h)
+        - options = ::Html::TagAttributes.build({ label: "accept invitation", size: :small, scheme: :primary,
+                                                  class: '!w-[60%] absolute bottom-8 left-1/2 transform -translate-x-1/2 uppercase !text-[10px] tracking-[.05em]' })
+        - options = options.with_stimulus_target("confirmationButton", stimulus_identifier)
+        = button_component(**options.to_h)
 
+    -# Options after invitation is accepted
     - options = ::Html::TagAttributes.build({ label: "add event to calendar", size: :small, scheme: :secondary,
-                                              class: 'block !w-[60%] absolute bottom-[-30px] margin-auto uppercase !text-[10px] tracking-[.05em]' })
+                                              class: "#{ "hidden opacity-0" if invitation.opened? || preview_mode } !w-[60%] absolute bottom-8 margin-auto uppercase !text-[10px] tracking-[.05em]" })
+    - options = options.with_stimulus_target("afterAccept", stimulus_identifier)
     = button_component(tag: :a, href: calendar_url, **options.to_h)

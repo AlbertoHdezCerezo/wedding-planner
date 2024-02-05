@@ -5,8 +5,9 @@ class Invitation::Pages::Cover < Invitation::Pages::Page
 
   attr_reader :invitation, :invitation_state_transition
 
-  def initialize(invitation:, **system_arguments)
+  def initialize(invitation:, preview_mode: false, **system_arguments)
     @invitation = invitation
+    @preview_mode = preview_mode
     @invitation_state_transition = InvitationStateTransition.new(event: "accept", invitation:)
     super(**system_arguments)
   end
