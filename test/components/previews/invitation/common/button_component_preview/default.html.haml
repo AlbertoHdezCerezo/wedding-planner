@@ -1,0 +1,27 @@
+- label = "Button"
+
+= render(BaseComponent.new(tag: :div, class: "flex flex-col items-center justify-center gap-4")) do
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :small, scheme: :primary))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :medium, scheme: :primary))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :large, scheme: :primary))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :small, scheme: :secondary))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :medium, scheme: :secondary))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :large, scheme: :secondary))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :small, scheme: :invisible))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :medium, scheme: :invisible))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :large, scheme: :invisible))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :small, scheme: :danger))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :medium, scheme: :danger))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :large, scheme: :danger))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :small, scheme: :danger_invisible))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :medium, scheme: :danger_invisible))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :large, scheme: :danger_invisible))
