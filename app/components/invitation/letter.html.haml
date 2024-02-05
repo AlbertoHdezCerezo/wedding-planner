@@ -1,15 +1,24 @@
 %div{ content_tag_arguments }
-  .w-fit.py-20.px-16.space-y-16.mx-auto{ class: "w-[700px]", style: "background-image: url('#{asset_path("postcard-background.svg")}')" }
-    .w-full.flex.items-center.justify-center
-      = image_tag("invitation/title.png", alt: "stamp", class: "w-[60%] h-auto")
+  .w-fit.py-20.mx-auto.font-angeldreams.text-gray-700{ class: "text-3xl md:text-5xl [&>*]:w-full [&>*]:inline-flex [&>*]:items-center [&>*]:justify-between [&>*]:py-10 [&>*]:px-24",
+                                                                style: "background-image: url('#{asset_path("postcard-background.svg")}')" }
+    %div
+      = image_tag("invitation/title.png", alt: "stamp", class: "w-[60%] m-auto")
 
-    .flex.flex-row.items-center.justify-between.space-x-16
-      = image_tag("invitation/ingredients-1.png", alt: "stamp", class: "w-[40%] h-auto")
-      %p{ class: "w-[40%]" } Familia, amigos, suavidad, pasión. Todos necesarios para una masa madre fuerte
+    %div{ class: "[&>*]:w-[45%]" }
+      = image_tag("invitation/ingredients_01.png", alt: "stamp", class: "h-auto")
+      %p Familia, amigos, suavidad, pasión. Todos necesarios para una masa madre fuerte
 
-    .flex.flex-row.items-center.justify-between.space-x-16
-      %p{ class: "w-[40%]" } Aventuras y desventuras de muchos viajes, para dar sabor al plato
-      = image_tag("invitation/ingredients-2.png", alt: "stamp", class: "w-[40%] h-auto")
+    %div{ class: "[&>*]:w-[45%]" }
+      %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
+      = image_tag("invitation/ingredients_02.png", alt: "stamp", class: "h-auto")
+
+    %div{ class: "[&>*]:w-[45%]" }
+      = image_tag("invitation/ingredients_03.png", alt: "stamp", class: "h-auto")
+      %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
+
+    %div{ class: "[&>*]:w-[45%]" }
+      %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
+      = image_tag("invitation/ingredients_04.png", alt: "stamp", class: "h-auto")
 
     - options = ::Html::TagAttributes.build({ class: "m-auto tracking-[.1em]" })
     - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openEnvelop")
