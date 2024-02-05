@@ -1,8 +1,6 @@
 %div{ content_tag_arguments }
+  -# Background
+  %p.font-ambrosia.absolute.w-full.h-full.inline-flex.items-center.justify-center.opacity-10.font-gray-700.text-9xl Hello
+
   = render(Invitation::Envelop.new(invitation:))
   = render(Invitation::Letter.new(invitation:))
-
-  - options = ::Html::TagAttributes.build({ class: "absolute bottom-[8%] m-auto" })
-  - options = options.with_stimulus_action("click", stimulus_identifier, "openLetter")
-  - options = options.with_stimulus_target("startButton", stimulus_identifier)
-  = invitation_button_component(label: "open wedding invitation", scheme: :secondary, **options.to_h)
