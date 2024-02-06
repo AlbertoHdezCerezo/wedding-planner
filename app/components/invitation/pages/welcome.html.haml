@@ -1,34 +1,28 @@
 = render(Invitation::Layout::PageComponent.new) do
-  .relative.h-full.flex.flex-col.justify-between.px-4.py-10
-    %h1.w-full.mt-16.font-newsreader.text-5xl.text-gray-700.text-center{ class: "leading-[1.1]" }
-      %span Alberto
-      %br
-      %span{ class: "text-[32px]" } &
-      %br
-      %span Andrea
+  .relative.h-full.flex.flex-col.items-center.justify-center.px-4.py-10.gap-8.text-gray-500
+    - options = { class: "w-full font-ambrosia text-7xl text-gray-500 text-center" }
+    .flex.flex-col.items-center.justify-center.mt-10
+      %h1{ options } Alberto
+      %h1{ options.merge(style: "font-size: 40px") } &
+      %h1{ options } Andrea
 
     .space-y-6
-      %h2.uppercase.text-gray-700{ class: "w-[85%] text-[10px] tracking-[.15em]" }
+      %h2.uppercase{ class: "w-[85%] text-[10px] tracking-[.15em]" }
         %span invite you to join them
         %br
         %span in their wedding celebration
 
       .flex.flex-row.items-center.justify-start
-        %p.font-newsreader.uppercase.text-center.leading-3.mr-6.pr-6.border-r.border-gray-700.text-gray-700
+        %p.uppercase.text-center.leading-3.mr-6.pr-6.border-r.border-gray-200
           %span.text-xs Sept
           %br
-          %span.font-newsreader.text-2xl{ class: "tracking-[.05em]" } 14
+          %span.text-2xl{ class: "tracking-[.05em]" } 14
           %br
           %span.text-sm 2023
-        %p.uppercase.leading-4.text-gray-500{ class: "text-[10px] tracking-[.15em]" }
+        %p.uppercase.leading-4{ class: "text-[10px] tracking-[.15em]" }
           %span.text-gray-700 Ceremony on the 14th at 17:00
           %br
           %span Parador de Plasencia
           %br
           %span 10600 Plasencia, Cáceres, Spain
-          %p.uppercase.leading-4.text-gray-500{ class: "text-[10px] tracking-[.1em]" }
-
-      - options = ::Html::TagAttributes.build({ label: "read schedule", size: :small, scheme: :secondary, class: "w-full" })
-      - options = options.with_stimulus_action("click", Invitation::Card.stimulus_identifier, "navigateTo")
-      - options = options.with_stimulus_parameter("page_name", Invitation::Card.stimulus_identifier, "schedule")
-      = invitation_button_component(**options.to_h)
+          %p.uppercase.leading-4{ class: "text-[10px] tracking-[.1em]" }

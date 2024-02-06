@@ -1,20 +1,19 @@
 = render(Invitation::Layout::PageComponent.new(**content_tag_arguments)) do
   .h-full.w-full.relative.flex.flex-col.items-center.justify-center.px-4.py-10.text-gray-700
-    %hr.absolute.left-0.my-auto.border-gray-500{ class: "w-[20%]" }
-    %hr.absolute.right-0.my-auto.border-gray-500{ class: "w-[20%]" }
+    %hr.absolute.left-0.my-auto.border-gray-200{ class: "w-[20%]" }
+    %hr.absolute.right-0.my-auto.border-gray-200{ class: "w-[20%]" }
 
-    %h1.absolute.px-16.m-auto.font-newsreader.text-7xl{ class: "leading-[0.6]" }
-      %p{ class: "first-letter:mb-3" } 14
-      %br
-      %p{ class: "first-letter:mb-3" } 09
+    %h1.absolute.px-16.m-auto.font-ambrosia.text-8xl.text-gray-500.space-y-4
+      %p{ class: "leading-[0.6]" } 14
+      %p{ class: "leading-[0.6]" } 09
 
-    %h2.absolute.uppercase.text-xs.space-x-1{ class: "text-[10px] bottom-[100px] tracking-[.1em]" }
+    %h2.absolute.uppercase.text-xs.space-x-1.text-gray-500{ class: "text-[10px] bottom-[80px] tracking-[.1em]" }
       %span Save the date
       %span •
       %span Alberto & Andrea
 
     - options = ::Html::TagAttributes.build({ label: "read invitation", size: :small, scheme: :secondary,
-                                              class: "block md:hidden w-[60%] absolute bottom-8 margin-auto" })
+                                              class: "block md:hidden w-[60%] absolute bottom-2 margin-auto" })
     - options = options.with_stimulus_action("click", Invitation::Card.stimulus_identifier, "navigateTo")
     - options = options.with_stimulus_parameter("page_name", Invitation::Card.stimulus_identifier, "welcome")
     = invitation_button_component(**options.to_h)
@@ -32,12 +31,12 @@
         = form.hidden_field :invitation_id, value: @invitation.id
 
         - options = ::Html::TagAttributes.build({ label: "accept invitation", size: :small, scheme: :primary,
-                                                  class: "!w-[60%] absolute bottom-8 left-1/2 transform -translate-x-1/2" })
+                                                  class: "!w-[60%] absolute left-1/2 transform -translate-x-1/2 top-[90%]" })
         - options = options.with_stimulus_target("confirmationButton", stimulus_identifier)
         = invitation_button_component(**options.to_h)
 
     -# Options after invitation is accepted
     - options = ::Html::TagAttributes.build({ label: "add event to calendar", size: :small, scheme: :secondary,
-                                              class: "#{ "hidden opacity-0" if invitation.opened? || preview_mode } !w-[60%] absolute bottom-8 margin-auto" })
+                                              class: "#{ "hidden opacity-0" if invitation.opened? || preview_mode } !w-[60%] top-[90%] absolute margin-auto" })
     - options = options.with_stimulus_target("afterAccept", stimulus_identifier)
     = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
