@@ -55,6 +55,8 @@ export default class extends Controller {
     })
 
     await Animator.playTimeline(Animator.timeline(animations))
+
+    this.envelopController.enableMouseEvents()
   }
 
   async openLetter () {
