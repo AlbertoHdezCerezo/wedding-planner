@@ -1,9 +1,9 @@
 = base_component(**content_tag_arguments) do
-  - options = ::Html::TagAttributes.build({ class: "relative shadow-lg ", style: "transform-style: preserve-3d" })
+  - options = ::Html::TagAttributes.build({ class: "relative shadow-lg", style: "transform-style: preserve-3d" })
   - options = options.with_stimulus_target("innerLetter", stimulus_identifier)
   %div{ options.to_h }
     -# Front Card Face
-    - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full text-gray-700",
+    - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full text-gray-700 cursor-pointer",
                                               style: "backface-visibility: hidden; background-image: url('#{asset_path("postcard-background.svg")}')" })
     - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openLetter")
     %div{ options.to_h }
