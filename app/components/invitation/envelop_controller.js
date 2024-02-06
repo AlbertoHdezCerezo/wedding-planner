@@ -27,10 +27,20 @@ export default class extends Controller {
   ]
 
   connect () {
+    this.disableMouseEvents()
     this.dispatch('connected', { detail: { controller: this } })
   }
 
+  enableMouseEvents () {
+    this.element.style.pointerEvents = 'auto'
+  }
+
+  disableMouseEvents () {
+    this.element.style.pointerEvents = 'none'
+  }
+
   async open () {
+    this.disableMouseEvents()
     await this.#flip()
     await this.#revealMenu()
   }
