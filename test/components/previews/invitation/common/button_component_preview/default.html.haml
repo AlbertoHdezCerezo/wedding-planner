@@ -25,3 +25,8 @@
     = render(Invitation::Common::ButtonComponent.new(label:, size: :small, scheme: :danger_invisible))
     = render(Invitation::Common::ButtonComponent.new(label:, size: :medium, scheme: :danger_invisible))
     = render(Invitation::Common::ButtonComponent.new(label:, size: :large, scheme: :danger_invisible))
+
+  = render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :small, scheme: :cardboard))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :medium, scheme: :cardboard))
+    = render(Invitation::Common::ButtonComponent.new(label:, size: :large, scheme: :cardboard))

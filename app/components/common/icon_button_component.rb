@@ -5,7 +5,13 @@ module Common
     ICON_SIZES = {
       small: "sm",
       medium: "base",
-      large: "lg"
+      large: "xl"
+    }.freeze
+
+    BUTTON_SIZES = {
+      small: "w-9 text-sm",
+      medium: "w-11 text-lg",
+      large: "w-14 text-xl"
     }.freeze
 
     attr_reader :icon
@@ -24,17 +30,7 @@ module Common
     protected
 
     def default_content_tag_arguments
-      tag_attributes(
-        super,
-        {
-          class: <<-HTML
-            flex items-center justify-center !p-0
-            data-[size=small]:w-9
-            data-[size=medium]:w-11
-            data-[size=large]:w-14
-          HTML
-        }
-      )
+      tag_attributes(super, { class: "flex items-center justify-center !p-0 #{BUTTON_SIZES[size]}" })
     end
   end
 end
