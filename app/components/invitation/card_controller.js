@@ -4,7 +4,7 @@ import { Animator } from '../../javascript/src/invitation/animator'
 
 const MENU_REVEAL_ANIMATION = {
   autoplay: false,
-  duration: 1,
+  duration: 1200,
   easing: 'easeInExpo',
   translateY: [0, '-100px']
 }
@@ -41,8 +41,6 @@ export default class extends Controller {
     })
 
     this.dispatch('connected', { detail: { controller: this } })
-
-    this.revealMenu()
   }
 
   /**

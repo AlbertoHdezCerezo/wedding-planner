@@ -7,7 +7,7 @@
     -# Right side of card, invitation UI (page navigation happens here)
     .contents{ stimulus_target_option("pageAttachment", self.stimulus_identifier) }
       -# Page Navigation
-      - options = ::Html::TagAttributes.build({ class: "absolute right-8 flex flex-row items-center gap-4 px-6 py-4 rounded-t-xl shadow-md",
+      - options = ::Html::TagAttributes.build({ class: "absolute right-8 flex flex-row items-center gap-4 px-6 py-4 rounded-t-xl shadow-md z-[-1]",
                                                 style: "background-image: url('#{asset_path("postcard-background.svg")}')" })
       - options = options.with_stimulus_target("menu", stimulus_identifier)
       %div{ options.to_h }
