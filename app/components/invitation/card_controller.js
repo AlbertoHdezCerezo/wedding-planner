@@ -36,6 +36,7 @@ export default class extends Controller {
     this.pageNavigator = new Navigator(this.pageTemplateTargets, this.pageAttachmentTarget)
 
     this.navigateTo({
+      currentTarget: this.menuButtons[0],
       params: { pageName: this.#renderedInPhone() ? 'cover' : 'welcome' }
     })
 
@@ -63,7 +64,25 @@ export default class extends Controller {
     )
   }
 
-  navigateTo ({ params: { pageName } }) {
+  navigateTo ({ currentTarget, params: { pageName } }) {
+    if (currentTarget) {
+      this.#unselectMenuButtons()
+      this.#selectMenuButton(currentTarget)
+    }
+
     this.pageNavigator.navigateTo(pageName)
+  }
+
+  #selectMenuButton (button) {
+    button.ariaSelected = true
+  }
+
+  #unselectMenuButtons () {
+    // eslint-disable-next-line no-return-assign
+    this.menuButtons.forEach((button) => button.ariaSelected = false)
+  }
+
+  get menuButtons () {
+    return this.menuTarget.querySelectorAll('button')
   }
 }
