@@ -50,7 +50,7 @@ export class Page {
     return this.template.content.cloneNode(true)
   }
 
-  attached () {
+  get attached () {
     return this.element !== null
   }
 
@@ -62,7 +62,7 @@ export class Page {
   }
 
   async detach () {
-    if (this.attached()) {
+    if (this.attached) {
       await Animator.play(Animator.animation({ ...DETACH_ANIMATION, targets: this.element }))
       this.element.remove()
       this.element = null
@@ -95,7 +95,9 @@ export class Navigator {
   async navigateTo (name) {
     const page = this.page(name)
 
-    if (this.currentPage && this.currentPage.attached()) {
+    if (this.currentPage?.attached) {
+      if (this.currentPage.name === name) return
+
       await this.currentPage.detach()
     }
 
