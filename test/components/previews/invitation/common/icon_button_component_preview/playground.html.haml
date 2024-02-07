@@ -1,0 +1,6 @@
+= render(BaseComponent.new(tag: :div, class: "inline-flex items-center justify-center gap-2")) do
+  = render(Invitation::Common::IconButtonComponent.new(icon:, size:, scheme:))
+  = render(Invitation::Common::IconButtonComponent.new(icon:, size:, scheme:))
+  = render(Invitation::Common::IconButtonComponent.new(icon:, size:, scheme:, disabled: true))
+  = render(Invitation::Common::IconButtonComponent.new(icon:, size:, scheme:))
+  = render(Invitation::Common::IconButtonComponent.new(icon:, size:, scheme:, autofocus: true))

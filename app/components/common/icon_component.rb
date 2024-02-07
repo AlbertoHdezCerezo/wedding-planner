@@ -6,18 +6,18 @@ module Common
     ICONS_ASSET_PATH = "icons/"
 
     SIZES = {
-      xs: "xs",
-      sm: "sm",
-      base: "base",
-      lg: "lg",
-      xl: "xl"
+      xs: "w-[12px] h-[12px]",
+      sm: "w-[16px] h-[16px]",
+      base: "w-[20px] h-[20px]",
+      lg: "w-[22px] h-[22px]",
+      xl: "w-[28px] h-[28px]"
     }.freeze
 
     attr_reader :icon, :size
 
     def initialize(icon, size: :base, **system_arguments)
       @icon = icon
-      @size = SIZES[size.to_sym]
+      @size = size.to_sym
       super(**system_arguments)
     end
 
@@ -39,14 +39,7 @@ module Common
         "aria-hidden": true,
         title: icon,
         desc: "#{icon} icon",
-        data: { size: },
-        class: <<-HTML
-          data-[size=xs]:w-[12px] data-[size=xs]:h-[12px]
-          data-[size=sm]:w-[16px] data-[size=sm]:h-[16px]
-          data-[size=base]:w-[20px] data-[size=base]:h-[20px]
-          data-[size=lg]:w-[22px] data-[size=lg]:h-[22px]
-          data-[size=xl]:w-[28px] data-[size=xl]:h-[28px]
-        HTML
+        class: SIZES[size]
       }
     end
   end
