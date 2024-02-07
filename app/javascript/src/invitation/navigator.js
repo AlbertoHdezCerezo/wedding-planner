@@ -1,3 +1,21 @@
+import { Animator } from './animator'
+
+const ATTACH_ANIMATION = {
+  autoplay: false,
+  duration: 600,
+  easing: 'linear',
+  translateY: ['50px', 0],
+  opacity: [0, 1]
+}
+
+const DETACH_ANIMATION = {
+  autoplay: false,
+  duration: 600,
+  easing: 'linear',
+  translateY: [0, '-50px'],
+  opacity: [1, 0]
+}
+
 // Represents an invitation page (welcome, schedule, etc).
 export class Page {
   // Verifies template complies with format constraints to be treated as page
@@ -8,7 +26,7 @@ export class Page {
   // element template representing an invitation page
   template = null
   // element representing page, when this is rendered out of template
-  instance = null
+  element = null
 
   constructor (template) {
     if (!Page.valid(template)) {
@@ -33,19 +51,21 @@ export class Page {
   }
 
   attached () {
-    return this.instance !== null
+    return this.element !== null
   }
 
-  attach (attachmentTarget) {
+  async attach (attachmentTarget) {
     attachmentTarget.appendChild(this.layout)
-    this.instance = attachmentTarget.lastElementChild
-    return this.instance
+    this.element = attachmentTarget.lastElementChild
+    await Animator.play(Animator.animation({ ...ATTACH_ANIMATION, targets: this.element }))
+    return this.element
   }
 
-  detach () {
+  async detach () {
     if (this.attached()) {
-      this.instance.remove()
-      this.instance = null
+      await Animator.play(Animator.animation({ ...DETACH_ANIMATION, targets: this.element }))
+      this.element.remove()
+      this.element = null
     }
   }
 }
@@ -72,12 +92,14 @@ export class Navigator {
    * by the given one. If no page is attached, the given page is attached.
    * @param {String} name
    */
-  navigateTo (name) {
+  async navigateTo (name) {
     const page = this.page(name)
 
-    if (this.currentPage && this.currentPage.attached()) { this.currentPage.detach() }
+    if (this.currentPage && this.currentPage.attached()) {
+      await this.currentPage.detach()
+    }
 
-    page.attach(this.attachmentTarget)
+    await page.attach(this.attachmentTarget)
     this.currentPage = page
   }
 }
