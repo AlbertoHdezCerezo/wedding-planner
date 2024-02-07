@@ -4,9 +4,10 @@ module Invitation::Common
   class IconButtonComponent < Common::IconButtonComponent
     SCHEMES = { cardboard: "
       bg-transparent text-gray-500 border-[1px] border-gray-200 opacity-60
-      hover:opacity-100 hover:bg-gray-100
-      active:opacity-100 active:bg-gray-100
-      focus:opacity-100 focus:bg-gray-100
+      hover:opacity-100 hover:text-gray-700
+      active:opacity-100 active:text-gray-700
+      focus:opacity-100 focus:text-gray-700
+      aria-selected:opacity-100 aria-selected:text-gray-700
     " }.freeze
 
     protected
