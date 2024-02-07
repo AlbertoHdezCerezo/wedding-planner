@@ -1,5 +1,15 @@
 import { Controller } from '@hotwired/stimulus'
 import { Navigator } from '../../javascript/src/invitation/navigator'
+import { Animator } from '../../javascript/src/invitation/animator'
+
+const MENU_REVEAL_ANIMATION = {
+  autoplay: false,
+  delay: (el, i) => i * 200,
+  duration: 1200,
+  easing: 'easeInExpo',
+  opacity: [0, 1],
+  translateY: ['120%', 0]
+}
 
 /**
  * Implement the invitation logic to navigate between the different
@@ -17,7 +27,9 @@ export default class extends Controller {
     // Each one of the `template` elements containing invitation pages
     'pageTemplate',
     // Attachment point for pages
-    'pageAttachment'
+    'pageAttachment',
+    // Navigation Menu
+    'menu'
   ]
 
   pageNavigator = null
@@ -40,6 +52,15 @@ export default class extends Controller {
    */
   #renderedInPhone () {
     return window.innerHeight <= 680
+  }
+
+  async revealMenu () {
+    await Animator.play(
+      Animator.animation({
+        targets: Array.from(this.menuTarget.children),
+        ...MENU_REVEAL_ANIMATION
+      })
+    )
   }
 
   navigateTo ({ params: { pageName } }) {

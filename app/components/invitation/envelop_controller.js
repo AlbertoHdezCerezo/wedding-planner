@@ -8,15 +8,6 @@ const FLIP_ANIMATION = {
   rotateY: '180deg'
 }
 
-const MENU_REVEAL_ANIMATION = {
-  autoplay: false,
-  delay: (el, i) => i * 200,
-  duration: 1200,
-  easing: 'easeInExpo',
-  opacity: [0, 1],
-  translateY: ['120%', 0]
-}
-
 export default class extends Controller {
   // Pivot element for rotation
   static targets = [
@@ -25,6 +16,12 @@ export default class extends Controller {
     // Container wrapping navigation menu
     'menu'
   ]
+
+  cardController = null
+
+  registerCardController ({ detail: { controller: cardController } }) {
+    this.cardController = cardController
+  }
 
   connect () {
     this.disableMouseEvents()
@@ -42,7 +39,7 @@ export default class extends Controller {
   async open () {
     this.disableMouseEvents()
     await this.#flip()
-    await this.#revealMenu()
+    await this.cardController.revealMenu()
   }
 
   async #flip () {
@@ -50,15 +47,6 @@ export default class extends Controller {
       Animator.animation({
         targets: this.innerLetterTarget,
         ...FLIP_ANIMATION
-      })
-    )
-  }
-
-  async #revealMenu () {
-    await Animator.play(
-      Animator.animation({
-        targets: Array.from(this.menuTarget.children),
-        ...MENU_REVEAL_ANIMATION
       })
     )
   }
