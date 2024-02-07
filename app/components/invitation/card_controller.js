@@ -4,11 +4,9 @@ import { Animator } from '../../javascript/src/invitation/animator'
 
 const MENU_REVEAL_ANIMATION = {
   autoplay: false,
-  delay: (el, i) => i * 200,
-  duration: 1200,
+  duration: 1,
   easing: 'easeInExpo',
-  opacity: [0, 1],
-  translateY: ['120%', 0]
+  translateY: [0, '-100px']
 }
 
 /**
@@ -42,6 +40,8 @@ export default class extends Controller {
     })
 
     this.dispatch('connected', { detail: { controller: this } })
+
+    this.revealMenu()
   }
 
   /**
@@ -57,7 +57,7 @@ export default class extends Controller {
   async revealMenu () {
     await Animator.play(
       Animator.animation({
-        targets: Array.from(this.menuTarget.children),
+        targets: this.menuTarget,
         ...MENU_REVEAL_ANIMATION
       })
     )
