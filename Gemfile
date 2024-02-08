@@ -83,6 +83,10 @@ gem "after_commit_everywhere", "~> 1.3.0"
 # https://github.com/jaredlt/add_to_calendar
 gem "add_to_calendar", "~> 0.4.0"
 
+# Authentication Gem
+#
+gem "devise", "~> 4.9.2"
+
 group :development, :test do
   # powerful component browser and preview system with an integrated documentation engine
   gem "lookbook", ">= 2.0.5"
