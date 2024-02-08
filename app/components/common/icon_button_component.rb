@@ -9,9 +9,9 @@ module Common
     }.freeze
 
     BUTTON_SIZES = {
-      small: "w-9 text-sm",
-      medium: "w-11 text-lg",
-      large: "w-14 text-xl"
+      small: "!w-9 text-sm",
+      medium: "!w-11 text-lg",
+      large: "!w-14 text-xl"
     }.freeze
 
     attr_reader :icon
