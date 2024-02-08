@@ -9,6 +9,9 @@ set -o errexit
 # 1. Install dependencies
 bundle install
 
+# Run migrations
+./bin/rails db:create db:migrate
+
 # Compile assets
 ./bin/rails assets:precompile
 ./bin/rails assets:clean
