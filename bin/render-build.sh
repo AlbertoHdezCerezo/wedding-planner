@@ -13,5 +13,6 @@ bundle install
 ./bin/rails db:create db:migrate
 
 # Compile assets
+yarn build
 ./bin/rails assets:precompile
 ./bin/rails assets:clean
