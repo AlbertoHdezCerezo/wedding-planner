@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   # Weddings
   # --------
+  root "weddings#index"
+
   resources :weddings, only: %i[index new create show] do
     resources :events, only: %i[new create edit update destroy]
     resources :invitations, only: %i[index new create edit update destroy]
