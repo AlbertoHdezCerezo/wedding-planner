@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class WeddingsController < ApplicationController
+class WeddingsController < Planner::ApplicationController
   # GET /weddings
   def index
     @weddings = Wedding.all

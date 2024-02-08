@@ -8,6 +8,14 @@ Rails.application.routes.draw do
 
   mount Lookbook::Engine, at: "/rails/lookbook" if Rails.env.development?
 
+  # Authentication Routes
+  # ---------------------
+  root "home#index"
+  get "home", to: "home#index", as: "home"
+
+  # Install Devise routes for login, sign-up, etc.
+  devise_for :users
+
   # Weddings
   # --------
   resources :weddings, only: %i[index new create show] do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SchedulesController < ApplicationController
+class SchedulesController < Planner::ApplicationController
   # GET /weddings/<wedding-id>/schedule
   def show
     @wedding = Wedding.find(params[:wedding_id])

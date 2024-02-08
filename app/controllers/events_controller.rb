@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EventsController < ApplicationController
+class EventsController < Planner::ApplicationController
   # GET /weddings/<wedding-id>/new
   def new
     set_wedding

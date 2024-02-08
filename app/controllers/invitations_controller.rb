@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InvitationsController < ApplicationController
+class InvitationsController < Planner::ApplicationController
   # GET /weddings/<wedding-id>/invitations
   def index
     set_wedding
