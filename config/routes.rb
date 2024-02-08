@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get "home", to: "home#index", as: "home"
 
   # Install Devise routes for login, sign-up, etc.
-  devise_for :users
+  # Sign-Up route provisionally disabled to not allow other users to create an account
+  devise_for :users, skip: %i[registrations confirmations]
 
   # Weddings
   # --------
