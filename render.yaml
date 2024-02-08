@@ -1,0 +1,27 @@
+# Render configuration file
+# ==========================
+# For more reference: https://docs.render.com/deploy-rails
+# --------------------------------------------------------
+
+databases:
+  - name: wedding_planner_production
+    databaseName: wedding_planner_production
+    user: wedding_planner
+    plan: free
+
+services:
+  - type: web
+    name: wedding_planner
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "./bin/rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wedding_planner_production
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
