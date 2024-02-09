@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_31_164130) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_09_084742) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -156,6 +156,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_164130) do
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
     t.string "name", null: false
+    t.uuid "opening_event_id"
+    t.index ["opening_event_id"], name: "index_weddings_on_opening_event_id"
   end
 
   add_foreign_key "dishes", "organizations", name: "dish_fk_in_organization"
@@ -175,4 +177,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_164130) do
   add_foreign_key "offers", "services", name: "offer_fk_in_service"
   add_foreign_key "places", "addresses"
   add_foreign_key "services", "weddings", name: "wedding_fk_in_services"
+  add_foreign_key "weddings", "events", column: "opening_event_id", name: "opening_event_fk_in_weddings"
 end
