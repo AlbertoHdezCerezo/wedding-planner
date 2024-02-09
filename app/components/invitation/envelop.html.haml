@@ -10,26 +10,36 @@
       -# Stamps
 
       -# Desktop
-      %div{ class: "contents portrait:max-md:hidden block" }
+      %div{ class: "contents portrait:max-md:hidden landscape:max-lg:hidden block" }
         = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-12 right-12 h-[12%] md:h-[18%] w-auto transform rotate-[10deg] opacity-70")
         = image_tag("invitation/stamp_02.png", alt: "stamp", class: "absolute top-8 right-10 h-[15%] md:h-[20%] w-auto transform -rotate-[4deg] shadow-sm")
 
-      -# Mobile
+      -# Mobile (Portrait)
       %div{ class: "contents portrait:max-md:block hidden" }
         = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-20 -left-1 h-[12%] md:h-[18%] w-auto transform rotate-[98deg] opacity-70")
         = image_tag("invitation/stamp_02.png", alt: "stamp", class: "absolute top-8 left-10 h-[15%] md:h-[20%] w-auto transform -rotate-[95deg] shadow-sm")
 
+      -# Mobile (Landscape)
+      %div{ class: "contents landscape:max-lg:block hidden" }
+        = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-10 right-12 h-[20%] md:h-[22%] w-auto transform rotate-[10deg] opacity-70")
+        = image_tag("invitation/stamp_02.png", alt: "stamp", class: "absolute top-8 right-12 h-[20%] md:h-[25%] w-auto transform -rotate-[4deg] shadow-sm")
+
       -# Open Instructions
 
       -# Desktop
-      %div{ class: "absolute bottom-10 left-14 space-y-4 left-16 bottom-20 portrait:max-md:hidden block" }
+      %div{ class: "absolute bottom-10 left-14 space-y-4 left-16 bottom-20 portrait:max-md:hidden landscape:max-lg:hidden block" }
         %p{ class: "text-5xl opacity-60 font-ambrosia" }= invitation.decorator.guest_names
         %p{ class: "text-xs uppercase tracking-[.2em] opacity-40" }= t(".open")
 
-      -# Mobile
+      -# Mobile (Portrait)
       %div{ class: "absolute space-y-2 left-[7rem] bottom-[12rem] w-full transform -rotate-[90deg] portrait:max-md:block hidden" }
         %p{ class: "text-5xl opacity-60 font-ambrosia" }= invitation.decorator.guest_names
         %p{ class: "text-xs uppercase tracking-[.2em] opacity-40" }= t(".open")
+
+      -# Mobile (Landscape)
+      %div{ class: "absolute space-y-2 left-[2rem] bottom-[2rem] w-full landscape:max-lg:block hidden" }
+        %p{ class: "text-3xl opacity-60 font-ambrosia" }= invitation.decorator.guest_names
+        %p{ class: "text-[10px] uppercase tracking-[.2em] opacity-40" }= t(".open")
 
     -# Back Card Face
     %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }
