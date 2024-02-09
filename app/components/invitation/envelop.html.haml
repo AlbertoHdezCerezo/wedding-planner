@@ -1,5 +1,5 @@
 = base_component(**content_tag_arguments) do
-  - options = ::Html::TagAttributes.build({ class: "relative shadow-lg", style: "transform-style: preserve-3d" })
+  - options = ::Html::TagAttributes.build({ class: "relative shadow-lg cursor-pointer", style: "transform-style: preserve-3d" })
   - options = options.with_stimulus_target("innerLetter", stimulus_identifier)
   %div{ options.to_h }
     -# Front Card Face
@@ -8,15 +8,28 @@
     - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openLetter")
     %div{ options.to_h }
       -# Stamps
-      = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-12 right-12 h-[12%] md:h-[18%] w-auto transform rotate-[10deg] opacity-70")
-      = image_tag("invitation/stamp_02.png", alt: "stamp", class: "absolute top-8 right-10 h-[15%] md:h-[20%] w-auto transform -rotate-[4deg] shadow-sm")
+
+      -# Desktop
+      %div{ class: "contents portrait:max-md:hidden block" }
+        = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-12 right-12 h-[12%] md:h-[18%] w-auto transform rotate-[10deg] opacity-70")
+        = image_tag("invitation/stamp_02.png", alt: "stamp", class: "absolute top-8 right-10 h-[15%] md:h-[20%] w-auto transform -rotate-[4deg] shadow-sm")
+
+      -# Mobile
+      %div{ class: "contents portrait:max-md:block hidden" }
+        = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-20 -left-1 h-[12%] md:h-[18%] w-auto transform rotate-[98deg] opacity-70")
+        = image_tag("invitation/stamp_02.png", alt: "stamp", class: "absolute top-8 left-10 h-[15%] md:h-[20%] w-auto transform -rotate-[95deg] shadow-sm")
 
       -# Open Instructions
-      .absolute.bottom-10.left-14.flex.flex-col.gap-6.opacity-40.cursor-pointer
-        %p{ class: "ml-2 font-ibm text-xs uppercase tracking-[.2em]" }= t(".open")
 
-      -# Guests Names
-      %p{ class: "absolute left-10 md:left-16 bottom-20 md:bottom-20 text-2xl md:text-5xl opacity-60 font-ambrosia" }= invitation.decorator.guest_names
+      -# Desktop
+      %div{ class: "absolute bottom-10 left-14 space-y-4 left-16 bottom-20 portrait:max-md:hidden block" }
+        %p{ class: "text-5xl opacity-60 font-ambrosia" }= invitation.decorator.guest_names
+        %p{ class: "text-xs uppercase tracking-[.2em] opacity-40" }= t(".open")
+
+      -# Mobile
+      %div{ class: "absolute space-y-2 left-[7rem] bottom-[12rem] w-full transform -rotate-[90deg] portrait:max-md:block hidden" }
+        %p{ class: "text-5xl opacity-60 font-ambrosia" }= invitation.decorator.guest_names
+        %p{ class: "text-xs uppercase tracking-[.2em] opacity-40" }= t(".open")
 
     -# Back Card Face
     %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }

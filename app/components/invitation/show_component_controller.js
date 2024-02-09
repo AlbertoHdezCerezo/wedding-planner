@@ -2,22 +2,6 @@ import { Controller } from '@hotwired/stimulus'
 import { Animator } from '../../javascript/src/invitation/animator'
 
 const REVEAL_ENVELOP_ANIMATIONS = [
-  {
-    delay: 1600,
-    duration: 0,
-    translateY: '100vh',
-    rotate: 15
-  },
-  {
-    duration: 1400,
-    easing: 'easeOutQuart',
-    translateY: 0
-  },
-  {
-    duration: 800,
-    easing: 'easeOutQuart',
-    rotate: 0
-  }
 ]
 
 const ZOOM_IN_ANIMATION = {
