@@ -1,25 +1,30 @@
 %div{ content_tag_arguments }
   .py-20.mx-auto.font-angeldreams.text-gray-700{ class: "w-full max-w-[1100px] m-auto text-3xl md:text-5xl shadow-2xl ,
-                                                         [&>*]:w-full [&>*]:inline-flex [&>*]:items-center [&>*]:justify-between [&>*]:py-10 [&>*]:px-24",
+                                                         max-[600px]:[&>*]:flex max-[600px]:[&>*]:flex-col ,
+                                                         max-[600px]:[&>*]:px-16 max-[600px]:[&>*]:gap-4 ,
+                                                         [&>*]:w-full [&>*]:flex ,
+                                                         [&>*]:items-center [&>*]:justify-between [&>*]:py-10 [&>*]:px-24",
                                                  style: "background-image: url('#{asset_path("postcard-background.svg")}')" }
     %div
-      = image_tag("invitation/title.png", alt: "stamp", class: "w-[60%] m-auto")
+      = image_tag("invitation/title.png", alt: "stamp", class: "w-[60%]  max-[600px]:w-[100%] m-auto")
 
-    %div{ class: "[&>*]:w-[45%]" }
+    - options = { class: "min-[600px]:odd:flex-row-reverse min-[600px]even:flex-row ,
+                          [&>*]:w-[45%] max-[600px]:[&>*]:w-[80%] max-[600px]:[&>*]:text-center" }
+    %div{ options }
       = image_tag("invitation/ingredients_01.png", alt: "stamp", class: "h-auto")
       %p Familia, amigos, suavidad, pasión. Todos necesarios para una masa madre fuerte
 
-    %div{ class: "[&>*]:w-[45%]" }
-      %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
+    %div{ options }
       = image_tag("invitation/ingredients_02.png", alt: "stamp", class: "h-auto")
+      %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
 
-    %div{ class: "[&>*]:w-[45%]" }
+    %div{ options }
       = image_tag("invitation/ingredients_03.png", alt: "stamp", class: "h-auto")
       %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
 
-    %div{ class: "[&>*]:w-[45%]" }
-      %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
+    %div{ options }
       = image_tag("invitation/ingredients_04.png", alt: "stamp", class: "h-auto")
+      %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
 
     - options = ::Html::TagAttributes.build({ class: "m-auto tracking-[.1em]" })
     - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openEnvelop")
