@@ -12,12 +12,6 @@
       %span •
       %span Alberto & Andrea
 
-    - options = ::Html::TagAttributes.build({ label: "read invitation", size: :small, scheme: :secondary,
-                                              class: "block md:hidden w-[60%] absolute bottom-2 margin-auto" })
-    - options = options.with_stimulus_action("click", Invitation::Card.stimulus_identifier, "navigateTo")
-    - options = options.with_stimulus_parameter("page_name", Invitation::Card.stimulus_identifier, "welcome")
-    = invitation_button_component(**options.to_h)
-
     - unless invitation.accepted?
       - options = ::Html::TagAttributes.build({}).with_stimulus_target("beforeAccept", stimulus_identifier)
       %div{ options.to_h }
