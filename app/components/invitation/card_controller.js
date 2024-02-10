@@ -6,7 +6,7 @@ const MENU_REVEAL_ANIMATION = {
   autoplay: false,
   duration: 1200,
   easing: 'easeInExpo',
-  translateY: [0, '-100px']
+  translateY: [0, '-115%']
 }
 
 /**
