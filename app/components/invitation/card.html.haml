@@ -13,11 +13,11 @@
       %div{ options.to_h }
         - options = ::Html::TagAttributes.build({}).with_stimulus_action("click", stimulus_identifier, "navigateTo")
         - welcome_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "welcome")
-        = invitation_icon_button_component(icon: "sparkles", scheme: :cardboard, **welcome_options.to_h)
+        = invitation_icon_button_component(icon: "sparkles", size: :small, scheme: :cardboard, **welcome_options.to_h)
         - schedule_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "schedule")
-        = invitation_icon_button_component(icon: "calendar", scheme: :cardboard, **schedule_options.to_h)
+        = invitation_icon_button_component(icon: "calendar", size: :small, scheme: :cardboard, **schedule_options.to_h)
         - travel_guide_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "travel-guide")
-        = invitation_icon_button_component(icon: "globe", scheme: :cardboard, **travel_guide_options.to_h)
+        = invitation_icon_button_component(icon: "globe", size: :small, scheme: :cardboard, **travel_guide_options.to_h)
 
       -# Renders all pages, each one wrapped in a template with the metadata required
       -# by the +javascript+ +Page+ class to navigate between invitation pages.
