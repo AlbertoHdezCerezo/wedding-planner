@@ -12,11 +12,9 @@
       = image_tag("invitation/stamp_02.png", alt: "stamp", class: "absolute top-8 right-10 h-[15%] md:h-[20%] w-auto transform -rotate-[4deg] shadow-sm")
 
       -# Open Instructions
-      .absolute.bottom-10.left-14.flex.flex-col.gap-6.opacity-40.cursor-pointer
-        %p{ class: "ml-2 font-ibm text-xs uppercase tracking-[.2em]" }= t(".open")
-
-      -# Guests Names
-      %p{ class: "absolute left-10 md:left-16 bottom-20 md:bottom-20 text-4xl md:text-5xl opacity-60 font-ambrosia" }= invitation.decorator.guest_names
+      %div{ class: "absolute left-10 md:left-16 bottom-16 md:bottom-18 space-y-2 md:space-y-4 opacity-40" }
+        %p{ class: "text-3xl md:text-5xl font-ambrosia" }= invitation.decorator.guest_names
+        %p{ class: "text-[10px] md:text-xs uppercase tracking-[.2em]" }= t(".open")
 
     -# Back Card Face
     %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }
