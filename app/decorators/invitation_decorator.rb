@@ -3,6 +3,8 @@
 class InvitationDecorator < ApplicationDecorator
   def guest_names = join_full_names(guest_decorators.map(&:full_name))
 
+  def guest_short_names = join_full_names(guest_decorators.map(&:name))
+
   def guest_decorators = @guest_decorators ||= guests.map { GuestDecorator.new(_1) }
 
   private
