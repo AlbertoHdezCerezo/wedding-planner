@@ -35,4 +35,28 @@ class InvitationDecoratorTest < ActiveSupport::TestCase
 
     assert_equal "John Doe, Jane Doe & Jack Doe", invitation_decorator.guest_names
   end
+
+  test "#guest_short_names if invitation has one guest,
+                returns guest name" do
+    invitation = FactoryBot.create(:invitation, wedding: @wedding, guests: [@guests[0]])
+    invitation_decorator = InvitationDecorator.new(invitation)
+
+    assert_equal "John", invitation_decorator.guest_short_names
+  end
+
+  test "#guest_short_names if invitation has two guest,
+                returns guests' name joint by &" do
+    invitation = FactoryBot.create(:invitation, wedding: @wedding, guests: @guests[0..1])
+    invitation_decorator = InvitationDecorator.new(invitation)
+
+    assert_equal "John & Jane", invitation_decorator.guest_short_names
+  end
+
+  test "#guest_short_names if invitation more than two guest,
+                returns guests' name joint by commas, except last ones, joint by &" do
+    invitation = FactoryBot.create(:invitation, wedding: @wedding, guests: @guests)
+    invitation_decorator = InvitationDecorator.new(invitation)
+
+    assert_equal "John, Jane & Jack", invitation_decorator.guest_short_names
+  end
 end

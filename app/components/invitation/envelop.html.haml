@@ -13,7 +13,7 @@
 
       -# Open Instructions
       %div{ class: "absolute left-10 md:left-16 bottom-16 md:bottom-18 space-y-2 md:space-y-4 opacity-40" }
-        %p{ class: "text-3xl md:text-5xl font-ambrosia" }= invitation.decorator.guest_names
+        %p{ class: "text-3xl md:text-5xl font-ambrosia" }= invitation.guests.one? ? invitation.decorator.guest_names : invitation.decorator.guest_short_names
         %p{ class: "text-[10px] md:text-xs uppercase tracking-[.2em]" }= t(".open")
 
     -# Back Card Face
