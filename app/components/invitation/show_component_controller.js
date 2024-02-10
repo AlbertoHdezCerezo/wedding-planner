@@ -35,6 +35,25 @@ const ZOOM_OUT_ANIMATION = {
 export default class extends Controller {
   envelopController = null
   letterController = null
+  letterOpened = false
+  envelopOpened = false
+
+  connect () {
+    if (this.#smartphoneDevice()) {
+      window.matchMedia('(orientation: portrait)').addEventListener('change', e => {
+        if (this.letterOpened && !this.envelopOpened && e.matches) this.openEnvelop()
+      })
+    }
+  }
+
+  #smartphoneDevice () {
+    this.smartphoneDevice ||= window.matchMedia('(max-width: 767px)').matches
+    return this.smartphoneDevice
+  }
+
+  #portraitMode () {
+    return window.matchMedia('(orientation: portrait)').matches
+  }
 
   registerEnvelopController ({ detail: { controller: envelopController } }) {
     this.envelopController = envelopController
@@ -64,12 +83,23 @@ export default class extends Controller {
 
     await this.#zoomOutEnvelop()
     await this.letterController.open()
+
+    this.letterOpened = true
+  }
+
+  async hideLetter () {
+    await this.letterController.close()
+    await this.#zoomInEnvelop()
+
+    // For mobile devices, we wait for the user to switch back to portrait mode
+    if (!this.#smartphoneDevice()) {
+      await this.openEnvelop()
+    }
   }
 
   async openEnvelop () {
-    await this.letterController.close()
-    await this.#zoomInEnvelop()
     await this.envelopController.open()
+    this.envelopOpened = true
   }
 
   async #zoomInEnvelop () {
