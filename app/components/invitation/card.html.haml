@@ -1,7 +1,7 @@
 %div{ content_tag_arguments }
   .relative.flex.flex-row.space-x-16{ class: "border-[1.5px]" }
     -# Left side of card, hidden on phone devices
-    %div{ class: "hidden md:block" }
+    %div{ class: "hidden min-[600px]:block" }
       = render Invitation::Pages::Cover.new(invitation:)
 
     -# Right side of card, invitation UI (page navigation happens here)
