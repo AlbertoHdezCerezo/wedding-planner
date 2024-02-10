@@ -36,6 +36,21 @@ export default class extends Controller {
   envelopController = null
   letterController = null
 
+  connect () {
+    /**
+     * For mobile devices ensure layout fits the window boundaries and not
+     * the screen limits (so the navigation bar, for example, is excluded)
+     */
+    if (this.#mobileDevice()) {
+      this.element.style.width = `${window.innerWidth}px`
+      this.element.style.height = `${window.innerHeight}px`
+    }
+  }
+
+  #mobileDevice () {
+    return window.innerWidth <= 680
+  }
+
   registerEnvelopController ({ detail: { controller: envelopController } }) {
     this.envelopController = envelopController
     this.#revealEnvelop()

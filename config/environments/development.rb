@@ -14,6 +14,9 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.hosts << "c68f-2a02-810a-bc0-1798-2863-9132-7bc0-7502.ngrok-free.app"
+  config.hosts << "c68f-2a02-810a-bc0-1798-2863-9132-7bc0-7502.ngrok-free.app"
+
   # Enable server timing
   config.server_timing = true
 
