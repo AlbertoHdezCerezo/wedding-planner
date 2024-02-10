@@ -62,13 +62,17 @@ export default class extends Controller {
     )
   }
 
-  navigateTo ({ currentTarget, params: { pageName } }) {
+  async navigateTo ({ currentTarget, params: { pageName } }) {
+    this.menuTarget.classList.add('pointer-events-none')
+
     if (currentTarget) {
       this.#unselectMenuButtons()
       this.#selectMenuButton(currentTarget)
     }
 
-    this.pageNavigator.navigateTo(pageName)
+    await this.pageNavigator.navigateTo(pageName)
+
+    this.menuTarget.classList.remove('pointer-events-none')
   }
 
   #selectMenuButton (button) {
