@@ -6,6 +6,7 @@ class Invitation::InvitationController < ApplicationController
   # GET /invitation/<invitation-id>
   def show
     @invitation = Invitation.find(params[:id])
+    I18n.locale = @invitation.language
     open_invitation if !preview_mode? && (@invitation.pending? || @invitation.delivered?)
   end
 

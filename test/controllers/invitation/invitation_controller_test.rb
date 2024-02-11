@@ -24,6 +24,12 @@ class Invitation::InvitationControllerTest < ControllerTestHelper
     assert_equal @invitation, invitation
   end
 
+  test "GET show sets locale to invitation language" do
+    get invitation_path(@invitation)
+
+    assert_equal @invitation.language.to_sym, I18n.locale
+  end
+
   test "GET show if invitation is pending and preview mode is disabled, opens invitation" do
     assert_predicate @invitation, :pending?
 
