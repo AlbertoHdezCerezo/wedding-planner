@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_09_084742) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_11_162336) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_09_084742) do
     t.string "surname", null: false
     t.string "country", null: false
     t.uuid "invitation_id"
+    t.string "language"
     t.index ["invitation_id"], name: "index_guests_on_invitation_id"
     t.index ["wedding_id"], name: "index_guests_on_wedding_id"
   end

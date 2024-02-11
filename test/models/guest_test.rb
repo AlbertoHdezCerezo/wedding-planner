@@ -28,6 +28,14 @@ class GuestTest < ActiveSupport::TestCase
     assert guest.errors.of_kind?(:country, :blank)
   end
 
+  test "validates language presence" do
+    guest = FactoryBot.build(:guest)
+    guest.language = nil
+
+    assert_not guest.valid?
+    assert guest.errors.of_kind?(:language, :blank)
+  end
+
   # Scopes
   test "#without_invitation returns guests without invitation assigned" do
     guests = FactoryBot.create_list(:guest, 2)

@@ -7,5 +7,6 @@ FactoryBot.define do
     name { Faker::Name.first_name }
     surname { Faker::Name.last_name }
     country { Faker::Address.country }
+    language { Guest.languages.values.sample }
   end
 end
