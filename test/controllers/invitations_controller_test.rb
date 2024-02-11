@@ -8,9 +8,9 @@ class InvitationsControllerTest < ControllerTestHelper # rubocop:todo Metrics/Cl
     @wedding = FactoryBot.create(:wedding)
     @guests = FactoryBot.create_list(:guest, 3, wedding: @wedding)
     @invitations = [
-      FactoryBot.create(:invitation, wedding: @wedding, guests: [@guests.first]),
-      FactoryBot.create(:invitation, wedding: @wedding, guests: [@guests.second]),
-      FactoryBot.create(:invitation, wedding: @wedding, guests: [@guests.last])
+      FactoryBot.create(:invitation, wedding: @wedding, language: "en", guests: [@guests.first]),
+      FactoryBot.create(:invitation, wedding: @wedding, language: "en", guests: [@guests.second]),
+      FactoryBot.create(:invitation, wedding: @wedding, language: "en", guests: [@guests.last])
     ]
   end
 
