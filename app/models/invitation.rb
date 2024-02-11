@@ -8,13 +8,15 @@ class Invitation < ApplicationRecord
   def self.state_machine_events = aasm.events.map(&:name)
 
   def compatible_events = aasm.events(permitted: true).map(&:name)
-  # -----
+
+  enum language: { en: "en", es: "es" }
 
   # Associations
   belongs_to :wedding, optional: false
   has_many :guests, dependent: :nullify
 
   # Validations
+  validates :language, presence: true
   validates :guests, length: { minimum: 1 }
   validate :guests_in_wedding_guests_list, if: -> { wedding.present? }
 
