@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import { Navigator } from '../../javascript/src/invitation/navigator'
 import { Animator } from '../../javascript/src/invitation/animator'
+import { DeviceRecognizer } from '../../javascript/src/lib/deviceRecognizer'
 
 const MENU_REVEAL_ANIMATION = {
   autoplay: false,
@@ -37,20 +38,10 @@ export default class extends Controller {
 
     this.navigateTo({
       currentTarget: this.menuButtons[0],
-      params: { pageName: this.#renderedInPhone() ? 'cover' : 'welcome' }
+      params: { pageName: DeviceRecognizer.isMobile() ? 'cover' : 'welcome' }
     })
 
     this.dispatch('connected', { detail: { controller: this } })
-  }
-
-  /**
-   * Returns true if card is rendered in a mobile device. Phone devices
-   * have a width of less than 680px, the breakpoint width used by
-   * tailwindCSS to differentiate between phones and tables
-   * @returns {boolean}
-   */
-  #renderedInPhone () {
-    return window.innerHeight <= 680
   }
 
   async revealMenu () {

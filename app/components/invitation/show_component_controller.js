@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 import { Animator } from '../../javascript/src/invitation/animator'
+import { DeviceRecognizer } from '../../javascript/src/lib/deviceRecognizer'
 
 const REVEAL_ENVELOP_ANIMATIONS = [
   {
@@ -41,14 +42,10 @@ export default class extends Controller {
      * For mobile devices ensure layout fits the window boundaries and not
      * the screen limits (so the navigation bar, for example, is excluded)
      */
-    if (this.#mobileDevice()) {
+    if (DeviceRecognizer.isMobile()) {
       this.element.style.width = `${window.innerWidth}px`
       this.element.style.height = `${window.innerHeight}px`
     }
-  }
-
-  #mobileDevice () {
-    return window.innerWidth <= 680
   }
 
   registerEnvelopController ({ detail: { controller: envelopController } }) {
