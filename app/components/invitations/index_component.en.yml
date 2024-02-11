@@ -14,9 +14,10 @@ en:
       add: Add Invitation
   table:
     guests: Guests
-    url: URL
-    status: Status
+    language: Language
     relation: Relation
+    status: Status
+    url: URL
   delete:
     title: Remove Invitation from Wedding
     subtitle_html: "Do you want to remove invitation?"
