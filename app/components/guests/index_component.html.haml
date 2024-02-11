@@ -21,8 +21,9 @@
                                  button_path: new_wedding_guest_path(wedding),
                                  button_arguments: { "data-turbo-frame": "modal" },
                                  class: "text-center")
-      - table.with_column(t(".table.name")) { |item| tag.p("#{item.name} #{item.surname}") }
-      - table.with_column(t(".table.origin")) { |item| tag.p(item.country) }
+      - table.with_column(t(".table.name")) { tag.p("#{_1.name} #{_1.surname}") }
+      - table.with_column(t(".table.origin")) { tag.p(_1.country) }
+      - table.with_column(t(".table.language")) { tag.p(t("languages.#{_1.language}")) }
       - table.with_column(t(".table.relation")) { tag.p("Broom's father") }
       - table.with_column(horizontal_alignment: :right) do |guest|
         .inline-flex.gap-3

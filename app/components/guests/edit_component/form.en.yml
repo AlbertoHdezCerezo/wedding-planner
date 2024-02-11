@@ -3,6 +3,3 @@ en:
     first_name: First Name
     last_name: Last Name
     country: Country of Residence
-  languages:
-    en: English
-    es: Spanish
