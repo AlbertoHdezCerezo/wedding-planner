@@ -8,3 +8,4 @@
 
   .inline-flex.gap-8.px-6
     = form.text_field(:country, label: t(".form.country"), required: true, field_wrapper_arguments: { class: "basis-1/2" })
+    = form.select(:language, Guest.languages.values.map { [t(".language.#{_1}"), _1] })
