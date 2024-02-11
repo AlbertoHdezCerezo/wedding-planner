@@ -1,4 +1,5 @@
 import { Animator } from './animator'
+import { DeviceRecognizer } from '../lib/deviceRecognizer'
 
 const ATTACH_ANIMATION = {
   autoplay: false,
@@ -83,8 +84,27 @@ export class Navigator {
     this.attachmentTarget = attachmentTarget
   }
 
+  /**
+   * By prefixing a page name with '-phone' the Navigator will try to find
+   * a page with the same name but with the '-phone' suffix. Use this when
+   * you want to define different page layouts for mobile and desktop.
+   * @param name
+   * @returns {string}
+   */
+  #phonePageName (name) {
+    return `${name}-phone`
+  }
+
   page (name) {
-    return this.pages.find((page) => page.name === name)
+    let page = null
+
+    if (DeviceRecognizer.isMobile()) {
+      console.log(this.#phonePageName(name))
+      page = this.pages.find((page) => page.name === this.#phonePageName(name))
+      console.log(page)
+    }
+
+    return page || this.pages.find((page) => page.name === name)
   }
 
   /**
