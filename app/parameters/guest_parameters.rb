@@ -5,5 +5,6 @@ class GuestParameters < ApplicationParameters
     required(:name).filled(:string)
     required(:surname).filled(:string)
     required(:country).filled(:string)
+    required(:language).filled(:string)
   end
 end
