@@ -9,6 +9,7 @@ FactoryBot.define do
       sample_wedding { sample_guest.wedding }
     end
 
+    language { Invitation.languages.values.sample }
     wedding { sample_wedding }
     guests { [sample_guest] }
   end

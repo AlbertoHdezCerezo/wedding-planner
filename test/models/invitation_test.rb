@@ -5,6 +5,13 @@ require "aasm/minitest"
 
 class InvitationTest < ActiveSupport::TestCase
   # Validations
+  test "validates language presence" do
+    invitation = FactoryBot.create(:invitation)
+    invitation.language = nil
+
+    assert_not invitation.valid?, "Expected invitation without language to be invalid. Invitation is valid"
+  end
+
   test "validates invitation belongs to wedding" do
     invitation = FactoryBot.create(:invitation)
     invitation.wedding = nil
