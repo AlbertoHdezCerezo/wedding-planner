@@ -7,6 +7,6 @@ export class DeviceRecognizer {
  * @returns {boolean}
  */
   static isMobile () {
-    return window.innerHeight <= 680
+    return window.innerHeight <= 915 || window.innerWidth <= 430
   }
 }
