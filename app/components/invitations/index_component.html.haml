@@ -28,6 +28,7 @@
                                  button_path: new_wedding_invitation_path(wedding),
                                  button_arguments: { "data-turbo-frame": "modal" })
       - table.with_column(t(".table.guests")) { tag.p(_1.decorator.guest_names) }
+      - table.with_column(t(".table.language")) { tag.p(t("languages.#{_1.language}")) }
       - table.with_column(t(".table.url")) do
         .inline-flex.gap-6.items-center.justify-between
           = link_to("/invitation/#{_1.id}", invitation_path(_1, preview_mode: true), target: "_blank", class: "text-gray-500 hover:text-gray-900 hover:underline")
