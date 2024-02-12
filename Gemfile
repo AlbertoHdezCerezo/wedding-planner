@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.0"
+gem "redis", "~> 5.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -77,7 +77,7 @@ gem "aasm", "5.5.0"
 
 # Allows defining ActiveRecord callbacks anywhere outside of Model classes
 # https://github.com/Envek/after_commit_everywhere
-gem "after_commit_everywhere", "~> 1.3.0"
+gem "after_commit_everywhere", "~> 1.4.0"
 
 # Gem to generate URLs to attach calendar events to emails
 # https://github.com/jaredlt/add_to_calendar
