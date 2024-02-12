@@ -5,8 +5,8 @@ class Invitation::Pages::TravelGuide < Invitation::Pages::Page
 
   attr_reader :invitation
 
-  def initialize(invitation:, **system_arguments)
+  def initialize(invitation:, preview_mode: false, **system_arguments)
     @invitation = invitation
-    super(**system_arguments)
+    super(preview_mode:, **system_arguments)
   end
 end
