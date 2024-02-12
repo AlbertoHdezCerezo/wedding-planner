@@ -2,7 +2,7 @@
   .relative.flex.flex-row.space-x-16{ class: "border-[1.5px]" }
     -# Left side of card, hidden on phone devices
     %div{ class: "max-[600px]:hidden block" }
-      = render Invitation::Pages::Cover.new(invitation:)
+      = render Invitation::Pages::Cover.new(invitation:, preview_mode:)
 
     -# Right side of card, invitation UI (page navigation happens here)
     .contents{ stimulus_target_option("pageAttachment", self.stimulus_identifier) }
@@ -25,4 +25,4 @@
         - options = stimulus_target_option("pageTemplate", self.stimulus_identifier)
         - options.merge!(data: { page_name: page.page_name })
         %template{ options }
-          = render page.new(invitation:)
+          = render page.new(invitation:, preview_mode: false)

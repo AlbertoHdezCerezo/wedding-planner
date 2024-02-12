@@ -9,6 +9,7 @@ class Invitation::Pages::Cover < Invitation::Pages::Page
     @invitation = invitation
     @invitation_state_transition = InvitationStateTransition.new(event: "accept", invitation:)
     super(preview_mode:, **system_arguments)
+    @preview_mode = preview_mode
   end
 
   private
