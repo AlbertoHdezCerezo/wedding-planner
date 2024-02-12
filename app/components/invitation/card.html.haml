@@ -25,4 +25,4 @@
         - options = stimulus_target_option("pageTemplate", self.stimulus_identifier)
         - options.merge!(data: { page_name: page.page_name })
         %template{ options }
-          = render page.new(invitation:, preview_mode: false)
+          = render page.new(invitation:, preview_mode:)

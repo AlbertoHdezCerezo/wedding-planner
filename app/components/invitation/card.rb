@@ -27,7 +27,7 @@ class Invitation::Card < Invitation::ApplicationComponent
 
   def pages
     # Ignores component previews, set in the same namespace of the +Page+ components
-    Invitation::Pages.constants
+    Invitation::Pages.constants.reject { |c| c == :Common }
                      .map(&:to_s)
                      .grep_v(/(Preview|Page)\z/)
                      .map { "Invitation::Pages::#{_1}".constantize }

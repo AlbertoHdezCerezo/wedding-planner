@@ -1,36 +1,27 @@
-= render(Invitation::Layout::PageComponent.new(**content_tag_arguments)) do
-  .h-full.w-full.relative.flex.flex-col.items-center.justify-center.px-6.py-10.text-gray-700
-    %hr.absolute.left-0.my-auto.border-gray-200{ class: "w-[20%]" }
-    %hr.absolute.right-0.my-auto.border-gray-200{ class: "w-[20%]" }
+= render(Invitation::Layout::PageComponent.new) do
+  .relative.h-full.flex.flex-col.items-center.justify-center.px-6.py-10.gap-8.text-gray-500
+    - options = { class: "w-full font-ambrosia text-7xl text-gray-500 text-center" }
+    .flex.flex-col.items-center.justify-center
+      %h1{ options } Alberto
+      %h1{ options.merge(style: "font-size: 40px") } &
+      %h1{ options } Andrea
 
-    %h1.absolute.px-16.m-auto.font-ambrosia.text-8xl.text-gray-500.space-y-4
-      %p{ class: "leading-[0.6]" } 14
-      %p{ class: "leading-[0.6]" } 09
+    .space-y-6
+      %h2.uppercase{ class: "w-[85%] text-[10px] tracking-[.15em]" }= t(".invitation_title_html")
 
-    %h2.absolute.uppercase.text-xs.space-x-1.text-gray-500{ class: "text-[10px] bottom-[120px] tracking-[.1em]" }
-      %span= t(".save_the_date")
-      %span •
-      %span Alberto & Andrea2
+      .flex.flex-row.items-center.justify-start
+        %p.uppercase.text-center.leading-3.mr-6.pr-6.border-r.border-gray-200
+          %span.text-xs= invitation.wedding.date.strftime("%b")
+          %br
+          %span.text-2xl{ class: "tracking-[.05em]" }= invitation.wedding.date.strftime("%d")
+          %br
+          %span.text-sm= invitation.wedding.date.strftime("%Y")
+        %p.uppercase.leading-4{ class: "text-[10px] tracking-[.15em]" }
+          %span.text-gray-700 Ceremony on the 14th at 17:00
+          %br
+          %span Parador de Plasencia
+          %br
+          %span 10600 Plasencia, Cáceres, Spain
+          %p.uppercase.leading-4{ class: "text-[10px] tracking-[.1em]" }
 
-    - unless invitation.accepted?
-      - options = ::Html::TagAttributes.build({}).with_stimulus_target("beforeAccept", stimulus_identifier)
-      %div{ options.to_h }
-        -# Options before invitation is accepted
-        = form_with(model: invitation_state_transition,
-                    url: invitation_state_transition_url,
-                    method: :post,
-                    builder: ComponentFormBuilder,
-                    data: { "turbo-frame" => "", action: "turbo:before-fetch-response->#{stimulus_identifier}#greetConfirmedGuest" }) do |form|
-          = form.hidden_field :event, value: "accept"
-          = form.hidden_field :invitation_id, value: @invitation.id
-
-          - options = ::Html::TagAttributes.build({ label: t(".accept"), size: :small, scheme: :primary,
-                                                    class: "!w-[60%] absolute left-1/2 transform -translate-x-1/2 bottom-16" })
-          - options = options.with_stimulus_target("confirmationButton", stimulus_identifier)
-          = invitation_button_component(**options.to_h)
-
-    -# Options after invitation is accepted
-    - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary,
-                                              class: "#{ "hidden opacity-0" unless invitation.accepted? || preview_mode } !w-[60%] bottom-16 absolute margin-auto" })
-    - options = options.with_stimulus_target("afterAccept", stimulus_identifier)
-    = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
+    = render Invitation::Pages::Common::AcceptInvitationButton.new(invitation:, preview_mode:)
