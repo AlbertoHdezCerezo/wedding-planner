@@ -1,7 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
 import { Navigator } from '../../javascript/src/invitation/navigator'
 import { Animator } from '../../javascript/src/invitation/animator'
-import { DeviceRecognizer } from '../../javascript/src/lib/deviceRecognizer'
 
 const MENU_REVEAL_ANIMATION = {
   autoplay: false,
@@ -38,7 +37,7 @@ export default class extends Controller {
 
     this.navigateTo({
       currentTarget: this.menuButtons[0],
-      params: { pageName: DeviceRecognizer.isMobile() ? 'cover' : 'welcome' }
+      params: { pageName: 'welcome' }
     })
 
     this.dispatch('connected', { detail: { controller: this } })

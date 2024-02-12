@@ -1,9 +1,7 @@
 en:
   save_the_date: Save the date
-  accept: accept invitation
-  add_to_calendar: add event to calendar
+  invitation_title_html: <span>invite you to join them</span><br><span>in their wedding celebration</span>
 
 es:
   save_the_date: Reserva la fecha
-  accept: aceptar invitación
-  add_to_calendar: añadir evento a tu calendario
+  invitation_title_html: <span>te invitan a asistir</span><br><span>a su ceremonia de boda</span>
