@@ -16,6 +16,8 @@
         = invitation_icon_button_component(icon: "sparkles", size: :small, scheme: :cardboard, **welcome_options.to_h)
         - schedule_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "schedule")
         = invitation_icon_button_component(icon: "calendar", size: :small, scheme: :cardboard, **schedule_options.to_h)
+        - schedule_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "location")
+        = invitation_icon_button_component(icon: "map-pin", size: :small, scheme: :cardboard, **schedule_options.to_h)
         - travel_guide_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "travel-guide")
         = invitation_icon_button_component(icon: "globe", size: :small, scheme: :cardboard, **travel_guide_options.to_h)
 

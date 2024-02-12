@@ -9,4 +9,10 @@ class Invitation::Pages::Location < Invitation::Pages::Page
     @invitation = invitation
     super(preview_mode:, **system_arguments)
   end
+
+  private
+
+  def default_content_tag_arguments
+    { class: "px-8 py-10" }
+  end
 end
