@@ -29,11 +29,13 @@ export default class extends Controller {
     'afterAccept'
   ]
 
-  greetConfirmedGuest ({ detail: { fetchResponse } }) {
-    if (fetchResponse.succeeded) {
-      this.#throwConfetti()
-      this.#switchConfirmAndCalendarButtons()
-    }
+  markInvitationAsConfirmed ({ detail: { fetchResponse } }) {
+    if (fetchResponse.succeeded) this.greetConfirmedGuest()
+  }
+
+  greetConfirmedGuest () {
+    this.#throwConfetti()
+    this.#switchConfirmAndCalendarButtons()
   }
 
   async #throwConfetti () {
