@@ -2,5 +2,5 @@
   -# Background
   %p.font-ambrosia.absolute.w-full.h-full.inline-flex.items-center.justify-center.opacity-10.font-gray-700.text-9xl= t(".salutation")
 
-  = render(Invitation::Envelop.new(invitation:))
-  = render(Invitation::Letter.new(invitation:))
+  = render(Invitation::Envelop.new(invitation:, preview_mode:))
+  = render(Invitation::Letter.new(invitation:, preview_mode:))

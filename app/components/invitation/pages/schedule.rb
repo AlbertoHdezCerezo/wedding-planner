@@ -5,9 +5,9 @@ class Invitation::Pages::Schedule < Invitation::Pages::Page
 
   attr_reader :invitation, :schedule, :schedule_decorator
 
-  def initialize(invitation:, **system_arguments)
+  def initialize(invitation:, preview_mode: false, **system_arguments)
     @invitation = invitation
     @schedule = Schedule.new(wedding: invitation.wedding, guest: invitation.guests.first)
-    super(**system_arguments)
+    super(preview_mode:, **system_arguments)
   end
 end

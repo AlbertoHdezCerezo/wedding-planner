@@ -18,4 +18,4 @@
 
     -# Back Card Face
     %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }
-      = render(Invitation::Card.new(invitation:))
+      = render(Invitation::Card.new(invitation:, preview_mode:))

@@ -7,9 +7,8 @@ class Invitation::Pages::WelcomePhone < Invitation::Pages::Page
 
   def initialize(invitation:, preview_mode: false, **system_arguments)
     @invitation = invitation
-    @preview_mode = preview_mode
     @invitation_state_transition = InvitationStateTransition.new(event: "accept", invitation:)
-    super(**system_arguments)
+    super(preview_mode:, **system_arguments)
   end
 
   private

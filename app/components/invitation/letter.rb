@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Invitation::Letter < Invitation::ApplicationComponent
-  attr_reader :invitation
+  attr_reader :invitation, :preview_mode
 
-  def initialize(invitation:, **system_arguments)
+  def initialize(invitation:, preview_mode: false, **system_arguments)
     @invitation = invitation
+    @preview_mode = preview_mode
     super(**system_arguments)
   end
 
