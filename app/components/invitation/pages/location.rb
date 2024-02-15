@@ -13,6 +13,8 @@ class Invitation::Pages::Location < Invitation::Pages::Page
   private
 
   def default_content_tag_arguments
-    { class: "px-8 py-10" }
+    options = ::Html::TagAttributes.build({ class: "px-8 py-10" })
+    options = options.with_stimulus_controller(stimulus_identifier)
+    options.to_h
   end
 end
