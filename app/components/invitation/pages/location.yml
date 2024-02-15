@@ -1,0 +1,49 @@
+en:
+  street: Pl. de San Vicente Ferrer, s/n
+  location: 10600 Plasencia, Cáceres, Spain
+  maps: Open in Maps
+  place:
+    title: About the Place
+    description_html: |
+      El Parador de Plasencia es un convento originario del siglo XV
+      <br><br>
+      Se trata de una joya histórica reconvertida en hotel gestionado por la red estatal de paradores, tratandose de
+      unos de los más galardonados. Ubicada en el casco antiguo de la ciudad, a pocos metros de la Plaza Mayor y de
+      la Catedral, el Parador de Plasencia es un lugar ideal para disfrutar de la ciudad y de la naturaleza que la rodea.
+      <br><br>
+      Durante la boda podremos disfrutar de las diferentes estancias del alojamiento, desde el patio del claustro,
+      donde tendrá lugar la ceremonia, al salón de banquetes, donde degustaremos una cena con platos típicos de la
+      región, para terminar la noche en la bodega del convento, reconvertida en sala de fiesta.
+  services:
+    title: Services
+    description_html: |
+      El Parador de Plasencia es un hotel de 4 estrellas que ofrece toda clase de acomodaciones para sus huéspedes.
+      Cuenta con un restaurante, bar, piscina, gimnasio, spa, y parking privado. Con ocasión de la boda, los invitados
+      podrán contactar con el hotel para reservar habitaciones a precios especiales.
+      <br><br>
+      Si deseas disfrutar de tu estancia en Plasencia, el Parador es el lugar ideal para hacerlo.
+
+es:
+  street: Pl. de San Vicente Ferrer, s/n
+  location: 10600 Plasencia, Cáceres, España
+  maps: Abrir en Mapas
+  place:
+    title: Sobre el Lugar
+    description_html: |
+      El Parador de Plasencia es un convento originario del siglo XV
+      <br><br>
+      Se trata de una joya histórica reconvertida en hotel gestionado por la red estatal de paradores, tratandose de
+      unos de los más galardonados. Ubicada en el casco antiguo de la ciudad, a pocos metros de la Plaza Mayor y de
+      la Catedral, el Parador de Plasencia es un lugar ideal para disfrutar de la ciudad y de la naturaleza que la rodea.
+      <br><br>
+      Durante la boda podremos disfrutar de las diferentes estancias del alojamiento, desde el patio del claustro,
+      donde tendrá lugar la ceremonia, al salón de banquetes, donde degustaremos una cena con platos típicos de la
+      región, para terminar la noche en la bodega del convento, reconvertida en sala de fiesta.
+  services:
+    title: Servicios
+    description_html: |
+      El Parador de Plasencia es un hotel de 4 estrellas que ofrece toda clase de acomodaciones para sus huéspedes.
+      Cuenta con un restaurante, bar, piscina, gimnasio, spa, y parking privado. Con ocasión de la boda, los invitados
+      podrán contactar con el hotel para reservar habitaciones a precios especiales.
+      <br><br>
+      Si deseas disfrutar de tu estancia en Plasencia, el Parador es el lugar ideal para hacerlo.
