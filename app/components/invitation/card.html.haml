@@ -18,8 +18,9 @@
         = invitation_icon_button_component(icon: "calendar", size: :small, scheme: :cardboard, **schedule_options.to_h)
         - schedule_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "location")
         = invitation_icon_button_component(icon: "map-pin", size: :small, scheme: :cardboard, **schedule_options.to_h)
-        - travel_guide_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "travel-guide")
-        = invitation_icon_button_component(icon: "globe", size: :small, scheme: :cardboard, **travel_guide_options.to_h)
+        - if invitation.needs_travel_guide
+          - travel_guide_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "travel-guide")
+          = invitation_icon_button_component(icon: "globe", size: :small, scheme: :cardboard, **travel_guide_options.to_h)
 
       -# Renders all pages, each one wrapped in a template with the metadata required
       -# by the +javascript+ +Page+ class to navigate between invitation pages.
