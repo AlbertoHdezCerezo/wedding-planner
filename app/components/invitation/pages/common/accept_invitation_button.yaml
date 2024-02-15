@@ -1,7 +1,15 @@
 en:
   accept: accept invitation
   add_to_calendar: add event to calendar
+  event:
+    title: Albert & Andrea's Wedding
+    description: |
+      Añadir descripción
 
 es:
   accept: aceptar invitación
   add_to_calendar: añadir evento a calendario
+  event:
+    title: Boda de Alberto y Andrea
+    description: |
+      Añadir descripción
