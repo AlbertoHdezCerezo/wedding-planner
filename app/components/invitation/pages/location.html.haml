@@ -14,10 +14,10 @@
       %span 10600 Plasencia, Cáceres, Spain
 
     .w-full.inline-flex.items-center.gap-2
-      = invitation_icon_button_component(icon: :envelop, scheme: :secondary, size: :small, class: "!h-8 !w-8")
-      = invitation_icon_button_component(icon: :phone, scheme: :secondary, size: :small, class: "!h-8 !w-8")
-      = invitation_icon_button_component(icon: :link, scheme: :secondary, size: :small, class: "!h-8 !w-8")
-      - options = ::Html::TagAttributes.build({ label: "open in maps", size: :small, scheme: :secondary, class: "flex-1 !h-8" })
+      = invitation_icon_button_component(icon: :envelop, scheme: :secondary, size: :small)
+      = invitation_icon_button_component(icon: :phone, scheme: :secondary, size: :small)
+      = invitation_icon_button_component(icon: :link, scheme: :secondary, size: :small)
+      - options = ::Html::TagAttributes.build({ label: "open in maps", size: :small, scheme: :secondary, class: "flex-1 !h-9" })
       = invitation_button_component(tag: :a, href: "", **options.to_h)
 
     %h2{ class: "text-gray-700 font-ambrosia text-3xl !mt-8" } About the Place
