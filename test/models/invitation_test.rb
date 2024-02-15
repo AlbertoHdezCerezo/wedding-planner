@@ -12,6 +12,13 @@ class InvitationTest < ActiveSupport::TestCase
     assert_not invitation.valid?, "Expected invitation without language to be invalid. Invitation is valid"
   end
 
+  test "validates travel flag is either true or false" do
+    invitation = FactoryBot.create(:invitation)
+    invitation.needs_travel_guide = nil
+
+    assert_not invitation.valid?, "Expected invitation without travel guide flag to be invalid. Invitation is valid"
+  end
+
   test "validates invitation belongs to wedding" do
     invitation = FactoryBot.create(:invitation)
     invitation.wedding = nil
