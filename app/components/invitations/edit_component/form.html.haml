@@ -2,6 +2,9 @@
 - method = invitation.new_record? ? :post : :patch
 = form_with(model: invitation, url:, method:, builder: ComponentFormBuilder, html: content_tag_arguments) do |form|
   = form.select(:language, Invitation.languages.values.map { [t("languages.#{_1}"), _1] })
+
+  = form.check_box(:needs_travel_guide)
+
   -# Search Field
   -# %p.text-sm.text-gray-700 Select for whom you want to create an invitation
   -# = render Common::Form::TextFieldComponent.new({}, "")

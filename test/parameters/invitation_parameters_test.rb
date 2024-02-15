@@ -40,7 +40,8 @@ class InvitationParametersTest < ActiveSupport::TestCase
   def permitted_parameters
     {
       language: "en",
-      guest_ids: %i[one two three]
+      guest_ids: %i[one two three],
+      needs_travel_guide: true
     }
   end
 
