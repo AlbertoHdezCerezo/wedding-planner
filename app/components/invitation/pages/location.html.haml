@@ -1,5 +1,11 @@
 = render(Invitation::Layout::PageComponent.new(**content_tag_arguments)) do
   .space-y-4
+    .swiper{ class: "h-[100%] w-[100%]" }
+      .swiper-wrapper
+        - 3.times do
+          .swiper-slide{ class: "!w-[100%] !h-auto flex items-center justify-center" }
+            = image_tag("https://source.unsplash.com/random/800x600", class: "block w-full h-full object-cover grayscale")
+
     %h1{ class: "text-gray-700 uppercase tracking-[.2em]" } Parador de Plasencia
 
     %p.uppercase.leading-4{ class: "text-gray-500 text-[10px] tracking-[.15em]" }
