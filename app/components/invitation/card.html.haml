@@ -8,7 +8,7 @@
     .contents{ stimulus_target_option("pageAttachment", self.stimulus_identifier) }
       -# Page Navigation
       - options = ::Html::TagAttributes.build({ class: "absolute right-8 flex flex-row items-center gap-4 px-6 py-4 rounded-t-xl shadow-md z-[-1]",
-                                                style: "background-size: cover; background-position: center; background-image: url('#{asset_path("invitation/textures/texture-1.jpg")}')" })
+                                                style: "background-size: cover; background-position: center; background-image: url('#{asset_path("invitation/textures/texture-6.jpg")}')" })
       - options = options.with_stimulus_target("menu", stimulus_identifier)
       %div{ options.to_h }
         - options = ::Html::TagAttributes.build({}).with_stimulus_action("click", stimulus_identifier, "navigateTo")
