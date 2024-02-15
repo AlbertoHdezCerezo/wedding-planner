@@ -18,6 +18,7 @@ class Invitation < ApplicationRecord
   # Validations
   validates :language, presence: true
   validates :guests, length: { minimum: 1 }
+  validates :needs_travel_guide, inclusion: { in: [true, false] }
   validate :guests_in_wedding_guests_list, if: -> { wedding.present? }
 
   # State Machine
