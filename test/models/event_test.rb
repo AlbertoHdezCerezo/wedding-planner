@@ -39,7 +39,8 @@ class EventTest < ActiveSupport::TestCase
   test "validates start time is greater than end time" do
     timestamp = Time.zone.local(2023, 11, 11, 11, 11)
 
-    event = FactoryBot.build(:event, start_time: timestamp, end_time: timestamp.ago(1), schedule: timestamp..timestamp.ago(1))
+    event = FactoryBot.build(:event, start_time: timestamp, end_time: timestamp.ago(1),
+                                     schedule: timestamp..timestamp.ago(1))
 
     assert_not event.valid?
     assert event.errors.of_kind?(:end_time, :greater_than)
