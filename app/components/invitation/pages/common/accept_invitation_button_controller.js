@@ -34,12 +34,11 @@ export default class extends Controller {
   }
 
   greetConfirmedGuest () {
-    console.log('me llama')
-    this.#throwConfetti()
+    this.throwConfetti()
     this.#switchConfirmAndCalendarButtons()
   }
 
-  async #throwConfetti () {
+  async throwConfetti () {
     const confetti = new JSConfetti()
     await confetti.addConfetti({ emojis: ['🔔', '💒', '🥂', '✨', '💍', '🍾'] })
     confetti.clearCanvas()
