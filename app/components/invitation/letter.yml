@@ -1,8 +1,22 @@
 en:
   ingredients: Ingredients
-  ingredient_01: Familia, amigos, suavidad, pasión. Todos necesarios para una masa madre fuerte
-  ingredient_02: Aventuras y desventuras de muchos viajes, para dar sabor al plato
-  ingredient_03: Hobbies, juegos, series, películas y mucha música para la presentación perfecta
+  ingredient_01: Family, friends, softness, passion. All necessary for a strong dough.
+  ingredient_02: Adventures and misadventures of many trips, to spice up the dish.
+  ingredient_03: Hobbies, games, movies and lots of music for the perfect presentation.
+  ingredient_04: "The secret ingredient: the essence of love of two people who love each other very much."
+  elaboration: Preparation
+  elaboration_01: Knead the dough gently for one year.
+  elaboration_02: Cooking with a lot of fire for two years.
+  elaboration_03: Spice it up with toppings and hobbies every day.
+  elaboration_04: And bake for four years without losing sight of it.
+  eat: 5. to serve at a big wedding to which you are invited!
+  open_invitation: click here to see the invitation
+
+es:
+  ingredients: Ingredientes
+  ingredient_01: Familia, amigos, suavidad, pasión. Todos necesarios para una masa madre fuerte.
+  ingredient_02: Aventuras y desventuras de muchos viajes, para dar sabor al plato.
+  ingredient_03: Hobbies, juegos, películas y mucha música para la presentación perfecta.
   ingredient_04: "El ingrediente secreto: esencia de amor de dos personas que se quieren mucho"
   elaboration: Preparación
   elaboration_01: Amasar con dulzura la masa por un año
@@ -10,17 +24,4 @@ en:
   elaboration_03: Condimentar con toppings y hobbies cada día
   elaboration_04: Y hornear por cuatro años sin perderlo de vista
   eat: 5. para servir en una gran boda a la que estás invitado
-  open_invitation: toca aquí para ver tu invitación
-
-es:
-  ingredients: Ingredients
-  ingredient_01: Familia, amigos, suavidad, pasión. Todos necesarios para una masa madre fuerte
-  ingredient_02: Aventuras y desventuras de muchos viajes, para dar sabor al plato
-  ingredient_03: Hobbies, juegos, series, películas y mucha música para la presentación perfecta
-  ingredient_04: "El ingrediente secreto: esencia de amor de dos personas que se quieren mucho"
-  elaboration: Preparación
-  elaboration_01: Amasar con dulzura la masa por un año
-  elaboration_02: Cocinar con mucho fuego por dos años
-  elaboration_03: Condimentar con toppings y hobbies cada día
-  elaboration_04: Y hornear por cuatro años sin perderlo de vista
-  open_invitation: toca aquí para ver tu invitación
+  open_invitation: toca aquí para ver la invitación
