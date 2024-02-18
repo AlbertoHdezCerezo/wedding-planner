@@ -4,6 +4,8 @@ class Place < ApplicationRecord
   include Decoratable
 
   # Associations
+  has_one :event, dependent: :nullify
+
   belongs_to :address, dependent: :destroy
   belongs_to :wedding, optional: true
 

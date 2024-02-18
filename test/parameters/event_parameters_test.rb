@@ -33,17 +33,7 @@ class EventParametersTest < ActiveSupport::TestCase
       description: "This is a description for my event",
       start_time: timestamp,
       end_time: timestamp.since(1),
-      place_attributes: {
-        name: "Casa de la Cultura",
-        address_attributes: {
-          street: "Calle de la Princesa",
-          number: "7",
-          zip_code: "10600",
-          town: "Plasencia",
-          state: "Cáceres",
-          country: "Spain"
-        }
-      }
+      place_id: "8400639b-92cf-42e8-ac00-a7c608d8e8d1" # SecureRandom.uuid
     }
   end
 

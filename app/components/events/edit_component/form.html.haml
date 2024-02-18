@@ -11,18 +11,5 @@
 
     = form.text_area(:description, label: "Event Description", field_wrapper_arguments: { class: "w-full" })
 
-    = form.fields_for :place, event.place || event.build_place do |place_form|
-      .flex.flex-row.justify-between.gap-8
-        .flex-1.space-y-6
-          = place_form.text_field(:name, label: "Event Place", required: true)
-          = place_form.url_field(:maps_url, label: "Google Maps URL")
-          = place_form.telephone_field(:phone, label: "Contact Phone")
-          = place_form.email_field(:email, label: "Contact Email")
-
-        .flex-1.space-y-6
-          = place_form.fields_for :address, place_form.object.address || place_form.object.build_address do |address_form|
-            = address_form.text_field(:street, label: "Street", required: true)
-            = address_form.text_field(:town, label: "City", required: true)
-            = address_form.text_field(:state, label: "State", required: false)
-            = address_form.text_field(:country, label: "Country", required: true)
-            = address_form.text_field(:zip_code, label: "Zip Code", required: true)
+    - if event.wedding.places.any?
+      = form.select(:place_id, event.wedding.places.map { ["#{_1.name}, #{_1.address.decorator.full_address}", _1.id] }, label: "Place", include_blank: true, required: true)
