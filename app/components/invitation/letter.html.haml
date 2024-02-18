@@ -1,15 +1,18 @@
 %div{ content_tag_arguments }
   .py-20.mx-auto.font-angeldreams.text-gray-700{ class: "w-full max-w-[1100px] m-auto text-3xl md:text-5xl shadow-2xl ,
-                                                         max-[600px]:[&>*]:flex max-[600px]:[&>*]:flex-col ,
-                                                         max-[600px]:[&>*]:px-16 max-[600px]:[&>*]:gap-4 ,
-                                                         [&>*]:w-full [&>*]:flex ,
-                                                         [&>*]:items-center [&>*]:justify-between [&>*]:py-10 [&>*]:px-24",
-                                                 style: "background-image: url('#{asset_path("postcard-background.svg")}')" }
+                                                         max-[600px]:[&>div]:flex max-[600px]:[&>div]:flex-col ,
+                                                         max-[600px]:[&>div]:px-16 max-[600px]:[&>div]:gap-4 ,
+                                                         [&>div]:w-full [&>*]:flex ,
+                                                         [&>div]:items-center [&>div]:justify-between [&>div]:py-10 [&>div]:px-24",
+                                                 style: "background-image: url('#{asset_path("invitation/textures/texture-7.jpg")}')" }
     %div
       = image_tag("invitation/title.png", alt: "stamp", class: "w-[60%]  max-[600px]:w-[100%] m-auto")
 
     - options = { class: "min-[600px]:odd:flex-row-reverse min-[600px]even:flex-row ,
                           [&>*]:w-[45%] max-[600px]:[&>*]:w-[80%] max-[600px]:[&>*]:text-center" }
+
+    %h2.font-angeldreams.text-6xl.text-center.mt-20.mx-auto{ class: "w-[80%]" } Ingredientes
+
     %div{ options }
       = image_tag("invitation/ingredients_01.png", alt: "stamp", class: "h-auto")
       %p Familia, amigos, suavidad, pasión. Todos necesarios para una masa madre fuerte
@@ -25,6 +28,22 @@
     %div{ options }
       = image_tag("invitation/ingredients_04.png", alt: "stamp", class: "h-auto")
       %p Aventuras y desventuras de muchos viajes, para dar sabor al plato
+
+    %h2.font-angeldreams.text-6xl.text-center.mt-20.mx-auto{ class: "w-[80%]" } Preparacion
+
+    %section{ class: "mt-20 !grid grid-cols-2 gap-16 !w-[75%] m-auto place-items-center text-center" }
+      %div{ class: "w-[80%] flex flex-col place-items-center gap-8" }
+        %p 1. Amasar con dulzura la masa por un año
+        = image_tag("invitation/preparation_01.png", alt: "stamp", class: "h-auto")
+      %div{ class: "w-[80%] flex flex-col place-items-center gap-8" }
+        %p 2. Cocinar con mucho fuego por dos años
+        = image_tag("invitation/preparation_02.png", alt: "stamp", class: "h-auto")
+      %div{ class: "w-[80%] flex flex-col place-items-center gap-8" }
+        %p 3. Condimentar con toppings y hobbies cada día
+        = image_tag("invitation/preparation_03.png", alt: "stamp", class: "h-auto")
+      %div{ class: "w-[80%] flex flex-col place-items-center gap-8" }
+        %p 4. Y hornear por cuatro años sin perderlo de vista
+        = image_tag("invitation/preparation_04.png", alt: "stamp", class: "h-auto")
 
     - options = ::Html::TagAttributes.build({ class: "m-auto tracking-[.1em]" })
     - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openEnvelop")
