@@ -13,7 +13,8 @@ class Invitation::Letter < Invitation::ApplicationComponent
 
   def default_content_tag_arguments
     options = ::Html::TagAttributes.build(
-      { class: "absolute left-0 top-[100%] h-full w-full overflow-y-scroll w-fit pt-[20%] pb-[20%]" }
+      # top-[100%]
+      { class: "absolute left-0 h-full w-full overflow-y-scroll w-fit pt-[20%] pb-[20%]" }
     )
     options = options.with_stimulus_controller(stimulus_identifier)
     options.to_h
