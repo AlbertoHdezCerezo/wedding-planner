@@ -12,6 +12,8 @@ class EventsGroupDecoratorTest < ActiveSupport::TestCase
       events: [
         FactoryBot.build(
           :event,
+          start_time: time_range.begin,
+          end_time: time_range.end,
           schedule: time_range,
           place: FactoryBot.build(
             :place,

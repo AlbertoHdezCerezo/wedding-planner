@@ -5,7 +5,7 @@ require "test_helper"
 class EventDecoratorTest < ActiveSupport::TestCase
   setup do
     time_range = Time.zone.local(2021, 1, 1, 12, 0, 0)..Time.zone.local(2021, 1, 1, 13, 0, 0)
-    event = FactoryBot.build(:event, schedule: time_range)
+    event = FactoryBot.build(:event, start_time: time_range.begin, end_time: time_range.end, schedule: time_range)
     @event_decorator = EventDecorator.new(event)
   end
 

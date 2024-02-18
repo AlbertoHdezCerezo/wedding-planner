@@ -16,7 +16,7 @@ class Event < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :planned, inclusion: { in: [true, false] }
-  validates :schedule, presence: true
+  validates :start_time, :end_time, presence: true
 
   validates_comparison_of :end_time, greater_than: :start_time
 
@@ -26,7 +26,5 @@ class Event < ApplicationRecord
   # Scopes
   scope :chronological, -> { order(schedule: :asc) }
 
-  def start_time = schedule&.begin
-
-  def end_time = schedule&.end
+  def schedule = start_time..end_time
 end

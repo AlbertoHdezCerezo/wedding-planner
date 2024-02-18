@@ -10,7 +10,6 @@ class EventParametersTest < ActiveSupport::TestCase
 
     expected_params = permitted_parameters
                       .merge(schedule: permitted_parameters[:start_time]..permitted_parameters[:end_time])
-                      .except(:start_time, :end_time)
 
     assert_equal expected_params, parsed_params
   end
