@@ -1,5 +1,10 @@
 .contents{ **content_tag_arguments }
-  - unless invitation.accepted?
+  - if invitation.accepted? && !preview_mode
+    -# Options after invitation is accepted
+    - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary })
+    = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
+
+  - else
     - if preview_mode
       - options = ::Html::TagAttributes.build({ label: t(".accept"), size: :small, scheme: :primary })
       - options = options.with_stimulus_target("beforeAccept", stimulus_identifier)
