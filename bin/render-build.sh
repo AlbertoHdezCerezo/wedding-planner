@@ -13,6 +13,7 @@ bundle install
 ./bin/rails db:create db:migrate
 
 # Compile assets
+yarn install --pure-lockfile
 yarn build
 ./bin/rails assets:precompile
 ./bin/rails assets:clean
