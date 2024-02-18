@@ -12,7 +12,7 @@ class Invitation::Card < Invitation::ApplicationComponent
   # Required to use +asset_path+ during component rendering
   def before_render
     @content_tag_arguments.merge!(
-      style: "background-size: cover; background-position: center; background-image: url('#{asset_path("invitation/textures/texture-7.jpg")}')"
+      style: "background-size: cover; background-position: center; background-image: url('#{asset_path("invitation/textures/envelop-texture.jpg")}')"
     )
   end
 
