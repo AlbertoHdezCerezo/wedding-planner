@@ -1,0 +1,41 @@
+= render Weddings::LayoutComponent.new(wedding:) do
+  %div{ content_tag_arguments }
+    = render Common::DataTableComponent.new(items: places,
+                                            density: :spacious,
+                                            class: "w-full h-full") do |table|
+      - if places.any?
+        - table.with_title(title: t(".header.title"), size: :small, class: "w-full") do |title|
+          - title.with_subheader_text(t(".header.subtitle", count: wedding.places.count))
+          - title.with_action(label: t(".header.add_place"),
+                                tag: :a,
+                                size: :medium,
+                                scheme: :secondary,
+                                href: new_wedding_place_path(wedding),
+                                "data-turbo-frame": "modal")
+          - title.with_action(label: t(".header.send_invitation"), size: :medium, scheme: :primary)
+      - table.with_empty_state(icon: "inbox",
+                                 title: t(".empty.title"),
+                                 subtitle: t(".empty.subtitle"),
+                                 button_label: t(".empty.add_place"),
+                                 button_path: new_wedding_place_path(wedding),
+                                 button_arguments: { "data-turbo-frame": "modal" },
+                                 class: "text-center")
+      - table.with_column(t(".table.address")) { |item| tag.p(item.address.decorator.full_address) }
+      - table.with_column(horizontal_alignment: :right) do |place|
+        .inline-flex.gap-3
+          - confirm_button_arguments = { tag: :a,
+                                           "data-turbo-method": "delete",
+                                           href: wedding_place_path(wedding, place) }
+          = render Common::ModalConfirmationComponent.new(confirm_label: t(".delete.confirm"),
+                                                            cancel_label: t(".delete.cancel"),
+                                                            confirmation_header: t(".delete.title"),
+                                                            confirmation_subheader: t(".delete.subtitle_html", name: place.name),
+                                                            confirm_button_arguments:) do |modal|
+            - modal.with_trigger do
+              = icon_button_component(icon: "trash", size: :small, scheme: :secondary)
+          = icon_button_component(icon: "box-pencil",
+                                    tag: :a,
+                                    size: :small,
+                                    scheme: :secondary,
+                                    href: edit_wedding_place_path(wedding, place),
+                                    "data-turbo-frame": "modal")

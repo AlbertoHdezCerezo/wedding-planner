@@ -5,6 +5,7 @@ class Place < ApplicationRecord
 
   # Associations
   belongs_to :address, dependent: :destroy
+  belongs_to :wedding, optional: true
 
   accepts_nested_attributes_for :address, allow_destroy: true
 

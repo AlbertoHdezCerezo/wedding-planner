@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_15_110412) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_18_173720) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -138,9 +138,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_110412) do
     t.string "email"
     t.timestamptz "created_at", precision: 6, null: false
     t.timestamptz "updated_at", precision: 6, null: false
+    t.uuid "wedding_id"
     t.index ["address_id"], name: "address_fk_in_places", unique: true
     t.index ["address_id"], name: "index_places_on_address_id"
     t.index ["name"], name: "name_index_in_places", unique: true
+    t.index ["wedding_id"], name: "index_places_on_wedding_id"
   end
 
   create_table "services", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -178,6 +180,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_110412) do
   add_foreign_key "offers", "organizations", name: "offer_fk_in_organization"
   add_foreign_key "offers", "services", name: "offer_fk_in_service"
   add_foreign_key "places", "addresses"
+  add_foreign_key "places", "weddings"
   add_foreign_key "services", "weddings", name: "wedding_fk_in_services"
   add_foreign_key "weddings", "events", column: "opening_event_id", name: "opening_event_fk_in_weddings"
 end
