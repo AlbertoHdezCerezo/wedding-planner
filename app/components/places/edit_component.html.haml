@@ -1,0 +1,18 @@
+= turbo_frame_tag("modal") do
+  = modal_component do |modal|
+    - modal.with_modal_content(class: "w-[600px]") do |content|
+      -# Header
+      - content.with_header(title: place.new_record? ? t(".create.title") : t(".edit.title"))
+
+      -# place Form
+      = render Places::EditComponent::Form.new(wedding:, place:)
+
+      -# Footer
+      - content.with_footer do
+        .w-full.inline-flex.justify-end.gap-3
+          = button_component(label: place.new_record? ? t(".create.cancel") : t(".edit.cancel"),
+                             scheme: :secondary,
+                             data: { action: "click->common--modal-component#close" })
+          = button_component(label: place.new_record? ? t(".create.confirm") : t(".edit.confirm"),
+                             form: "place-form",
+                             type: "submit")

@@ -1,0 +1,17 @@
+- url = place.new_record? ? wedding_places_path(wedding) : wedding_place_path(wedding, place)
+- method = place.new_record? ? :post : :patch
+= form_with(model: place, url:, method:, builder: ComponentFormBuilder, **content_tag_arguments) do |form|
+  .flex.flex-row.justify-between.gap-8
+    .flex-1.space-y-6
+      = form.text_field(:name, label: "Event Place", required: true)
+      = form.url_field(:maps_url, label: "Google Maps URL")
+      = form.telephone_field(:phone, label: "Contact Phone")
+      = form.email_field(:email, label: "Contact Email")
+
+    .flex-1.space-y-6
+      = form.fields_for :address, form.object.address || form.object.build_address do |address_form|
+        = address_form.text_field(:street, label: "Street", required: true)
+        = address_form.text_field(:town, label: "City", required: true)
+        = address_form.text_field(:state, label: "State", required: false)
+        = address_form.text_field(:country, label: "Country", required: true)
+        = address_form.text_field(:zip_code, label: "Zip Code", required: true)

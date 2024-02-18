@@ -1,0 +1,9 @@
+en:
+  create:
+    title: Add Place
+    confirm: Create
+    cancel: Cancel
+  edit:
+    title: Edit Place
+    confirm: Save
+    cancel: Cancel

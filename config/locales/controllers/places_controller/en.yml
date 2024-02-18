@@ -1,0 +1,12 @@
+en:
+  controllers:
+    places_controller:
+      create:
+        notice: "Place added to Wedding Plan"
+        alert: "Invalid place information"
+      update:
+        notice: "Place updated"
+        alert: "Invalid place information"
+      destroy:
+        notice: "Place removed from Wedding Plan"
+        alert: "Place could not be removed"

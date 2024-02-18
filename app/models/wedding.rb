@@ -8,6 +8,7 @@ class Wedding < ApplicationRecord
   has_many :guests, dependent: :destroy
   has_many :services, dependent: :destroy
   has_many :invitations, dependent: :destroy
+  has_many :places, dependent: :nullify
 
   # Validations
   validates :name, presence: true

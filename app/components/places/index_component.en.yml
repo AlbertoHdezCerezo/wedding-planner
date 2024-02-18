@@ -1,0 +1,17 @@
+en:
+  header:
+    title: Places List
+    subtitle: "%{count} Persons in your Wedding List"
+    add_place: Add Place
+  empty:
+    title: Your Places List is empty
+    subtitle: Add Places where your want to celebrate your WEdding
+    add_place: Add place
+  table:
+    name: Name
+    address: Address
+  delete:
+    title: Remove Place
+    subtitle_html: "Do you want to remove <b>%{name}</b> from the your list of Places?"
+    confirm: Remove place
+    cancel: Cancel
