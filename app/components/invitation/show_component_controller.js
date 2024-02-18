@@ -37,6 +37,8 @@ export default class extends Controller {
   envelopController = null
   letterController = null
 
+  letterReopened = false
+
   connect () {
     /**
      * For mobile devices ensure layout fits the window boundaries and not
@@ -81,7 +83,18 @@ export default class extends Controller {
   async openEnvelop () {
     await this.letterController.close()
     await this.#zoomInEnvelop()
-    await this.envelopController.open()
+
+    if (this.letterReopened) {
+      this.letterReopened = false
+    } else {
+      await this.envelopController.open()
+    }
+  }
+
+  async reopenLetter () {
+    this.letterReopened = true
+    await this.#zoomOutEnvelop()
+    await this.letterController.open()
   }
 
   async #zoomInEnvelop () {
