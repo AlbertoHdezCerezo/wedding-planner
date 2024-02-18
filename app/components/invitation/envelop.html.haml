@@ -4,7 +4,7 @@
   %div{ options.to_h }
     -# Front Card Face
     - options = ::Html::TagAttributes.build({ class: "absolute top-0 left-0 w-full h-full text-gray-700 cursor-pointer",
-                                              style: "backface-visibility: hidden; background-size: cover; background-position: center; background-image: url('#{asset_path("invitation/textures/texture-7.jpg")}')" })
+                                              style: "backface-visibility: hidden; background-size: cover; background-position: center; background-image: url('#{asset_path("invitation/textures/envelop-texture.jpg")}')" })
     - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openLetter")
     %div{ options.to_h }
       -# Stamps

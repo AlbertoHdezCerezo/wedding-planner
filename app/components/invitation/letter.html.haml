@@ -4,7 +4,7 @@
                                                          max-[600px]:[&>div]:px-16 max-[600px]:[&>div]:gap-4 ,
                                                          [&>div]:w-full [&>*]:flex ,
                                                          [&>div]:items-center [&>div]:justify-between [&>div]:py-6 [&>div]:px-24",
-                                                 style: "background-image: url('#{asset_path("invitation/textures/texture-7.jpg")}')" }
+                                                 style: "background-image: url('#{asset_path("invitation/textures/envelop-texture.jpg")}')" }
     = image_tag("invitation/title.png", alt: "stamp", class: "w-[60%]  max-[600px]:w-[100%] m-auto")
 
     - options = { class: "min-[600px]:odd:flex-row-reverse min-[600px]even:flex-row ,
@@ -40,9 +40,11 @@
           %p= t(".elaboration_0#{i + 1}")
           = image_tag("invitation/preparation_0#{i + 1}.png", alt: "stamp", class: "h-auto")
 
-    %h2.font-angeldreamsl.text-center.mt-20.mx-auto.font-semibold{ class: "w-[80%] text-3xl md:text-6xl" }
-      = t(".elaboration")
+    %h2.font-angeldreamsl.text-center.mt-20.mx-auto.font-semibold{ class: "w-[60%] text-5xl md:text-6xl leading-none" }
+      = t(".eat")
+
+    = image_tag("invitation/eat.png", alt: "stamp", class: "w-[80%] md:w-[60%] h-auto m-auto mt-8 mb-2")
 
     - options = ::Html::TagAttributes.build({ class: "m-auto tracking-[.1em]" })
     - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openEnvelop")
-    = button_component(label: "open wedding invitation", scheme: :secondary, **options.to_h)
+    = button_component(label: t(".open_invitation"), scheme: :secondary, **options.to_h)
