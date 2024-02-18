@@ -5,7 +5,8 @@ class IpConstraint < ApplicationConstraint
 
   def self.matches?(request)
     if Rails.env.production?
-      request.ip.in?(ALLOWED_IPS)
+      client_ip = request.headers["X-Forwarded-For"].split(",").first
+      client_ip.in?(ALLOWED_IPS)
     else
       true
     end
