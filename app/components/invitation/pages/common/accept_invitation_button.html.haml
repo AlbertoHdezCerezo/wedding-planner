@@ -1,8 +1,12 @@
 .contents{ **content_tag_arguments }
   - if invitation.accepted? && !preview_mode
     -# Options after invitation is accepted
-    - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary })
-    = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
+    .inline-flex.items-center.gap-2
+      - options = ::Html::TagAttributes.build({ icon: :star, scheme: :secondary, size: :small })
+      - options = options.with_stimulus_action("click", stimulus_identifier, "throwConfetti")
+      = invitation_icon_button_component(**options.to_h)
+      - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary })
+      = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
 
   - else
     - if preview_mode
@@ -25,7 +29,12 @@
           - options = ::Html::TagAttributes.build({ label: t(".accept"), size: :small, scheme: :primary })
           = invitation_button_component(**options.to_h)
 
-      -# Options after invitation is accepted
-    - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary, class: "#{ "hidden opacity-0" unless !preview_mode && invitation.accepted? }" })
+    -# Options after invitation is accepted
+    - options = ::Html::TagAttributes.build({ class: "#{ "hidden opacity-0" unless !preview_mode && invitation.accepted? }" })
     - options = options.with_stimulus_target("afterAccept", stimulus_identifier)
-    = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
+    .inline-flex.items-center.gap-2{ **options.to_h }
+      - options = ::Html::TagAttributes.build({ icon: :star, scheme: :secondary, size: :small })
+      - options = options.with_stimulus_action("click", stimulus_identifier, "throwConfetti")
+      = invitation_icon_button_component(**options.to_h)
+      - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary })
+      = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
