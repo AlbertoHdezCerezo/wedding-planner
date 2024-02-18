@@ -14,7 +14,9 @@ FactoryBot.define do
 
     planned { false }
 
-    schedule { Time.current..rand(10).hours.since(Time.current) }
+    start_time { Time.current }
+    end_time { rand(10).hours.since(Time.current) }
+    schedule { start_time..end_time }
 
     trait :unplanned do
       planned { false }
