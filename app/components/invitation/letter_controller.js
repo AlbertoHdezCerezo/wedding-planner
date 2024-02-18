@@ -10,7 +10,7 @@ const OPEN_ANIMATION = {
 const CLOSE_ANIMATION = {
   duration: 800,
   easing: 'easeOutQuint',
-  top: '100%'
+  top: '-100%'
 }
 
 export default class extends Controller {
@@ -34,5 +34,8 @@ export default class extends Controller {
         ...CLOSE_ANIMATION
       })
     )
+
+    this.element.scrollTop = 0
+    this.element.style.top = '100%'
   }
 }
