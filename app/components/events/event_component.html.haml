@@ -41,14 +41,15 @@
             %p.font-newsreader.text-xs To
             %span= I18n.l(event_decorator.schedule.end, format: :short_date_time)
 
-        %div
-          %p.font-newsreader.text-xs Place
-          %span= event_decorator.place_decorator.name
+        - if event_decorator.place.present?
+          %div
+            %p.font-newsreader.text-xs Place
+            %span= event_decorator.place_decorator.name
 
-        %div
-          %p.font-newsreader.text-xs Address
-          %span= event_decorator.place_decorator.address_decorator.street
-          %br
-          %span= event_decorator.place_decorator.address_decorator.town_address
+          %div
+            %p.font-newsreader.text-xs Address
+            %span= event_decorator.place_decorator.address_decorator.street
+            %br
+            %span= event_decorator.place_decorator.address_decorator.town_address
 
-        = button_component(label: "More Information", size: :small, scheme: :secondary, href: event_decorator.place.maps_url, target: "_blank", class: "w-full")
+          = button_component(label: "More Information", size: :small, scheme: :secondary, href: event_decorator.place.maps_url, target: "_blank", class: "w-full")
