@@ -8,14 +8,14 @@
     - options = options.with_stimulus_action("click", Invitation::ShowComponent.stimulus_identifier, "openLetter")
     %div{ options.to_h }
       -# Stamps
-      = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-12 right-12 h-[12%] md:h-[18%] w-auto transform rotate-[10deg] opacity-80")
-      = image_tag("invitation/stamp-spain.png", alt: "stamp", class: "absolute top-8 right-10 h-[20%] md:h-[24%] w-auto transform -rotate-[4deg] shadow-sm opacity-90")
-      = image_tag("invitation/stamp-ec.png", alt: "stamp", class: "absolute top-12 right-40 h-[20%] md:h-[20%] w-auto transform rotate-[10deg] opacity-90")
+      = image_tag("invitation/stamp_01.png", alt: "stamp", class: "absolute top-12 right-12 h-[14%] md:h-[18%] w-auto transform rotate-[10deg] opacity-80")
+      = image_tag("invitation/stamp-spain.png", alt: "stamp", class: "absolute top-8 right-10 h-[22%] md:h-40 transform -rotate-[4deg] opacity-90")
+      = image_tag("invitation/stamp-ec.png", alt: "stamp", class: "absolute top-12 right-40 md:right-40 h-[20%] md:h-40 transform rotate-[10deg] opacity-90")
 
       -# Open Instructions
       %div{ class: "absolute left-10 md:left-16 bottom-16 md:bottom-18 space-y-2 md:space-y-4 opacity-40" }
-        %p{ class: "text-3xl md:text-5xl font-ambrosia" }= invitation.guests.one? ? invitation.decorator.guest_names : invitation.decorator.guest_short_names
-        %p{ class: "text-[10px] md:text-xs uppercase tracking-[.2em]" }= t(".open")
+        %p{ class: "text-4xl md:text-5xl font-ambrosia" }= invitation.guests.one? ? invitation.decorator.guest_names : invitation.decorator.guest_short_names
+        %p{ class: "text-[12px] md:text-xs uppercase tracking-[.2em]" }= t(".open")
 
     -# Back Card Face
     %div{ style: "backface-visibility: hidden; transform: rotateY(180deg)" }
