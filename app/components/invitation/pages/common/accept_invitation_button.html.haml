@@ -26,6 +26,6 @@
           = invitation_button_component(**options.to_h)
 
       -# Options after invitation is accepted
-    - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary, class: "#{ "hidden opacity-0" unless invitation.accepted? }" })
+    - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary, class: "#{ "hidden opacity-0" unless !preview_mode && invitation.accepted? }" })
     - options = options.with_stimulus_target("afterAccept", stimulus_identifier)
     = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
