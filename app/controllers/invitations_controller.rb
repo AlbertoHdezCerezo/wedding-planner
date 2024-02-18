@@ -36,11 +36,9 @@ class InvitationsController < ApplicationController
   def update
     set_invitation
 
-    can_update = invitation_parameters.valid?
+    @invitation.assign_attributes(invitation_parameters) if can_update?
 
-    @invitation.assign_attributes(invitation_parameters) if can_update
-
-    if can_update && @invitation.save
+    if can_update? && @invitation.save
       flash.now[:notice] = t("controllers.invitations_controller.update.notice")
       render status: :ok
     else
@@ -64,7 +62,9 @@ class InvitationsController < ApplicationController
 
   private
 
-  def invitation_parameters = InvitationParameters.new(params[:invitation])
+  def invitation_parameters
+    @invitation_parameters ||= InvitationParameters.new(params[:invitation])
+  end
 
   def set_wedding
     @wedding = Wedding.find(params[:wedding_id])
@@ -72,5 +72,13 @@ class InvitationsController < ApplicationController
 
   def set_invitation
     @invitation = Invitation.includes(:wedding).find_by!(wedding_id: params[:wedding_id], id: params[:id])
+  end
+
+  def can_update?
+    if invitation_parameters.key?(:guest_ids)
+      invitation_parameters[:guest_ids].present? && invitation_parameters[:guest_ids].any?
+    else
+      true
+    end
   end
 end

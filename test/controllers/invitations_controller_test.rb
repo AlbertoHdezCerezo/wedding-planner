@@ -51,7 +51,7 @@ class InvitationsControllerTest < ControllerTestHelper # rubocop:todo Metrics/Cl
   end
 
   test "POST create if invitation parameters are valid, renders event template" do
-    invitation_payload = { invitation: { guest_ids: @guests.pluck(:id) } }
+    invitation_payload = { invitation: { guest_ids: @guests.pluck(:id), language: "en", needs_travel_guide: false } }
 
     post wedding_invitations_path(@wedding, **invitation_payload, format: :turbo_stream)
 
@@ -59,7 +59,7 @@ class InvitationsControllerTest < ControllerTestHelper # rubocop:todo Metrics/Cl
   end
 
   test "POST create if invitation parameters are valid, creates new wedding invitation" do
-    invitation_payload = { invitation: { guest_ids: @guests.pluck(:id) } }
+    invitation_payload = { invitation: { guest_ids: @guests.pluck(:id), language: "en", needs_travel_guide: false } }
 
     assert_difference -> { @wedding.invitations.reload.count }, 1 do
       post wedding_invitations_path(@wedding, **invitation_payload, format: :turbo_stream)
@@ -103,7 +103,7 @@ class InvitationsControllerTest < ControllerTestHelper # rubocop:todo Metrics/Cl
   test "PATCH update if invitation parameters are valid, redirects to invitations path" do
     invitation = @invitations.sample
 
-    invitation_payload = { invitation: { guest_ids: @guests.pluck(:id) } }
+    invitation_payload = { invitation: { guest_ids: @guests.pluck(:id), language: "en", needs_travel_guide: false } }
 
     patch wedding_invitation_path(@wedding, invitation, **invitation_payload, format: :turbo_stream)
 
@@ -113,7 +113,7 @@ class InvitationsControllerTest < ControllerTestHelper # rubocop:todo Metrics/Cl
   test "PATCH update if invitation parameters are valid, update invitation" do
     invitation = @invitations.last
 
-    invitation_payload = { invitation: { guest_ids: [@guests.first.id] } }
+    invitation_payload = { invitation: { guest_ids: [@guests.first.id], language: "en", needs_travel_guide: false } }
 
     assert_changes -> { invitation.reload.guest_ids }, to: [@guests.first.id] do
       patch wedding_invitation_path(@wedding, invitation, **invitation_payload, format: :turbo_stream)
