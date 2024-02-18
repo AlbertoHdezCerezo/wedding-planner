@@ -46,7 +46,8 @@ class PlacesControllerTest < ControllerTestHelper # rubocop:todo Metrics/ClassLe
   end
 
   test "POST create if place parameters are valid, renders event template" do
-    place_payload = { place: FactoryBot.attributes_for(:place).merge({ address_attributes: FactoryBot.attributes_for(:address) }) }
+    place_payload = { place: FactoryBot.attributes_for(:place)
+                                       .merge({ address_attributes: FactoryBot.attributes_for(:address) }) }
 
     post wedding_places_path(@wedding, **place_payload, format: :turbo_stream)
 
@@ -54,7 +55,8 @@ class PlacesControllerTest < ControllerTestHelper # rubocop:todo Metrics/ClassLe
   end
 
   test "POST create if place parameters are valid, creates new wedding place" do
-    place_payload = { place: FactoryBot.attributes_for(:place).merge({ address_attributes: FactoryBot.attributes_for(:address) }) }
+    place_payload = { place: FactoryBot.attributes_for(:place)
+                                       .merge({ address_attributes: FactoryBot.attributes_for(:address) }) }
 
     assert_difference -> { @wedding.places.reload.count }, 1 do
       post wedding_places_path(@wedding, **place_payload, format: :turbo_stream)
