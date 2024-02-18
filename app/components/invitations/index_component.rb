@@ -12,11 +12,10 @@ class Invitations::IndexComponent < ApplicationComponent
   private
 
   def default_content_tag_arguments
-    {
-      class: <<-HTML
-        h-full w-full overflow-hidden flex flex-col gap-4 py-8
-        bg-white
-      HTML
-    }
+    options = ::Html::TagAttributes.build(
+      { class: "h-full w-full overflow-hidden flex flex-col gap-4 py-8 bg-white" }
+    )
+    options = options.with_stimulus_controller(stimulus_identifier)
+    options.to_h
   end
 end
