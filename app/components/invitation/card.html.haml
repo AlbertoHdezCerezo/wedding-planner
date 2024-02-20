@@ -11,6 +11,8 @@
                                                 style: "background-size: cover; background-position: center; background-image: url('#{asset_path("invitation/textures/menu-texture.png")}')" })
       - options = options.with_stimulus_target("menu", stimulus_identifier)
       %div{ options.to_h }
+        - options = ::Html::TagAttributes.build({ class: "absolute w-fit whitespace-nowrap opacity-0 left-1/2 transform -translate-x-1/2 -top-6 text-[10px] tracking-[.15em] text-gray-500" }).with_stimulus_target("menuHelp", stimulus_identifier)
+        %h2{ **options.to_h }= t(".help")
         - options = ::Html::TagAttributes.build({ class: "opacity-80 !text-white" }).with_stimulus_action("click", stimulus_identifier, "navigateTo")
         - welcome_options = options.with_stimulus_parameter("page_name", stimulus_identifier, "welcome")
         = invitation_icon_button_component(icon: "sparkles", size: :small, scheme: :cardboard, **welcome_options.to_h)
