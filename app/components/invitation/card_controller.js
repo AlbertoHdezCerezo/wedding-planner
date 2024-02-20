@@ -9,6 +9,20 @@ const MENU_REVEAL_ANIMATION = {
   translateY: [0, '-88px']
 }
 
+const MENU_HELP_REVEAL_ANIMATION = {
+  autoplay: false,
+  duration: 600,
+  easing: 'easeInExpo',
+  opacity: '100%'
+}
+
+const MENU_HELP_HIDE_ANIMATION = {
+  autoplay: false,
+  duration: 600,
+  easing: 'easeInExpo',
+  opacity: 0
+}
+
 /**
  * Implement the invitation logic to navigate between the different
  * its different pages (welcome, schedule, etc.).
@@ -27,7 +41,9 @@ export default class extends Controller {
     // Attachment point for pages
     'pageAttachment',
     // Navigation Menu
-    'menu'
+    'menu',
+    // Navigation Menu Hint
+    'menuHelp'
   ]
 
   pageNavigator = null
@@ -50,6 +66,30 @@ export default class extends Controller {
         ...MENU_REVEAL_ANIMATION
       })
     )
+
+    await this.revealMenuHelp()
+  }
+
+  async revealMenuHelp () {
+    await Animator.play(
+      Animator.animation({
+        targets: this.menuHelpTarget,
+        ...MENU_HELP_REVEAL_ANIMATION
+      })
+    )
+
+    this.menuHelpVisible = true
+  }
+
+  async hideMenuHelp () {
+    await Animator.play(
+      Animator.animation({
+        targets: this.menuHelpTarget,
+        ...MENU_HELP_HIDE_ANIMATION
+      })
+    )
+
+    this.menuHelpVisible = false
   }
 
   async navigateTo ({ currentTarget, params: { pageName } }) {
@@ -60,7 +100,14 @@ export default class extends Controller {
       this.#selectMenuButton(currentTarget)
     }
 
-    await this.pageNavigator.navigateTo(pageName)
+    if (this.menuHelpVisible) {
+      await Promise.all([
+        this.hideMenuHelp(),
+        this.pageNavigator.navigateTo(pageName)
+      ])
+    } else {
+      await this.pageNavigator.navigateTo(pageName)
+    }
 
     this.menuTarget.classList.remove('pointer-events-none')
   }
