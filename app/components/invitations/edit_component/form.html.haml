@@ -14,12 +14,12 @@
     %p.flex-1.text-sm.text-gray-700 Selected Guests
     %p.flex-1.text-sm.text-gray-700 Wedding Guests
 
-    - options = Html::TagAttributes.build({ class: "divide-y divide-gray-100" })
+    - options = Html::TagAttributes.build({ class: "divide-y divide-gray-100 max-h-[400px] overflow-y-scroll" })
     - options = options.with_stimulus_target("selectedGuestsList", stimulus_identifier)
     %div{ options.to_h }
       = render SelectableGuest.with_collection(invitation.guests, selected: true, form:)
 
-    - options = Html::TagAttributes.build({ class: "divide-y divide-gray-100" })
+    - options = Html::TagAttributes.build({ class: "divide-y divide-gray-100 max-h-[400px] overflow-y-scroll" })
     - options = options.with_stimulus_target("unselectedGuestsList", stimulus_identifier)
     %div{ options.to_h }
       = render SelectableGuest.with_collection(unselected_guests, selected: false, form:)
