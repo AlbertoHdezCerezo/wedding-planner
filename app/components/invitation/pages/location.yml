@@ -3,25 +3,65 @@ en:
   location: 10600 Plasencia, Cáceres, Spain
   maps: Open in Maps
   place:
-    title: About the Place
+    title: Sobre el Lugar
     description_html: |
-      El Parador de Plasencia es un convento originario del siglo XV
+      Welcome to the Parador de Plasencia, formerly the Convent of Santo Domingo, one of the most renowned Paradors in Spain.
       <br><br>
-      Se trata de una joya histórica reconvertida en hotel gestionado por la red estatal de paradores, tratandose de
-      unos de los más galardonados. Ubicada en el casco antiguo de la ciudad, a pocos metros de la Plaza Mayor y de
-      la Catedral, el Parador de Plasencia es un lugar ideal para disfrutar de la ciudad y de la naturaleza que la rodea.
+      Located in the heart of the city, in the old town, just a few metres from the Plaza Mayor and the Cathedral,
+      this emblematic building will be the place where we will celebrate our wedding.
       <br><br>
-      Durante la boda podremos disfrutar de las diferentes estancias del alojamiento, desde el patio del claustro,
-      donde tendrá lugar la ceremonia, al salón de banquetes, donde degustaremos una cena con platos típicos de la
-      región, para terminar la noche en la bodega del convento, reconvertida en sala de fiesta.
-  services:
-    title: Services
+      The origins of the Parador date back to the 15th century, when it was founded by the Counts of Plasencia. Originally,
+      the building was located near the Jewish quarter of the city. During the process of renovating the building, various
+      archaeological remains and artefacts were found, which confirmed that this was the site of the old synagogue.
+      <br><br>
+      It would be later, in the 16th century, when the present construction would be built on the site of the synagogue,
+      this new building being the Convent of Vicente Ferrer, of the Dominican order.
+      <br><br>
+      The building is currently acclimatised to offer all the comforts of a 4-star hotel, maintaining part of the original
+      architecture and furnishings of the convent. part of the original architecture and furniture of the convent, which
+      gives it an aura of special charm that makes it ideal for a celebration such as ours. ideal for a celebration such as ours.
+
+  accomodation:
+    title: Alojamiento
     description_html: |
-      El Parador de Plasencia es un hotel de 4 estrellas que ofrece toda clase de acomodaciones para sus huéspedes.
-      Cuenta con un restaurante, bar, piscina, gimnasio, spa, y parking privado. Con ocasión de la boda, los invitados
-      podrán contactar con el hotel para reservar habitaciones a precios especiales.
+      If you are travelling from another city or country and are looking for accommodation for your trip, pay attention.
       <br><br>
-      Si deseas disfrutar de tu estancia en Plasencia, el Parador es el lugar ideal para hacerlo.
+      If you are planning a short stay in Plasencia (mainly to attend the wedding), our recommendation is to book accommodation
+      at the Parador. Since the wedding will take place in the same place, this is the most comfortable option. The Parador is
+      located in the centre of the city, so it has easy access to all points of interest, as well as supermarkets, bars and restaurants.
+      The building also has several leisure and relaxation areas, such as the swimming pool, gym and spa.
+      <br><br>
+      Although the price may be a little higher than other options, we are in negotiations with the managers to be able to offer a
+      discount to guests. If you are interested in staying at the Parador let us know so that we can inform you about the offer.
+      <br><br>
+      For those planning a longer stay and looking for more affordable accommodation, the city offers hotels with more economical
+      stays and very modern and competitively priced rental flats.
+      <br><br>
+      In the following paragraph you will find links to some of our recommendations.
+
+  city:
+    title: Sobre Plasencia
+    description_html: |
+      Located on the banks of the river Jerte, at the end of the Jerte Valley, lies Plasencia.
+      <br><br>
+      This small town, founded in the 12th century, is known for its medieval and Renaissance architecture.
+      If you are passionate about history and ancient architecture, Plasencia is your destination. The old
+      quarter is home to several buildings of great historical and artistic value, such as Plasencia Cathedral,
+      the Mirabel Palace, the Plaza Mayor square and the Torre Lucía tower.
+      <br><br>
+      For those who prefer nature, Plasencia is the ideal starting point for visiting the Jerte Valley. Just a
+      few kilometres from the city, tourists can find magnificent natural landscapes and villages to visit. From
+      a stroll through the Jerte Valley, to a swim in the Garganta de los Infiernos or a short trip to visit the
+      Yuste Monastery, the Plasencia region has beautiful natural sites to visit without the need to travel far.
+      <br><br>
+      If you don't mind spending more time on the road, our recommendation is to explore Extremadura. Close to
+      Plasencia is Cáceres, another traditional medieval town with beautiful buildings and cobbled streets which
+      is well worth a visit. If you want a change of scenery, you can continue a little further south to visit
+      Mérida, known as Emérita Augusta, which has an important archaeological heritage dating back to the 1st
+      century BC and is a World Heritage Site: the Roman theatre, circus and aqueduct.
+      <br><br>
+      If you are planning an extended stay in Plasencia, we recommend you to visit the tourist centres for more
+      information about places and activities in the region, we are sure you will love it.
 
 es:
   street: Pl. de San Vicente Ferrer, s/n
@@ -30,20 +70,61 @@ es:
   place:
     title: Sobre el Lugar
     description_html: |
-      El Parador de Plasencia es un convento originario del siglo XV
+      Bienvenidos al Parador de Plasencia, antiguamente Convento de Santo Domingo, uno de los Paradores de mayor renombre en España.
       <br><br>
-      Se trata de una joya histórica reconvertida en hotel gestionado por la red estatal de paradores, tratandose de
-      unos de los más galardonados. Ubicada en el casco antiguo de la ciudad, a pocos metros de la Plaza Mayor y de
-      la Catedral, el Parador de Plasencia es un lugar ideal para disfrutar de la ciudad y de la naturaleza que la rodea.
+      Ubicado en el corazón de la ciudad, dentro del casco antiguo, a escasos metros de la Plaza Mayor y de la Catedral,
+      este emblemático edificio será el lugar donde celebraremos nuestra boda.
       <br><br>
-      Durante la boda podremos disfrutar de las diferentes estancias del alojamiento, desde el patio del claustro,
-      donde tendrá lugar la ceremonia, al salón de banquetes, donde degustaremos una cena con platos típicos de la
-      región, para terminar la noche en la bodega del convento, reconvertida en sala de fiesta.
-  services:
-    title: Servicios
+      Los orígenes del parador datan del siglo XV, época en que fue fundado por los Condes de Plasencia. Originalmente,
+      el edificio se situaba cerca del barrio judío de la ciudad. Durante el proceso de reforma del recinto se encontraron
+      diversos restos y piezas arqueológicas que confirmaron que en dicho lugar se encontraba la antigua sinagoga.
+      <br><br>
+      Sería posteriormente, en el siglo XVI, cuando se edificaría la presente construcción sobre dicha sinagoga, siendo esta
+      nueva edificación el Convento de San Vicente Ferrer, de la orden de los dominicos.
+      <br><br>
+      Actualmente el edificio se encuentra aclimatado para ofrecer todas las comodidades de un hotel de 4 estrellas, manteniendo
+      parte de la arquitectura original y mobiliario del convento; lo cual le otorga un aura de especial encanto que lo hace
+      ideal para una celebración como la nuestra.
+
+  accomodation:
+    title: Alojamiento
     description_html: |
-      El Parador de Plasencia es un hotel de 4 estrellas que ofrece toda clase de acomodaciones para sus huéspedes.
-      Cuenta con un restaurante, bar, piscina, gimnasio, spa, y parking privado. Con ocasión de la boda, los invitados
-      podrán contactar con el hotel para reservar habitaciones a precios especiales.
+      Si viajas desde otra ciudad o país y estás buscando alojamiento para tu viaje, presta atención.
       <br><br>
-      Si deseas disfrutar de tu estancia en Plasencia, el Parador es el lugar ideal para hacerlo.
+      Si planeas una estancia corta en Plasencia (para asistir a la boda principalmente), nuestra recomendación es que
+      reserves alojamiento en el parador. Dado que la boda tendrá lugar en el mismo lugar, ésta es la opción
+      más cómoda. El parador se ubíca en el centro de la ciudad, por lo que tiene fácil acceso a todos los puntos de interés,
+      además de supermercados, bares y restaurantes. El edificio cuenta además con diferentes zonas de ocio y relax,
+      como la piscina, el gimnasio y el spa.
+      <br><br>
+      Aunque su precio puede ser algo más elevado que otras opciones, estamos en negociaciones con sus administradores para
+      poder ofrecer un descuento a los invitados. Si estás interesado en alojarte en el parador déjanoslo saber para que
+      podamos informarte sobre la oferta.
+      <br><br>
+      Para aquellos que planean una estancia más prolongada y buscan un alojamiento más económico, la ciudad
+      ofrece hoteles con estancias más económicas y apartamentos de alquiler muy modernos y a precio muy competitivos. 
+      <br><br>
+      En el siguiente párrafo tienes enlaces a algunas de nuestras recomendaciones.
+
+  city:
+    title: Sobre Plasencia
+    description_html: |
+      Ubicada a la orilla del río Jerte, al final del Valle del Jerte, se encuentra Plasencia.
+      <br><br>
+      Esta pequeña ciudad, fundada en el siglo XII, es conocida por su arquitectura medieval y renacentista. Si eres un
+      apasionado de la historia y la arquitectura antigua, Plasencia es tu destino. El casco antiguo atesora varios edificios
+      de gran valor histórico y artístico, como la Catedral de Plasencia, el Palacio de Mirabel, la Plaza Mayor o la Torre Lucía.
+      <br><br>
+      Para aquellos que prefieran la naturaleza, Plasencia es el punto de partida ideal para visitar el Valle del Jerte. A pocos
+      kilómetros de la ciudad los turistas pueden encontrar magníficos parajes naturales y pueblos que visitar. Desde dar un paseo
+      por el Valle del Jerte, a nadar en la Garganta de los Infiernos o hacer una pequeña ruta para visitar el Monasterio de Yuste,
+      la región de Plasencia cuenta con hermosos parajes naturales que visitar sin necesidad de hacer grandes desplazamientos.
+      <br><br>
+      Si no te importa pasar más tiempo en la carretera, nuestra recomendación es que exploren Extremadura. Muy cerca
+      de Plasencia está Cáceres, otra población de tradición medival con hermosos edificios y calles empedradas el cual merece la pena
+      visitar. Si queréis un cambio de aires, podéis seguir un poco más en dirección sur para visitar Mérida, conocida como Emérita
+      Augusta, que cuenta con un importante patrimonio arqueológico del siglo I a.C. y que es Patrimonio de la Humanidad: el teatro,
+      circo y acueducto romano.
+      <br><br>
+      Si eres de los que planea tener una estancia prolongada en Plasencia, te recomendamos que visites los centros turísticos para
+      más información sobre lugares y actividades en la región, estamos seguros de que os va a encantar.
