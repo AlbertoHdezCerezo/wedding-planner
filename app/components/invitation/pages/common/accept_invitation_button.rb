@@ -15,8 +15,8 @@ class Invitation::Pages::Common::AcceptInvitationButton < Invitation::Applicatio
   def calendar_url
     ::AddToCalendar::URLs.new(
       start_datetime: invitation.wedding.date.to_time,
-      title: t(".event.description"),
-      description: t(".event.description"),
+      title: t(".event.title"),
+      description: t(".event.description", invitation_url: request.original_url),
       all_day: true,
       url: request.original_url,
       timezone: "Europe/London"

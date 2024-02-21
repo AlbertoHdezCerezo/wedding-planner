@@ -4,7 +4,14 @@ en:
   event:
     title: Albert & Andrea's Wedding
     description: |
-      Añadir descripción
+      From 19:00 the wedding ceremony will start at the Parador de Plasencia.
+      Get ready for a night of joy, laughter, good food and lots of dancing.
+      For more information we advise you to consult your personalised invitation,
+      available at the URL %{invitation_url}, or contact us directly.
+  
+      We look forward to your attendance to the event,
+  
+      Alberto and Andrea
 
 es:
   accept: aceptar invitación
@@ -12,4 +19,11 @@ es:
   event:
     title: Boda de Alberto y Andrea
     description: |
-      Añadir descripción
+      A partir de las 19:00 comenzará la ceremonia de boda en el Parador de Plasencia.
+      Preparaos para una noche de alegría, risas, buena comida y mucho baile. Para
+      más información os aconsejamos que consultéis vuestra invitación personalizada,
+      disponible en la URL %{invitation_url}, o contactéis directamente con nosotros.
+    
+      Esperamos impacientes vuestra asistencia al evento,
+      
+      Alberto y Andrea
