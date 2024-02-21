@@ -17,7 +17,7 @@
         - event_group_decorator.event_decorators.each do |event_decorator|
           .flex.flex-row.space-x-6.items-center.divide-x.divide-gray-200
             %div{ class: "min-w-[40px]" }
-              - unless event_decorator.kind.other?
+              - unless event_decorator.other?
                 = icon_component(icon: event_decorator.kind, size: :base, class: "m-auto text-gray-500")
             .relative.space-y-1.pl-8.py-6
               .absolute.h-2.w-2.rounded-full.bg-gray-500{ class: "left-[-4.5px] top-[48%]" }
