@@ -3,6 +3,16 @@
 class Event < ApplicationRecord
   include Decoratable
 
+  # Enums
+  enum kind: {
+    ceremony: "ceremony",
+    cocktail: "cocktail",
+    dinner: "dinner",
+    party: "party",
+    dance: "dance",
+    other: "other"
+  }
+
   # Associations
   belongs_to :wedding
   belongs_to :place, optional: true
@@ -16,7 +26,7 @@ class Event < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :planned, inclusion: { in: [true, false] }
-  validates :start_time, :end_time, presence: true
+  validates :start_time, :end_time, :kind, presence: true
 
   validates_comparison_of :end_time, greater_than: :start_time
 
