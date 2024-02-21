@@ -3,7 +3,7 @@ en:
   location: 10600 Plasencia, Cáceres, Spain
   maps: Open in Maps
   place:
-    title: Sobre el Lugar
+    title: About the Place
     description_html: |
       Welcome to the Parador de Plasencia, formerly the Convent of Santo Domingo, one of the most renowned Paradors in Spain.
       <br><br>
@@ -22,7 +22,7 @@ en:
       gives it an aura of special charm that makes it ideal for a celebration such as ours. ideal for a celebration such as ours.
 
   accomodation:
-    title: Alojamiento
+    title: Accomodation
     description_html: |
       If you are travelling from another city or country and are looking for accommodation for your trip, pay attention.
       <br><br>
@@ -40,7 +40,7 @@ en:
       In the following paragraph you will find links to some of our recommendations.
 
   city:
-    title: Sobre Plasencia
+    title: About Plasencia
     description_html: |
       Located on the banks of the river Jerte, at the end of the Jerte Valley, lies Plasencia.
       <br><br>
