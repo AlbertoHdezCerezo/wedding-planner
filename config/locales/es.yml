@@ -36,6 +36,19 @@ es:
       short_month_day: "%b %d"
       short_date_time: "%H:%M, %d/%m"
       abbreviated_month: "%b"
+    abbr_month_names:
+      - Ene
+      - Feb
+      - Mar
+      - Abr
+      - May
+      - Jun
+      - Jul
+      - Ago
+      - Sep
+      - Oct
+      - Nov
+      - Dic
   time:
     formats:
       short_time: "%H:%M"

@@ -1,6 +1,6 @@
 = render(Invitation::Layout::PageComponent.new) do
   .relative.flex.flex-col.items-center.justify-center.px-6.py-10.gap-16.text-gray-500
     - options = { class: "w-full font-ambrosia text-7xl text-gray-500 text-center" }
-    %h1{ options } Travel Guide
+    %h1{ options }= t(".title")
 
     %p{ class: "w-full text-[10px] tracking-[.05em] [&>*]:block [&>*]:mb-1" }= t(".preview_html")

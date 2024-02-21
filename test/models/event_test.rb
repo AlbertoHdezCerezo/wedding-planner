@@ -36,6 +36,14 @@ class EventTest < ActiveSupport::TestCase
     assert event.errors.of_kind?(:end_time, :blank)
   end
 
+  test "validates kind presence" do
+    event = FactoryBot.build(:event)
+    event.kind = nil
+
+    assert_not event.valid?
+    assert event.errors.of_kind?(:kind, :blank)
+  end
+
   test "validates start time is greater than end time" do
     timestamp = Time.zone.local(2023, 11, 11, 11, 11)
 
@@ -44,6 +52,13 @@ class EventTest < ActiveSupport::TestCase
 
     assert_not event.valid?
     assert event.errors.of_kind?(:end_time, :greater_than)
+  end
+
+  test "validates kind is a valid one" do
+    event = FactoryBot.build(:event)
+    assert_raise ArgumentError do
+      event.kind = "invalid kind"
+    end
   end
 
   test "if associated to service/s, validates services belong to event wedding" do

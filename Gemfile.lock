@@ -230,13 +230,11 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
-      racc (~> 1.4)
     parallel (1.24.0)
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    pg (1.5.5)
+    pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -380,7 +378,6 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
-  x86_64-linux
 
 DEPENDENCIES
   aasm (= 5.5.0)
@@ -400,7 +397,7 @@ DEPENDENCIES
   lookbook (>= 2.0.5)
   mocha
   money-rails (~> 1.15)
-  pg (~> 1.5)
+  pg (= 1.5.4)
   pry
   puma (~> 6.4)
   rails (~> 7.1.3)
