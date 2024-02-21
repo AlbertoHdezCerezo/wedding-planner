@@ -24,6 +24,7 @@ class Invitation::ShowComponent < Invitation::ApplicationComponent
       stimulus_identifier,
       "registerLetterController"
     )
+    options = options.with_stimulus_value("invitationAccepted", stimulus_identifier, invitation.accepted?)
     options.to_h
   end
 end

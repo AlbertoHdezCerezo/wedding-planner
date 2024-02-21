@@ -34,6 +34,9 @@ const ZOOM_OUT_ANIMATION = {
 }
 
 export default class extends Controller {
+  // Indicates whether invitation was already accepted or not
+  static values = { invitationAccepted: Boolean }
+
   envelopController = null
   letterController = null
 
@@ -71,13 +74,20 @@ export default class extends Controller {
     await Animator.playTimeline(Animator.timeline(animations))
 
     this.envelopController.enableMouseEvents()
+
+    if (this.invitationAcceptedValue) {
+      await this.envelopController.open()
+    }
   }
 
   async openLetter () {
     if (!this.#invitationReady()) return
-
-    await this.#zoomOutEnvelop()
-    await this.letterController.open()
+    if (this.invitationAcceptedValue) {
+      await this.envelopController.open()
+    } else {
+      await this.#zoomOutEnvelop()
+      await this.letterController.open()
+    }
   }
 
   async openEnvelop () {
