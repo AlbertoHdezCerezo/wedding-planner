@@ -42,5 +42,5 @@
       - options = ::Html::TagAttributes.build({ icon: :star, scheme: :secondary, size: :small })
       - options = options.with_stimulus_action("click", stimulus_identifier, "throwConfetti")
       = invitation_icon_button_component(**options.to_h)
-      - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary })
+      - options = ::Html::TagAttributes.build({ label: t(".add_to_calendar"), size: :small, scheme: :secondary, class: "whitespace-nowrap" })
       = invitation_button_component(tag: :a, href: calendar_url, **options.to_h)
