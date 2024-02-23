@@ -49,10 +49,6 @@ export default class extends Controller {
      */
     if (DeviceRecognizer.isMobile()) {
       this.element.style.width = `${window.innerWidth}px`
-
-      if (/android/i.test(navigator.userAgent)) {
-        this.element.style.height = `${window.innerHeight}px`
-      }
     }
   }
 
