@@ -2,7 +2,7 @@
 
 # Renders the client-side application representing the Wedding
 # invitation for a specific +Guest+ of a specific +Wedding+
-class Invitation::InvitationController < ApplicationController
+class Invitation::InvitationController < Invitation::ApplicationController
   # GET /invitation/<invitation-id>
   def show
     @invitation = Invitation.find(params[:id])

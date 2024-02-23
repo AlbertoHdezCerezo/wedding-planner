@@ -5,7 +5,7 @@
                                                          [&>div]:w-full [&>*]:flex ,
                                                          [&>div]:items-center [&>div]:justify-between [&>div]:py-6 [&>div]:px-24",
                                                  style: "background-image: url('#{asset_path("invitation/textures/envelop-texture.jpg")}')" }
-    = image_tag("invitation/title.png", alt: "stamp", class: "w-[60%]  max-[600px]:w-[100%] m-auto")
+    = image_tag(I18n.locale.to_s == "en" ? "invitation/title-english.png" : "invitation/title.png", alt: "stamp", class: "w-[60%]  max-[600px]:w-[100%] m-auto")
 
     - options = { class: "min-[600px]:odd:flex-row-reverse min-[600px]even:flex-row ,
                           odd:text-end even:text-start ,

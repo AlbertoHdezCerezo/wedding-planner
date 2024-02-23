@@ -16,4 +16,4 @@
       = form.select(:kind, Event.kinds.values.map { [_1, _1] }, label: "Kind of Event", include_blank: true, required: true, class: "mt-0")
 
     - if event.wedding.places.any?
-      = form.select(:place_id, event.wedding.places.map { ["#{_1.name}, #{_1.address.decorator.full_address}", _1.id] }, label: "Place", include_blank: false, required: true)
+      = form.select(:place_id, event.wedding.places.map { ["#{_1.name}, #{_1.address.decorator.full_address}", _1.id] }, label: "Place", include_blank: true, required: true)

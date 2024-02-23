@@ -18,7 +18,7 @@
           .flex.flex-row.space-x-6.items-center.divide-x.divide-gray-200
             %div{ class: "min-w-[40px]" }
               - unless event_decorator.other?
-                = icon_component(icon: event_decorator.kind, size: :base, class: "m-auto text-gray-500")
+                = icon_component(icon: "invitation-#{event_decorator.kind}", size: :base, class: "m-auto ml-4 text-gray-500")
             .relative.space-y-1.pl-8.py-6
               .absolute.h-2.w-2.rounded-full.bg-gray-500{ class: "left-[-4.5px] top-[48%]" }
               %p.text-gray-500.text-xs{ class: "uppercase tracking-[.10em]" }= event_decorator.start_time
