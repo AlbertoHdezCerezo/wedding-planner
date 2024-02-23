@@ -49,7 +49,7 @@ export default class extends Controller {
      */
     if (DeviceRecognizer.isMobile()) {
       this.element.style.width = `${window.innerWidth}px`
-      // this.element.style.height = `${window.innerHeight}px`
+      this.element.style.height = `${window.innerHeight}px`
     }
   }
 
