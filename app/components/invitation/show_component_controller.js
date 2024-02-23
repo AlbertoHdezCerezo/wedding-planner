@@ -51,7 +51,7 @@ export default class extends Controller {
       this.element.style.width = `${window.innerWidth}px`
 
       if (/android/i.test(navigator.userAgent)) {
-        this.element.style.height = `${window.innerHeight * 0.9}px`
+        this.element.style.height = `${window.innerHeight}px`
       }
     }
   }
