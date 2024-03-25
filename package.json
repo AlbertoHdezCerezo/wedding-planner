@@ -15,9 +15,9 @@
     "lint:fix": "yarn run eslint app -c config/.eslintrc.js --ignore-path config/.eslintignore --fix"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/eslint-parser": "^7.23.10",
-    "@babel/preset-env": "^7.24.0",
+    "@babel/core": "^7.24.3",
+    "@babel/eslint-parser": "^7.24.1",
+    "@babel/preset-env": "^7.24.3",
     "autoprefixer": "^10.4.17",
     "esbuild-plugin-babel": "^0.2.3",
     "eslint": "^8.57.0",
@@ -39,8 +39,8 @@
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.4",
     "animejs": "^3.2.2",
-    "core-js": "^3.36.0",
-    "esbuild": "0.20.1",
+    "core-js": "^3.36.1",
+    "esbuild": "0.20.2",
     "esbuild-rails": "^1.0.7",
     "js-confetti": "^0.12.0",
     "swiper": "^11.0.7"
