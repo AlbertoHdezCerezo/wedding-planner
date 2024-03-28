@@ -10,7 +10,7 @@ gem "rails", "~> 7.1.3"
 gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
-gem "pg", "1.5.4"
+gem "pg", "1.5.6"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.4"
@@ -134,5 +134,5 @@ group :test do
 
   # Use test helper for most comment test scenarios
   # https://github.com/thoughtbot/shoulda-matchers#minitest
-  gem "shoulda-matchers", "~> 6.1"
+  gem "shoulda-matchers", "~> 6.2"
 end
