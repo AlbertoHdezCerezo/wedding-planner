@@ -177,7 +177,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.7.1)
+    json (2.7.2)
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -296,7 +296,7 @@ GEM
       io-console (~> 0.5)
     rexml (3.2.6)
     rouge (4.2.1)
-    rubocop (1.62.1)
+    rubocop (1.63.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -314,9 +314,9 @@ GEM
     rubocop-minitest (0.35.0)
       rubocop (>= 1.61, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-performance (1.20.2)
+    rubocop-performance (1.21.0)
       rubocop (>= 1.48.1, < 2.0)
-      rubocop-ast (>= 1.30.0, < 2.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
     rubocop-rails (2.24.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -404,7 +404,7 @@ DEPENDENCIES
   puma (~> 6.4)
   rails (~> 7.1.3)
   redis (~> 5.1)
-  rubocop (~> 1.62)
+  rubocop (~> 1.63)
   rubocop-factory_bot
   rubocop-minitest
   rubocop-performance
