@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.1"
+gem "redis", "~> 5.2"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -65,7 +65,7 @@ gem "factory_bot_rails"
 gem "inline_svg", "~> 1.9.0"
 
 # DRY Parameters for your controllers
-gem "dry-schema", "~> 1.13.3"
+gem "dry-schema", "~> 1.13.4"
 
 # Money Currency made easy
 # https://github.com/RubyMoney/money-rails
