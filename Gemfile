@@ -133,3 +133,5 @@ group :test do
   # https://github.com/thoughtbot/shoulda-matchers#minitest
   gem "shoulda-matchers", "~> 6.2"
 end
+
+gem "kamal", "~> 2.1"
