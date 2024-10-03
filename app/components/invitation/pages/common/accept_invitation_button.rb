@@ -19,7 +19,7 @@ class Invitation::Pages::Common::AcceptInvitationButton < Invitation::Applicatio
       description: t(".event.description", invitation_url: request.original_url),
       all_day: true,
       url: request.original_url,
-      timezone: "Europe/London"
+      timezone: "America/Guayaquil"
     ).ical_url
   end
 
