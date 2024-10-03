@@ -24,4 +24,10 @@
           %span= t(".location")
           %p.uppercase.leading-4{ class: "text-[10px] tracking-[.1em]" }
 
-    = render Invitation::Pages::Common::AcceptInvitationButton.new(invitation:, preview_mode:)
+    %p.uppercase.leading-4{ class: "text-center text-[10px] tracking-[.15em] flex flex-row justify-center" }
+      %span{ class: "text-[10px] mb-2!" } Si quieres tener un detalle con nosotros, puedes hacer una transferencia a:
+
+      %div.uppercase.leading-4{ class: "text-center text-bold text-[12px] tracking-[.15em] flex flex-col justify-center gap-1" }
+        %p Banco Pichincha
+        %p Cuenta Corriente: 2100175111
+        %p Alexandra Castillo
